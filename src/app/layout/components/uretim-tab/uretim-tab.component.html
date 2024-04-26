@@ -1,0 +1,232 @@
+<div class="ribbon-tab" id="format-tab" style="display: block; height: 93px;" unselectable="on">
+
+    <div class="ribbon-section" unselectable="on" style="border-right: 1px solid #939393;">
+        <span class="section-title" unselectable="on">Kartlar</span>
+        <div [routerLink]="['/pages/urun-agaci/create-urun-agaci']" [routerLinkActive]="['active']"
+            class="ribbon-button ribbon-button-large " id="add-table-btn" unselectable="on">
+            <span class="button-help" unselectable="on">This button will add a table to your document.</span>
+            <img style="width: 36px; height: 36px; opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/work_breakdown_structure.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/work_breakdown_structure.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/work_breakdown_structure.png">
+            <span class="button-title" unselectable="on">Ürün<br>Ağacı</span>
+        </div>
+        <div [routerLink]="['/uretim/operasyon']" [routerLinkActive]="['active']"
+            class="ribbon-button ribbon-button-large disabled" id="open-table-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will open a table and add it to your
+                document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/functional_prototype.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/functional_prototype.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/functional_prototype.png">
+            <span class="button-title" unselectable="on">Operasyon</span>
+        </div>
+        <div [routerLink]="['/pages/is-merkezi/is-merkezi']" [routerLinkActive]="['active']"
+            class="ribbon-button ribbon-button-large " id="del-table-btn" unselectable="on">
+            <span class="button-help" unselectable="on">This button will remove the selected table from your
+                document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/industry.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/industry.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/industry.png">
+            <span class="button-title" unselectable="on">İş<br>Merkezi</span>
+        </div>
+        <div [routerLink]="['/uretim/tezgah']" [routerLinkActive]="['active']"
+            class="ribbon-button ribbon-button-large disabled" id="del-table-btn" unselectable="on">
+            <span class="button-help" unselectable="on">This button will remove the selected table from your
+                document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/manufacturing.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/manufacturing.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/manufacturing.png">
+            <span class="button-title" unselectable="on">Tezgah<br>Sınıfları</span>
+        </div>
+        <div [routerLink]="['/uretim/test']" [routerLinkActive]="['active']" class="ribbon-button ribbon-button-large disabled"
+            id="del-table-btn" unselectable="on">
+            <span class="button-help" unselectable="on">This button will remove the selected table from your
+                document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/tool.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/tool.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/tool.png">
+            <span class="button-title" unselectable="on">Tezgahlar</span>
+        </div>
+    </div>
+    <div class="ribbon-section-sep" unselectable="on"></div>
+
+    <div class="ribbon-section" unselectable="on" style="border-right: 1px solid #939393;">
+        <span class="section-title" unselectable="on">Hareketler</span>
+        <div class="ribbon-button ribbon-button-large disabled" id="add-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will add a page to your document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/operator_config.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/operator_config.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/operator_config.png">
+            <span class="button-title" unselectable="on">İş <br>Emri</span>
+        </div>
+   
+        
+        <div class="ribbon-button ribbon-button-large disabled" id="del-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will remove the selected page from your
+                document.</span>
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/operator_down.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/operator_down.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/operator_down.png">
+            <span class="button-title" unselectable="on">Alınan Sip.<br>İş Emri</span>
+        </div>
+   
+       
+        <div  [routerLink]="['pages/uretim-maliyet-analizi/uretim-maliyet-analizi']" [routerLinkActive]="['active']"
+            class="ribbon-button ribbon-button-large " id="del-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will remove the selected page from your
+                document.</span>
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/opportunity_cost.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/opportunity_cost.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/opportunity_cost.png">
+            <span class="button-title" unselectable="on">Maliyet<br>Analizi</span>
+        </div>
+
+    </div>
+    <div class="ribbon-section-sep" unselectable="on"></div>
+
+    <div class="ribbon-section" unselectable="on" style="border-right: 1px solid #939393;">
+        <span class="section-title" unselectable="on">Listeler</span>
+        <div [matMenuTriggerFor]="menu" class="ribbon-button ribbon-button-large " id="del-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will remove the selected page from your
+                document.</span>
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/opportunity_cost.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/opportunity_cost.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/opportunity_cost.png">
+            <span class="button-title" unselectable="on">Ürün<br><span style="display: flex;">Reçetesi
+                    <div style="width: 10px;color: gray;" class="ml-1">
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                </span>
+            </span>
+        </div>
+        <div [routerLink]="['pages/uretim-emri/uretim-emri']" [routerLinkActive]="['active']"  class="ribbon-button ribbon-button-large " id="add-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will add a page to your document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/terminate_process_help.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/terminate_process_help.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/terminate_process_help.png">
+            <span class="button-title" unselectable="on">Üretim<br>Emri</span>
+        </div>
+        <div class="ribbon-button ribbon-button-large disabled" id="del-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will remove the selected page from your
+                document.</span>
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/design_team_clock.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/design_team_clock.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/design_team_clock.png">
+            <span class="button-title" unselectable="on">İş<br>Emri </span>
+        </div>
+        <div [routerLink]="['/pages/urun-agaci/urun-agaci']" [routerLinkActive]="['active']" class="ribbon-button ribbon-button-large " id="open-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will open a page and add it to your
+                document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/work_breakdown_structure_clock.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/work_breakdown_structure_clock.png">
+            <img style="width: 36px; height: 36px;opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/work_breakdown_structure_clock.png">
+            <span class="button-title" unselectable="on">Ürün<br>Ağacı</span>
+        </div>
+        <div class="ribbon-button ribbon-button-large disabled" id="del-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will remove the selected page from your
+                document.</span>
+            <img style="width: 36px; height: 36px;  opacity: 0.9;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/administrator_clock.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/administrator_clock.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/administrator_clock.png">
+            <span class="button-title" unselectable="on">Üretim<br>Planı</span>
+        </div>
+
+
+
+    </div>
+    <div class="ribbon-section-sep" unselectable="on"></div>
+
+    <div class="ribbon-section" unselectable="on" style="border-right: 1px solid #939393;">
+        <span class="section-title" unselectable="on">Tanımlar</span>
+        <div class="ribbon-button ribbon-button-large disabled" id="del-page-btn" unselectable="on">
+
+            <span class="button-help" unselectable="on">This button will remove the selected page from your
+                document.</span>
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-normal"
+                src=" ../../assets/icons/uretim/our_process_2.png">
+            <img style="width: 36px; height: 36px;" class="ribbon-icon ribbon-hot"
+                src=" ../../assets/icons/uretim/our_process_2.png">
+            <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
+                src=" ../../assets/icons/uretim/our_process_2.png">
+            <span class="button-title" unselectable="on">Üretim<br></span>
+        </div>
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+<div class="deneme">
+    <mat-menu #menu="matMenu">
+
+        <ng-template matMenuContent let-item="item">
+            <button [routerLink]="['pages/urun-recete/urun-recete']" [routerLinkActive]="['active']" mat-menu-item>
+                <img style="width: 22px; height: 22px; " class="ribbon-icon ribbon-normal"
+                    src=" ../../assets/icons/fatura/inventory_down.png">
+                <span>Ürün Reçetesi</span>
+            </button>
+
+            <button mat-menu-item>
+                <img style="width: 22px; height: 22px; " class="ribbon-icon ribbon-normal"
+                    src=" ../../assets/icons/fatura/inventory_close.png">
+                <span>Ürün Reçetesi Bileşenleri</span>
+            </button>
+
+        </ng-template>
+
+    </mat-menu>
+</div>

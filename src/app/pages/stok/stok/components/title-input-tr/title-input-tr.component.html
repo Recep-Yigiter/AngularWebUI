@@ -1,0 +1,19 @@
+<tr>
+    <td>
+        <span style="font-weight: 600; font-size: 13px;">
+            {{label}} </span>
+    </td>
+
+</tr>
+<tr>
+    <td>
+        <span style="font-weight: 600; font-size: 18px; display: flex;justify-content: center;align-items: center;">
+            <i class="fa fa-star" style="color: #f3cc00; font-size: 22px; display: inline-block;"></i>
+            <input [formControl]="formControlNames" [(ngModel)]="field" class="form-select shadow-none "
+                [ngClass]="selectClass"
+                style="border: 1px solid  rgb(145, 145, 243) ;margin-left: 10px; border-radius: 5px; max-width: 50%; min-width: 300px; background-color: rgb(210, 210, 255); font-size: 18px;"
+                type="text" class="form-control shadow-none" id="exampleFormControlInput1" placeholder="Ad giriniz...">
+
+        </span>
+    </td>
+</tr>

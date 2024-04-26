@@ -1,0 +1,10 @@
+
+<div id="ribbon" >
+    <div id="ribbon-tab-header-strip" >
+        <div *ngFor="let tab of tabs" [ngClass]="{'active': tab.active === true }" (click)="selectTab(tab)" class="ribbon-tab-header " >
+          <span class="ribbon-title"
+                >{{ tab.tabTitle }} </span></div>
+
+    </div>
+    <ng-content></ng-content>
+</div> 

@@ -1,0 +1,149 @@
+@import "src/assets/custom/custom-create-page";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu-node {
+    padding-left: 16px;
+  }
+  .menu-node-button {
+    width: 16px;
+    height: 16px;
+    border: 1px solid silver;
+    border-radius: 3px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    visibility: hidden;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+  }
+  .menu-node-button:hover {
+    background-color: #eee;
+  }
+  .menu-node-button-show {
+    visibility: visible;
+  }
+  .menu-node-button-plus:after {
+    position: absolute;
+    content: "+";
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+  }
+  .menu-node-button-minus:after {
+    position: absolute;
+    content: "-";
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+  }
+  .menu-node-name {
+    font-size: 18px;
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    color: #464646;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    font-style: italic;
+    font-weight: 500;
+    font-family: "times new roman", serif;
+    width: calc(100% - 30px);
+    padding: 5px 0;
+  }
+  .menu-node-name:hover {
+    color: #666;
+  
+  }
+  .menu-node-name-selected {
+    color: #242424;
+    font-weight: 500;
+    text-decoration: none;
+    background-color: rgb(238, 238, 238);
+  
+  }
+  .menu-node-tree {
+    position: relative;
+  }
+  .menu-node > .menu-node-tree::after {
+    content: " ";
+    position: absolute;
+    left: 8px;
+    top: -7px;
+    bottom: 0;
+    width: 4px;
+    border-left: 1px dotted silver;
+  }
+  .menu-node > .menu-node-tree:last-of-type::after {
+    bottom: 16px;
+  }
+  .menu-node > .menu-node-tree::before {
+    content: " ";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 15px;
+    width: 32px;
+    border-bottom: 1px dotted silver;
+  }
+  
+  .menu-node-folder{
+  font-size: 17px;
+  font-weight: 600;
+  color: #464646 !important;
+  }
+  .view-icon-content{
+  position: absolute;
+  right: 10px;
+  top: 4px;
+  z-index: 99;
+  }
+  .title-icon{
+  height: 100%;
+  width: 22px;
+  margin-left: 2px;
+  background-repeat: no-repeat;
+  display: inline-block;
+  }
+  .menu-node-name + .view-icon-content .view-icon{
+  opacity: 0;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  }
+  
+  .menu-node-name:hover + div .view-icon{
+  opacity: 0.4;
+  
+  }
+  .menu-node-name + .view-icon-content .view-icon:hover{
+  opacity: 0.7;
+  }
+  
+  
+  
+  .active{
+    color: #a00202 !important;
+  }
+  
+  
+  
+  
+  

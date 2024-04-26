@@ -1,0 +1,622 @@
+
+
+
+:host ::ng-deep{
+  a.title-router{
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    color: #66598f !important;
+  }
+  .ag-cell {
+  
+      color: #666666;
+      font-size: 13px;
+      font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+  }
+  .form-control {
+
+      padding: 0.175rem 0.5rem;
+      font-size: 1rem;
+      border-radius: 0rem;
+      border: transparent;
+  }
+
+  input:focus{
+      border: transparent;
+      
+  }
+
+
+
+
+
+
+  .yks-btn {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+
+.yks-btn {
+
+
+    display: inline-block;
+    font-size: 13px;
+    color: #212529;
+    border: none;
+    font-size: 13px !important;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1.08333333rem;
+    line-height: 1.5;
+    border-radius: 3px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+
+.small {
+  font-size: 9px !important;
+  font-weight: 400 !important;
+  color: #212529;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.yks-btn:hover{
+background-color: #e2e6ea;
+}
+.dropdown-item:hover{
+  background-color: #00000014;
+}
+
+.show{
+  background-color: #e2e6ea;
+}
+.dropdown-menu{
+  background-color: #fff;
+  border-radius: 2px;
+  max-width: 250px;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #212529;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  color: #666666;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.yks-dropdown-item{
+  color: #666666 !important;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+}
+.yks-menu-items-container li.yks-download-btn{
+  margin-left: 2px;
+  border: 1px solid #e6e6e6;
+  padding: 2px 9px;
+}
+
+ .yks_control_panel {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 auto;
+      flex: 0 0 auto;
+
+      padding-top: 5px;
+      padding-right: 16px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      background-color: white;
+
+
+      & > div {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: flex;
+          min-height: 30px;
+          // margin:15px 0px 0px 0px;
+          justify-content: flex-end;
+      }
+
+  }
+  .yks_searchview {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 0px;
+      align-items: flex-end;
+      padding: 0 27px 0px 0;
+      position: relative;
+  }
+  .yks_searchview .yks_searchview_input_container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      position: relative;
+  }
+  .yks_searchview .yks_searchview_icon {
+      position: absolute;
+      top: 9px;
+      left: auto;
+      bottom: auto;
+      right: 5px;
+  }
+  .fa {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: 13px;
+      color: black;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  .yks_searchview .yks_searchview_input_container .yks_searchview_input {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 0 auto;
+      flex: 1 0 auto;
+      width: 75px;
+  }
+  .yks_searchview .yks_searchview_input {
+      border: none;
+      padding: 4px 0 0 0;
+  }
+
+  .yks_control_panel .breadcrumb {
+      font-size: 18px;
+  }
+  .breadcrumb {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      padding: 0 0;
+      margin-bottom: 0;
+      list-style: none;
+      background-color: white;
+      border-radius: 3px;
+  }
+
+
+  .yks_control_panel .breadcrumb > li {
+      display: inline-block;
+      max-width: 90%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: top;
+  }
+  .breadcrumb-item.active {
+      color: #6c757d;
+  }
+
+  .text-900 {
+      color: #212529 !important;
+      font-weight: 600;
+  }
+
+  .yks_control_panel .yks_cpanel_top_left {
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+      padding-left: 15px;
+  } 
+  .yks_control_panel .yks_cpanel_top_right {
+      min-height: 30px;
+
+  } 
+
+
+
+  .yks_control_panel .yks_cpanel_bottom_left {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      gap: 1rem 0.5rem;
+  }
+
+  .d-flex {
+      display: -webkit-box !important;
+      display: -webkit-flex !important;
+      display: flex !important;
+  }
+
+
+
+  .yks_control_panel .o_cpanel_bottom_left {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      gap: 1rem 0.5rem;
+  }
+
+
+  .yks_btn_custom:not(:disabled):not(.disabled) {
+      cursor: pointer;
+  }
+  
+  .yks_list_buttons .yks_list_button_save, .yks_list_buttons .yks_list_button_discard {
+      display: none;
+  }
+  button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+      cursor: pointer;
+  }
+  .yks_btn_custom-fill-primary, .yks_btn_custom_primary {
+      color: #fff !important;
+      background-color: #017e84 !important;
+      border-color: #017e84 !important;
+  }
+  .yks_btn_custom {
+      display: inline-block;
+      font-weight: 400;
+      color: #666666;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 0.375rem 0.75rem;
+      font-size: 1.08333333rem;
+      line-height: 1.5;
+      border-radius: 3px;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  button, [type="button"], [type="reset"], [type="submit"] {
+      -webkit--webkit-appearance: button;
+      -moz-appearance: button;
+      appearance: button;
+  }
+  button, select {
+      text-transform: none;
+  }
+  button, input {
+      overflow: visible;
+  }
+  input, button, select, optgroup, textarea {
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
+  button {
+      border-radius: 0;
+  }
+
+  @media (min-width: 768px){
+      .yks_control_panel .yks_cpanel_top_left ,.yks_control_panel .yks_cpanel_bottom_left{
+         width: 60%;
+      }
+  }
+
+  @media (min-width: 768px){
+      .yks_control_panel .yks_cpanel_top_right ,.yks_control_panel .yks_cpanel_bottom_right{
+          width: 40%;
+      }
+  }
+
+
+  @media (max-width: 300px){
+      .yks_control_panel .yks_cpanel_top_left ,.yks_control_panel .yks_cpanel_bottom_left{
+         width: 40%;
+      }
+  }
+
+  @media (max-width: 300px){
+      .yks_control_panel .yks_cpanel_top_right ,.yks_control_panel .yks_cpanel_bottom_right{
+          width: 60%;
+      }
+  }
+
+
+
+
+
+  .mystyle {
+display: flex !important;
+  }
+     
+
+}
+
+
+
+
+
+
+
+
+
+
+.yks-button{
+  cursor: pointer;
+}
+
+
+
+
+.yks-menu-horizontal .yks-menu-item-wrapper {
+  display: inline-block;
+}
+.yks-menu-horizontal .yks-menu-separator {
+  display: inline-block;
+  margin: 0 15px 0 0;
+}
+.yks-menu-vertical {
+  height: 100%;
+}
+.yks-menu-vertical::after {
+  height: 100%;
+  display: inline-block;
+  content: "";
+  vertical-align: middle;
+}
+.yks-menu-vertical .yks-menu-item-wrapper {
+  display: block;
+}
+.yks-menu-vertical .yks-menu-separator {
+  margin: 0 0 15px;
+}
+
+.yks-context-menu-container-border {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .yks-menu-item-wrapper,
+  .yks-menu-items-container {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+  }
+   .yks-menu-items-container {
+    list-style-type: none;
+    display: inline-block;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+
+
+   .yks-menu-item-wrapper {
+    display: inline-block;
+  }
+
+  .yks-toolbar-item {
+    display: table-cell;
+    padding: 0 0px;
+    vertical-align: middle;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+  }
+
+  .yks-drawer {
+    height: 100%;
+    width: 100%;
+  }
+  .yks-drawer-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  } 
+  .yks-drawer-panel-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+  .yks-drawer-panel-content {
+    right: 0;
+  }
+
+
+  .yks-drawer-content {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+
+   .yks-drawer-panel-content {
+    top: auto;
+  }
+  .yks-drawer-panel-content {
+    position: relative;
+    overflow: hidden;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    height: 100%;
+  }
+  .yks-drawer-wrapper {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+   .yks-drawer-content {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+  .yks-drawer-shrink .yks-drawer-wrapper,
+  .yks-drawer-shrink .yks-drawer-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+   .yks-drawer-panel-content {
+    overflow: visible;
+  }
+    .yks-drawer-panel-content.yks-overlay-wrapper {
+    right: auto;
+    left: auto;
+  }
+
+     .yks-drawer-wrapper,
+     .yks-drawer-wrapper {
+    overflow-x: visible;
+  }
+
+  .yks-htmleditor {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border: 1px solid transparent;
+  }
+  .yks-filemanager {
+    height: 500px;
+    border: 1px solid;
+    border-bottom: transparent;
+  }
+   .yks-filemanager-wrapper {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .yks-filemanager-notification-drawer-panel {
+    height: 100%;
+  }
+   .yks-overlay-content {
+    min-width: 240px;
+    max-width: 93vw;
+  }
+   .yks-filemanager-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+   .yks-drawer-panel-content {
+    display: block;
+    width: 10%;
+  }
+
+  
+    
+    .yks-filemanager-container
+    .yks-drawer-panel-content.yks-drawer-panel-content-initial {
+    min-width: 250px;
+    max-width: 300px;
+  }
+  .yks-filemanager-breadcrumbs {
+    padding: 0;
+    border-bottom: 1px solid;
+  }
+  .yks-filemanager-breadcrumbs .yks-menu-item-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+
+    .yks-filemanager-breadcrumbs
+    .yks-filemanager-breadcrumbs-separator-item
+    .yks-menu-item-content {
+    width: 1px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 10px;
+  }
+
+
+    .yks-filemanager-breadcrumbs
+    .yks-filemanager-breadcrumbs-separator-item
+    .yks-menu-item-content {
+    background: #ddd;
+  }
+
+
+
+
+  .yks-filemanager {
+    border-color: #ddd;
+  }
+
+   .yks-filemanager-container {
+    border-top-color: #ddd;
+  }
+  .yks-filemanager-breadcrumbs {
+    border-bottom-color: #ddd;
+  }
+  .yks-filemanager-breadcrumbs .yks-menu-item-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+
+
+
+
+
+  

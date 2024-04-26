@@ -1,0 +1,27 @@
+<div style="display: grid; grid-template-rows: 118px auto;">
+    <app-main-tab>
+        <app-item-tab tabTitle="Stok">
+            <app-stok-tab></app-stok-tab>
+        </app-item-tab>
+        <app-item-tab tabTitle="Üretim">
+            <app-uretim-tab></app-uretim-tab>
+        </app-item-tab>
+        <app-item-tab tabTitle="Satın Alma">
+            <app-satin-alma-tab></app-satin-alma-tab>
+        </app-item-tab>
+        <app-item-tab tabTitle="Satış">
+            <app-satis-tab></app-satis-tab>
+        </app-item-tab>
+        <app-item-tab tabTitle="Fatura">
+            <app-fatura-tab></app-fatura-tab>
+        </app-item-tab>
+
+    </app-main-tab>
+
+
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+
+</div>

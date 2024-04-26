@@ -1,0 +1,257 @@
+<div class="demo-container" style="position: relative;">
+    <div class=" yks-filemanager" style="height: 791px;">
+
+        <div class=" yks-drawer">
+            <div class="yks-drawer-wrapper">
+                <div class="yks-drawer-content deneme"
+                    style="transform: translate(0px, 0px); padding: 0px; left: 0px; ">
+
+                    <div class="yks-filemanager-notification-drawer-panel">
+
+                        <div class="yks-filemanager-wrapper">
+
+
+                            <div class="yks_control_panel">
+                                <div class="yks_cpanel_top">
+                                    <div class="yks_cpanel_top_left">
+                                        <div>
+                                            <div class=" yks-toolbar-item ">
+                                                <div class="yks-button-has-text"
+                                                    style=" font-size: 18px; font-weight: 500; color: #66598f;">
+                                                    Üretim Maliyet Analizi / Üretim Maliyet Genel Bakış / <span
+                                                        style="color: rgba(73, 80, 87, 0.76) !important;">{{stateData.stokKodu}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="yks_cpanel_top_right"></div>
+                                </div>
+                            </div>
+                            <div class="yks_control_panel">
+                                <div class="yks_cpanel_top">
+                                    <div class="yks_cpanel_top_left">
+                                        <div>
+
+
+                                            <div class=" yks-toolbar-item ">
+
+
+                                                <div class="yks-button-has-text">
+                                                    <ul class="yks-menu-items-container"
+                                                        style="    display: flex; align-items: center; justify-content: center;">
+
+
+
+
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                            <div class="yks-filemanager-container">
+                                <div class="yks-drawer">
+                                    <div class="yks-drawer-wrapper">
+                                        <div id="filter_menu"
+                                            class="yks-drawer-panel-content yks-drawer-panel-content-initial"
+                                            style="margin-left: 0px; display: none; border: 1px solid #c1c1c1;">
+                                        </div>
+                                        <div class="yks-drawer-content" style="padding: 0px;">
+                                            <div class=" yks-filemanager-breadcrumbs"></div>
+
+                                            <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
+
+
+
+
+
+                                                <div class="grid">
+                                                    <div class="col-12 lg:col-6 xl:col-6 pl-4">
+                                                        <table class="yks_table_group">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="yks_td_label"></td>
+                                                                    <td style="width: 100%; "></td>
+                                                                </tr>
+
+
+                                                                <tr class="table_row_group">
+                                                                    <td class="yks_td_label"
+                                                                        style="border-left: #000000;">
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px;">Ürün
+                                                                            Emri
+                                                                        </label>
+                                                                    </td>
+
+                                                                    <td style="width: 100%;" class="table_row_group">
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                            {{stateData.stokKodu}}
+                                                                        </label>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                                <tr class="table_row_group">
+                                                                    <td class="yks_td_label"
+                                                                        style="border-left: #000000;">
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px;">Ürün
+
+                                                                        </label>
+                                                                    </td>
+
+                                                                    <td style="width: 100%;" class="table_row_group">
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                            {{stateData.stokAdi}}
+                                                                        </label>
+                                                                    </td>
+
+                                                                </tr>
+
+
+                                                                <tr class="table_row_group">
+                                                                    <td class="yks_td_label"
+                                                                        style="border-left: #000000;">
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px;">Toplam
+                                                                            Bileşen Maliyet
+                                                                        </label>
+                                                                    </td>
+
+                                                                    <td style="width: 100%;" class="table_row_group">
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                            {{stateData.toplamBilesenMaliyeti|currency:'TL':'₺ ':'1.2-2'}}
+                                                                        </label>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr class="table_row_group">
+                                                                    <td class="yks_td_label"
+                                                                        style="border-left: #000000;">
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px;">Toplam
+                                                                            Operasyon Maliyeti
+                                                                        </label>
+                                                                    </td>
+
+                                                                    <td style="width: 100%;" class="table_row_group">
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                            {{0|currency:'TL':'₺ ':'1.2-2'}}
+                                                                        </label>
+                                                                    </td>
+
+                                                                </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </div>
+
+
+                                                    <div class="col-12 lg:col-6 xl:col-6 pl-4 pr-4">
+
+                                                        <table class="yks_table_group ">
+                                                            <tbody>
+
+
+                                                                <tr class="table_row_group">
+                                                                    <td class="yks_td_label"
+                                                                        style="border-left: #000000;">
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px;">Üretilen
+                                                                            Miktar
+                                                                        </label>
+                                                                    </td>
+                                                                    <td>
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                            {{stateData.miktar |number: '1.2-2'}}
+                                                                        </label>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr class="table_row_group">
+                                                                    <td class="yks_td_label"
+                                                                        style="border-left: #000000;">
+
+                                                                        <label
+                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px;">Toplam
+                                                                            Maliyet
+                                                                        </label>
+                                                                    </td>
+                                                                    <td>
+
+                                                                        <label style=" min-width: 160px;
+                                                                         font-weight: 600; 
+                                                                         font-size: 13px; color: #666666;">
+                                                                            {{stateData.toplamMaliyet
+                                                                            |currency:'TL':'₺ ':'1.2-2'}}
+                                                                        </label>
+                                                                    </td>
+
+                                                                </tr>
+
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+
+
+
+
+                                                </div>
+
+                                                <div>
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
