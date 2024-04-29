@@ -11,12 +11,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     PagesComponent,
-    FinansComponent,
- 
 
 
   ],
@@ -40,6 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
          { path: 'fatura', loadChildren: () => import("../pages/fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule) },
          { path: 'fatura', loadChildren: () => import("../pages/fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) },
          { path: 'fatura', loadChildren: () => import("../pages/fatura/fatura.module").then(m => m.FaturaModule) },
+         { path: 'satin-alma', loadChildren: () => import("../pages/satinalma/alinan-teklif/alinan-teklif.module").then(m => m.AlinanTeklifModule) },
+         { path: 'satin-alma', loadChildren: () => import("../pages/satinalma/verilen-teklif/verilen-teklif.module").then(m => m.VerilenTeklifModule) },
          { path: 'urun-recete', loadChildren: () => import("../pages/uretim/urun-recete/urun-recete.module").then(m => m.UrunReceteModule) },
          { path: 'urun-agaci', loadChildren: () => import("../pages/uretim/urun-agaci/urun-agaci.module").then(m => m.UrunAgaciModule) },
          { path: 'is-merkezi', loadChildren: () => import("../pages/uretim/is-merkezi/is-merkezi.module").then(m => m.IsMerkeziModule) },

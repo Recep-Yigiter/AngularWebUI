@@ -2,8 +2,8 @@
 
     <div class="ribbon-section" unselectable="on" style="border-right: 1px solid #939393;">
         <span class="section-title" unselectable="on">Hareketler</span>
-        <div [routerLink]="['/stok/stok-kart']" [routerLinkActive]="['active']"
-            class="ribbon-button ribbon-button-large disabled" id="add-table-btn" unselectable="on">
+        <div [routerLink]="['/pages/satin-alma/create-verilen-teklif']"  [routerLinkActive]="['active']" 
+            class="ribbon-button ribbon-button-large " id="add-table-btn" unselectable="on">
             <span class="button-help" unselectable="on">This button will add a table to your document.</span>
             <img style="width: 36px; height: 36px; opacity: 0.9;" class="ribbon-icon ribbon-normal"
                 src=" ../../assets/icons/satis/document_up.png">
@@ -24,7 +24,7 @@
                 src=" ../../assets/icons/satis/collection_account_down.png">
             <img style="width: 36px; height: 36px; opacity: 0.2;" class="ribbon-icon ribbon-disabled"
                 src=" ../../assets/icons/satis/collection_account_down.png">
-            <span class="button-title" unselectable="on">Alınan<br>Teklif</span>
+            <span class="button-title" unselectable="on">Alınan<br>Sipariş</span>
         </div>
 
         <div 
@@ -78,7 +78,7 @@
                     <img class="ribbon-icon ribbon-disabled" src=" ../../assets/icons/satis/taxes_clock.png">
                     <span class="button-title" unselectable="on">Sipariş</span>
                 </div>
-                <div class="ribbon-button ribbon-button-small disabled" id="save-btn" unselectable="on">
+                <div [routerLink]="['/pages/satin-alma/verilen-teklif']"  [routerLinkActive]="['active']"  class="ribbon-button ribbon-button-small " id="save-btn" unselectable="on">
 
                     <span class="button-help" unselectable="on">This button will save your document.</span>
                     <img class="ribbon-icon ribbon-normal" src=" ../../assets/icons/satis/contract_clock.png">

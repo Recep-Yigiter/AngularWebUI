@@ -125,10 +125,7 @@ export class UpdateAlisFaturaComponent implements OnInit {
   ];
 
 
-  faturaTurler: any[] = [
-    { ad: "Alış Faturası", faturaTuru: 1, faturaTuruString: "Alis Faturası", seri: "AF", id: "00001" },
-    { ad: "Satış Faturası", faturaTuru: 2, faturaTuruString: "Satis Faturası", seri: "SF", id: "00002" },
-  ];
+
 
 
 
@@ -383,33 +380,28 @@ export class UpdateAlisFaturaComponent implements OnInit {
 
 
 
-  kdvChanced() { 
+  kdvChanced() {
     this.onCellValueChanged()
   }
   otvChanced() {
     this.onCellValueChanged()
   }
-  changed(event) {
-    this.selectedFaturaTuru = event;
-    this.frm.value.faturaTuru = this.selectedFaturaTuru
-    if (this.faturaTurler != undefined) {
-      this.selectedObject = this.faturaTurler.find((el: any) => {
 
-        return el?.faturaTuru == this.selectedFaturaTuru;
-      });
-
-      
-    }
-
-
-
-  }
 
 
 
   getDateAndTime() {
+    // "tr-TR": "dd.MM.yyyy",
+
     this.dateTime = this.DatePipe.transform(this.stateData.createdDate, 'yyyy-MM-dd');
     this.time = this.DatePipe.transform(this.stateData.createdDate, 'hh : mm')
+
+
+
+
+
+
+
   }
 
 }

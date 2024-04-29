@@ -7,7 +7,8 @@ import { FaturaService } from '../core/services/fatura.service';
 @Component({
   selector: 'app-detail-satis-fatura',
   templateUrl: './detail-satis-fatura.component.html',
-  styleUrls: ['./detail-satis-fatura.component.scss']
+  styleUrls: ['./detail-satis-fatura.component.scss'],
+  providers: [ DatePipe],
 })
 export class DetailSatisFaturaComponent implements OnInit {
   /**
@@ -24,7 +25,7 @@ export class DetailSatisFaturaComponent implements OnInit {
   rxTime: any = new Date();
   ngOnInit(): void {
     this.stateControl();
-
+    console.log(this.stateData);
   }
 
   getAllRowData() {
@@ -75,7 +76,6 @@ export class DetailSatisFaturaComponent implements OnInit {
 
     if (this.stateData.depoId != undefined) {
       this.selectedObject = depoList.find((el: any) => {
-
         return el?.id == this.stateData.depoId;
       });
     }
@@ -108,12 +108,12 @@ export class DetailSatisFaturaComponent implements OnInit {
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/fatura/update-fatura'], { state: this.stateData })
+      this.router.navigate(['/pages/fatura/update-alis-fatura'], { state: this.stateData })
     }
     else {
       this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { })).data
 
-      this.router.navigate(['/pages/fatura/update-fatura'], { state: this.fatura })
+      this.router.navigate(['/pages/fatura/update-alis-fatura'], { state: this.fatura })
     }
   }
 

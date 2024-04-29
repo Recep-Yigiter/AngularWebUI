@@ -185,7 +185,7 @@
                                                                                     border-radius: 1px;
                                                                                     background-color: rgb(210, 210, 255) !important;
                                                                                     border: 1px solid rgb(145, 145, 243);"
-                                                                                    type="time"
+                                                                                    
                                                                                     class="form-control shadow-none"
                                                                                     id="exampleFormControlInput1">
                                                                             </label>
@@ -206,15 +206,18 @@
                                                                         <td style="width: 100%;"
                                                                             class="table_row_group">
 
-                                                                            <input formControlName="belgeNo"
-                                                                                [(ngModel)]="stateData.belgeNo" style=" padding: 0px 0 0px 0.75rem;
+                                                                          
+
+
+                                                                                <input readonly
+                                                                                [ngModel]="stateData.belgeNo"
+                                                                                formControlName="belgeNo" style=" padding: 0px 0 0px 0.75rem; 
                                                                         font-size: 13px;
-                                                                        border-radius: 1px;
-                                                                        background-color: rgb(210, 210, 255) !important;
-                                                                        border: 1px solid rgb(145, 145, 243);"
-                                                                                type="text"
-                                                                                class="form-control shadow-none"
+                                                                        border-radius: 1px; opacity: 0.7;" type="text"
+                                                                                class="form-control shadow-none form-control-nullable"
                                                                                 id="exampleFormControlInput1">
+
+
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="table_row_group">
@@ -234,25 +237,19 @@
 
 
 
-                                                                            <select [ngModel]="stateData.faturaTuru"
-                                                                                (ngModelChange)="changed($event)"
-                                                                                formControlName="faturaTuru"
-                                                                                class="form-select shadow-none"
-                                                                                aria-label="Default select example">
-                                                                                <option disabled
-                                                                                    [selected]="stateData.faturaTuru"
-                                                                                    [ngValue]="null">Lütfen
-                                                                                    seçim yapınız...
-                                                                                </option>
-                                                                                <option
-                                                                                    *ngFor="let item of faturaTurler"
-                                                                                    [ngValue]="item.faturaTuru">
-                                                                                    {{item.ad}} </option>
-                                                                            </select>
+                                                                            <input readonly
+                                                                                [ngModel]="stateData.faturaString"
+                                                                                formControlName="faturaTuru" style=" padding: 0px 0 0px 0.75rem; 
+                                                                        font-size: 13px;
+                                                                        border-radius: 1px; opacity: 0.7;" type="text"
+                                                                                class="form-control shadow-none form-control-nullable"
+                                                                                id="exampleFormControlInput1">
 
 
 
                                                                         </td>
+                                                                       
+                                                                        
                                                                     </tr>
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"

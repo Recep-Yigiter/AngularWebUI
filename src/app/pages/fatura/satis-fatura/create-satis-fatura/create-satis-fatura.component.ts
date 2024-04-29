@@ -38,6 +38,8 @@ export class CreateSatisFaturaComponent {
   defaultKDV: any = 0;
   defaultOTV: any = 0;
   selectedFaturaTuru: any
+  faturaTuruAdi:any='Satış';
+  seriNo:any='SF';
   private gridApi!: GridApi<any>;
   public rowSelection: "single" | "multiple" = "single";
 
@@ -119,8 +121,8 @@ export class CreateSatisFaturaComponent {
   kaydet() {
     const createModel = new CreateFaturaModel();
     createModel.belgeNo = this.frm.value.belgeNo;
-    createModel.faturaTuru = this.selectedFaturaTuru.faturaTuru;
-    createModel.seri = this.selectedFaturaTuru.seri;
+    createModel.faturaTuru = 2;
+    createModel.seri = "SF";
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.depoId = this.selectedDepo.id;
@@ -134,9 +136,11 @@ export class CreateSatisFaturaComponent {
     createModel.faturaHareketler.forEach((element) => {
       element.depoId = this.selectedDepo.id
     })
+
     if (this.getAllRowData().length > 0) {
+      
       this.FaturaService.create(createModel, () => {
-        this.router.navigate(['/pages/fatura/detail-fatura'], { state: createModel })
+        this.router.navigate(['/pages/fatura/detail-satis-fatura'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -148,8 +152,8 @@ export class CreateSatisFaturaComponent {
   kaydet_yeni() {
     const createModel = new CreateFaturaModel();
     createModel.belgeNo = this.frm.value.belgeNo;
-    createModel.faturaTuru = this.selectedFaturaTuru.faturaTuru;
-    createModel.seri = this.selectedFaturaTuru.seri;
+    createModel.faturaTuru = 2;
+    createModel.seri = "SF";
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.depoId = this.selectedDepo.id;
@@ -194,6 +198,7 @@ export class CreateSatisFaturaComponent {
     return rowData;
   }
 
+  
   onCellValueChanged() {
     this.getAllRowData().forEach((item) => {
       item.toplamTutar = (item.miktar * item.birimFiyat);

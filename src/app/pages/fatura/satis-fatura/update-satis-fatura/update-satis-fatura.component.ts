@@ -126,10 +126,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
   ];
 
 
-  faturaTurler: any[] = [
-    { ad: "Alış Faturası", faturaTuru: 1, faturaTuruString: "Alis Faturası", seri: "AF", id: "00001" },
-    { ad: "Satış Faturası", faturaTuru: 2, faturaTuruString: "Satis Faturası", seri: "SF", id: "00002" },
-  ];
+
 
 
 
@@ -214,7 +211,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.FaturaService.update(createModel, () => {
-        this.router.navigate(['/pages/fatura/detail-fatura'], { state: createModel })
+        this.router.navigate(['/pages/fatura/detail-alis-fatura'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Faturaya Satır Eklemelisiniz !')
@@ -247,7 +244,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.FaturaService.update(createModel, () => {
-        this.router.navigate(['/pages/fatura/create-fatura'])
+        this.router.navigate(['/pages/fatura/create-alis-fatura'])
       }, errorMessage => { })
     } else {
       alert('Faturaya Satır Eklemelisiniz !')
@@ -390,21 +387,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
   otvChanced() {
     this.onCellValueChanged()
   }
-  changed(event) {
-    this.selectedFaturaTuru = event;
-    this.frm.value.faturaTuru = this.selectedFaturaTuru
-    if (this.faturaTurler != undefined) {
-      this.selectedObject = this.faturaTurler.find((el: any) => {
-
-        return el?.faturaTuru == this.selectedFaturaTuru;
-      });
-
-      
-    }
-
-
-
-  }
+  
 
 
 

@@ -158,7 +158,12 @@ export class FaturaComponent implements OnInit {
 
     const selectedRows = this.gridApi.getSelectedRows()[0];
     this.selectedFaturaHareket = selectedRows
-    this.router.navigate(['/pages/fatura/detail-alis-fatura'], { state: selectedRows })
+    if (selectedRows.seri=="AF") {
+      this.router.navigate(['/pages/fatura/detail-alis-fatura'], { state: selectedRows })
+    } else {
+      this.router.navigate(['/pages/fatura/detail-satis-fatura'], { state: selectedRows })
+    }
+
   }
 
   onBtAdd() {
