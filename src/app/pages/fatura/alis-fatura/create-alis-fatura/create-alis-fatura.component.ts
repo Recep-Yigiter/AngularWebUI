@@ -198,6 +198,7 @@ export class CreateAlisFaturaComponent {
     return rowData;
   }
 
+  
   onCellValueChanged() {
     this.getAllRowData().forEach((item) => {
       item.toplamTutar = (item.miktar * item.birimFiyat);

@@ -7,7 +7,8 @@ import { FaturaService } from '../core/services/fatura.service';
 @Component({
   selector: 'app-detail-alis-fatura',
   templateUrl: './detail-alis-fatura.component.html',
-  styleUrls: ['./detail-alis-fatura.component.scss']
+  styleUrls: ['./detail-alis-fatura.component.scss'],
+  providers: [ DatePipe],
 })
 export class DetailAlisFaturaComponent implements OnInit {
   /**
@@ -75,7 +76,6 @@ export class DetailAlisFaturaComponent implements OnInit {
 
     if (this.stateData.depoId != undefined) {
       this.selectedObject = depoList.find((el: any) => {
-
         return el?.id == this.stateData.depoId;
       });
     }

@@ -6,13 +6,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { FinansComponent } from './finans/finans.component';
 import { FaturaComponent } from './fatura/fatura.component';
+import { AgGridAngular } from 'ag-grid-angular';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
     FinansComponent,
-    FaturaComponent,
+ 
 
 
   ],
@@ -20,6 +24,10 @@ import { FaturaComponent } from './fatura/fatura.component';
     CommonModule,
     MatIconModule,
     MatMenuModule,
+    AgGridAngular,
+    MatButtonModule,
+    MatCheckboxModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild(
      [
        {path: 'pages', component: PagesComponent, children:[
@@ -31,11 +39,7 @@ import { FaturaComponent } from './fatura/fatura.component';
          { path: 'mal-alis', loadChildren: () => import("../pages/stok/giriş/mal-alis/mal-alis.module").then(m => m.MalAlisModule) },
          { path: 'fatura', loadChildren: () => import("../pages/fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule) },
          { path: 'fatura', loadChildren: () => import("../pages/fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) },
-
-
-
-
-
+         { path: 'fatura', loadChildren: () => import("../pages/fatura/fatura.module").then(m => m.FaturaModule) },
          { path: 'urun-recete', loadChildren: () => import("../pages/uretim/urun-recete/urun-recete.module").then(m => m.UrunReceteModule) },
          { path: 'urun-agaci', loadChildren: () => import("../pages/uretim/urun-agaci/urun-agaci.module").then(m => m.UrunAgaciModule) },
          { path: 'is-merkezi', loadChildren: () => import("../pages/uretim/is-merkezi/is-merkezi.module").then(m => m.IsMerkeziModule) },
