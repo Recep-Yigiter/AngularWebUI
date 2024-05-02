@@ -20,6 +20,7 @@ export class DetailAlinanTeklifComponent  implements OnInit {
 
   }
   dateTime: any = new Date();
+  dateTimeOpsiyon: any = new Date();
 
   time: any = new Date();
   rxTime: any = new Date();
@@ -93,17 +94,21 @@ export class DetailAlinanTeklifComponent  implements OnInit {
 
     this.stateData = this.teklif;
     this.dateTime = this.DatePipe.transform(this.teklif.createdDate, 'yyyy-MM-dd');
+    this.dateTimeOpsiyon = this.DatePipe.transform(this.teklif.opsiyonTarihi, 'yyyy-MM-dd');
     this.time = this.DatePipe.transform(this.teklif.createdDate, 'hh : mm ')
+  }
+  vazgec(){
+    this.router.navigate(['/pages/satin-alma/alinan-teklif'], { state: this.stateData })
   }
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/satin-alma/update-verilen-teklif'], { state: this.stateData })
+      this.router.navigate(['/pages/satin-alma/update-alinan-teklif'], { state: this.stateData })
     }
     else {
       this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).data
 
-      this.router.navigate(['/pages/satin-alma/update-verilen-teklif'], { state: this.teklif })
+      this.router.navigate(['/pages/satin-alma/update-alinan-teklif'], { state: this.teklif })
     }
   }
 

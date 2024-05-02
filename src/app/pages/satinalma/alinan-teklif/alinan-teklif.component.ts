@@ -21,15 +21,15 @@ export class AlinanTeklifComponent implements OnInit {
   // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
   colDefs: ColDef[] = [
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'yyyy / MM / dd'), pinned: "left" },
-    { field: "seri", headerName: "Belge Seri", width: 100, pinned: "left" },
+    { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
     { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
-    { field: "teklifTuruAdi", headerName: "Hareket Türü", width: 120, pinned: "left" },
-    { field: "kdvTutar", headerName: "Kdv Tutarı",cellRenderer: this.CurrencyCellRendererTR },
-    { field: "satirOtv", headerName: "ÖTV Tutarı" ,cellRenderer: this.CurrencyCellRendererTR},
+    { field: "teklifTuruAdi", headerName: "Türü", width: 80, pinned: "left" },
+    { field: "kdvTutar", headerName: "Kdv Tutarı",width: 100,cellRenderer: this.CurrencyCellRendererTR },
+    { field: "satirOtv", headerName: "ÖTV Tutarı" ,width: 100,cellRenderer: this.CurrencyCellRendererTR},
     { field: "cariKodu", headerName: "Cari Kodu", width: 150 },
     { field: "cariAdi", headerName: "Cari Adı", width: 350 },
     { field: "referans", headerName: "Referans No", width: 150 },
-    { field: "durum", headerName: "Onay Durumu", width: 150 },
+    // { field: "durum", headerName: "Onay Durumu", width: 150 },
     { field: "teklifAlanPersonel", headerName: "Teklif Alan Personel" },
     { field: "opsiyonTarihi", headerName: "Opsiyon Tarihi", width: 150 },
     { field: "aciklama", headerName: "Açıklama" },
@@ -61,7 +61,7 @@ export class AlinanTeklifComponent implements OnInit {
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
     this.rowData = (await this.StokService.GetList(() => { })).data.items;
-
+this.rowData=this.rowData.filter(c=>c.seri=="AT")
 
     this.rowData.forEach((rowData) => {
       const dateParts = rowData.createdDate.split("/");
@@ -147,7 +147,7 @@ export class AlinanTeklifComponent implements OnInit {
 
     const selectedRows = this.gridApi.getSelectedRows()[0];
     this.selectedTeklifHareket = selectedRows
-    this.router.navigate(['/pages/satin-alma/detail-verilen-teklif'], { state: selectedRows })
+    this.router.navigate(['/pages/satin-alma/detail-alinan-teklif'], { state: selectedRows })
   }
 
   onBtAdd() {

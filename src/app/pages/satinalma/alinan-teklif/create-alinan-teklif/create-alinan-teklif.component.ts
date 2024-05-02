@@ -73,6 +73,7 @@ export class CreateAlinanTeklifComponent {
     aciklama: [null,],
     tarih: [null,],
     saat: [null,],
+    opsiyonTarihi: [null,],
 
 
   })
@@ -86,6 +87,7 @@ export class CreateAlinanTeklifComponent {
   get aciklama() { return this.frm.get('aciklama') }
   get tarih() { return this.frm.get('tarih') }
   get saat() { return this.frm.get('saat') }
+  get opsiyonTarihi() { return this.frm.get('opsiyonTarihi') }
 
 
 
@@ -116,6 +118,7 @@ export class CreateAlinanTeklifComponent {
     createModel.kdv = String(this.frm.value.kdv);
     createModel.otv = String(this.frm.value.otv);
     createModel.aciklama = this.frm.value.aciklama;
+    createModel.opsiyonTarihi = this.frm.value.opsiyonTarihi;
     createModel.hourId = String(new Date().valueOf());
     createModel.teklifHareketler = this.getAllRowData()
 
@@ -142,6 +145,7 @@ export class CreateAlinanTeklifComponent {
     createModel.otv = String(this.frm.value.otv);
 
     createModel.aciklama = this.frm.value.aciklama;
+    createModel.opsiyonTarihi = this.frm.value.opsiyonTarihi;
     createModel.hourId = String(new Date().valueOf());
     createModel.teklifHareketler = this.getAllRowData()
 
@@ -257,7 +261,7 @@ export class CreateAlinanTeklifComponent {
   }
   changed(event) {
     this.selectedTeklifTuru = event;
-    this.defaultAciklama = this.selectedTeklifTuru?.seri + "-" + this.frm.value.belgeNo + " no lu irsaliye"
+    this.defaultAciklama = this.selectedTeklifTuru?.seri + "-" + this.frm.value.belgeNo + " no lu Alınan Teklif"
 
   }
 

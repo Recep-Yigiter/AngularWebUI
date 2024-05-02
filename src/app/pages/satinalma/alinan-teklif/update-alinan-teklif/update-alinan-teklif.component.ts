@@ -36,6 +36,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
   selectedTeklifHareket: any;
   belgeNoGetCode: any;
   dateTime: any = new Date();
+  dateTimeOpsiyon: any = new Date();
   time: any = new Date();
   rxTime: any = new Date();
   selectedDepo: any
@@ -86,6 +87,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
     aciklama: [null,],
     tarih: [null,],
     saat: [null,],
+    opsiyonTarihi: [null,],
   })
   get teklifTuru() { return this.frm.get('teklifTuru') }
   get seri() { return this.frm.get('seri') }
@@ -100,6 +102,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
   get aciklama() { return this.frm.get('aciklama') }
   get tarih() { return this.frm.get('tarih') }
   get saat() { return this.frm.get('saat') }
+  get opsiyonTarihi() { return this.frm.get('opsiyonTarihi') }
 
 
 
@@ -136,9 +139,10 @@ export class UpdateAlinanTeklifComponent implements OnInit {
     return inrFormat.format(params.value);
   }
 
+  
   async stateControl() {
 
-console.log(this.stateData);
+
     this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).data;
     const depoList = (await this.DepoService.GetList(() => { })).data.items;
 
@@ -168,6 +172,7 @@ console.log(this.stateData);
 
     this.stateData = this.teklif;
     this.dateTime = this.DatePipe.transform(this.stateData.createdDate, 'yyyy-MM-dd');
+    this.dateTimeOpsiyon = this.DatePipe.transform(this.stateData.opsiyonTarihi, 'yyyy-MM-dd');
     this.time = this.DatePipe.transform(this.stateData.createdDate, 'hh : mm')
 
 
@@ -194,6 +199,7 @@ console.log(this.stateData);
     createModel.otv = this.frm.value.otv;
     createModel.aciklama = this.frm.value.aciklama;
     createModel.hourId = this.stateData.hourId;
+    createModel.opsiyonTarihi = this.stateData.opsiyonTarihi;
     createModel.teklifHareketler = this.getAllRowData()
 
 
@@ -201,7 +207,7 @@ console.log(this.stateData);
 
     if (this.getAllRowData().length > 0) {
       this.TeklifService.update(createModel, () => {
-        this.router.navigate(['/pages/satin-alma/detail-verilen-teklif'], { state: createModel })
+        this.router.navigate(['/pages/satin-alma/detail-alinan-teklif'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Teklif e Satır Eklemelisiniz !')
@@ -222,6 +228,7 @@ console.log(this.stateData);
     createModel.otv = this.frm.value.otv;
     createModel.aciklama = this.frm.value.aciklama;
     createModel.hourId = this.stateData.hourId;
+    createModel.opsiyonTarihi = this.stateData.opsiyonTarihi;
     createModel.teklifHareketler = this.getAllRowData()
 
 

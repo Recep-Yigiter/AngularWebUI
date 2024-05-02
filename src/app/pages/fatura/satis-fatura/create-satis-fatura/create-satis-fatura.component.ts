@@ -288,7 +288,7 @@ export class CreateSatisFaturaComponent {
   }
   changed(event) {
     this.selectedFaturaTuru = event;
-    this.defaultAciklama = this.selectedFaturaTuru?.seri + "-" + this.frm.value.belgeNo + " no lu irsaliye"
+    this.defaultAciklama = this.selectedFaturaTuru?.seri + "-" + this.frm.value.belgeNo + " no lu Satış Faturası"
 
   }
 
