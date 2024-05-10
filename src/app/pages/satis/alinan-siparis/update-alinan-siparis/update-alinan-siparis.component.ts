@@ -106,7 +106,7 @@ export class UpdateAlinanSiparisComponent implements OnInit {
 
 
   colDefs: ColDef[] = [
-    { field: "SiparisHareketTuruAdi", headerName: "S/H/M", width: 100, onCellValueChanged: (event) => { }, },
+    { field: "siparisHareketTuruAdi", headerName: "S/H/M", width: 100, onCellValueChanged: (event) => { }, },
     { field: "stokKodu", headerName: "Stok Kodu", width: 150 },
     { field: "stokAdi", headerName: "Stok Adı", width: 350, onCellValueChanged: (event) => { }, },
     { field: "miktar", editable: true, width: 90, type: 'rightAligned', onCellValueChanged: (event) => { this.SiparisHareketUpdate(event) }, valueFormatter: params => params.data.miktar.toFixed(2) },
@@ -249,7 +249,7 @@ export class UpdateAlinanSiparisComponent implements OnInit {
     const editdata = {
       id: SiparisHareket.id,
       stokId: SiparisHareket.stokId,
-      siparisId: SiparisHareket.SiparisId,
+      siparisId: SiparisHareket.siparisId,
       depoId: this.selectedDepo?.id ? this.selectedDepo?.id : this.stateData.depoId,
       birimFiyat: event.data.birimFiyat,
       miktar: event.data.miktar,

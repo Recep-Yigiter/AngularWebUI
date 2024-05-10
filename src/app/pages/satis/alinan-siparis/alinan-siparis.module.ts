@@ -15,7 +15,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
+import { VerilenTeklifModalComponent } from './components/verilen-teklif-modal/verilen-teklif-modal.component';
+import { VerilenTeklifHareketModalComponent } from './components/verilen-teklif-hareket-modal/verilen-teklif-hareket-modal.component';
 
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { RouterModule } from '@angular/router';
     TabMainComponent,
     StokSelectModalComponent,
     CariSelectModalComponent,
-    NumberInputDirective
+    NumberInputDirective,
+    VerilenTeklifModalComponent,
+    VerilenTeklifHareketModalComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +42,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatBadgeModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {

@@ -10,6 +10,7 @@ export class CreateTeklifModel {
     cariId?: any;
     depoId?: any;
     opsiyonTarihi?: any;
+    durum?:any;
     teklifHareketler?: CreateTeklifHareketModel[];
 }
 

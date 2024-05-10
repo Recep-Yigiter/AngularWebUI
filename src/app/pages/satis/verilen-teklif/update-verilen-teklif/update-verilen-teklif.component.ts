@@ -190,6 +190,7 @@ export class UpdateVerilenTeklifComponent implements OnInit {
     createModel.belgeNo = this.frm.value.belgeNo ? this.frm.value.belgeNo : this.stateData.belgeNo;
     createModel.teklifTuru = this.selectedObject?.teklifTuru ? this.selectedObject?.teklifTuru : this.stateData.teklifTuru;
     createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
+    createModel.durum = this.stateData.durum;
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
     createModel.kdv = this.frm.value.kdv;
@@ -219,6 +220,7 @@ export class UpdateVerilenTeklifComponent implements OnInit {
     createModel.belgeNo = this.frm.value.belgeNo ? this.frm.value.belgeNo : this.stateData.belgeNo;
     createModel.teklifTuru = this.selectedObject?.teklifTuru ? this.selectedObject?.teklifTuru : this.stateData.teklifTuru;
     createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
+    createModel.durum = this.stateData.durum;
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
     createModel.kdv = this.frm.value.kdv;

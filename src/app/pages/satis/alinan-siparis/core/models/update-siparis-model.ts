@@ -10,6 +10,7 @@ export class UpdateSiparisModel {
     hourId?:any;
     cariId?: any;
     teslimTarihi?: any;
+    teslimatDurumu?: any;
     siparisHareketler?: UpdateSiparisHareketModel[];
 }
 

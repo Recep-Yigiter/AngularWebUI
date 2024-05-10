@@ -38,6 +38,26 @@
 
 
 :host ::ng-deep{
+    .ag-cell-label-container {
+
+        padding: 0px 0px;
+    }
+    .form-title{
+        border-bottom: 1px solid #ddd;
+        font-size: 12px;
+        font-style: italic;
+        color: rgb(99, 99, 99);
+        box-shadow: #ddd 3.2px 3.2px 8px 0px inset, rgb(255, 255, 255) -3.2px -3.2px 8px 0px inset;
+    }
+    .ag-theme-quartz, .ag-theme-quartz-dark {
+
+        --ag-odd-row-background-color: rgb(0, 0, 0, 0.07);
+    }
+    .ag-header-cell-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
     a.title-router{
         font-size: 18px !important;
         font-weight: 500 !important;

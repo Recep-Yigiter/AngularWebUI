@@ -25,6 +25,7 @@ export class DetailAlinanSiparisComponent implements OnInit {
   time: any = new Date();
   rxTime: any = new Date();
   ngOnInit(): void {
+    console.log(this.stateData);
     this.stateControl();
   }
 
@@ -39,7 +40,7 @@ export class DetailAlinanSiparisComponent implements OnInit {
   private gridApi!: GridApi<any>;
   frameworkComponents: any;
   rowData: any[];
-
+ 
   colDefs: ColDef[] = [
     { field: "siparisHareketTuruAdi", headerName: "S/H/M", width: 100, },
     { field: "stokKodu", headerName: "Stok Kodu", width: 150 },
@@ -50,7 +51,7 @@ export class DetailAlinanSiparisComponent implements OnInit {
     { field: "iskonto", headerName: "isk.(%)", type: 'rightAligned', width: 80, valueFormatter: params => params.data.iskonto.toFixed(2) + ' %' },
     { field: "iskontoTutar", type: 'rightAligned', headerName: "isk. Tutarı", width: 120, cellRenderer: this.CurrencyCellRendererTR },
     { field: "aciklama", headerName: "Açıklama", width: 200, },
-    { field: "satirTutar", type: 'rightAligned', width: 120, headerName: "Toplam Tutar", cellRenderer: this.CurrencyCellRendererTR },
+    { field: "satirTutar",type: 'rightAligned', width: 120, headerName: "Toplam Tutar", cellRenderer: this.CurrencyCellRendererTR },
 
 
 
@@ -69,7 +70,6 @@ export class DetailAlinanSiparisComponent implements OnInit {
   selectedObject: any;
   async stateControl() {
 
-
     this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { })).data;
 
 
@@ -80,7 +80,6 @@ export class DetailAlinanSiparisComponent implements OnInit {
       siparisHareket.iskontoSonrasiTutar = (siparisHareket.satirTutar) - siparisHareket.iskontoTutar;
       siparisHareket.kdvTutar = (siparisHareket.iskontoSonrasiTutar) * Number(this.siparis.kdv) / 100;
       siparisHareket.genelToplam = siparisHareket.iskontoSonrasiTutar + siparisHareket.kdvTutar
-
     })
     this.siparis.satirTutar = this.siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.satirTutar, 0)
     this.siparis.iskontoTutar = this.siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.iskontoTutar, 0)
@@ -95,6 +94,8 @@ export class DetailAlinanSiparisComponent implements OnInit {
     this.dateTime = this.DatePipe.transform(this.siparis.createdDate, 'yyyy-MM-dd');
     this.dateTimeTeslimTarihi = this.DatePipe.transform(this.siparis.teslimTarihi, 'yyyy-MM-dd');
     this.time = this.DatePipe.transform(this.siparis.createdDate, 'hh : mm ')
+
+
   }
   async duzenle() {
 

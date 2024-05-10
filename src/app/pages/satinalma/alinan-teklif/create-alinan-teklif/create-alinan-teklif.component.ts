@@ -113,6 +113,7 @@ export class CreateAlinanTeklifComponent {
     createModel.belgeNo = this.frm.value.belgeNo;
     createModel.teklifTuru = 1;
     createModel.seri = "AT";
+    createModel.durum = "Açık";
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.kdv = String(this.frm.value.kdv);
@@ -139,6 +140,7 @@ export class CreateAlinanTeklifComponent {
     createModel.belgeNo = this.frm.value.belgeNo;
     createModel.teklifTuru = 1;
     createModel.seri = "AT";
+    createModel.durum = "Açık";
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.kdv = String(this.frm.value.kdv);
@@ -214,7 +216,9 @@ export class CreateAlinanTeklifComponent {
 
 
 
-
+  matBadgeHidden: boolean = false;
+  teklifList: any;
+  disableButtons: boolean = true;
 
 
 
@@ -244,7 +248,17 @@ export class CreateAlinanTeklifComponent {
     const modalRef = this.modalService.open(CariSelectModalComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
     modalRef.result.then((depo) => {
-      this.selectedCari = depo;
+      if (depo!=false) {
+        this.selectedCari = depo;
+        this.disableButtons=false
+      }
+      else{
+       
+        if (!this.selectedCari) {
+          this.disableButtons=true;
+        }
+
+      }
 
     });
 
@@ -268,7 +282,7 @@ export class CreateAlinanTeklifComponent {
 
   async belgeNoGetKod() {
     this.belgeNoGetCode = (await this.TeklifService.GetCode()).data.kod;
-    this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu irsaliye"
+    this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Alınan Teklif"
   }
   getDateAndTime() {
     this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');

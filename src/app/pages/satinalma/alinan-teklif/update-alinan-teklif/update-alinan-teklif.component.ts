@@ -195,6 +195,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
     createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
+    createModel.durum =  this.stateData.durum;
     createModel.kdv = this.frm.value.kdv;
     createModel.otv = this.frm.value.otv;
     createModel.aciklama = this.frm.value.aciklama;
@@ -224,6 +225,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
     createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
+    createModel.durum =  this.stateData.durum;
     createModel.kdv = this.frm.value.kdv;
     createModel.otv = this.frm.value.otv;
     createModel.aciklama = this.frm.value.aciklama;
@@ -299,6 +301,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
             iskonto: stok.iskonto,
             teklifHareketTuru: 1,
             hourId: String(new Date().valueOf())
+
           }
           stok.hourId = updateData.hourId;
           this.TeklifHareketService.create(updateData, () => { });

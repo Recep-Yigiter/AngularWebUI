@@ -10,7 +10,7 @@ export class UpdateTeklifModel {
     hourId?:any;
     opsiyonTarihi?:any;
     cariId?: any;
-  
+    durum?:any;
     teklifHareketler?: UpdateTeklifHareketModel[];
 }
 

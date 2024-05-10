@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { ColDef, GridApi, GridReadyEvent,  CellClassParams,  ICellRendererParams,
+  CellClassRules, } from 'ag-grid-community';
 import { Router, Routes } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -20,23 +21,28 @@ export class VerilenTeklifComponent implements OnInit {
   private gridApi!: GridApi<any>;
   // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
   colDefs: ColDef[] = [
-    { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'yyyy / MM / dd'), pinned: "left" },
-    { field: "seri", headerName: "Belge Seri", width: 100, pinned: "left" },
+    { field: "onayDurumu", headerName: "Onay Durumu", width: 120, pinned: "left",cellClass: cellClass,},
+    { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, ' dd.MM.yyyy'), pinned: "left" },
+    { field: "seri", headerName: "Seri", width: 70, pinned: "left" ,},
     { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
-    { field: "teklifTuruAdi", headerName: "Hareket Türü", width: 120, pinned: "left" },
-    { field: "kdvTutar", headerName: "Kdv Tutarı",cellRenderer: this.CurrencyCellRendererTR },
-    { field: "satirOtv", headerName: "ÖTV Tutarı" ,cellRenderer: this.CurrencyCellRendererTR},
+    { field: "teklifTuruAdi", headerName: "Türü", width: 80, pinned: "left" },
+    { field: "durum", headerName: "Durum", width: 80 },
+    { field: "kdvTutar", headerName: "Kdv Tutarı",width: 100,cellRenderer: this.CurrencyCellRendererTR },
+    { field: "satirOtv", headerName: "ÖTV Tutarı" ,width: 100,cellRenderer: this.CurrencyCellRendererTR},
     { field: "cariKodu", headerName: "Cari Kodu", width: 150 },
     { field: "cariAdi", headerName: "Cari Adı", width: 350 },
     { field: "referans", headerName: "Referans No", width: 150 },
-    { field: "durum", headerName: "Onay Durumu", width: 150 },
     { field: "teklifAlanPersonel", headerName: "Teklif Alan Personel" },
-    { field: "opsiyonTarihi", headerName: "Opsiyon Tarihi", width: 150 },
+    { field: "opsiyonTarihi", headerName: "Opsiyon Tarihi", width: 150,valueFormatter: params => this.DatePipe.transform(params.value, ' dd.MM.yyyy') },
     { field: "aciklama", headerName: "Açıklama" },
     { field: "satirSayisi", headerName: "Satır S.",width: 80 },
     { field: "referansNo", headerName: "Ref. No" },
     { field: "genelToplam", headerName: "Toplam Tutar", pinned: "right",cellRenderer: this.CurrencyCellRendererTR  },
   ];
+
+  
+
+
 
   /**
    *
@@ -96,7 +102,8 @@ export class VerilenTeklifComponent implements OnInit {
       teklif.kdvTutar = teklif.teklifHareketler.reduce((prev: any, next: any) => prev + next.kdvTutar, 0);
       teklif.satirOtv = (teklif.iskontoSonrasiTutar * teklif.otv) / 100;
       teklif.genelToplam = teklif.iskontoSonrasiTutar + teklif.kdvTutar;
-      teklif.satirSayisi=teklif.teklifHareketler.length
+      teklif.satirSayisi=teklif.teklifHareketler.length;
+      teklif.onayDurumu=teklif.durum=="Kapalı"?'Onaylandı':'Beklemede';
     })
 
   }
@@ -148,7 +155,7 @@ export class VerilenTeklifComponent implements OnInit {
 
     const selectedRows = this.gridApi.getSelectedRows()[0];
     this.selectedTeklifHareket = selectedRows
-    this.router.navigate(['/pages/satin-alma/detail-alinan-teklif'], { state: selectedRows })
+    this.router.navigate(['/pages/satis/detail-verilen-teklif'], { state: selectedRows })
   }
 
   onBtAdd() {
@@ -169,3 +176,13 @@ function stringFormatter(params) {
   var firstChar = fruit.slice(0, 1).toUpperCase();
   return firstChar + fruit.slice(1);
 }
+
+function cellClass(params: CellClassParams) {
+  console.log(params.value);
+  return params.value === "Onaylandı" ? "rag-green" : "rag-gray";
+}
+
+
+
+
+

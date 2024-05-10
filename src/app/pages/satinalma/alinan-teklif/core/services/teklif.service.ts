@@ -71,8 +71,11 @@ export class TeklifService {
 
         return await promiseData;
     }
+
+
+    
     async getById(id: string, successCallBack?: () => void, errorCallback?: (errorMessage: string) => void) {
-        const observable = this.apiService.get({
+        const observable: Observable<any> = this.apiService.get({
             controller: "Teklifs",
             action: "GetById/" + `${id}`
         })

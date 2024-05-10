@@ -139,182 +139,204 @@
 
                                                         <div class="col-12 lg:col-4 xl:col-4 pl-4">
 
-                                                            <table class="yks_table_group">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="yks_td_label"></td>
-                                                                        <td style="width: 100%; "></td>
-                                                                    </tr>
+                                                            <div class="mt-1" style="border: 1px solid #ddd">
+                                                                <div class="form-title pl-2" style="font-weight: 500;">
+                                                                    Belge
+                                                                </div>
+                                                                <table class="yks_table_group">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="yks_td_label"></td>
+                                                                            <td style="width: 100%; "></td>
+                                                                        </tr>
 
 
 
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end; ">
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end; ">
 
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">Tarih
-                                                                                :
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px;">Tarih
+                                                                                    :
 
-                                                                            </label>
-                                                                        </td>
+                                                                                </label>
+                                                                            </td>
 
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
 
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
 
-                                                                                <input [(ngModel)]="dateTime"
-                                                                                    formControlName="tarih" style=" padding: 0px 0 0px 0.75rem;
+                                                                                    <input [(ngModel)]="dateTime"
+                                                                                        formControlName="tarih" style=" padding: 0px 0 0px 0.75rem;
+                                                                                font-size: 13px;
+                                                                                border-radius: 1px;
+                                                                                background-color: rgb(210, 210, 255) !important;
+                                                                                border: 1px solid rgb(145, 145, 243);"
+                                                                                        type="date"
+                                                                                        class="form-control shadow-none "
+                                                                                        id="exampleFormControlInput1">
+
+                                                                                    <input [(ngModel)]="time"
+                                                                                        formControlName="saat" readonly
+                                                                                        style=" padding: 0px 0 0px 0.75rem;
+                                                                                        font-size: 13px; width: 100px;
+                                                                                        margin-left: 10px;
+                                                                                        border-radius: 1px;
+                                                                                        background-color: rgb(210, 210, 255) !important;
+                                                                                        border: 1px solid rgb(145, 145, 243);"
+                                                                                        type="time"
+                                                                                        class="form-control shadow-none"
+                                                                                        id="exampleFormControlInput1">
+                                                                                </label>
+
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px;">Belge
+                                                                                    No :
+
+                                                                                </label>
+                                                                            </td>
+
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+
+                                                                                <input formControlName="belgeNo"
+                                                                                    [(ngModel)]="belgeNoGetCode" style=" padding: 0px 0 0px 0.75rem;
                                                                             font-size: 13px;
                                                                             border-radius: 1px;
                                                                             background-color: rgb(210, 210, 255) !important;
                                                                             border: 1px solid rgb(145, 145, 243);"
-                                                                                    type="date"
-                                                                                    class="form-control shadow-none "
-                                                                                    id="exampleFormControlInput1">
-
-                                                                                <input [(ngModel)]="time"
-                                                                                    formControlName="saat" readonly
-                                                                                    style=" padding: 0px 0 0px 0.75rem;
-                                                                                    font-size: 13px; width: 100px;
-                                                                                    margin-left: 10px;
-                                                                                    border-radius: 1px;
-                                                                                    background-color: rgb(210, 210, 255) !important;
-                                                                                    border: 1px solid rgb(145, 145, 243);"
-                                                                                    type="time"
+                                                                                    type="text"
                                                                                     class="form-control shadow-none"
                                                                                     id="exampleFormControlInput1">
-                                                                            </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
 
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
+                                                                                <label
+                                                                                    style=" min-width: 90px; font-weight: 600; font-size: 13px;">Teklif
+                                                                                    Türü
+                                                                                    :
 
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">Belge
-                                                                                No :
+                                                                                </label>
+                                                                            </td>
 
-                                                                            </label>
-                                                                        </td>
 
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
 
-                                                                            <input formControlName="belgeNo"
-                                                                                [(ngModel)]="belgeNoGetCode" style=" padding: 0px 0 0px 0.75rem;
+                                                                                <input formControlName="teklifTuru"
+                                                                                    readonly [(ngModel)]="teklifTuruAdi"
+                                                                                    style=" padding: 0px 0 0px 0.75rem; 
+                                                                                font-size: 13px;
+                                                                                border-radius: 1px; opacity: 0.7;"
+                                                                                    type="text"
+                                                                                    class="form-control shadow-none form-control-nullable"
+                                                                                    id="exampleFormControlInput1">
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+
+                                                                                <label
+                                                                                    style=" min-width: 60px; font-weight: 600; font-size: 13px;">Seri
+                                                                                    No :
+
+                                                                                </label>
+                                                                            </td>
+
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+
+                                                                                <input readonly [ngModel]="seriNo"
+                                                                                    formControlName="seri" style=" padding: 0px 0 0px 0.75rem; 
+                                                                            font-size: 13px;
+                                                                            border-radius: 1px; opacity: 0.7;"
+                                                                                    type="text"
+                                                                                    class="form-control shadow-none form-control-nullable"
+                                                                                    id="exampleFormControlInput1">
+                                                                            </td>
+                                                                        </tr>
+
+
+
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                        <div class="col-12 lg:col-4 xl:col-4 " style="    padding-left: 0px;
+                                                        padding-right: 0px;">
+                                                            <div class="mt-1" style="border: 1px solid #ddd">
+                                                                <div class="form-title pl-2" style="font-weight: 500;">
+                                                                    Müşteri / Satıcı
+                                                                </div>
+                                                                <table class="yks_table_group">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="yks_td_label"></td>
+                                                                            <td style="width: 100%; "></td>
+                                                                        </tr>
+
+
+
+
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px;">Cari
+                                                                                    :
+
+                                                                                </label>
+                                                                            </td>
+
+                                                                            <td style="width: 100%; position: relative;"
+                                                                                class="table_row_group">
+
+                                                                                <!-- <input readonly formControlName="cariId"
+                                                                                    [ngModel]="selectedCari?.ad"
+                                                                                    style=" padding: 0px 0 0px 0.75rem; 
                                                                         font-size: 13px;
                                                                         border-radius: 1px;
                                                                         background-color: rgb(210, 210, 255) !important;
-                                                                        border: 1px solid rgb(145, 145, 243);"
-                                                                                type="text"
-                                                                                class="form-control shadow-none"
-                                                                                id="exampleFormControlInput1">
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
+                                                                        border: 1px solid rgb(145, 145, 243); padding-right: 30px;" type="text"
+                                                                                    class="form-control shadow-none"
+                                                                                    id="exampleFormControlInput1">
 
-                                                                            <label
-                                                                                style=" min-width: 90px; font-weight: 600; font-size: 13px;">Teklif
-                                                                                Türü
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <!-- <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <select (ngModelChange)="changed($event)"
-                                                                                formControlName="TeklifTuru"
-                                                                                class="form-select shadow-none "
-                                                                                aria-label="Default select example">
-
-                                                                                <option
-                                                                                    *ngFor="let item of TeklifTurler"
-                                                                                    [ngValue]="item">
-                                                                                    {{item.ad}} </option>
-                                                                            </select>
+                                                                                <div
+                                                                                    style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px;">
+                                                                                    <button (click)="cariSelectModal()"
+                                                                                        class="selected-ellipsis btn"
+                                                                                        style="height: 20px;
+                                                                                    width: 20px;
+                                                                                    display: flex;
+                                                                                    align-items: center;
+                                                                                    justify-content: center;">
+                                                                                        <i
+                                                                                            class="fa-solid fa-ellipsis"></i>
+                                                                                    </button>
+                                                                                </div> -->
 
 
-                                                                        </td> -->
-
-                                                                        <td style="width: 100%;"
-                                                                        class="table_row_group">
-
-                                                                        <input formControlName="teklifTuru" readonly
-                                                                            [(ngModel)]="teklifTuruAdi" style=" padding: 0px 0 0px 0.75rem; 
-                                                                            font-size: 13px;
-                                                                            border-radius: 1px; opacity: 0.7;"
-                                                                            type="text"
-                                                                            class="form-control shadow-none form-control-nullable"
-                                                                            id="exampleFormControlInput1">
-                                                                    </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 60px; font-weight: 600; font-size: 13px;">Seri
-                                                                                No :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <input readonly
-                                                                                [ngModel]="seriNo"
-                                                                                formControlName="seri" style=" padding: 0px 0 0px 0.75rem; 
-                                                                        font-size: 13px;
-                                                                        border-radius: 1px; opacity: 0.7;" type="text"
-                                                                                class="form-control shadow-none form-control-nullable"
-                                                                                id="exampleFormControlInput1">
-                                                                        </td>
-                                                                    </tr>
-
-
-
-
-
-                                                                </tbody>
-                                                            </table>
-
-                                                        </div>
-                                                        <div class="col-12 lg:col-4 xl:col-4 pl-4">
-
-                                                            <table class="yks_table_group">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="yks_td_label"></td>
-                                                                        <td style="width: 100%; "></td>
-                                                                    </tr>
-
-
-
-
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">Cari
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%; position: relative;"
-                                                                            class="table_row_group">
-
-                                                                            <input readonly formControlName="cariId"
+                                                                                <input readonly formControlName="cariId"
                                                                                 [ngModel]="selectedCari?.ad"
                                                                                 style=" padding: 0px 0 0px 0.75rem; 
                                                                     font-size: 13px;
@@ -325,202 +347,208 @@
                                                                                 id="exampleFormControlInput1">
 
                                                                             <div
-                                                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px;">
+                                                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px; ">
                                                                                 <button (click)="cariSelectModal()"
-                                                                                    class="selected-ellipsis btn" style="height: 20px;
-                                                                                width: 20px;
-                                                                                display: flex;
-                                                                                align-items: center;
-                                                                                justify-content: center;">
+                                                                                    class="selected-ellipsis btn selected-button">
                                                                                     <i class="fa-solid fa-ellipsis"></i>
                                                                                 </button>
                                                                             </div>
-                                                                        </td>
-                                                                    </tr>
 
-                                                                 
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 90px; font-weight: 600; font-size: 13px;">Referans
-                                                                                :
-                                                                            </label>
-                                                                        </td>
-                                                                        <td>
-
-                                                                            <input type="text"
-                                                                                formControlName="referans"
-                                                                                class="form-control shadow-none form-control-nullable"
-                                                                                id="exampleFormControlInput1">
-                                                                        </td>
-
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 85px; font-weight: 600; font-size: 13px;">Düzenleyen
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                                daha sonra yapılacak
-                                                                            </label>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <label
-                                                                                style=" min-width: 100%; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                                <textarea formControlName="aciklama"
-                                                                                    [(ngModel)]="defaultAciklama"
-                                                                                    class="form-control shadow-none border-1"
-                                                                                    style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
-                                                                            </label>
-                                                                        </td>
-                                                                    </tr>
+                                                                            </td>
+                                                                        </tr>
 
 
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
 
-                                                                </tbody>
-                                                            </table>
+                                                                                <label
+                                                                                    style=" min-width: 90px; font-weight: 600; font-size: 13px;">Referans
+                                                                                    :
+                                                                                </label>
+                                                                            </td>
+                                                                            <td>
+
+                                                                                <input type="text"
+                                                                                    formControlName="referans"
+                                                                                    class="form-control shadow-none form-control-nullable"
+                                                                                    id="exampleFormControlInput1">
+                                                                            </td>
+
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+
+                                                                                <label
+                                                                                    style=" min-width: 85px; font-weight: 600; font-size: 13px;">Düzenleyen
+                                                                                    :
+
+                                                                                </label>
+                                                                            </td>
+
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                    daha sonra yapılacak
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+
+                                                                                <label
+                                                                                    style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
+                                                                                    :
+
+                                                                                </label>
+                                                                            </td>
+
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+
+                                                                                <label
+                                                                                    style=" min-width: 100%; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                    <textarea formControlName="aciklama"
+                                                                                        [(ngModel)]="defaultAciklama"
+                                                                                        class="form-control shadow-none border-1"
+                                                                                        style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
+                                                                                </label>
+                                                                            </td>
+                                                                        </tr>
+
+
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
 
 
                                                         </div>
-                                                        <div class="col-12 lg:col-4 xl:col-4 pl-4 pr-4">
+                                                        <div class="col-12 lg:col-4 xl:col-4 pr-4">
+                                                            <div class="mt-1" style="border: 1px solid #ddd">
+                                                                <div class="form-title pl-2" style="font-weight: 500;">
+                                                                    Opsiyon Tarihi / Kdv-Ötv
+                                                                </div>
+                                                                <table class="yks_table_group ">
 
-                                                            <table class="yks_table_group ">
-
-                                                                <tbody>
-
-                                                                    
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 150px; font-weight: 600; font-size: 13px;">Opsiyon Tarihi
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-                                                                            <div
-                                                                                style="display: grid; grid-template-columns: 150px auto;">
-                                                                                <input [(ngModel)]="dateTime"
-                                                                                    formControlName="opsiyonTarihi" style=" padding: 0px 0 0px 0.75rem;
-                                                                            font-size: 13px;
-                                                                            border-radius: 1px;
-                                                                            background-color: rgb(210, 210, 255) !important;
-                                                                            border: 1px solid rgb(145, 145, 243);"
-                                                                                    type="date"
-                                                                                    class="form-control shadow-none "
-                                                                                    id="exampleFormControlInput1">
-
-                                                                                
-                                                                            </div>
-
-                                                                        </td>
-
-
-
-
-
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">KDV
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-                                                                            <div
-                                                                                style="display: grid; grid-template-columns: 100px auto;">
-                                                                                <input formControlName="kdv" numberInput
-                                                                                    (change)="kdvChanced()"
-                                                                                    [maxDigits]="2"
-                                                                                    [(ngModel)]="defaultKDV"
-                                                                                    style="max-width: 100px;"
-                                                                                    type="text"
-                                                                                    class="form-control shadow-none form-control-nullable"
-                                                                                    id="exampleFormControlInput1">
-                                                                                
-                                                                            </div>
-
-                                                                        </td>
-
-
-
-
-
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000; text-align: end;">
-
-                                                                            <label
-                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">ÖTV
-                                                                                :
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <div
-                                                                                style="display: grid; grid-template-columns: 100px auto;">
-                                                                                <input formControlName="otv" numberInput
-                                                                                    (change)="otvChanced()"
-                                                                                    [maxDigits]="2"
-                                                                                    [(ngModel)]="defaultOTV"
-                                                                                    style="max-width: 100px;"
-                                                                                    type="text"
-                                                                                    class="form-control shadow-none form-control-nullable"
-                                                                                    id="exampleFormControlInput1">
-                                                                           
-                                                                            </div>
-
-                                                                        </td>
-
-
-
-
-                                                                    </tr>
-
-
-
-                                                                </tbody>
-                                                            </table>
+                                                                    <tbody>
+    
+    
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+    
+                                                                                <label
+                                                                                    style=" min-width: 150px; font-weight: 600; font-size: 13px;">Opsiyon
+                                                                                    Tarihi
+                                                                                    :
+    
+                                                                                </label>
+                                                                            </td>
+    
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+                                                                                <div
+                                                                                    style="display: grid; grid-template-columns: 150px auto;">
+                                                                                    <input [(ngModel)]="dateTime"
+                                                                                        formControlName="opsiyonTarihi"
+                                                                                        style=" padding: 0px 0 0px 0.75rem;
+                                                                                font-size: 13px;
+                                                                                border-radius: 1px;
+                                                                                background-color: rgb(210, 210, 255) !important;
+                                                                                border: 1px solid rgb(145, 145, 243);"
+                                                                                        type="date"
+                                                                                        class="form-control shadow-none "
+                                                                                        id="exampleFormControlInput1">
+    
+    
+                                                                                </div>
+    
+                                                                            </td>
+    
+    
+    
+    
+    
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+    
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px;">KDV
+                                                                                    :
+    
+                                                                                </label>
+                                                                            </td>
+    
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+                                                                                <div
+                                                                                    style="display: grid; grid-template-columns: 100px auto;">
+                                                                                    <input formControlName="kdv" numberInput
+                                                                                        (change)="kdvChanced()"
+                                                                                        [maxDigits]="2"
+                                                                                        [(ngModel)]="defaultKDV"
+                                                                                        style="max-width: 100px;"
+                                                                                        type="text"
+                                                                                        class="form-control shadow-none form-control-nullable"
+                                                                                        id="exampleFormControlInput1">
+    
+                                                                                </div>
+    
+                                                                            </td>
+    
+    
+    
+    
+    
+                                                                        </tr>
+                                                                        <tr class="table_row_group">
+                                                                            <td class="yks_td_label"
+                                                                                style="border-left: #000000; text-align: end;">
+    
+                                                                                <label
+                                                                                    style=" min-width: 50px; font-weight: 600; font-size: 13px;">ÖTV
+                                                                                    :
+    
+                                                                                </label>
+                                                                            </td>
+    
+                                                                            <td style="width: 100%;"
+                                                                                class="table_row_group">
+    
+                                                                                <div
+                                                                                    style="display: grid; grid-template-columns: 100px auto;">
+                                                                                    <input formControlName="otv" numberInput
+                                                                                        (change)="otvChanced()"
+                                                                                        [maxDigits]="2"
+                                                                                        [(ngModel)]="defaultOTV"
+                                                                                        style="max-width: 100px;"
+                                                                                        type="text"
+                                                                                        class="form-control shadow-none form-control-nullable"
+                                                                                        id="exampleFormControlInput1">
+    
+                                                                                </div>
+    
+                                                                            </td>
+    
+    
+    
+    
+                                                                        </tr>
+    
+    
+    
+                                                                    </tbody>
+                                                                </table>
+ </div>
+                                                           
                                                         </div>
 
 
@@ -532,7 +560,7 @@
                                                     <div>
                                                         <div
                                                             style="padding: 0.5rem 0 0 1rem;border: 1px solid rgba(0, 0, 0, 0.15); display: grid; grid-template-columns: 70px 90px 50px;  gap: 2px;">
-                                                            <button mat-icon-button (click)="stokSelectModal()"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" mat-icon-button (click)="stokSelectModal()"
                                                                 style="width: 70px; " color="primary"
                                                                 aria-label="Example icon button with a home icon">
 
@@ -541,14 +569,14 @@
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Ekle</label>
                                                             </button>
-                                                            <button mat-icon-button style="width: 90px;" color="primary"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" mat-icon-button style="width: 90px;" color="primary"
                                                                 aria-label="Example icon button with a home icon">
                                                                 <mat-icon
                                                                     style="font-size: 18px; font-weight: 600; color: rgb(145, 145, 145);">edit</mat-icon>
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Düzenle</label>
                                                             </button>
-                                                            <button (click)="TeklifHareketDelete($event)"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" (click)="TeklifHareketDelete($event)"
                                                                 mat-icon-button style="width: 50px;" color="primary"
                                                                 aria-label="Example icon button with a home icon">
                                                                 <mat-icon
@@ -562,8 +590,8 @@
                                                             style="width: 100%;min-height: 190px; height:100px; margin-top: 4px;"
                                                             class="ag-theme-quartz" [rowData]="rowData"
                                                             [columnDefs]="colDefs" (gridReady)="getList($event)"
-                                                            [rowSelection]="rowSelection" [rowHeight]="30"
-                                                            [headerHeight]="29" [components]="frameworkComponents"
+                                                            [rowSelection]="rowSelection" [rowHeight]="22"
+                                                            [headerHeight]="23" [components]="frameworkComponents"
                                                             (rowSelected)="rowSelected($event)"
                                                             (cellValueChanged)="onCellValueChanged()">
                                                         </ag-grid-angular>
@@ -651,7 +679,8 @@
                                                                                     style=" min-width: 60px; font-weight: 600; font-size: 13px; color: #666666;">
                                                                                     <span
                                                                                         *ngIf="iskontoSonrasiTutar==undefined">
-                                                                                        {{iskontoSonrasiTutar ? iskontoSonrasiTutar:"0.00 ₺"}}
+                                                                                        {{iskontoSonrasiTutar ?
+                                                                                        iskontoSonrasiTutar:"0.00 ₺"}}
                                                                                     </span>
                                                                                     <span
                                                                                         *ngIf="iskontoSonrasiTutar!=undefined">

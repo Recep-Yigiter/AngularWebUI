@@ -113,6 +113,7 @@ export class CreateVerilenTeklifComponent {
     createModel.belgeNo = this.frm.value.belgeNo;
     createModel.teklifTuru = 2;
     createModel.seri = "VT";
+    createModel.durum = "Açık";
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.kdv = String(this.frm.value.kdv);
@@ -139,6 +140,7 @@ export class CreateVerilenTeklifComponent {
     createModel.belgeNo = this.frm.value.belgeNo;
     createModel.teklifTuru = 2;
     createModel.seri = "VT";
+    createModel.durum = "Açık";
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.kdv = String(this.frm.value.kdv);

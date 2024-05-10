@@ -18,10 +18,10 @@
                                                 <div class=" yks-toolbar-item ">
                                                     <div class="yks-button-has-text">
                                                         <a class="title-router"
-                                                            [routerLink]="['/pages/Siparis/Siparis']">Siparis</a>
+                                                            [routerLink]="['/pages/siparis/siparis']">Siparis</a>
                                                         <span style="margin: 0 5px;">/</span>
                                                         <a class="title-router"
-                                                            [routerLink]="['/pages/Siparis/create-Siparis']">Yeni</a>
+                                                            [routerLink]="['/pages/siparis/create-siparis']">Yeni</a>
 
 
                                                     </div>
@@ -102,8 +102,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
 
+
+
+                                        <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
 
                                         </div>
                                     </div>
@@ -228,22 +230,7 @@
                                                                             </label>
                                                                         </td>
 
-                                                                        <!-- <td style="width: 100%;"
-                                                                            class="table_row_group">
 
-                                                                            <select (ngModelChange)="changed($event)"
-                                                                                formControlName="SiparisTuru"
-                                                                                class="form-select shadow-none "
-                                                                                aria-label="Default select example">
-
-                                                                                <option
-                                                                                    *ngFor="let item of SiparisTurler"
-                                                                                    [ngValue]="item">
-                                                                                    {{item.ad}} </option>
-                                                                            </select>
-
-
-                                                                        </td> -->
 
                                                                         <td style="width: 100%;"
                                                                             class="table_row_group">
@@ -326,13 +313,9 @@
                                                                                 id="exampleFormControlInput1">
 
                                                                             <div
-                                                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px;">
+                                                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px; ">
                                                                                 <button (click)="cariSelectModal()"
-                                                                                    class="selected-ellipsis btn" style="height: 20px;
-                                                                                width: 20px;
-                                                                                display: flex;
-                                                                                align-items: center;
-                                                                                justify-content: center;">
+                                                                                    class="selected-ellipsis btn selected-button">
                                                                                     <i class="fa-solid fa-ellipsis"></i>
                                                                                 </button>
                                                                             </div>
@@ -397,7 +380,7 @@
                                                                                 <textarea formControlName="aciklama"
                                                                                     [(ngModel)]="defaultAciklama"
                                                                                     class="form-control shadow-none border-1"
-                                                                                    style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
+                                                                                    style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9; font-size: 13px; color: rgb(49, 49, 49);"></textarea>
                                                                             </label>
                                                                         </td>
                                                                     </tr>
@@ -534,8 +517,8 @@
 
                                                     <div>
                                                         <div
-                                                            style="padding: 0.5rem 0 0 1rem;border: 1px solid rgba(0, 0, 0, 0.15); display: grid; grid-template-columns: 70px 90px 50px;  gap: 2px;">
-                                                            <button mat-icon-button (click)="stokSelectModal()"
+                                                            style="padding: 0.5rem 0 0 1rem;border: 1px solid rgba(0, 0, 0, 0.15); display: grid; grid-template-columns: 70px 90px 50px 115px;  gap: 2px;">
+                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" mat-icon-button (click)="stokSelectModal()"
                                                                 style="width: 70px; " color="primary"
                                                                 aria-label="Example icon button with a home icon">
 
@@ -544,14 +527,14 @@
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Ekle</label>
                                                             </button>
-                                                            <button mat-icon-button style="width: 90px;" color="primary"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" mat-icon-button style="width: 90px;" color="primary"
                                                                 aria-label="Example icon button with a home icon">
                                                                 <mat-icon
                                                                     style="font-size: 18px; font-weight: 600; color: rgb(145, 145, 145);">edit</mat-icon>
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Düzenle</label>
                                                             </button>
-                                                            <button (click)="SiparisHareketDelete($event)"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" (click)="SiparisHareketDelete($event)"
                                                                 mat-icon-button style="width: 50px;" color="primary"
                                                                 aria-label="Example icon button with a home icon">
                                                                 <mat-icon
@@ -559,14 +542,36 @@
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Sil</label>
                                                             </button>
+                                                            <button [ngClass]="!aktarma?'disabled-button':''"
+                                                                [disabled]="!aktarma" matBadge="{{aktarmaCount}}"
+                                                                [matBadgeHidden]="!matBadgeHidden" matBadgeColor="warn"
+                                                                mat-icon-button data-bs-toggle="dropdown"
+                                                                aria-expanded="false" style="width: 115px;  "
+                                                                color="primary"
+                                                                aria-label="Example icon button with a home icon">
+                                                                <i class="small mr-1 fa fa-filter"></i>
+                                                                <label
+                                                                    style="font-weight: 600; font-size: 14px; color: #666666;">Aktarmalar</label>
+                                                            </button>
+
+
+
+                                                            <ul class="dropdown-menu">
+                                                                <li><a class="dropdown-item yks-dropdown-item"
+                                                                        (click)="verilenTeklifModal()"
+                                                                        style="color: black; ">Verilen
+                                                                        Tekliflerden
+                                                                        Aktar</a></li>
+
+                                                            </ul>
 
                                                         </div>
                                                         <ag-grid-angular
                                                             style="width: 100%;min-height: 190px; height:100px; margin-top: 4px;"
                                                             class="ag-theme-quartz" [rowData]="rowData"
                                                             [columnDefs]="colDefs" (gridReady)="getList($event)"
-                                                            [rowSelection]="rowSelection" [rowHeight]="30"
-                                                            [headerHeight]="29" [components]="frameworkComponents"
+                                                            [rowSelection]="rowSelection" [rowHeight]="22"
+                                                            [headerHeight]="23" [components]="frameworkComponents"
                                                             (rowSelected)="rowSelected($event)"
                                                             (cellValueChanged)="onCellValueChanged()">
                                                         </ag-grid-angular>
@@ -574,132 +579,7 @@
 
                                                         <div class="grid" style="width: 100%;">
 
-                                                            <div class="col-12 lg:col-6 xl:col-9 pl-4 pr-4"
-                                                                style="display: flex;justify-content: start;">
-                                                                <table class="yks_table_group " style="height: 100px;">
-
-                                                                    <tbody>
-
-
-                                                                        <tr class="table_row_group">
-                                                                            <td class="yks_td_label"
-                                                                                style="border-left: #000000; text-align: end; text-align: end;">
-
-                                                                                <label
-                                                                                    style=" min-width: 70px; font-weight: 600; font-size: 13px;">Satır
-                                                                                    :
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 100%;">
-
-                                                                                <div
-                                                                                    style="display: grid; grid-template-columns: 100px auto;">
-                                                                                    <input readonly
-                                                                                        style="max-width: 100px;"
-                                                                                        type="text"
-                                                                                        class="form-control shadow-none form-control-nullable"
-                                                                                        id="exampleFormControlInput1">
-
-                                                                                </div>
-                                                                            </td>
-
-                                                                        </tr>
-                                                                        <tr class="table_row_group">
-                                                                            <td class="yks_td_label"
-                                                                                style="border-left: #000000; text-align: end; text-align: end;">
-
-                                                                                <label
-                                                                                    style=" min-width: 70px; font-weight: 600; font-size: 13px;">Miktar
-                                                                                    :
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 100%;">
-
-                                                                                <div
-                                                                                    style="display: grid; grid-template-columns: 100px auto;">
-                                                                                    <input readonly
-                                                                                        style="max-width: 100px;"
-                                                                                        type="text"
-                                                                                        class="form-control shadow-none form-control-nullable"
-                                                                                        id="exampleFormControlInput1">
-
-                                                                                </div>
-                                                                            </td>
-
-                                                                        </tr>
-                                                                        <tr class="table_row_group">
-                                                                            <td class="yks_td_label"
-                                                                                style="border-left: #000000; text-align: end; text-align: end;">
-
-                                                                                <label
-                                                                                    style=" min-width: 70px; font-weight: 600; font-size: 13px;">Vade
-                                                                                    :
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 100%;">
-
-                                                                                <div
-                                                                                    style="display: grid; grid-template-columns: 100px auto;">
-                                                                                    <input readonly
-                                                                                        formControlName="tarih"
-                                                                                        [(ngModel)]="dateTime"
-                                                                                        style="max-width: 150px; padding-right: .25rem !important;"
-                                                                                        type="date"
-                                                                                        class="form-control shadow-none form-control-nullable"
-                                                                                        id="exampleFormControlInput1">
-
-                                                                                </div>
-                                                                            </td>
-
-                                                                        </tr>
-
-                                                                        <tr class="table_row_group">
-                                                                            <td class="">
-
-                                                                                <label
-                                                                                    style=" min-width: 70px; font-weight: 600; font-size: 13px;">
-                                                                                </label>
-                                                                            </td>
-                                                                            <td style="width: 100%;">
-
-                                                                                <div
-                                                                                    style="display: grid; grid-template-columns: 100px auto;">
-                                                                                    <div class="btn-group" role="group"
-                                                                                        aria-label="Button group with nested dropdown">
-
-                                                                                        <div class="btn-group mr-1"
-                                                                                            role="group">
-
-                                                                                            <button id="filter-button"
-                                                                                                style="color: #212529; border: none;"
-                                                                                                type="button"
-                                                                                                class="btn yks-btn "
-                                                                                                data-bs-toggle="dropdown"
-                                                                                                aria-expanded="false">
-                                                                                                <i
-                                                                                                    class="small mr-1 fa fa-filter"></i>
-                                                                                                Filtreler
-                                                                                            </button>
-                                                                                            <ul class="dropdown-menu">
-                                                                                                <li><a class="dropdown-item yks-dropdown-item"
-                                                                                                        style="color: black;">Filter
-                                                                                                        Menu</a></li>
-
-                                                                                            </ul>
-                                                                                        </div>
-
-
-
-
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </td>
-
-                                                                        </tr>
-
-                                                                    </tbody>
-                                                                </table>
+                                                            <div class="col-12 lg:col-6 xl:col-9 pl-4 pr-4 pt-5">
 
                                                             </div>
                                                             <div class="col-12 lg:col-6 xl:col-3 pl-4 pr-4"
@@ -853,23 +733,6 @@
                                                         </div>
 
 
-                                                        <!-- <tab-main>
-                                                            <tab-item [tabTitle]="'Genel'">
-
-                                                                <div class="grid">
-                                                                    <div class="col-12 pl-4"
-                                                                        style="padding-right: 23px;">
-
-
-
-
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </tab-item>
-
-                                                        </tab-main> -->
 
 
 

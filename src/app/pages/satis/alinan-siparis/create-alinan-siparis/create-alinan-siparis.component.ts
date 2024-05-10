@@ -10,6 +10,8 @@ import { StokSelectModalComponent } from '../components/stok-select-modal/stok-s
 import { CariSelectModalComponent } from '../components/cari-select-modal/cari-select-modal.component';
 import { CreateSiparisModel } from '../core/models/create-siparis-model';
 import { SiparisService } from '../core/services/siparis.service';
+import { TeklifService } from '../../verilen-teklif/core/services/teklif.service';
+import { VerilenTeklifModalComponent } from '../components/verilen-teklif-modal/verilen-teklif-modal.component';
 
 @Component({
   selector: 'app-create-alinan-siparis',
@@ -38,8 +40,8 @@ export class CreateAlinanSiparisComponent {
   defaultKDV: any = 0;
   defaultOTV: any = 0;
   selectedSiparisTuru: any
-  siparisTuruAdi: any = 'Alinan';
-  seriNo: any = 'AS';
+  siparisTuruAdi: any = 'Verilen';
+  seriNo: any = 'VS';
   private gridApi!: GridApi<any>;
   public rowSelection: "single" | "multiple" = "single";
 
@@ -49,6 +51,7 @@ export class CreateAlinanSiparisComponent {
     private fb: FormBuilder,
     private router: Router,
     private SiparisService: SiparisService,
+    private TeklifService: TeklifService,
     private modalService: NgbModal,
     private DatePipe: DatePipe
   ) { }
@@ -77,6 +80,7 @@ export class CreateAlinanSiparisComponent {
     teslimTarihi: [null,],
 
 
+
   })
   get siparisTuru() { return this.frm.get('siparisTuru') }
   get seri() { return this.frm.get('seri') }
@@ -94,7 +98,7 @@ export class CreateAlinanSiparisComponent {
 
 
   colDefs: ColDef[] = [
-    { field: "stokAdi", width: 600, },
+    { field: "stokAdi", width: 350, },
     { field: "miktar", editable: true, valueFormatter: params => params.data.miktar.toFixed(2) },
     { field: "birimAdi", },
     { field: "birimFiyat", editable: true, valueFormatter: params => currencyFormatter(params.data.birimFiyat, "₺ "), },
@@ -126,7 +130,7 @@ export class CreateAlinanSiparisComponent {
 
     if (this.getAllRowData().length > 0) {
       this.SiparisService.create(createModel, () => {
-        this.router.navigate(['/pages/satis/detail-alinan-siparis'], { state: createModel })
+        this.router.navigate(['/pages/satin-alma/detail-verilen-siparis'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -160,7 +164,7 @@ export class CreateAlinanSiparisComponent {
   }
 
   vazgec() {
-    this.router.navigate(['/pages/satin-alma/alinan-siparis'])
+    this.router.navigate(['/pages/satis/alinan-siparis'])
   }
 
   SiparisHareketDelete(params) {
@@ -229,6 +233,7 @@ export class CreateAlinanSiparisComponent {
 
       if (stoks != false) {
         stoks.forEach(stok => {
+          console.log(stok);
           stok.toplamTutar = stok.miktar * stok.birimFiyat;
           stok.hourId = String(new Date().valueOf())
           this.gridApi.applyTransaction({ add: [stok], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
@@ -239,17 +244,105 @@ export class CreateAlinanSiparisComponent {
 
   }
 
-
+  aktarma: boolean = false;
+  aktarmaCount: any;
+  matBadgeHidden: boolean = false;
+  teklifList: any;
+  disableButtons:boolean=true;
   cariSelectModal() {
     const modalRef = this.modalService.open(CariSelectModalComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((depo) => {
-      this.selectedCari = depo;
+    modalRef.result.then(async (depo) => {
+      if (depo != false) {
+        this.selectedCari = depo;
+        this.disableButtons=false
+        this.teklifList = ((await this.TeklifService.GetList(() => { })).data.items).filter(c => c.seri == "VT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
+        this.aktarmaCount = this.teklifList.length;
+        if (this.teklifList.length > 0) {
+          this.aktarma = true;
+          this.matBadgeHidden = true;
+        }
+        else {
+          this.aktarma = false;
+          this.matBadgeHidden = false;
+        }
+      }
+      else{
+       
+        if (!this.selectedCari) {
+          this.disableButtons=true;
+        }
 
+      }
+     
     });
 
   }
 
+
+
+  selectedTeklifHareketler: any;
+  verilenTeklifModal() {
+
+    if (this.selectedCari) {
+      const modalRef = this.modalService.open(VerilenTeklifModalComponent, { size: 'xl', backdrop: 'static', });
+      modalRef.componentInstance.confirmationBoxTitle = 'Arama : Teklifler';
+      modalRef.componentInstance.selectedCari = this.selectedCari;
+      modalRef.result.then((teklifHareketler) => {
+        if (teklifHareketler.length > 0) {
+          this.selectedTeklifHareketler = teklifHareketler;
+
+          teklifHareketler.forEach(teklifHareket => {
+            teklifHareket.toplamTutar = teklifHareket.miktar * teklifHareket.birimFiyat;
+            teklifHareket.hourId = String(new Date().valueOf());
+            this.gridApi.applyTransaction({ add: [teklifHareket], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
+          });
+          this.onCellValueChanged();
+
+          this.teklifDurumChange()
+
+
+
+        }
+
+
+      });
+    }
+
+
+  }
+
+  teklifDurumChange() {
+    var newArray = [];
+    var lookupObject = {};
+    for (const item of this.selectedTeklifHareketler) {
+      if (!lookupObject[item.teklifId]) {
+        lookupObject[item.teklifId] = { text: {}, payload: { ...item } };
+        newArray.push(lookupObject[item.teklifId].payload);
+      }
+
+    }
+
+    const result = this.teklifList.filter(({ id }) => newArray.map(c => c.teklifId).includes(id));
+    result.forEach(teklif => {
+      teklif.durum = "Kapalı"
+      this.TeklifService.update(teklif, async () => {
+
+        this.teklifList = ((await this.TeklifService.GetList(() => { })).data.items).filter(c => c.seri == "VT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
+        this.aktarmaCount = this.teklifList.length;
+        if (this.teklifList.length > 0) {
+          this.aktarma = true;
+          this.matBadgeHidden = true;
+        }
+        else {
+          this.aktarma = false;
+          this.matBadgeHidden = false;
+        }
+
+      }, errorMessage => { })
+
+    });
+  }
 
 
 
@@ -268,7 +361,7 @@ export class CreateAlinanSiparisComponent {
 
   async belgeNoGetKod() {
     this.belgeNoGetCode = (await this.SiparisService.GetCode()).data.kod;
-    this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu irsaliye"
+    this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Alınan Sipariş"
   }
   getDateAndTime() {
     this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
@@ -279,7 +372,7 @@ export class CreateAlinanSiparisComponent {
     let hour = this.rxTime.getHours();
     let minuts = this.rxTime.getMinutes();
     let NewTime = ("0" + hour).slice(-2) + ":" + ("0" + minuts).slice(-2);
-    this.time = NewTime
+    this.time = NewTime;
   }
 
 

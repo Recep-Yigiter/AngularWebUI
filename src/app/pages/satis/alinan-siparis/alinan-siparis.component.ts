@@ -20,18 +20,18 @@ export class AlinanSiparisComponent implements OnInit {
   private gridApi!: GridApi<any>;
   // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
   colDefs: ColDef[] = [
-    { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'yyyy / MM / dd'), pinned: "left" },
-    { field: "seri", headerName: "Belge Seri", width: 100, pinned: "left" },
+    { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
+    { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
     { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
-    { field: "siparisTuruAdi", headerName: "Hareket Türü", width: 120, pinned: "left" },
-    { field: "kdvTutar", headerName: "Kdv Tutarı",cellRenderer: this.CurrencyCellRendererTR },
-    { field: "satirOtv", headerName: "ÖTV Tutarı" ,cellRenderer: this.CurrencyCellRendererTR},
+    { field: "siparisTuruAdi", headerName: "Türü", width: 80, pinned: "left" },
+    { field: "kdvTutar", headerName: "Kdv Tutarı", width: 100,cellRenderer: this.CurrencyCellRendererTR },
+    { field: "satirOtv", headerName: "ÖTV Tutarı" ,width: 100,cellRenderer: this.CurrencyCellRendererTR},
     { field: "cariKodu", headerName: "Cari Kodu", width: 150 },
     { field: "cariAdi", headerName: "Cari Adı", width: 350 },
     { field: "referans", headerName: "Referans No", width: 150 },
-    { field: "durum", headerName: "Onay Durumu", width: 150 },
+    { field: "teslimatDurumuString", headerName: "Teslimat Durumu", width: 150, },
+    { field: "teslimTarihi", headerName: "Teslim Tarihi", width: 150 ,valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy')},
     { field: "siparisAlanPersonel", headerName: "Siparis Alan Personel" },
-    { field: "opsiyonTarihi", headerName: "Opsiyon Tarihi", width: 150 },
     { field: "aciklama", headerName: "Açıklama" },
     { field: "satirSayisi", headerName: "Satır S.",width: 80 },
     { field: "referansNo", headerName: "Ref. No" },
@@ -61,7 +61,8 @@ export class AlinanSiparisComponent implements OnInit {
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
     this.rowData = (await this.StokService.GetList(() => { })).data.items;
-this.rowData=this.rowData.filter(c=>c.seri=="AS")
+this.rowData=this.rowData.filter(c=>c.seri=="AS");
+ this.rowData.sort((val1, val2)=> {return <any> new Date(val2.createdDate) - <any> new Date(val1.createdDate)})
 
     this.rowData.forEach((rowData) => {
       const dateParts = rowData.createdDate.split("/");
@@ -95,9 +96,21 @@ this.rowData=this.rowData.filter(c=>c.seri=="AS")
       siparis.kdvTutar = siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.kdvTutar, 0);
       siparis.satirOtv = (siparis.iskontoSonrasiTutar * siparis.otv) / 100;
       siparis.genelToplam = siparis.iskontoSonrasiTutar + siparis.kdvTutar;
-      siparis.satirSayisi=siparis.siparisHareketler.length
+      siparis.satirSayisi=siparis.siparisHareketler.length;
+
+      if (siparis.teslimatDurumu==0) {
+        siparis.teslimatDurumuString="Teslimat Yapılmadı"
+      } else {
+        siparis.teslimatDurumuString="Teslim Edildi"
+      }
     })
 
+  }
+
+  get sortData() {
+    return this.rowData.sort((a, b) => {
+      return <any>new Date(b.createdDate) - <any>new Date(a.createdDate);
+    });
   }
 
 

@@ -10,6 +10,9 @@ import { StokSelectModalComponent } from '../components/stok-select-modal/stok-s
 import { CariSelectModalComponent } from '../components/cari-select-modal/cari-select-modal.component';
 import { CreateSiparisModel } from '../core/models/create-siparis-model';
 import { SiparisService } from '../core/services/siparis.service';
+import { AlinanTeklifComponent } from '../../alinan-teklif/alinan-teklif.component';
+import { AlinanTeklifModalComponent } from '../components/alinan-teklif-modal/alinan-teklif-modal.component';
+import { TeklifService } from '../../alinan-teklif/core/services/teklif.service';
 
 @Component({
   selector: 'app-create-verilen-siparis',
@@ -49,6 +52,7 @@ export class CreateVerilenSiparisComponent {
     private fb: FormBuilder,
     private router: Router,
     private SiparisService: SiparisService,
+    private TeklifService: TeklifService,
     private modalService: NgbModal,
     private DatePipe: DatePipe
   ) { }
@@ -75,7 +79,7 @@ export class CreateVerilenSiparisComponent {
     tarih: [null,],
     saat: [null,],
     teslimTarihi: [null,],
-  
+
 
 
   })
@@ -95,7 +99,7 @@ export class CreateVerilenSiparisComponent {
 
 
   colDefs: ColDef[] = [
-    { field: "stokAdi", width: 600, },
+    { field: "stokAdi", width: 350, },
     { field: "miktar", editable: true, valueFormatter: params => params.data.miktar.toFixed(2) },
     { field: "birimAdi", },
     { field: "birimFiyat", editable: true, valueFormatter: params => currencyFormatter(params.data.birimFiyat, "₺ "), },
@@ -124,6 +128,7 @@ export class CreateVerilenSiparisComponent {
     createModel.hourId = String(new Date().valueOf());
     createModel.siparisHareketler = this.getAllRowData()
 
+    console.log(createModel);
 
     if (this.getAllRowData().length > 0) {
       this.SiparisService.create(createModel, () => {
@@ -230,6 +235,7 @@ export class CreateVerilenSiparisComponent {
 
       if (stoks != false) {
         stoks.forEach(stok => {
+          console.log(stok);
           stok.toplamTutar = stok.miktar * stok.birimFiyat;
           stok.hourId = String(new Date().valueOf())
           this.gridApi.applyTransaction({ add: [stok], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
@@ -240,17 +246,105 @@ export class CreateVerilenSiparisComponent {
 
   }
 
-
+  aktarma: boolean = false;
+  aktarmaCount: any;
+  matBadgeHidden: boolean = false;
+  teklifList: any;
+  disableButtons:boolean=true;
   cariSelectModal() {
     const modalRef = this.modalService.open(CariSelectModalComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((depo) => {
-      this.selectedCari = depo;
+    modalRef.result.then(async (depo) => {
+      if (depo != false) {
+        this.selectedCari = depo;
+        this.disableButtons=false
+        this.teklifList = ((await this.TeklifService.GetList(() => { })).data.items).filter(c => c.seri == "AT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
+        this.aktarmaCount = this.teklifList.length;
+        if (this.teklifList.length > 0) {
+          this.aktarma = true;
+          this.matBadgeHidden = true;
+        }
+        else {
+          this.aktarma = false;
+          this.matBadgeHidden = false;
+        }
+      }
+      else{
+       
+        if (!this.selectedCari) {
+          this.disableButtons=true;
+        }
 
+      }
+     
     });
 
   }
 
+
+
+  selectedTeklifHareketler: any;
+  alinanTeklifModal() {
+
+    if (this.selectedCari) {
+      const modalRef = this.modalService.open(AlinanTeklifModalComponent, { size: 'xl', backdrop: 'static', });
+      modalRef.componentInstance.confirmationBoxTitle = 'Arama : Teklifler';
+      modalRef.componentInstance.selectedCari = this.selectedCari;
+      modalRef.result.then((teklifHareketler) => {
+        if (teklifHareketler.length > 0) {
+          this.selectedTeklifHareketler = teklifHareketler;
+
+          teklifHareketler.forEach(teklifHareket => {
+            teklifHareket.toplamTutar = teklifHareket.miktar * teklifHareket.birimFiyat;
+            teklifHareket.hourId = String(new Date().valueOf());
+            this.gridApi.applyTransaction({ add: [teklifHareket], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
+          });
+          this.onCellValueChanged();
+
+          this.teklifDurumChange()
+
+
+
+        }
+
+
+      });
+    }
+
+
+  }
+
+  teklifDurumChange() {
+    var newArray = [];
+    var lookupObject = {};
+    for (const item of this.selectedTeklifHareketler) {
+      if (!lookupObject[item.teklifId]) {
+        lookupObject[item.teklifId] = { text: {}, payload: { ...item } };
+        newArray.push(lookupObject[item.teklifId].payload);
+      }
+
+    }
+
+    const result = this.teklifList.filter(({ id }) => newArray.map(c => c.teklifId).includes(id));
+    result.forEach(teklif => {
+      teklif.durum = "Kapalı"
+      this.TeklifService.update(teklif, async () => {
+
+        this.teklifList = ((await this.TeklifService.GetList(() => { })).data.items).filter(c => c.seri == "AT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
+        this.aktarmaCount = this.teklifList.length;
+        if (this.teklifList.length > 0) {
+          this.aktarma = true;
+          this.matBadgeHidden = true;
+        }
+        else {
+          this.aktarma = false;
+          this.matBadgeHidden = false;
+        }
+
+      }, errorMessage => { })
+
+    });
+  }
 
 
 
@@ -269,7 +363,7 @@ export class CreateVerilenSiparisComponent {
 
   async belgeNoGetKod() {
     this.belgeNoGetCode = (await this.SiparisService.GetCode()).data.kod;
-    this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu irsaliye"
+    this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Verilen Sipariş"
   }
   getDateAndTime() {
     this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');

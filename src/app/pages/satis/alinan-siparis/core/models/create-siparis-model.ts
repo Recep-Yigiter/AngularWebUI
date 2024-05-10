@@ -9,6 +9,7 @@ export class CreateSiparisModel {
     hourId?:any;
     cariId?: any;
     teslimTarihi?: any;
+    teslimatDurumu?: any;
     siparisHareketler?: CreateSiparisHareketModel[];
 }
 

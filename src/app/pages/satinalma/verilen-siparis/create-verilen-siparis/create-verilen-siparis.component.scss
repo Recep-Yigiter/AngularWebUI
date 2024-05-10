@@ -20,6 +20,27 @@
         height: 100%;
         width: 100%;
     }
+
+    .fa{
+        color: #7b7b7b;
+        font-size: 11px !important;
+    }
+
+    .selected-button{
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgb(145, 145, 243);
+        cursor: pointer;
+    }
+    .selected-button:hover{
+        background: rgb(176 176 243) !important;
+    }
+    .disabled-button{
+        opacity: 0.5 !important;
+    }
 }
 
 
