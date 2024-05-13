@@ -8,7 +8,6 @@ import { CreateStokComponent } from './create-stok/create-stok.component';
 import { TabItemComponent } from './components/tab-item.component';
 import { TabMainComponent } from './components/tab-main.component';
 import { HttpClientModule } from '@angular/common/http';
-import { CurrencyInputDirective } from 'src/app/core/directives/currency-input.directive';
 import { DetailStokComponent } from './detail-stok/detail-stok.component';
 import { UpdateStokComponent } from './update-stok/update-stok.component';
 import { AppTableComponent } from './components/app-table/app-table.component';
@@ -27,6 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CurrencyInputDirective } from './core/directives/currency-input.directive';
 
 
 
