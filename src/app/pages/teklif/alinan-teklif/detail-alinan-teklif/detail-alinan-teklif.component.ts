@@ -9,9 +9,9 @@ import { TeklifService } from 'src/app/core/services/repository/teklif.service';
   selector: 'app-detail-alinan-teklif',
   templateUrl: './detail-alinan-teklif.component.html',
   styleUrls: ['./detail-alinan-teklif.component.scss'],
-  providers: [ DatePipe],
+  providers: [DatePipe],
 })
-export class DetailAlinanTeklifComponent  implements OnInit {
+export class DetailAlinanTeklifComponent implements OnInit {
   /**
    *
    */
@@ -69,6 +69,7 @@ export class DetailAlinanTeklifComponent  implements OnInit {
 
   teklif: any;
   selectedObject: any;
+  teklifAktarbuttonDisable: boolean = false;
   async stateControl() {
 
 
@@ -96,9 +97,13 @@ export class DetailAlinanTeklifComponent  implements OnInit {
     this.stateData = this.teklif;
     this.dateTime = this.DatePipe.transform(this.teklif.createdDate, 'yyyy-MM-dd');
     this.dateTimeOpsiyon = this.DatePipe.transform(this.teklif.opsiyonTarihi, 'yyyy-MM-dd');
-    this.time = this.DatePipe.transform(this.teklif.createdDate, 'hh : mm ')
+    this.time = this.DatePipe.transform(this.teklif.createdDate, 'hh : mm ');
+
+    if (this.stateData.durum == 'Kapalı') {
+      this.teklifAktarbuttonDisable = true;
+    }
   }
-  vazgec(){
+  vazgec() {
     this.router.navigate(['/pages/teklif/alinan-teklif'], { state: this.stateData })
   }
   async duzenle() {

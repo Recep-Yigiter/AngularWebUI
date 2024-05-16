@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full', },
   {
     path: '', component: LayoutComponent,
-     children: [{ path: '', loadChildren: () => import("../app/pages/page.module").then(m => m.PageModule) }]
+     children: [
+      { path: '', loadChildren: () => import("../app/pages/page.module").then(m => m.PageModule) }
+    ]
   },
 
 ];

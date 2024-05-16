@@ -77,6 +77,7 @@ export class DetailVerilenTeklifComponent implements OnInit {
 
   teklif: any;
   selectedObject: any;
+  teklifAktarbuttonDisable:boolean=false;
   async stateControl() {
     
     if (this.stateData.durum=="Kapalı") {

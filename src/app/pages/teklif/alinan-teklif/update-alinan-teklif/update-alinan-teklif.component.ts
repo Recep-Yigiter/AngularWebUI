@@ -247,7 +247,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
 
   vazgec() {
     this.stateData.TeklifHareketler = this.getAllRowData()
-    this.router.navigate(['/pages/teklif/verilen-teklif'], { state: this.stateData })
+    this.router.navigate(['/pages/teklif/alinan-teklif'], { state: this.stateData })
   }
 
 

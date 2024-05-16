@@ -1,0 +1,103 @@
+body {
+    margin:50px;
+    font-family:'Merriweather Sans', sans-serif;
+    font-weight:400;
+    font-size:16.3px;
+    line-height:1.75;
+  }
+  .icon-placeholder {
+    display:block;
+    width:100px;
+    height:100px;
+    background-color:#e96c24;
+  }
+  
+  // Some styles from the Drupal environment where this nav will go.
+  * {
+    box-sizing:border-box;
+  }
+  .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+  }
+  
+  .main-container ul:not(.nav-tabs) li, .main-container ol:not(.nav-tabs) li {
+      margin-bottom: 1em;
+  }
+  
+  .navbar-nav {
+      margin: 0;
+  }
+  .nav {
+      padding-left: 0;
+      list-style: none;
+  }
+  .nav>li {
+      position: relative;
+      display: block;
+  }
+  .nav>li>a {
+    position: relative;
+    display: block;
+  }
+  
+  a {
+    text-decoration: none;
+    background-color: transparent;
+  }
+  
+  .nav>li>a:hover, .nav>li>a:focus {
+      text-decoration: none;
+      background-color: #eee;
+  }
+  
+  // ::::::::::::::::::::::::::::::::::
+  // Custom
+  // ::::::::::::::::::::::::::::::::::
+  
+  .navbar-nav {
+    display:flex;
+    justify-content:center;
+    flex-flow:row wrap;
+    width:100%;
+    max-width:850px;
+    margin:0 auto;
+    
+    li {
+    //   flex:0 1 32%;
+      min-width:225px;
+      padding:2% 1.65%;
+      
+      &:last-child {
+        margin-right:0;
+      }
+      
+      a {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        // min-height:175px;
+        min-height:100%;
+        padding:10px;
+        border-width:1px;
+        box-shadow: 0 0 5px #ccc;
+      }
+    }
+  }
+
+
+  :host ::ng-deep{
+    .p-sidebar-bottom{
+        height: 18rem;
+    }
+    .p-sidebar .p-sidebar-header{
+        padding: 0;
+    }
+  }

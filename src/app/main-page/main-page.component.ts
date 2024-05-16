@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss']
 })
-export class LayoutComponent {
+export class MainPageComponent {
 
   denemeListe: any[] = [];
   constructor(private router: Router,) {
@@ -30,12 +30,12 @@ export class LayoutComponent {
         { label: 'Open' },
         { label: 'Quit' }
         ],
-        icon: '../../assets/icons/in-stock (1).png',
-        router: ()=>{this.router.navigate(['/pages/stok/stok'], { state: this.stateData })}
+        icon: '../../../assets/in-stock (1).png',
+        router: ()=>{this.router.navigate(['/pages/router-test',],{ state: this.denemeListe })}
       },
       {
         label: 'Satın Alma',
-        icon: '../../assets/icons/order-fulfillment.png',
+        icon: '../../../assets/order-fulfillment.png',
         items: [
           { label: 'Delete', icon: 'pi pi-fw pi-trash' },
           { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }
@@ -43,7 +43,7 @@ export class LayoutComponent {
       },
       {
         label: 'Satış',
-        icon: '../../assets/icons/sales.png',
+        icon: '../../../assets/in-stock (1).png',
         items: [
           { label: 'Delete', icon: 'pi pi-fw pi-trash' },
           { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }
@@ -51,7 +51,7 @@ export class LayoutComponent {
       },
       {
         label: 'Üretim',
-        icon: '../../assets/icons/procurement.png',
+        icon: '../../../assets/in-stock (1).png',
         items: [
           { label: 'Delete', icon: 'pi pi-fw pi-trash' },
           { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }
@@ -59,7 +59,7 @@ export class LayoutComponent {
       },
       {
         label: 'Finans',
-        icon: '../../assets/icons/budget.png',
+        icon: '../../../assets/in-stock (1).png',
         items: [
           { label: 'Delete', icon: 'pi pi-fw pi-trash' },
           { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }

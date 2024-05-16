@@ -66,51 +66,7 @@
                                 </div>
                               </div>
                             </li>
-                            <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                              <div class=" yks-menu-item-content">
-
-
-                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-                                  <div class="btn-group mr-1" role="group">
-
-                                    <button id="filter-button" *ngIf="disabledActionButton==true"
-                                      style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
-                                      type="button" class="btn yks-btn " data-bs-toggle="dropdown"
-                                      aria-expanded="false">
-                                      <i class="small mr-1 fa fa-list" style="font-size: 14px !important;"></i>
-                                      Diğer
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                      <li *ngIf="selectedTeklifHareketRowClick?.durum=='Açık'"><a
-                                          (click)="alinanTeklifModal()" class="dropdown-item yks-dropdown-item"
-                                          style="color: black;">Siparişe
-                                          Aktar</a></li>
-                                     
-
-                                      <li><a class="dropdown-item yks-dropdown-item" style="color: black;">Faturala</a>
-                                      </li>
-                                      <li style="border-bottom:1px solid #ddd ;"></li>
-                                      <li>
-                                        <a class="dropdown-item yks-dropdown-item" style="color: black;">Onay Durumu
-                                          Değiştir</a>
-                                      </li>
-                                      <li style="border-bottom:1px solid #ddd ;"></li>
-                                      <li><a class="dropdown-item yks-dropdown-item" style="color: black;">Revize Et</a>
-                                      </li>
-
-                                    </ul>
-                                  </div>
-
-
-
-
-                                </div>
-
-                              </div>
-
-                            </li>
+                           
 
 
                           </ul>
@@ -159,6 +115,8 @@
                     </div>
 
                   </div>
+
+                  
                 </div>
 
 
@@ -189,7 +147,7 @@
 
                       <ag-grid-angular style="width: 100%; height:690px;" class="ag-theme-quartz" [rowData]="rowData"
                         [columnDefs]="colDefs" (gridReady)="getList($event)" [rowSelection]="rowSelection"
-                        (selectionChanged)="onSelectionChanged()" (rowDoubleClicked)="rowDblClick()" [rowHeight]="22"
+                        (selectionChanged)="onSelectionChanged()" (rowDoubleClicked)="rowDblClick()" [rowHeight]="22" [components]="frameworkComponents"
                         [headerHeight]="23">
                       </ag-grid-angular>
 

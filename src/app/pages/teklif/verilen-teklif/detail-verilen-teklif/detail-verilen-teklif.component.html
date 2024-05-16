@@ -17,7 +17,7 @@
                                             <div class=" yks-toolbar-item ">
                                                 <div class="yks-button-has-text">
                                                     <a class="title-router"
-                                                        [routerLink]="['/pages/satin-alma/alinan-teklif']">Verilen
+                                                        [routerLink]="['/pages/teklif/alinan-teklif']">Verilen
                                                         Teklif</a>
                                                     <span style="margin: 0 5px;">/</span>
                                                     <a class="title-router">{{stateData.seri}} - {{stateData.belgeNo}}
@@ -81,6 +81,7 @@
 
 
 
+
                                                     </ul>
                                                 </div>
 
@@ -112,88 +113,173 @@
                                             <ul class="yks-menu-items-container m-1"
                                                 style="    display: flex; align-items: center; justify-content: center;">
 
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <button type="button" class="btn btn-success"
+                                                            style="padding:2px 10px; border-radius: 3px; border-color: #52374b; background-color: #624159;">
+                                                            <i class="fa fa-envelope"
+                                                                style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+                                                            <span class="d-none d-sm-inline"
+                                                                style="font-size: 13px;">E-posta ile Gönder</span>
+                                                        </button>
+
+                                                    </div>
+
+                                                </li>
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Button group with nested dropdown">
+
+                                                            <div class="btn-group mr-1" role="group">
+
+                                                                <button id="filter-button" 
+                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                    type="button" class="btn yks-btn "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="small mr-1 fa fa-cog"
+                                                                        style="font-size: 14px !important;"></i>
+                                                                    İşlemler
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+
+                                                                    <li style="border-bottom:1px solid #ddd ;"></li>
+                                                                    <li>
+                                                                        <a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">Onay Durumu
+                                                                            Değiştir</a>
+                                                                    </li>
+                                                                    <li style="border-bottom:1px solid #ddd ;"></li>
+                                                                    <li><a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">Revize Et</a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
 
 
 
-                                                <div *ngIf="durumOnayButton==false">
-                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                        <div class=" yks-menu-item-content">
-
-
-                                                            <button type="button" class="btn "
-                                                                style="color: #fff;font-style: italic;cursor: default;  padding:2px 10px; border-radius: 3px; background-color: #0c9977; border: 1px solid #e6e6e6;">
-
-
-                                                                <span class="d-none d-sm-inline"
-                                                                    style="font-size: 13px;">Siparişe Aktarıldı</span>
-                                                            </button>
 
                                                         </div>
 
-                                                    </li>
+                                                    </div>
+
+                                                </li>
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Button group with nested dropdown">
+
+                                                            <div class="btn-group mr-1" role="group">
+
+                                                                <button id="filter-button" [disabled]="teklifAktarbuttonDisable"
+                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                    type="button" class="btn yks-btn "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="small mr-1 fa fa-exchange"
+                                                                        style="font-size: 14px !important;"></i>
+                                                                    Dönüştür
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">
+                                                                            Verilen Siparişe Dönüştür</a></li>
+
+
+                                                                    <li><a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">Faturaya Dönüştür</a>
+                                                                    </li>
+
+
+
+                                                                </ul>
+                                                            </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Button group with nested dropdown">
+
+                                                            <div class="btn-group mr-1" role="group">
+
+                                                                <button id="filter-button"
+                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                    type="button" class="btn yks-btn "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="small mr-1 fa fa-flag"
+                                                                        style="font-size: 14px !important;"></i>
+                                                                    Notlar
+                                                                </button>
+
+                                                            </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                                <!-- <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                <div class=" yks-menu-item-content">
+
+
+                                                    <button type="button" class="btn "
+                                                        style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+
+                                                        <i class="fa fa-check"
+                                                            style="color: #009b34; margin-right: 5px; font-weight: 600;font-size: 16px;"></i>
+                                                        <span class="d-none d-sm-inline"
+                                                            style="font-size: 13px;">Onayla</span>
+                                                    </button>
+
+                                                </div>
+
+                                            </li>
+                                            <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                <div class=" yks-menu-item-content">
+
+
+                                                    <button  type="button" class="btn "
+                                                    style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+                                                    <i class="fa fa-times"
+                                                        style="color: #b51200; margin-right: 5px; font-weight: 600; font-size: 16px;"></i>
+                                                    <span class="d-none d-sm-inline"
+                                                        style="font-size: 13px;">Vazgeç</span>
+                                                </button>
 
 
                                                 </div>
-                                                <div *ngIf=" durumOnayButton==true">
-                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                                        <div class=" yks-menu-item-content">
-
-
-                                                            <button type="button" class="btn btn-success"
-                                                                style="padding:2px 10px; border-radius: 3px; border-color: #52374b; background-color: #624159;">
-                                                                <i class="fa fa-envelope"
-                                                                    style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-                                                                <span class="d-none d-sm-inline"
-                                                                    style="font-size: 13px;">E-posta ile Gönder</span>
-                                                            </button>
-
-                                                        </div>
-
-                                                    </li>
-                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                        <div class=" yks-menu-item-content">
-
-
-                                                            <button (click)="onayla()" type="button" class="btn "
-                                                                style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
-
-                                                                <i class="fa fa-check"
-                                                                    style="color: #009b34; margin-right: 5px; font-weight: 600;font-size: 16px;"></i>
-                                                                <span class="d-none d-sm-inline"
-                                                                    style="font-size: 13px;">Onayla</span>
-                                                            </button>
-
-                                                        </div>
-
-                                                    </li>
-                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                        <div class=" yks-menu-item-content">
-
-
-                                                            <button type="button" class="btn "
-                                                                style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
-                                                                <i class="fa fa-times"
-                                                                    style="color: #b51200; margin-right: 5px; font-weight: 600; font-size: 16px;"></i>
-                                                                <span class="d-none d-sm-inline"
-                                                                    style="font-size: 13px;">Vazgeç</span>
-                                                            </button>
-
-
-                                                        </div>
-
-                                                    </li>
-                                                </div>
-
-
+                                            </li> -->
 
 
                                             </ul>
-
-                                            <div class="card ml-5 mr-5"
+                                            <div class="card mr-5 ml-5"
                                                 style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
 
 
@@ -207,291 +293,320 @@
                                                 <div class="grid">
 
                                                     <div class="col-12 lg:col-3 xl:col-3 pl-4">
-
-                                                        <table class="yks_table_group">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="yks_td_label"></td>
-                                                                    <td style="width: 100%; "></td>
-                                                                </tr>
-
-
-
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end; ">
-
-                                                                        <label
-                                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px;">Tarih
-                                                                            :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-
-                                                                        <label
-                                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
-
-                                                                            {{dateTime | date: 'dd / MM / yyyy ' }}
-                                                                            <span style="margin-left: 1rem;">{{time
-                                                                                }}</span>
-                                                                        </label>
-
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
-
-                                                                        <label
-                                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px;">Belge
-                                                                            No :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.belgeNo}}
-                                                                        </label>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
-
-                                                                        <label
-                                                                            style=" min-width: 90px; font-weight: 600; font-size: 13px;">Teklif
-                                                                            Türü
-                                                                            :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.teklifTuruAdi}}
-                                                                        </label>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
-
-                                                                        <label
-                                                                            style=" min-width: 60px; font-weight: 600; font-size: 13px;">Seri
-                                                                            No :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.seri}}
-                                                                        </label>
-                                                                    </td>
-                                                                </tr>
+                                                        <div class="mt-1" style="border: 1px solid #ddd">
+                                                            <div class="form-title pl-2" style="font-weight: 500;">
+                                                                Belge
+                                                            </div>
+                                                            <table class="yks_table_group">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="yks_td_label"></td>
+                                                                        <td style="width: 100%; "></td>
+                                                                    </tr>
 
 
 
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end; ">
 
+                                                                            <label
+                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">Tarih
+                                                                                :
 
-                                                            </tbody>
-                                                        </table>
+                                                                            </label>
+                                                                        </td>
 
-                                                    </div>
-                                                    <div class="col-12 lg:col-5 xl:col-5 pl-4">
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
 
-                                                        <table class="yks_table_group">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="yks_td_label"></td>
-                                                                    <td style="width: 100%; "></td>
-                                                                </tr>
+                                                                            <label
+                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
+
+                                                                                {{dateTime | date: 'dd / MM / yyyy ' }}
+                                                                                <span style="margin-left: 1rem;">{{time
+                                                                                    }}</span>
+                                                                            </label>
+
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
+
+                                                                            <label
+                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">Belge
+                                                                                No :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.belgeNo}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
+
+                                                                            <label
+                                                                                style=" min-width: 90px; font-weight: 600; font-size: 13px;">Teklif
+                                                                                Türü
+                                                                                :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.teklifTuruAdi}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
+
+                                                                            <label
+                                                                                style=" min-width: 60px; font-weight: 600; font-size: 13px;">Seri
+                                                                                No :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.seri}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
 
 
 
 
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
 
-                                                                        <label
-                                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px;">Cari
-                                                                            :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.cariAdi}}
-                                                                        </label>
-                                                                    </td>
-                                                                </tr>
-
-
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
-
-                                                                        <label
-                                                                            style=" min-width: 90px; font-weight: 600; font-size: 13px;">Referans
-                                                                            :
-                                                                        </label>
-                                                                    </td>
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.referans}}
-                                                                        </label>
-                                                                    </td>
-
-
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
-
-                                                                        <label
-                                                                            style=" min-width: 85px; font-weight: 600; font-size: 13px;">Düzenleyen
-                                                                            :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.duzenleyen}}
-                                                                        </label>
-                                                                    </td>
-
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
-
-                                                                        <label
-                                                                            style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
-                                                                            :
-
-                                                                        </label>
-                                                                    </td>
-
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <label
-                                                                            style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
-                                                                            {{stateData.aciklama}}
-                                                                        </label>
-                                                                    </td>
-
-                                                                </tr>
-
-
-
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
 
 
                                                     </div>
-                                                    <div class="col-12 lg:col-4 xl:col-4 pl-4 pr-4">
+                                                    <div class="col-12 lg:col-4 xl:col-4 " style="    padding-left: 0px;
+                                                    padding-right: 0px;">
+                                                        <div class="mt-1" style="border: 1px solid #ddd">
+                                                            <div class="form-title pl-2" style="font-weight: 500;">
+                                                                Müşteri / Satıcı
+                                                            </div>
+                                                            <table class="yks_table_group">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="yks_td_label"></td>
+                                                                        <td style="width: 100%; "></td>
+                                                                    </tr>
 
-                                                        <table class="yks_table_group ">
 
-                                                            <tbody>
 
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end; ">
 
-                                                                        <label
-                                                                            style=" min-width: 150px; font-weight: 600; font-size: 13px;">Opsiyon
-                                                                            Tarihi
-                                                                            :
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
 
-                                                                        </label>
-                                                                    </td>
+                                                                            <label
+                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">Cari
+                                                                                :
 
-                                                                    <td style="width: 100%;" class="table_row_group">
+                                                                            </label>
+                                                                        </td>
 
-                                                                        <label
-                                                                            style=" min-width: 150px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.cariAdi}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
 
-                                                                            {{dateTimeOpsiyon | date: 'dd / MM / yyyy '
-                                                                            }}
 
-                                                                        </label>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
 
-                                                                    </td>
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
+                                                                            <label
+                                                                                style=" min-width: 90px; font-weight: 600; font-size: 13px;">Referans
+                                                                                :
+                                                                            </label>
+                                                                        </td>
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.referans}}
+                                                                            </label>
+                                                                        </td>
 
-                                                                        <label
-                                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px;">KDV
-                                                                            :
 
-                                                                        </label>
-                                                                    </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
 
-                                                                    <td style="width: 100%;" class="table_row_group">
-                                                                        <div style="display: grid; grid-template-columns: 100px auto; font-weight: 600; 
-                                                                            font-size: 13px; color: #666666; ">
-                                                                            <div
-                                                                                style="display: flex;align-items: center;">
-                                                                                {{stateData?.kdv + ' %'}}
+                                                                            <label
+                                                                                style=" min-width: 85px; font-weight: 600; font-size: 13px;">Düzenleyen
+                                                                                :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.duzenleyen}}
+                                                                            </label>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
+
+                                                                            <label
+                                                                                style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
+                                                                                :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.aciklama}}
+                                                                            </label>
+                                                                        </td>
+
+                                                                    </tr>
+
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+
+
+                                                    </div>
+                                                    <div class="col-12 lg:col-4 xl:col-4 pr-4">
+                                                        <div class="mt-1" style="border: 1px solid #ddd">
+                                                            <div class="form-title pl-2" style="font-weight: 500;">
+                                                                Opsiyon Tarihi / Kdv-Ötv
+                                                            </div>
+
+                                                            <table class="yks_table_group ">
+
+                                                                <tbody>
+
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end; ">
+
+                                                                            <label
+                                                                                style=" min-width: 150px; font-weight: 600; font-size: 13px;">Opsiyon
+                                                                                Tarihi
+                                                                                :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+
+                                                                            <label
+                                                                                style=" min-width: 150px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
+
+                                                                                {{dateTimeOpsiyon | date: 'dd / MM /
+                                                                                yyyy '
+                                                                                }}
+
+                                                                            </label>
+
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
+
+                                                                            <label
+                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">KDV
+                                                                                :
+
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <div style="display: grid; grid-template-columns: 100px auto; font-weight: 600; 
+                                                                                font-size: 13px; color: #666666; ">
+                                                                                <div
+                                                                                    style="display: flex;align-items: center;">
+                                                                                    {{stateData?.kdv + ' %'}}
+                                                                                </div>
+
                                                                             </div>
 
-                                                                        </div>
-
-                                                                    </td>
+                                                                        </td>
 
 
 
 
 
-                                                                </tr>
-                                                                <tr class="table_row_group">
-                                                                    <td class="yks_td_label"
-                                                                        style="border-left: #000000; text-align: end;">
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000; text-align: end;">
 
-                                                                        <label
-                                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px;">ÖTV
-                                                                            :
+                                                                            <label
+                                                                                style=" min-width: 50px; font-weight: 600; font-size: 13px;">ÖTV
+                                                                                :
 
-                                                                        </label>
-                                                                    </td>
+                                                                            </label>
+                                                                        </td>
 
-                                                                    <td style="width: 100%;" class="table_row_group">
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
 
-                                                                        <div style="display: grid; grid-template-columns: 100px auto; font-weight: 600; 
-                                                                        font-size: 13px; color: #666666;">
-                                                                            <div
-                                                                                style="display: flex;align-items: center;">
-                                                                                {{stateData?.otv + ' %'}}
+                                                                            <div style="display: grid; grid-template-columns: 100px auto; font-weight: 600; 
+                                                                            font-size: 13px; color: #666666;">
+                                                                                <div
+                                                                                    style="display: flex;align-items: center;">
+                                                                                    {{stateData?.otv + ' %'}}
+                                                                                </div>
+
+
                                                                             </div>
 
-
-                                                                        </div>
-
-                                                                    </td>
+                                                                        </td>
 
 
 
 
-                                                                </tr>
+                                                                    </tr>
 
 
 
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
                                                     </div>
 
 

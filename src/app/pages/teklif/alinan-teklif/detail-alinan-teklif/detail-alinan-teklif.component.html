@@ -81,6 +81,7 @@
 
 
 
+
                                                     </ul>
                                                 </div>
 
@@ -110,26 +111,139 @@
                                         <div class="yks-drawer-content" style="padding: 0px;">
                                             <div class=" yks-filemanager-breadcrumbs"></div>
                                             <ul class="yks-menu-items-container m-1"
-                                            style="    display: flex; align-items: center; justify-content: center;">
+                                                style="    display: flex; align-items: center; justify-content: center;">
 
-                                            <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                                <div class=" yks-menu-item-content">
+                                                    <div class=" yks-menu-item-content">
 
 
-                                                    <button type="button" class="btn btn-success"
-                                                        style="padding:2px 10px; border-radius: 3px; border-color: #52374b; background-color: #624159;">
-                                                        <i class="fa fa-envelope"
-                                                            style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-                                                        <span class="d-none d-sm-inline"
-                                                            style="font-size: 13px;">E-posta ile Gönder</span>
-                                                    </button>
+                                                        <button type="button" class="btn btn-success"
+                                                            style="padding:2px 10px; border-radius: 3px; border-color: #52374b; background-color: #624159;">
+                                                            <i class="fa fa-envelope"
+                                                                style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+                                                            <span class="d-none d-sm-inline"
+                                                                style="font-size: 13px;">E-posta ile Gönder</span>
+                                                        </button>
 
-                                                </div>
+                                                    </div>
 
-                                            </li>
+                                                </li>
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                            <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Button group with nested dropdown">
+
+                                                            <div class="btn-group mr-1" role="group">
+
+                                                                <button id="filter-button"
+                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                    type="button" class="btn yks-btn "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="small mr-1 fa fa-cog"
+                                                                        style="font-size: 14px !important;"></i>
+                                                                    İşlemler
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+
+                                                                    <li style="border-bottom:1px solid #ddd ;"></li>
+                                                                    <li>
+                                                                        <a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">Onay Durumu
+                                                                            Değiştir</a>
+                                                                    </li>
+                                                                    <li style="border-bottom:1px solid #ddd ;"></li>
+                                                                    <li><a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">Revize Et</a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Button group with nested dropdown">
+
+                                                            <div class="btn-group mr-1" role="group">
+
+                                                                <button id="filter-button"
+                                                                    [disabled]="teklifAktarbuttonDisable"
+                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                    type="button" class="btn yks-btn "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="small mr-1 fa fa-exchange"
+                                                                        style="font-size: 14px !important;"></i>
+                                                                    Dönüştür
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">
+                                                                            Verilen Siparişe Dönüştür</a></li>
+
+
+                                                                    <li><a class="dropdown-item yks-dropdown-item"
+                                                                            style="color: black;">Faturaya Dönüştür</a>
+                                                                    </li>
+
+
+
+                                                                </ul>
+                                                            </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                    <div class=" yks-menu-item-content">
+
+
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Button group with nested dropdown">
+
+                                                            <div class="btn-group mr-1" role="group">
+
+                                                                <button id="filter-button"
+                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                    type="button" class="btn yks-btn "
+                                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="small mr-1 fa fa-flag"
+                                                                        style="font-size: 14px !important;"></i>
+                                                                    Notlar
+                                                                </button>
+
+                                                            </div>
+
+
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                                <!-- <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
                                                 <div class=" yks-menu-item-content">
 
@@ -162,11 +276,26 @@
 
                                                 </div>
 
-                                            </li>
+                                            </li> -->
+
+                                                <div>
+                                                    <select  class="form-select shadow-none" style="    background-color: #fff;
+                                                    border: 1px solid rgb(177 177 177);
+                                                    padding: 2px 2.25rem 2px 0.75rem;"
+                                                        aria-label="Default select example">
+                                                        <option selected [ngValue]="null">Lütfen
+                                                            seçim yapınız...
+                                                        </option>
+                                                        <option> Onay Bekliyor</option>
+                                                        <option> Onaylandı</option>
+                                                        <option> Reddedildi</option>
+                                                    </select>
+                                                </div>
+                                            </ul>
 
 
-                                        </ul>
-                                            <div class="card mr-5 ml-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
+                                            <div class="card mr-5 ml-5"
+                                                style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
 
 
                                                 <div class="yks_button_box yks_not_full" style="width: 70px;">
@@ -297,93 +426,97 @@
                                                                         <td class="yks_td_label"></td>
                                                                         <td style="width: 100%; "></td>
                                                                     </tr>
-    
-    
-    
-    
+
+
+
+
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end;">
-    
+
                                                                             <label
                                                                                 style=" min-width: 50px; font-weight: 600; font-size: 13px;">Cari
                                                                                 :
-    
+
                                                                             </label>
                                                                         </td>
-    
-                                                                        <td style="width: 100%;" class="table_row_group">
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
                                                                             <label
                                                                                 style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
                                                                                 {{stateData.cariAdi}}
                                                                             </label>
                                                                         </td>
                                                                     </tr>
-    
-    
+
+
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end;">
-    
+
                                                                             <label
                                                                                 style=" min-width: 90px; font-weight: 600; font-size: 13px;">Referans
                                                                                 :
                                                                             </label>
                                                                         </td>
-                                                                        <td style="width: 100%;" class="table_row_group">
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
                                                                             <label
                                                                                 style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
                                                                                 {{stateData.referans}}
                                                                             </label>
                                                                         </td>
-    
-    
+
+
                                                                     </tr>
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end;">
-    
+
                                                                             <label
                                                                                 style=" min-width: 85px; font-weight: 600; font-size: 13px;">Düzenleyen
                                                                                 :
-    
+
                                                                             </label>
                                                                         </td>
-    
-                                                                        <td style="width: 100%;" class="table_row_group">
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
                                                                             <label
                                                                                 style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
                                                                                 {{stateData.duzenleyen}}
                                                                             </label>
                                                                         </td>
-    
+
                                                                     </tr>
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end;">
-    
+
                                                                             <label
                                                                                 style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
                                                                                 :
-    
+
                                                                             </label>
                                                                         </td>
-    
-                                                                        <td style="width: 100%;" class="table_row_group">
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
                                                                             <label
                                                                                 style=" min-width: 160px; font-weight: 600; font-size: 13px; color: #666666;">
                                                                                 {{stateData.aciklama}}
                                                                             </label>
                                                                         </td>
-    
+
                                                                     </tr>
-    
-    
-    
+
+
+
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        
+
 
 
                                                     </div>
@@ -396,95 +529,97 @@
                                                             <table class="yks_table_group ">
 
                                                                 <tbody>
-    
+
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end; ">
-    
+
                                                                             <label
                                                                                 style=" min-width: 150px; font-weight: 600; font-size: 13px;">Opsiyon
                                                                                 Tarihi
                                                                                 :
-    
+
                                                                             </label>
                                                                         </td>
-    
-                                                                        <td style="width: 100%;" class="table_row_group">
-    
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+
                                                                             <label
                                                                                 style=" min-width: 150px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
-    
-                                                                                {{dateTimeOpsiyon | date: 'dd / MM / yyyy '
-                                                                                }}
-    
+
+                                                                                {{dateTimeOpsiyon | date: 'dd.MM.yyyy'}}
+
                                                                             </label>
-    
+
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end;">
-    
+
                                                                             <label
                                                                                 style=" min-width: 50px; font-weight: 600; font-size: 13px;">KDV
                                                                                 :
-    
+
                                                                             </label>
                                                                         </td>
-    
-                                                                        <td style="width: 100%;" class="table_row_group">
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
                                                                             <div style="display: grid; grid-template-columns: 100px auto; font-weight: 600; 
                                                                                 font-size: 13px; color: #666666; ">
                                                                                 <div
                                                                                     style="display: flex;align-items: center;">
                                                                                     {{stateData?.kdv + ' %'}}
                                                                                 </div>
-    
+
                                                                             </div>
-    
+
                                                                         </td>
-    
-    
-    
-    
-    
+
+
+
+
+
                                                                     </tr>
                                                                     <tr class="table_row_group">
                                                                         <td class="yks_td_label"
                                                                             style="border-left: #000000; text-align: end;">
-    
+
                                                                             <label
                                                                                 style=" min-width: 50px; font-weight: 600; font-size: 13px;">ÖTV
                                                                                 :
-    
+
                                                                             </label>
                                                                         </td>
-    
-                                                                        <td style="width: 100%;" class="table_row_group">
-    
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+
                                                                             <div style="display: grid; grid-template-columns: 100px auto; font-weight: 600; 
                                                                             font-size: 13px; color: #666666;">
                                                                                 <div
                                                                                     style="display: flex;align-items: center;">
                                                                                     {{stateData?.otv + ' %'}}
                                                                                 </div>
-    
-    
+
+
                                                                             </div>
-    
+
                                                                         </td>
-    
-    
-    
-    
+
+
+
+
                                                                     </tr>
-    
-    
-    
+
+
+
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                       
+
                                                     </div>
 
 

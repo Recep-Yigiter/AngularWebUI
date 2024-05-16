@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { ColDef, GridApi, GridReadyEvent, CellClassParams } from 'ag-grid-community';
+import { ColDef, GridApi, GridReadyEvent, CellClassParams, ISelectCellEditorParams, } from 'ag-grid-community';
 import { Router, Routes } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -11,7 +11,8 @@ import { AlinanTeklifModalComponent } from 'src/app/shared/components/alinan-tek
 import { AlinanTeklifHareketModalComponent } from 'src/app/shared/components/alinan-teklif-hareket-modal/alinan-teklif-hareket-modal.component';
 import { CreateSiparisModel } from 'src/app/core/models/siparisler/create-siparis-model';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
-import { UpdateTeklifModel } from 'src/app/core/models/teklifler/update-teklif-model';
+import { OnayDurumSelectComponent } from 'src/app/shared/components/onay-durum-select/onay-durum-select.component';
+import { confirmation } from 'src/app/shared/confirmation';
 
 @Component({
   selector: 'app-alinan-teklif',
@@ -25,9 +26,9 @@ export class AlinanTeklifComponent implements OnInit {
 
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
-  // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
+
   colDefs: ColDef[] = [
-    { field: "onayDurumu", headerName: "Onay Durumu", width: 120, pinned: "left", cellClass: cellClass, },
+    { field: "onayDurumu", headerName: "Onay Durumu", width: 130, pinned: "left", cellClass: cellClass,},
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
     { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
     { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
@@ -46,9 +47,10 @@ export class AlinanTeklifComponent implements OnInit {
     { field: "genelToplam", headerName: "Toplam Tutar", pinned: "right", cellRenderer: this.CurrencyCellRendererTR },
   ];
 
-  /**
-   *
-   */
+  onDelete() {
+
+  }
+  frameworkComponents: any;
   constructor(
     private TeklifService: TeklifService,
     private modalService: NgbModal, private router: Router,
@@ -235,20 +237,8 @@ export class AlinanTeklifComponent implements OnInit {
         this.SiparisService.create(createModel, () => {
 
 
-           this.selectedTeklifHareketRowClick.durum = "Kapalı";
-          this.TeklifService.update(this.selectedTeklifHareketRowClick, async () => {
-            this.rowData = ((await this.TeklifService.GetList(() => { })).data.items).filter(c=>c.seri=='AT');
-            console.log(this.rowData);
-            this.rowData.forEach((item) => {
-              if (this.selectedTeklifHareketRowClick.durum == "Kapalı") {
-                item.onayDurumu = "Siparişe Aktarıldı"
-              } else {
-                item.onayDurumu = "Beklemede"
-              }
-
-            })
-            this.onCellValueChanged()
-          }, errorMessage => { })
+          this.selectedTeklifHareketRowClick.durum = "Kapalı";
+          this.TeklifService.update(this.selectedTeklifHareketRowClick, () => { }, errorMessage => { })
 
 
 
@@ -302,6 +292,5 @@ function stringFormatter(params) {
 }
 
 function cellClass(params: CellClassParams) {
-
   return params.value === "Siparişe Aktarıldı" ? "rag-green" : "rag-gray";
 }
