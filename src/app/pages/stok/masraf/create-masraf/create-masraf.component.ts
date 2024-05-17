@@ -60,7 +60,7 @@ export class CreateMasrafComponent implements OnInit {
 
 
     this.MasrafService.create(createModel, () => {
-      this.router.navigate(['/pages/Masraf/detail-Masraf'], { state: createModel })
+      this.router.navigate(['/pages/masraf/detail'], { state: createModel })
     }, errorMessage => { })
 
 

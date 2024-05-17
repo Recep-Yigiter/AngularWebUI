@@ -140,7 +140,7 @@ export class CreateSatisFaturaComponent {
     if (this.getAllRowData().length > 0) {
       
       this.FaturaService.create(createModel, () => {
-        this.router.navigate(['/pages/fatura/detail-satis-fatura'], { state: createModel })
+        this.router.navigate(['/fatura/satis-faturasi/update'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -178,7 +178,7 @@ export class CreateSatisFaturaComponent {
   }
 
   vazgec() {
-    this.router.navigate(['/pages/fatura/fatura'])
+    this.router.navigate(['/fatura/satis-faturasi'])
   }
 
   FaturaHareketDelete(params) {

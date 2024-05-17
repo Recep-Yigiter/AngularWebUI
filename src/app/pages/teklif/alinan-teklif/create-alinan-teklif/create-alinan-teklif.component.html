@@ -81,7 +81,7 @@
 
 
                                                                     <button (click)="vazgec()" type="button"
-                                                                        routerLink="/pages/Teklif/Teklif" class="btn "
+                                                                       class="btn "
                                                                         style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
                                                                         <i class="fa fa-times"
                                                                             style="color: #000; margin-right: 5px; font-weight: 600;"></i>
@@ -337,22 +337,23 @@
 
 
                                                                                 <input readonly formControlName="cariId"
-                                                                                [ngModel]="selectedCari?.ad"
-                                                                                style=" padding: 0px 0 0px 0.75rem; 
+                                                                                    [ngModel]="selectedCari?.ad"
+                                                                                    style=" padding: 0px 0 0px 0.75rem; 
                                                                     font-size: 13px;
                                                                     border-radius: 1px;
                                                                     background-color: rgb(210, 210, 255) !important;
                                                                     border: 1px solid rgb(145, 145, 243); padding-right: 30px;" type="text"
-                                                                                class="form-control shadow-none"
-                                                                                id="exampleFormControlInput1">
+                                                                                    class="form-control shadow-none"
+                                                                                    id="exampleFormControlInput1">
 
-                                                                            <div
-                                                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px; ">
-                                                                                <button (click)="cariSelectModal()"
-                                                                                    class="selected-ellipsis btn selected-button">
-                                                                                    <i class="fa-solid fa-ellipsis"></i>
-                                                                                </button>
-                                                                            </div>
+                                                                                <div
+                                                                                    style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px; ">
+                                                                                    <button (click)="cariSelectModal()"
+                                                                                        class="selected-ellipsis btn selected-button">
+                                                                                        <i
+                                                                                            class="fa-solid fa-ellipsis"></i>
+                                                                                    </button>
+                                                                                </div>
 
                                                                             </td>
                                                                         </tr>
@@ -437,20 +438,20 @@
                                                                 <table class="yks_table_group ">
 
                                                                     <tbody>
-    
-    
+
+
                                                                         <tr class="table_row_group">
                                                                             <td class="yks_td_label"
                                                                                 style="border-left: #000000; text-align: end;">
-    
+
                                                                                 <label
                                                                                     style=" min-width: 150px; font-weight: 600; font-size: 13px;">Opsiyon
                                                                                     Tarihi
                                                                                     :
-    
+
                                                                                 </label>
                                                                             </td>
-    
+
                                                                             <td style="width: 100%;"
                                                                                 class="table_row_group">
                                                                                 <div
@@ -465,33 +466,34 @@
                                                                                         type="date"
                                                                                         class="form-control shadow-none "
                                                                                         id="exampleFormControlInput1">
-    
-    
+
+
                                                                                 </div>
-    
+
                                                                             </td>
-    
-    
-    
-    
-    
+
+
+
+
+
                                                                         </tr>
                                                                         <tr class="table_row_group">
                                                                             <td class="yks_td_label"
                                                                                 style="border-left: #000000; text-align: end;">
-    
+
                                                                                 <label
                                                                                     style=" min-width: 50px; font-weight: 600; font-size: 13px;">KDV
                                                                                     :
-    
+
                                                                                 </label>
                                                                             </td>
-    
+
                                                                             <td style="width: 100%;"
                                                                                 class="table_row_group">
                                                                                 <div
                                                                                     style="display: grid; grid-template-columns: 100px auto;">
-                                                                                    <input formControlName="kdv" numberInput
+                                                                                    <input formControlName="kdv"
+                                                                                        numberInput
                                                                                         (change)="kdvChanced()"
                                                                                         [maxDigits]="2"
                                                                                         [(ngModel)]="defaultKDV"
@@ -499,33 +501,34 @@
                                                                                         type="text"
                                                                                         class="form-control shadow-none form-control-nullable"
                                                                                         id="exampleFormControlInput1">
-    
+
                                                                                 </div>
-    
+
                                                                             </td>
-    
-    
-    
-    
-    
+
+
+
+
+
                                                                         </tr>
                                                                         <tr class="table_row_group">
                                                                             <td class="yks_td_label"
                                                                                 style="border-left: #000000; text-align: end;">
-    
+
                                                                                 <label
                                                                                     style=" min-width: 50px; font-weight: 600; font-size: 13px;">ÖTV
                                                                                     :
-    
+
                                                                                 </label>
                                                                             </td>
-    
+
                                                                             <td style="width: 100%;"
                                                                                 class="table_row_group">
-    
+
                                                                                 <div
                                                                                     style="display: grid; grid-template-columns: 100px auto;">
-                                                                                    <input formControlName="otv" numberInput
+                                                                                    <input formControlName="otv"
+                                                                                        numberInput
                                                                                         (change)="otvChanced()"
                                                                                         [maxDigits]="2"
                                                                                         [(ngModel)]="defaultOTV"
@@ -533,22 +536,22 @@
                                                                                         type="text"
                                                                                         class="form-control shadow-none form-control-nullable"
                                                                                         id="exampleFormControlInput1">
-    
+
                                                                                 </div>
-    
+
                                                                             </td>
-    
-    
-    
-    
+
+
+
+
                                                                         </tr>
-    
-    
-    
+
+
+
                                                                     </tbody>
                                                                 </table>
- </div>
-                                                           
+                                                            </div>
+
                                                         </div>
 
 
@@ -560,8 +563,10 @@
                                                     <div>
                                                         <div
                                                             style="padding: 0.5rem 0 0 1rem;border: 1px solid rgba(0, 0, 0, 0.15); display: grid; grid-template-columns: 70px 90px 50px;  gap: 2px;">
-                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" mat-icon-button (click)="stokSelectModal()"
-                                                                style="width: 70px; " color="primary"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''"
+                                                                [disabled]="disableButtons" mat-icon-button
+                                                                (click)="stokSelectModal()" style="width: 70px; "
+                                                                color="primary"
                                                                 aria-label="Example icon button with a home icon">
 
                                                                 <mat-icon
@@ -569,15 +574,19 @@
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Ekle</label>
                                                             </button>
-                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" mat-icon-button style="width: 90px;" color="primary"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''"
+                                                                [disabled]="disableButtons" mat-icon-button
+                                                                style="width: 90px;" color="primary"
                                                                 aria-label="Example icon button with a home icon">
                                                                 <mat-icon
                                                                     style="font-size: 18px; font-weight: 600; color: rgb(145, 145, 145);">edit</mat-icon>
                                                                 <label
                                                                     style="font-weight: 600; font-size: 14px; color: #666666;">Düzenle</label>
                                                             </button>
-                                                            <button [ngClass]="disableButtons?'disabled-button':''" [disabled]="disableButtons" (click)="TeklifHareketDelete($event)"
-                                                                mat-icon-button style="width: 50px;" color="primary"
+                                                            <button [ngClass]="disableButtons?'disabled-button':''"
+                                                                [disabled]="disableButtons"
+                                                                (click)="TeklifHareketDelete($event)" mat-icon-button
+                                                                style="width: 50px;" color="primary"
                                                                 aria-label="Example icon button with a home icon">
                                                                 <mat-icon
                                                                     style="font-size: 18px; font-weight: 600;color: rgb(172, 0, 0);">delete</mat-icon>

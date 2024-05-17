@@ -40,7 +40,7 @@ export class BirimComponent  implements OnInit {
   
     const selectedRows = this.gridApi.getSelectedRows()[0];
 
-    this.router.navigate(['/pages/birim/detail-birim'],{state:selectedRows})
+    this.router.navigate(['/birim/detail'],{state:selectedRows})
   }
 
   filterSideMenu() {

@@ -22,13 +22,13 @@ Hizmet:any;
 
     if (this.stateData?.id) {
    
-      this.router.navigate(['/pages/hizmet/update-hizmet'], { state: history.state })
+      this.router.navigate(['/hizmet/update'], { state: history.state })
 
     }
     else {
     
       this.Hizmet = (await this.HizmetService.getByHourId(this.stateData.hourId, () => { })).data;
-      this.router.navigate(['/pages/hizmet/update-hizmet'], { state: this.Hizmet })
+      this.router.navigate(['/hizmet/update'], { state: this.Hizmet })
 
     }
   }

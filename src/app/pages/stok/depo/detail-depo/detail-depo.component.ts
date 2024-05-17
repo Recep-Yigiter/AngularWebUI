@@ -22,13 +22,13 @@ export class DetailDepoComponent implements OnInit {
 
     if (this.stateData?.id) {
 
-      this.router.navigate(['/pages/depo/update-depo'], { state: history.state })
+      this.router.navigate(['/depo/update'], { state: history.state })
 
     }
     else {
 
       this.Depo = (await this.DepoService.getByHourId(this.stateData.hourId, () => { })).data;
-      this.router.navigate(['/pages/depo/update-depo'], { state: this.Depo })
+      this.router.navigate(['/depo/update'], { state: this.Depo })
 
     }
   }
@@ -37,13 +37,13 @@ export class DetailDepoComponent implements OnInit {
  async faturaHareketler() {
   if (this.stateData?.id) {
 
-    this.router.navigate(['/pages/depo/detail-depo-hareketler'], { state: history.state })
+    this.router.navigate(['/depo/detail-depo-hareketler'], { state: history.state })
 
   }
   else {
 
     this.Depo = (await this.DepoService.getByHourId(this.stateData.hourId, () => { })).data;
-    this.router.navigate(['/pages/depo/detail-depo-hareketler'], { state: this.Depo })
+    this.router.navigate(['/depo/detail-depo-hareketler'], { state: this.Depo })
 
   }
 

@@ -44,7 +44,7 @@ export class DepoComponent implements OnInit {
   
     const selectedRows = this.gridApi.getSelectedRows()[0];
 
-    this.router.navigate(['/pages/depo/detail-depo'],{state:selectedRows})
+    this.router.navigate(['/depo/detail'],{state:selectedRows})
   }
 
   filterSideMenu() {

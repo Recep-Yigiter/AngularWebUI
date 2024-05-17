@@ -53,7 +53,7 @@ rowDataCount:any;
   
     const selectedRows = this.gridApi.getSelectedRows()[0];
 
-    this.router.navigate(['/pages/stok/detail-stok'],{state:selectedRows})
+    this.router.navigate(['/stok/detail'],{state:selectedRows})
   }
 
   onBtAdd() {

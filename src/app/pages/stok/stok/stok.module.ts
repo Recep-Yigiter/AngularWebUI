@@ -27,6 +27,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CurrencyInputDirective } from './core/directives/currency-input.directive';
+import { ListStokComponent } from './list-stok/list-stok.component';
 
 
 
@@ -45,6 +46,7 @@ import { CurrencyInputDirective } from './core/directives/currency-input.directi
     TitleInputTrComponent,
    
     DetailStokActionsComponent,
+         ListStokComponent,
 
   ],
   imports: [
@@ -64,20 +66,23 @@ import { CurrencyInputDirective } from './core/directives/currency-input.directi
     HttpClientModule,
     RouterModule.forChild([
       {
-        path: 'create-stok', component: CreateStokComponent
+        path: 'create', component: CreateStokComponent
       },
       {
-        path: 'update-stok', component: UpdateStokComponent
+        path: 'update', component: UpdateStokComponent
       },
       {
-        path: 'detail-stok', component: DetailStokComponent
+        path: 'detail', component: DetailStokComponent
       },
       {
         path: 'detail-stok-actions', component: DetailStokActionsComponent
       },
       {
-        path: "stok", component: StokComponent
+        path: "list", component: ListStokComponent
       },
+      // {
+      //   path: "stok", component: StokComponent
+      // },
 
 
     ])

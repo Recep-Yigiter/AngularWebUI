@@ -24,13 +24,13 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: 'create-birim', component: CreateBirimComponent
+        path: 'create', component: CreateBirimComponent
       },
       {
-        path: 'detail-birim', component: DetailBirimComponent
+        path: 'detail', component: DetailBirimComponent
       },
       {
-        path: 'update-birim', component: UpdateBirimComponent
+        path: 'update', component: UpdateBirimComponent
       },
       {
         path:"birim",component:BirimComponent

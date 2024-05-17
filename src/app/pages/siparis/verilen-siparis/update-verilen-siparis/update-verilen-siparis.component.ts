@@ -201,7 +201,7 @@ export class UpdateVerilenSiparisComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.SiparisService.update(createModel, () => {
-        this.router.navigate(['/pages/siparis/detail-verilen-siparis'], { state: createModel })
+        this.router.navigate(['/satinalma/verilen-siparis/detail'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Siparis e Satır Eklemelisiniz !')
@@ -210,36 +210,11 @@ export class UpdateVerilenSiparisComponent implements OnInit {
 
   }
 
-  kaydet_yeni() {
-    const createModel = new UpdateSiparisModel();
-    createModel.id = this.stateData.id;
-    createModel.belgeNo = this.frm.value.belgeNo ? this.frm.value.belgeNo : this.stateData.belgeNo;
-    createModel.siparisTuru = this.selectedObject?.siparisTuru ? this.selectedObject?.siparisTuru : this.stateData.siparisTuru;
-    createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
-    createModel.referans = this.frm.value.referans;
-    createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
-    createModel.kdv = this.frm.value.kdv;
-    createModel.otv = this.frm.value.otv;
-    createModel.aciklama = this.frm.value.aciklama;
-    createModel.teslimTarihi = this.frm.value.teslimTarihi;
-    createModel.hourId = this.stateData.hourId;
-    createModel.siparisHareketler = this.getAllRowData()
 
-
-
-
-    if (this.getAllRowData().length > 0) {
-      this.SiparisService.update(createModel, () => {
-        this.router.navigate(['/pages/siparis/update-verilen-siparis'])
-      }, errorMessage => { })
-    } else {
-      alert('Siparis e Satır Eklemelisiniz !')
-    }
-  }
 
   vazgec() {
     this.stateData.SiparisHareketler = this.getAllRowData()
-    this.router.navigate(['/pages/siparis/verilen-siparis'], { state: this.stateData })
+    this.router.navigate(['/satinalma/verilen-siparis'], { state: this.stateData })
   }
 
 

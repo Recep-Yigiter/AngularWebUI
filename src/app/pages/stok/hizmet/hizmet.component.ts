@@ -40,7 +40,7 @@ export class HizmetComponent {
   
     const selectedRows = this.gridApi.getSelectedRows()[0];
 
-    this.router.navigate(['/pages/hizmet/detail-hizmet'],{state:selectedRows})
+    this.router.navigate(['/hizmet/detail'],{state:selectedRows})
   }
 
   filterSideMenu() {

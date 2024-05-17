@@ -22,12 +22,12 @@ export class DetailBirimComponent implements OnInit {
 async  duzenle() {
     if (this.stateData?.id) {
 
-      this.router.navigate(['/pages/birim/update-birim'], { state: history.state })
+      this.router.navigate(['/birim/update'], { state: history.state })
 
     }
     else {
       this.Birim = (await this.BirimService.getByHourId(this.stateData.hourId, () => { })).data;
-      this.router.navigate(['/pages/birim/update-birim'], { state: this.Birim })
+      this.router.navigate(['/birim/update'], { state: this.Birim })
     }
   }
 }

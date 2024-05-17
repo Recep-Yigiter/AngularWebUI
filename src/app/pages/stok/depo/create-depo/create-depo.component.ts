@@ -57,7 +57,7 @@ export class CreateDepoComponent implements OnInit {
 
 
     this.DepoService.create(createModel, () => {
-      this.router.navigate(['/pages/depo/detail-depo'], { state: createModel })
+      this.router.navigate(['/depo/detail'], { state: createModel })
     }, errorMessage => { })
 
   }

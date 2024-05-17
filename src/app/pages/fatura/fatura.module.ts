@@ -7,6 +7,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
+import { AlisFaturaComponent } from "./alis-fatura/alis-fatura.component";
+import { SatisFaturaComponent } from "./satis-fatura/satis-fatura.component";
 
 
 
@@ -27,10 +29,15 @@ import { NgModule } from "@angular/core";
         ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         RouterModule.forChild([
 
+            { path: "fatura", component: FaturaComponent, },
             {
-                path: "fatura", component: FaturaComponent
+                path: '',
+                children: [{ path: '', loadChildren: () => import("../fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule) },]
             },
-
+            {
+                path: '', 
+                children: [{ path: '', loadChildren: () => import("../fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) },]
+            },
         ])
     ]
 })

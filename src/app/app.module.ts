@@ -36,7 +36,6 @@ import { NumberInputDirective } from './shared/directives/number-input.directive
 import { AlinanTeklifModalComponent } from './shared/components/alinan-teklif-modal/alinan-teklif-modal.component';
 import { AlinanTeklifHareketModalComponent } from './shared/components/alinan-teklif-hareket-modal/alinan-teklif-hareket-modal.component';
 import { OnayDurumSelectComponent } from './shared/components/onay-durum-select/onay-durum-select.component';
-import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +60,6 @@ import { MainPageComponent } from './main-page/main-page.component';
     AlinanTeklifModalComponent,
     AlinanTeklifHareketModalComponent,
     OnayDurumSelectComponent,
-    MainPageComponent,
 
   ],
   imports: [

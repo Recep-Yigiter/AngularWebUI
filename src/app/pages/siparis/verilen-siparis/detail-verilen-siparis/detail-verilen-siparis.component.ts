@@ -100,12 +100,12 @@ export class DetailVerilenSiparisComponent implements OnInit {
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/siparis/update-verilen-siparis'], { state: this.stateData })
+      this.router.navigate(['/satinalma/verilen-siparis/update'], { state: this.stateData })
     }
     else {
       this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { })).data
 
-      this.router.navigate(['/pages/siparis/update-verilen-siparis'], { state: this.siparis })
+      this.router.navigate(['/satinalma/verilen-siparis/update'], { state: this.siparis })
     }
   }
 

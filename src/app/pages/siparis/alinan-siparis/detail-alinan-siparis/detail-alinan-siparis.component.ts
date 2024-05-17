@@ -101,12 +101,12 @@ export class DetailAlinanSiparisComponent implements OnInit {
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/siparis/update-alinan-siparis'], { state: this.stateData })
+      this.router.navigate(['/satis/alinan-siparis/update'], { state: this.stateData })
     }
     else {
       this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { })).data
 
-      this.router.navigate(['/pages/siparis/update-alinan-siparis'], { state: this.siparis })
+      this.router.navigate(['/satis/alinan-siparis/update'], { state: this.siparis })
     }
   }
 

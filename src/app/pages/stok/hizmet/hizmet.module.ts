@@ -25,13 +25,13 @@ import { UpdateHizmetComponent } from './update-hizmet/update-hizmet.component';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: 'create-hizmet', component: CreateHizmetComponent
+        path: 'create', component: CreateHizmetComponent
       },
       {
-        path: 'detail-hizmet', component: DetailHizmetComponent
+        path: 'detail', component: DetailHizmetComponent
       },
       {
-        path: 'update-hizmet', component: UpdateHizmetComponent
+        path: 'update', component: UpdateHizmetComponent
       },
       {
         path:"hizmet",component:HizmetComponent

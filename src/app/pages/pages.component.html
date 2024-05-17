@@ -1,1 +1,292 @@
-<router-outlet></router-outlet>
+<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
+  <ul class="title-area">
+    <li class="name">
+      <h1>YÜKSELİŞ ASANSÖR</h1>
+    </li>
+
+
+  </ul>
+
+</nav>
+
+<section class="hero-unit" style="height: calc(100vh - 1.8125rem); position: fixed; width: 100%; overflow-y: auto;">
+
+  <div class="row">
+    <div class="large-12 columns">
+      <hgroup>
+        <!-- <h1>Code. Design. Education.</h1>
+        <h4>Just keep learning. In a gentle way you can shake the world...</h4> -->
+        <h1></h1>
+        <h4></h4>
+      </hgroup>
+
+
+      <ul style="margin-top: 70px;" class="small-block-grid-2 medium-block-grid-3 flip-cards ">
+
+        <li [routerLink]="['/stok/list-stok']" ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>Stok</a>
+            <!-- <i class="fa fa-code card-icon "></i> -->
+            <!-- <i class="fa fa-warehouse card-icon"></i> -->
+            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
+              height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                <path d="M2040 4610 c-503 -242 -916 -440 -917 -440 -2 0 -3 34 -3 75 l0 75
+           -80 0 -80 0 0 -680 0 -679 85 -3 84 -3 -144 -231 c-154 -246 -170 -263 -219
+           -231 -18 12 -296 444 -296 461 0 3 38 6 85 6 l85 0 0 840 0 840 -80 0 -80 0 0
+           -760 0 -760 -150 0 c-82 0 -150 -2 -150 -5 0 -3 88 -146 195 -317 l196 -313
+           -246 -3 -245 -2 0 -1200 0 -1200 2400 0 2400 0 0 1760 0 1760 80 0 80 0 -2
+           227 -3 227 -1035 497 c-569 274 -1037 498 -1040 498 -3 0 -417 -198 -920 -439z
+           m1880 -199 l955 -458 3 -97 3 -96 -1881 0 -1881 0 3 116 3 116 910 438 c501
+           241 915 438 920 439 6 0 440 -206 965 -458z m800 -2491 l0 -1680 -80 0 -80 0
+           0 1440 0 1440 -640 0 -640 0 0 80 0 80 -720 0 -720 0 0 -960 0 -960 -160 0
+           -160 0 0 560 0 560 -245 0 c-135 0 -245 3 -245 8 0 4 88 147 194 317 l194 310
+           -149 3 -149 3 0 239 0 240 1800 0 1800 0 0 -1680z m-2400 1040 l0 -160 240 0
+           240 0 0 160 0 160 160 0 160 0 0 -400 0 -400 -560 0 -560 0 0 400 0 400 160 0
+           160 0 0 -160z m320 80 l0 -80 -80 0 -80 0 0 80 0 80 80 0 80 0 0 -80z m960
+           -240 l0 -160 240 0 240 0 0 160 0 160 160 0 160 0 0 -400 0 -400 -560 0 -560
+           0 0 400 0 400 160 0 160 0 0 -160z m320 80 l0 -80 -80 0 -80 0 0 80 0 80 80 0
+           80 0 0 -80z m-3360 -720 l0 -160 240 0 240 0 0 160 0 160 160 0 160 0 0 -480
+           0 -480 -560 0 -560 0 0 480 0 480 160 0 160 0 0 -160z m320 80 l0 -80 -80 0
+           -80 0 0 80 0 80 80 0 80 0 0 -80z m1440 -240 l0 -160 240 0 240 0 0 160 0 160
+           160 0 160 0 0 -960 0 -960 -160 0 -160 0 0 560 0 560 -400 0 -400 0 0 400 0
+           400 160 0 160 0 0 -160z m320 80 l0 -80 -80 0 -80 0 0 80 0 80 80 0 80 0 0
+           -80z m960 -240 l0 -160 240 0 240 0 0 160 0 160 160 0 160 0 0 -400 0 -400
+           -560 0 -560 0 0 400 0 400 160 0 160 0 0 -160z m320 80 l0 -80 -80 0 -80 0 0
+           80 0 80 80 0 80 0 0 -80z m-3360 -880 l0 -160 240 0 240 0 0 160 0 160 160 0
+           160 0 0 -480 0 -480 -560 0 -560 0 0 480 0 480 160 0 160 0 0 -160z m320 80
+           l0 -80 -80 0 -80 0 0 80 0 80 80 0 80 0 0 -80z m960 -80 l0 -160 240 0 240 0
+           0 160 0 160 160 0 160 0 0 -480 0 -480 -560 0 -560 0 0 480 0 480 160 0 160 0
+           0 -160z m320 80 l0 -80 -80 0 -80 0 0 80 0 80 80 0 80 0 0 -80z m1440 -240 l0
+           -160 240 0 240 0 0 160 0 160 160 0 160 0 0 -400 0 -400 -560 0 -560 0 0 400
+           0 400 160 0 160 0 0 -160z m320 80 l0 -80 -80 0 -80 0 0 80 0 80 80 0 80 0 0
+           -80z" />
+                <path d="M960 4560 l0 -80 80 0 80 0 0 80 0 80 -80 0 -80 0 0 -80z" />
+              </g>
+            </svg>
+          </div>
+          <div class="panel card-back">
+            <i class="fa fa-code card-icon"></i>
+            <div class="hub-info">
+              <a>JKLCode.com</a>
+              <p>Find coding gists, cheatsheets, plugins, themes, resources, and tutorials.</p>
+            </div>
+            <small class="clear">Updated TTH.</small>
+          </div>
+        </li>
+
+        <li [routerLink]="['/satinalma/alinan-teklif']" ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>Satın Alma</a>
+            <!-- <i class="fa fa-pencil-square-o card-icon"></i> -->
+            <!-- <img class="card-icon" src="../../assets/icons/purchase.png" style="color: white;" width="50px" height="50px" alt=""> -->
+            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" style="color: white;"
+              width="40.000000pt" height="40.000000pt" viewBox="0 0 64.000000 64.000000"
+              preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                <path d="M220 510 l0 -30 -60 0 -60 0 0 -50 c0 -37 -4 -50 -14 -50 -8 0 -17
+                         -4 -21 -10 -7 -11 24 -208 36 -233 9 -15 29 -17 212 -17 111 0 208 4 216 9 8
+                         5 21 54 32 117 18 104 18 111 2 144 -42 84 -100 111 -154 71 l-29 -22 0 51 0
+                         50 -80 0 -80 0 0 -30z m140 -60 l0 -70 -60 0 -60 0 0 70 0 70 60 0 60 0 0 -70z
+                         m-140 -30 l0 -40 -50 0 -50 0 0 40 0 40 50 0 50 0 0 -40z m286 22 c12 -9 25
+                         -27 29 -39 6 -23 5 -23 -74 -23 -91 0 -101 11 -56 55 28 29 71 32 101 7z m54
+                         -102 c0 -20 -5 -20 -237 -18 -217 3 -238 5 -241 21 -3 16 13 17 237 17 235 0
+                         241 0 241 -20z m-15 -83 c-4 -23 -10 -58 -14 -77 l-7 -35 -204 0 -204 0 -7 35
+                         c-4 19 -9 54 -13 78 l-6 42 230 0 231 0 -6 -43z" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-pencil-square-o card-icon"></i>
+            <div class="hub-info">
+              <a>AaronSnowberger.com</a>
+              <p>Take a look at my graphic design portfolio and contact me for design work.</p>
+            </div>
+            <small class="clear">Updated Saturdays.</small>
+          </div>
+        </li>
+
+        <li  [routerLink]="['/satis/verilen-teklif']" ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>Satış</a>
+            <!-- <i class="fa fa-paper-plane-o card-icon"></i> -->
+            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
+              height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                <path d="M3840 4640 l0 -160 207 0 208 0 -847 -847 -848 -848 -320 320 -320
+320 -775 -775 -775 -775 112 -112 113 -113 662 662 663 663 320 -320 320 -320
+960 960 960 960 0 -208 0 -207 160 0 160 0 0 480 0 480 -480 0 -480 0 0 -160z" />
+                <path d="M3647 2912 l-127 -127 0 -1233 0 -1232 640 0 640 0 0 1233 0 1232
+-128 128 -127 127 -385 0 -385 0 -128 -128z" />
+                <path d="M2047 1952 l-127 -127 0 -753 0 -752 640 0 640 0 0 753 0 752 -128
+128 -127 127 -385 0 -385 0 -128 -128z" />
+                <path d="M447 1312 l-127 -127 0 -433 0 -432 640 0 640 0 0 433 0 432 -128
+128 -127 127 -385 0 -385 0 -128 -128z" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-paper-plane-o card-icon"></i>
+            <div class="hub-info">
+              <a>Udemy.com</a>
+              <p>Join classes about Computers, Technology, Coding, Design, and Language Learning.</p>
+            </div>
+            <small class="clear">Updated Mondays.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>Üretim</a>
+            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
+              height="40.000000pt" viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,72.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                <path d="M70 360 l0 -290 290 0 290 0 0 211 0 211 -28 -17 c-15 -10 -43 -29
+           -62 -42 l-35 -23 -3 40 c-2 22 -5 40 -8 40 -3 0 -32 -18 -64 -40 -32 -22 -61
+           -40 -64 -40 -3 0 -6 18 -8 40 l-3 40 -60 -40 -60 -40 -3 120 -3 120 -89 0 -90
+           0 0 -290z m162 140 l3 -130 60 40 60 40 3 -40 c2 -22 5 -40 8 -40 3 0 32 18
+           64 40 32 22 61 40 64 40 3 0 6 -18 8 -40 l3 -40 35 23 c19 13 47 32 63 42 l27
+           17 0 -181 0 -181 -45 0 -45 0 0 100 0 100 -180 0 -180 0 0 -100 0 -100 -45 0
+           -45 0 0 270 0 270 70 0 69 0 3 -130z m286 -252 c-3 -23 -5 -23 -158 -23 -153
+           0 -155 0 -158 23 l-3 22 161 0 161 0 -3 -22z m2 -68 c0 -19 -7 -20 -160 -20
+           -153 0 -160 1 -160 20 0 19 7 20 160 20 153 0 160 -1 160 -20z m-2 -67 l3 -23
+           -160 0 c-149 0 -161 1 -161 18 0 10 3 22 7 26 4 3 75 5 157 4 148 -3 151 -3
+           154 -25z" />
+                <path d="M140 560 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
+           0 -20 -7 -20 -20z" />
+                <path d="M140 470 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
+           0 -20 -7 -20 -20z" />
+                <path d="M140 380 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
+           0 -20 -7 -20 -20z" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-map-o card-icon"></i>
+            <div class="hub-info">
+              <a>KeysToAGoodLife.com</a>
+              <p>Find resources about business, family, exercise, and other various topics.</p>
+            </div>
+            <small class="clear">Updated monthly.</small>
+          </div>
+        </li>
+
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>Finans</a>
+            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
+              height="40.000000pt" viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
+
+              <g transform="translate(0.000000,72.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+                <path d="M50 360 l0 -270 310 0 c303 0 310 0 310 20 0 13 -7 20 -20 20 -19 0
+           -20 7 -20 115 l0 115 -70 0 -70 0 0 65 0 65 -65 0 c-63 0 -65 1 -65 25 0 25
+           -1 25 -90 25 l-90 0 0 -90 0 -90 -45 0 -45 0 0 135 c0 128 -1 135 -20 135 -20
+           0 -20 -7 -20 -270z m265 -45 l0 -180 -45 0 -45 0 -3 170 c-1 93 0 175 3 183 3
+           9 19 12 47 10 l43 -3 0 -180z m135 -25 l0 -160 -45 0 -45 0 0 160 0 160 45 0
+           45 0 0 -160z m-270 -65 l0 -95 -45 0 -45 0 0 95 0 95 45 0 45 0 0 -95z m405 0
+           l0 -90 -45 0 -45 0 -3 79 c-4 104 -2 108 50 104 l43 -3 0 -90z" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-language card-icon"></i>
+            <div class="hub-info">
+              <a>KeyToKorean.com</a>
+              <p>Take your Korean from "foreign" to fluent with vocab lists and grammar guides.</p>
+            </div>
+            <small class="clear">Updated MWF.</small>
+          </div>
+        </li>
+
+        <li [routerLink]="['/fatura']" ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+             <a>Fatura</a>
+            <i class="fa fa-users card-icon"></i> 
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-users card-icon"></i>
+            <div class="hub-info">
+              <a>AICFChurch.org</a>
+              <p>Listen to sermon podcasts or download church graphic design resources.</p>
+            </div>
+            <small class="clear">Updated the 4th Sunday.</small>
+          </div>
+        </li>
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <!-- <a>Church</a>
+            <i class="fa fa-users card-icon"></i> -->
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-users card-icon"></i>
+            <div class="hub-info">
+              <a>AICFChurch.org</a>
+              <p>Listen to sermon podcasts or download church graphic design resources.</p>
+            </div>
+            <small class="clear">Updated the 4th Sunday.</small>
+          </div>
+        </li>
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <!-- <a>Church</a>
+            <i class="fa fa-users card-icon"></i> -->
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-users card-icon"></i>
+            <div class="hub-info">
+              <a>AICFChurch.org</a>
+              <p>Listen to sermon podcasts or download church graphic design resources.</p>
+            </div>
+            <small class="clear">Updated the 4th Sunday.</small>
+          </div>
+        </li>
+        <li ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <!-- <a>Church</a>
+            <i class="fa fa-users card-icon"></i> -->
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-users card-icon"></i>
+            <div class="hub-info">
+              <a>AICFChurch.org</a>
+              <p>Listen to sermon podcasts or download church graphic design resources.</p>
+            </div>
+            <small class="clear">Updated the 4th Sunday.</small>
+          </div>
+        </li>
+
+
+
+
+      </ul>
+    </div>
+
+    <div class="large-12 columns">
+      <div class="small-12 small-centered medium-6 medium-centered large-3 large-centered columns clients">
+        <a>
+          <h6 class="text-center">Clients Click Here</h6>
+          <p class="text-center">
+            <span class="fa-stack">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-angle-right fa-inverse fa-stack-1x"></i>
+            </span>
+          </p>
+        </a>
+      </div>
+      <!-- end .clients -->
+    </div>
+
+  </div>
+</section>

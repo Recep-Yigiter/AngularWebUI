@@ -208,7 +208,7 @@ export class UpdateAlinanTeklifComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.TeklifService.update(createModel, () => {
-        this.router.navigate(['/pages/teklif/detail-alinan-teklif'], { state: createModel })
+        this.router.navigate(['/satinalma/alinan-teklif/detail'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Teklif e Satır Eklemelisiniz !')
@@ -217,37 +217,11 @@ export class UpdateAlinanTeklifComponent implements OnInit {
 
   }
 
-  kaydet_yeni() {
-    const createModel = new UpdateTeklifModel();
-    createModel.id = this.stateData.id;
-    createModel.belgeNo = this.frm.value.belgeNo ? this.frm.value.belgeNo : this.stateData.belgeNo;
-    createModel.teklifTuru = this.selectedObject?.teklifTuru ? this.selectedObject?.teklifTuru : this.stateData.teklifTuru;
-    createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
-    createModel.referans = this.frm.value.referans;
-    createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
-    createModel.durum =  this.stateData.durum;
-    createModel.kdv = this.frm.value.kdv;
-    createModel.otv = this.frm.value.otv;
-    createModel.aciklama = this.frm.value.aciklama;
-    createModel.hourId = this.stateData.hourId;
-    createModel.opsiyonTarihi = this.stateData.opsiyonTarihi;
-    createModel.teklifHareketler = this.getAllRowData()
-
-
-
-
-    if (this.getAllRowData().length > 0) {
-      this.TeklifService.update(createModel, () => {
-        this.router.navigate(['/pages/teklif/create-verilen-teklif'])
-      }, errorMessage => { })
-    } else {
-      alert('Teklif e Satır Eklemelisiniz !')
-    }
-  }
-
+ 
   vazgec() {
     this.stateData.TeklifHareketler = this.getAllRowData()
-    this.router.navigate(['/pages/teklif/alinan-teklif'], { state: this.stateData })
+    this.router.navigate(['/satinalma/alinan-teklif'], { state: this.stateData })
+
   }
 
 

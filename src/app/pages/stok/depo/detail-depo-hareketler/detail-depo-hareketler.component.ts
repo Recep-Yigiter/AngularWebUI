@@ -80,13 +80,13 @@ export class DetailDepoHareketlerComponent implements OnInit {
   async islemler() {
     if (this.stateData?.id) {
 
-      this.router.navigate(['/pages/depo/detail-depo-hareketler'], { state: history.state })
+      this.router.navigate(['/depo/detail-depo-hareketler'], { state: history.state })
 
     }
     else {
 
       this.Depo = (await this.DepoService.getByHourId(this.stateData.hourId, () => { })).data;
-      this.router.navigate(['/pages/depo/detail-depo-hareketler'], { state: this.Depo })
+      this.router.navigate(['/depo/detail-depo-hareketler'], { state: this.Depo })
 
     }
 

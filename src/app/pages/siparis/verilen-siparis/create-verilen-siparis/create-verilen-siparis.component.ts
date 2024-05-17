@@ -131,7 +131,7 @@ export class CreateVerilenSiparisComponent {
 
     if (this.getAllRowData().length > 0) {
       this.SiparisService.create(createModel, () => {
-        this.router.navigate(['/pages/siparis/detail-verilen-siparis'], { state: createModel })
+        this.router.navigate(['/siparis/verilen-siparis/detail'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -140,32 +140,10 @@ export class CreateVerilenSiparisComponent {
 
   }
 
-  kaydet_yeni() {
-    const createModel = new CreateSiparisModel();
-    createModel.belgeNo = this.frm.value.belgeNo;
-    createModel.siparisTuru = 2;
-    createModel.seri = "VS";
-    createModel.referans = this.frm.value.referans;
-    createModel.cariId = this.selectedCari.id;
-    createModel.kdv = String(this.frm.value.kdv);
-    createModel.otv = String(this.frm.value.otv);
-    createModel.aciklama = this.frm.value.aciklama;
-    createModel.teslimTarihi = this.frm.value.teslimTarihi;
-    createModel.hourId = String(new Date().valueOf());
-    createModel.siparisHareketler = this.getAllRowData()
 
-
-    if (this.getAllRowData().length > 0) {
-      this.SiparisService.create(createModel, () => {
-        window.location.reload();
-      }, errorMessage => { })
-    } else {
-      alert('Siparisya Satır Eklemelisiniz !')
-    }
-  }
 
   vazgec() {
-    this.router.navigate(['/pages/siparis/verilen-siparis'])
+    this.router.navigate(['/siparis/verilen-siparis/detail'])
   }
 
   SiparisHareketDelete(params) {

@@ -70,7 +70,7 @@ export class UpdateStokComponent {
 
 
     this.StokService.update(createModel, () => {
-      this.router.navigate(['/pages/stok/detail-stok'], { state: createModel })
+      this.router.navigate(['/stok/detail'], { state: createModel })
     })
   }
 
@@ -90,7 +90,7 @@ export class UpdateStokComponent {
 
 
   vazgec() {
-    this.router.navigate(['/pages/stok/detail-stok'], { state: history.state })
+    this.router.navigate(['/stok/detail'], { state: history.state })
   }
   selectedObject:any;
   changed(event) {

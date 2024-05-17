@@ -81,7 +81,7 @@ export class CreateStokComponent implements OnInit {
     createModel.hourId = String(new Date().valueOf());
 
     this.StokService.create(createModel, () => {
-      this.router.navigate(['/pages/stok/detail-stok'], { state: createModel })
+      this.router.navigate(['/stok/detail'], { state: createModel })
     }, errorMessage => { })
 
 

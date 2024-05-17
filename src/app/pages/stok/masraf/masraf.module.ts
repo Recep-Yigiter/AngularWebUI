@@ -23,13 +23,13 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: 'create-masraf', component: CreateMasrafComponent
+        path: 'create', component: CreateMasrafComponent
       },
       {
-        path: 'detail-masraf', component: DetailMasrafComponent
+        path: 'detail', component: DetailMasrafComponent
       },
       {
-        path: 'update-masraf', component: UpdateMasrafComponent
+        path: 'update', component: UpdateMasrafComponent
       },
       {
         path:"masraf",component:MasrafComponent

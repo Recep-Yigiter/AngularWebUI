@@ -20,16 +20,16 @@ import { DetailDepoHareketlerComponent } from './detail-depo-hareketler/detail-d
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: 'create-depo', component: CreateDepoComponent
+        path: 'create', component: CreateDepoComponent
       },
       {
-        path: 'detail-depo', component: DetailDepoComponent
+        path: 'detail', component: DetailDepoComponent
       },
       {
         path: 'detail-depo-hareketler', component: DetailDepoHareketlerComponent
       },
       {
-        path: 'update-depo', component: UpdateDepoComponent
+        path: 'update', component: UpdateDepoComponent
       },
       {
         path:"depo",component:DepoComponent

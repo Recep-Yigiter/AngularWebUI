@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 
 import {MatBadgeModule} from '@angular/material/badge';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { ListVerilenSiparisComponent } from './list-verilen-siparis/list-verilen-siparis.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     CreateVerilenSiparisComponent,
     UpdateVerilenSiparisComponent,
     DetailVerilenSiparisComponent,
+    ListVerilenSiparisComponent,
 
   ],
   imports: [
@@ -36,17 +38,17 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "create-verilen-siparis", component: CreateVerilenSiparisComponent
+        path: "verilen-siparis", component: ListVerilenSiparisComponent,
+       
       },
       {
-        path: "update-verilen-siparis", component: UpdateVerilenSiparisComponent
-      },
-      {
-        path: "detail-verilen-siparis", component: DetailVerilenSiparisComponent
-      },
-      {
-        path: "verilen-siparis", component: VerilenSiparisComponent
-      },
+        path: "verilen-siparis", component: VerilenSiparisComponent,
+        children: [
+          { path: "create", component: CreateVerilenSiparisComponent },
+          { path: "update", component: UpdateVerilenSiparisComponent },
+          { path: "detail", component: DetailVerilenSiparisComponent },
+        ]
+      }
 
     ])
   ]

@@ -104,17 +104,19 @@ export class DetailAlinanTeklifComponent implements OnInit {
     }
   }
   vazgec() {
-    this.router.navigate(['/pages/teklif/alinan-teklif'], { state: this.stateData })
+
+    this.router.navigate(['/satinalma/alinan-teklif'], { state: this.stateData })
+
   }
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/teklif/update-alinan-teklif'], { state: this.stateData })
+      this.router.navigate(['/satinalma/alinan-teklif/update'], { state: this.stateData })
     }
     else {
       this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).data
 
-      this.router.navigate(['/pages/teklif/update-alinan-teklif'], { state: this.teklif })
+      this.router.navigate(['/satinalma/alinan-teklif/update'], { state: this.teklif })
     }
   }
 

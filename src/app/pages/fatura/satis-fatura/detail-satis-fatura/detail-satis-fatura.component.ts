@@ -108,12 +108,12 @@ export class DetailSatisFaturaComponent implements OnInit {
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/fatura/update-alis-fatura'], { state: this.stateData })
+      this.router.navigate(['/fatura/satis-faturasi/update'], { state: this.stateData })
     }
     else {
       this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { })).data
 
-      this.router.navigate(['/pages/fatura/update-alis-fatura'], { state: this.fatura })
+      this.router.navigate(['/fatura/satis-faturasi/update'], { state: this.fatura })
     }
   }
 

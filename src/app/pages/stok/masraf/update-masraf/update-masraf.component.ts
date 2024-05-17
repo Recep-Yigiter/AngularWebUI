@@ -52,11 +52,11 @@ export class UpdateMasrafComponent implements OnInit {
     createModel.hourId = this.stateData.hourId;
 
     this.MasrafService.update(createModel, () => {
-      this.router.navigate(['/pages/masraf/detail-masraf'], { state: createModel })
+      this.router.navigate(['/masraf/detail'], { state: createModel })
     }, errorMessage => { })
   }
   vazgec(){
-    this.router.navigate(['/pages/masraf/detail-masraf'],{state:history.state})
+    this.router.navigate(['/masraf/detail'],{state:history.state})
   }
 
   selectedObject:any;

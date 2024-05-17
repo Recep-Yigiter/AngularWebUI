@@ -131,7 +131,7 @@ export class CreateAlinanSiparisComponent {
 
     if (this.getAllRowData().length > 0) {
       this.SiparisService.create(createModel, () => {
-        this.router.navigate(['/pages/siparis/detail-alinan-siparis'], { state: createModel })
+        this.router.navigate(['/satis/alinan-siparis/detail'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -165,7 +165,7 @@ export class CreateAlinanSiparisComponent {
   }
 
   vazgec() {
-    this.router.navigate(['/pages/siparis/alinan-siparis'])
+    this.router.navigate(['/satis/alinan-siparis/detail'])
   }
 
   SiparisHareketDelete(params) {

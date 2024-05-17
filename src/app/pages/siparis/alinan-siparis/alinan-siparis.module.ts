@@ -17,6 +17,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { CurrencyInputDirective } from 'src/app/shared/directives/currency-input.directive';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { ListAlinanSiparisComponent } from './list-alinan-siparis/list-alinan-siparis.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     CreateAlinanSiparisComponent,
     UpdateAlinanSiparisComponent,
     DetailAlinanSiparisComponent,
+    ListAlinanSiparisComponent,
 
   ],
   imports: [
@@ -39,17 +41,17 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "create-alinan-siparis", component: CreateAlinanSiparisComponent
+        path: "alinan-siparis", component: ListAlinanSiparisComponent,
+       
       },
       {
-        path: "update-alinan-siparis", component: UpdateAlinanSiparisComponent
-      },
-      {
-        path: "detail-alinan-siparis", component: DetailAlinanSiparisComponent
-      },
-      {
-        path: "alinan-siparis", component: AlinanSiparisComponent
-      },
+        path: "alinan-siparis", component: AlinanSiparisComponent,
+        children: [
+          { path: "create", component: CreateAlinanSiparisComponent },
+          { path: "update", component: UpdateAlinanSiparisComponent },
+          { path: "detail", component: DetailAlinanSiparisComponent },
+        ]
+      }
 
     ])
   ],

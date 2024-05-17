@@ -18,6 +18,7 @@ import { CariSelectModalComponent } from './components/cari-select-modal/cari-se
 
 import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
 import { NumberInputDirective } from './core/directives/number-input.directive';
+import { ListAlisFaturaComponent } from './list-alis-fatura/list-alis-fatura.component';
 
 
 
@@ -33,7 +34,8 @@ import { NumberInputDirective } from './core/directives/number-input.directive';
     DepoSelectModalComponent,
     CariSelectModalComponent,
     DeleteButtonComponent,
-    NumberInputDirective
+    NumberInputDirective,
+    ListAlisFaturaComponent
   ],
   imports: [
     CommonModule,
@@ -45,17 +47,17 @@ import { NumberInputDirective } from './core/directives/number-input.directive';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "create-alis-fatura", component: CreateAlisFaturaComponent
+        path: "alis-faturasi", component: ListAlisFaturaComponent,
+       
       },
       {
-        path: "update-alis-fatura", component: UpdateAlisFaturaComponent
-      },
-      {
-        path: "detail-alis-fatura", component: DetailAlisFaturaComponent
-      },
-      {
-        path: "alis-fatura", component: AlisFaturaComponent
-      },
+        path: "alis-faturasi", component: AlisFaturaComponent,
+        children: [
+          { path: "create", component: CreateAlisFaturaComponent },
+          { path: "update", component: UpdateAlisFaturaComponent },
+          { path: "detail", component: DetailAlisFaturaComponent },
+        ]
+      }
 
     ])
   ]

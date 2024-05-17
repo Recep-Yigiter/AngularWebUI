@@ -3,7 +3,7 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { Router, Routes } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
-import { FaturaService } from './core/services/fatura.service';
+import { FaturaService } from '../../core/services/repository/fatura.service';
 import { DatePipe } from '@angular/common';
 
 @Component({

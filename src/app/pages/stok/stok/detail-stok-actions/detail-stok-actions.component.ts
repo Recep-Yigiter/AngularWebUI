@@ -172,9 +172,9 @@ export class DetailStokActionsComponent implements OnInit {
 
   titleRouter(){
     if (this.stateData?.id) {
-      this.router.navigate(['/pages/stok/detail-stok'], { state: this.stateData })
+      this.router.navigate(['/stok/detail'], { state: this.stateData })
     } else {
-      this.router.navigate(['/pages/stok/detail-stok'], { state: this.Stok })
+      this.router.navigate(['/stok/detail'], { state: this.Stok })
     }
   }
 

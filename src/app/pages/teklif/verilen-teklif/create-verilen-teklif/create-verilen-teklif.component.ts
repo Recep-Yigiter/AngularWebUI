@@ -127,7 +127,7 @@ export class CreateVerilenTeklifComponent {
 
     if (this.getAllRowData().length > 0) {
       this.TeklifService.create(createModel, () => {
-        this.router.navigate(['/pages/teklif/detail-verilen-teklif'], { state: createModel })
+        this.router.navigate(['/satis/verilen-teklif/detail'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -163,7 +163,7 @@ export class CreateVerilenTeklifComponent {
   }
 
   vazgec() {
-    this.router.navigate(['/pages/teklif/verilen-teklif'])
+    this.router.navigate(['/satis/verilen-teklif'])
   }
 
   TeklifHareketDelete(params) {

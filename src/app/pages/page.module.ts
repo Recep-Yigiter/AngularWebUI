@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyInputDirective } from '../shared/directives/currency-input.directive';
 import { NumberInputDirective } from '../shared/directives/number-input.directive';
+import { StokComponent } from './stok/stok/stok.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +30,18 @@ import { NumberInputDirective } from '../shared/directives/number-input.directiv
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild(
      [
-       {path: 'pages', component: PagesComponent, children:[
+       {path: '', children:[
          { path: 'stok', loadChildren: () => import("../pages/stok/stok/stok.module").then(m => m.StokModule) },
          { path: 'depo', loadChildren: () => import("../pages/stok/depo/depo.module").then(m => m.DepoModule) },
          { path: 'hizmet', loadChildren: () => import("../pages/stok/hizmet/hizmet.module").then(m => m.HizmetModule) },
          { path: 'masraf', loadChildren: () => import("../pages/stok/masraf/masraf.module").then(m => m.MasrafModule) },
          { path: 'birim', loadChildren: () => import("../pages/stok/birim/birim.module").then(m => m.BirimModule) },
          { path: 'mal-alis', loadChildren: () => import("../pages/stok/giriş/mal-alis/mal-alis.module").then(m => m.MalAlisModule) },
+
          { path: 'fatura', loadChildren: () => import("../pages/fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule) },
          { path: 'fatura', loadChildren: () => import("../pages/fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) },
+
+         
          { path: 'fatura', loadChildren: () => import("../pages/fatura/fatura.module").then(m => m.FaturaModule) },
          { path: 'urun-recete', loadChildren: () => import("../pages/uretim/urun-recete/urun-recete.module").then(m => m.UrunReceteModule) },
          { path: 'urun-agaci', loadChildren: () => import("../pages/uretim/urun-agaci/urun-agaci.module").then(m => m.UrunAgaciModule) },
@@ -55,17 +59,10 @@ import { NumberInputDirective } from '../shared/directives/number-input.directiv
          { path: 'siparis', loadChildren: () => import("../pages/siparis/verilen-siparis/verilen-siparis.module").then(m => m.VerilenSiparisModule) },
 
 
-
-
-
-
-
-
-
-
         ]},
-    
-     ])
+
+    ] ),
+  
   ],
 
 

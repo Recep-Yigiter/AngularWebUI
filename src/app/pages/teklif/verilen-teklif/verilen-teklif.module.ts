@@ -12,6 +12,8 @@ import { CreateVerilenTeklifComponent } from './create-verilen-teklif/create-ver
 import { UpdateVerilenTeklifComponent } from './update-verilen-teklif/update-verilen-teklif.component';
 import { DetailVerilenTeklifComponent } from './detail-verilen-teklif/detail-verilen-teklif.component';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { ListVerilenTeklifComponent } from './list-verilen-teklif/list-verilen-teklif.component';
+import { TeklifComponent } from '../teklif.component';
 
 
 @NgModule({
@@ -20,6 +22,7 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     CreateVerilenTeklifComponent,
     UpdateVerilenTeklifComponent,
     DetailVerilenTeklifComponent,
+    ListVerilenTeklifComponent,
    
   ],
   imports: [
@@ -33,17 +36,17 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "create-verilen-teklif", component: CreateVerilenTeklifComponent
+        path: "verilen-teklif", component: ListVerilenTeklifComponent,
+       
       },
       {
-        path: "update-verilen-teklif", component: UpdateVerilenTeklifComponent
-      },
-      {
-        path: "detail-verilen-teklif", component: DetailVerilenTeklifComponent
-      },
-      {
-        path: "verilen-teklif", component: VerilenTeklifComponent
-      },
+        path: "verilen-teklif", component: VerilenTeklifComponent,
+        children: [
+          { path: "create", component: CreateVerilenTeklifComponent },
+          { path: "update", component: UpdateVerilenTeklifComponent },
+          { path: "detail", component: DetailVerilenTeklifComponent },
+        ]
+      }
 
     ])
   ],

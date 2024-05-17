@@ -211,7 +211,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.FaturaService.update(createModel, () => {
-        this.router.navigate(['/pages/fatura/detail-alis-fatura'], { state: createModel })
+        this.router.navigate(['/fatura/satis-faturasi/detail'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Faturaya Satır Eklemelisiniz !')
@@ -220,40 +220,10 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
   }
 
-  kaydet_yeni() {
-    const createModel = new UpdateFaturaModel();
-    createModel.id = this.stateData.id;
-    createModel.belgeNo = this.frm.value.belgeNo ? this.frm.value.belgeNo : this.stateData.belgeNo;
-    createModel.faturaTuru = this.selectedObject?.faturaTuru ? this.selectedObject?.faturaTuru : this.stateData.faturaTuru;
-    createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
-    createModel.referans = this.frm.value.referans;
-    createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
-    createModel.depoId = this.selectedDepo?.id ? this.selectedDepo?.id : this.stateData.depoId;
-    createModel.kdv = this.frm.value.kdv;
-    createModel.otv = this.frm.value.otv;
-    createModel.eFatura = this.frm.value.eFatura ? 'e-Fatura olacak' : null;
-    createModel.eArsiv = this.frm.value.eArsiv ? 'e-Arşiv olacak' : null;
-    createModel.aciklama = this.frm.value.aciklama;
-    createModel.hourId = this.stateData.hourId;
-    createModel.faturaHareketler = this.getAllRowData()
-    createModel.faturaHareketler.forEach((element) => {
-      element.depoId = this.selectedDepo?.id ? this.selectedDepo?.id : this.stateData.depoId
-    })
-
-
-
-    if (this.getAllRowData().length > 0) {
-      this.FaturaService.update(createModel, () => {
-        this.router.navigate(['/pages/fatura/create-alis-fatura'])
-      }, errorMessage => { })
-    } else {
-      alert('Faturaya Satır Eklemelisiniz !')
-    }
-  }
 
   vazgec() {
     this.stateData.faturaHareketler = this.getAllRowData()
-    this.router.navigate(['/pages/stok/stok-hareket-detail'], { state: this.stateData })
+    this.router.navigate(['/fatura/satis-faturasi'], { state: this.stateData })
   }
 
 

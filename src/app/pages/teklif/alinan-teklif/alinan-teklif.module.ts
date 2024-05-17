@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { ListAlinanTeklifComponent } from './list-alinan-teklif/list-alinan-teklif.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     CreateAlinanTeklifComponent,
     UpdateAlinanTeklifComponent,
     DetailAlinanTeklifComponent,
+    ListAlinanTeklifComponent,
   
   ],
   imports: [
@@ -33,18 +35,16 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
     MatCheckboxModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
+      
+      { path: "alinan-teklif", component: ListAlinanTeklifComponent,},
       {
-        path: "create-alinan-teklif", component: CreateAlinanTeklifComponent
-      },
-      {
-        path: "update-alinan-teklif", component: UpdateAlinanTeklifComponent
-      },
-      {
-        path: "detail-alinan-teklif", component: DetailAlinanTeklifComponent
-      },
-      {
-        path: "alinan-teklif", component: AlinanTeklifComponent
-      },
+        path: "alinan-teklif", component: AlinanTeklifComponent,
+        children: [
+          { path: "create", component: CreateAlinanTeklifComponent },
+          { path: "update", component: UpdateAlinanTeklifComponent },
+          { path: "detail", component: DetailAlinanTeklifComponent },
+        ]
+      }
 
     ])
   ],

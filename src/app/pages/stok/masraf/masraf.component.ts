@@ -40,7 +40,7 @@ export class MasrafComponent {
   
     const selectedRows = this.gridApi.getSelectedRows()[0];
 
-    this.router.navigate(['/pages/masraf/detail-masraf'],{state:selectedRows})
+    this.router.navigate(['/masraf/detail'],{state:selectedRows})
   }
 
   filterSideMenu() {

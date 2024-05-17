@@ -29,12 +29,12 @@ export class DetailStokComponent implements OnInit {
   async duzenle() {
     if (this.stateData?.id) {
 
-      this.router.navigate(['/pages/stok/update-stok'], { state: this.stateData })
+      this.router.navigate(['/stok/update'], { state: this.stateData })
     }
     else {
 
       this.Stok = (await this.StokService.getByHourId(this.stateData.hourId, () => { })).data;
-      this.router.navigate(['/pages/stok/update-stok'], { state: this.Stok })
+      this.router.navigate(['/stok/update'], { state: this.Stok })
     }
   }
 
@@ -48,14 +48,14 @@ export class DetailStokComponent implements OnInit {
 
     if (this.stateData?.id) {
 
-      this.router.navigate(['/pages/stok/detail-stok-actions'], { state: history.state })
+      this.router.navigate(['/stok/detail-stok-actions'], { state: history.state })
 
 
     }
     else {
 
        this.Stok = (await this.StokService.getByHourId(this.stateData.hourId, () => { })).data;
-      this.router.navigate(['/pages/stok/detail-stok-actions'], { state: this.Stok })
+      this.router.navigate(['/stok/detail-stok-actions'], { state: this.Stok })
 
     }
 

@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { NumberInputDirective } from './core/directives/number-input.directive';
+import { ListSatisFaturaComponent } from './list-satis-fatura/list-satis-fatura.component';
 
 
 @NgModule({
@@ -32,30 +33,35 @@ import { NumberInputDirective } from './core/directives/number-input.directive';
     DepoSelectModalComponent,
     CariSelectModalComponent,
     NumberInputDirective,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    ListSatisFaturaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AgGridAngular,
-    MatIconModule,   
+    MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "create-satis-fatura", component: CreateSatisFaturaComponent
+        path: "satis-faturasi", component: ListSatisFaturaComponent,
+    
       },
       {
-        path: "update-satis-fatura", component: UpdateSatisFaturaComponent
+        path: "satis-faturasi", component: SatisFaturaComponent,
+        children: [
+          { path: "create", component: CreateSatisFaturaComponent },
+          { path: "update", component: UpdateSatisFaturaComponent },
+          { path: "detail", component: DetailSatisFaturaComponent },
+        ]
       },
-      {
-        path: "detail-satis-fatura", component: DetailSatisFaturaComponent
-      },
-      {
-        path: "satis-fatura", component: SatisFaturaComponent
-      },
-      
+
+      //  {
+      //    path: "satis-faturasi", component: SatisFaturaComponent
+      //  },
+
     ])
   ]
 })
