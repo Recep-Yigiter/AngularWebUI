@@ -7,7 +7,7 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
 import { DeleteButtonComponent } from '../components/delete-button/delete-button.component';
-import { StokService } from 'src/app/pages/stok/stok/core/services/stok.service';
+import { StokService } from 'src/app/core/services/repository/stok.service';
 import { CreateUrunReceteModel } from '../core/models/create-urun-recete-model';
 import { UrunReceteService } from '../core/services/urun-recete.service';
 import { OperasyonSelectModalComponent } from '../components/operasyon-select-modal/operasyon-select-modal.component';
@@ -164,7 +164,7 @@ export class CreateUrunReceteComponent implements OnInit {
     return this.rowData;
   }
   async getAllStok() {
-    this.StokDataSource = (await this.StokService.GetListTreeView(() => { })).data.items;
+    this.StokDataSource = (await this.StokService.GetListTreeView(() => { })).items;
   }
 
 

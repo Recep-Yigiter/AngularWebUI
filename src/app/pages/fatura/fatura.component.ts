@@ -66,7 +66,7 @@ export class FaturaComponent implements OnInit {
   rowDataCount: any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.StokService.GetList(() => { })).data.items;
+    this.rowData = (await this.StokService.GetList(() => { })).items;
 
     this.rowData.forEach((fatura) => {
       fatura.depoId = fatura.faturaHareketler[0].depoId;
@@ -107,7 +107,7 @@ export class FaturaComponent implements OnInit {
       fatura.satirOtv = (fatura.iskontoSonrasiTutar * fatura.otv) / 100;
       fatura.genelToplam = fatura.iskontoSonrasiTutar + fatura.kdvTutar
     })
-    console.log(this.rowData);
+
 
   }
 

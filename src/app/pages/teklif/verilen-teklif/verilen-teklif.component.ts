@@ -66,7 +66,7 @@ export class VerilenTeklifComponent implements OnInit {
   rowDataCount: any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.StokService.GetList(() => { })).data.items;
+    this.rowData = (await this.StokService.GetList(() => { })).items;
     this.rowData=this.rowData.filter(c=>c.seri=="VT")
 
 
@@ -178,7 +178,7 @@ function stringFormatter(params) {
 }
 
 function cellClass(params: CellClassParams) {
-  console.log(params.value);
+
   return params.value === "Onaylandı" ? "rag-green" : "rag-gray";
 }
 

@@ -43,7 +43,7 @@ export class UretimMaliyetAnaliziComponent implements OnInit {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.UretimEmriService.GetList(() => { })).data.items;
+    this.rowData = (await this.UretimEmriService.GetList(() => { })).items;
     this.bilesenToplamBirimFiyatHesapla();
   }
   onSelectionChanged() {

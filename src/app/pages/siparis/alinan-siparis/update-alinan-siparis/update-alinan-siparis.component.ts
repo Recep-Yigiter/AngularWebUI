@@ -7,12 +7,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { CurrencyPipe, DatePipe, formatDate } from '@angular/common';
 
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { SiparisHareketService } from 'src/app/core/services/repository/siparis-hareket.service';
 import { UpdateSiparisModel } from 'src/app/core/models/siparisler/update-siparis-model';
 import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
 import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
+import { DepoService } from 'src/app/core/services/repository/depo.service';
 
 
 @Component({
@@ -139,8 +139,8 @@ export class UpdateAlinanSiparisComponent implements OnInit {
 
   async stateControl() {
 
-    this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { })).data;
-    const depoList = (await this.DepoService.GetList(() => { })).data.items;
+    this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { }));
+    const depoList = (await this.DepoService.GetList(() => { })).items;
 
     if (this.stateData.depoId != undefined) {
       this.selectedObject = depoList.find((el: any) => {
@@ -221,7 +221,7 @@ export class UpdateAlinanSiparisComponent implements OnInit {
 
   async SiparisHareketUpdate(event) {
 
-    const SiparisHareket = (await this.SiparisHareketService.getByHourId(event.data.hourId, () => { })).data;
+    const SiparisHareket = (await this.SiparisHareketService.getByHourId(event.data.hourId, () => { }));
     const editdata = {
       id: SiparisHareket.id,
       stokId: SiparisHareket.stokId,

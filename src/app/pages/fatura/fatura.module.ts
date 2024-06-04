@@ -9,6 +9,7 @@ import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { AlisFaturaComponent } from "./alis-fatura/alis-fatura.component";
 import { SatisFaturaComponent } from "./satis-fatura/satis-fatura.component";
+import { authGuard } from "src/app/Auth/guard/auth.guard";
 
 
 
@@ -29,14 +30,14 @@ import { SatisFaturaComponent } from "./satis-fatura/satis-fatura.component";
         ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         RouterModule.forChild([
 
-            { path: "fatura", component: FaturaComponent, },
+            { path: "fatura", component: FaturaComponent,canActivate:[authGuard] },
             {
                 path: '',
-                children: [{ path: '', loadChildren: () => import("../fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule) },]
+                children: [{ path: '', loadChildren: () => import("../fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule),canActivate:[authGuard] },],canActivate:[authGuard]
             },
             {
                 path: '', 
-                children: [{ path: '', loadChildren: () => import("../fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) },]
+                children: [{ path: '', loadChildren: () => import("../fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) ,canActivate:[authGuard]},],canActivate:[authGuard]
             },
         ])
     ]

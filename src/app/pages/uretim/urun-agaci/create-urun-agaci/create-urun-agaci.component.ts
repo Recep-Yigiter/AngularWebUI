@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateUrunAgaciModel } from '../core/models/create-urun-agaci-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UrunAgaciService } from '../core/services/urun-agaci.service';
-import { StokService } from 'src/app/pages/stok/stok/core/services/stok.service';
+import { StokService } from 'src/app/core/services/repository/stok.service';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
@@ -40,7 +40,7 @@ export class CreateUrunAgaciComponent implements OnInit {
   async ngOnInit() {
     this.GetListUrunAgaci();
     this.GetListStok();
-    this.GetCode = (await this.UrunAgaciService.GetCode()).data.kod;
+    this.GetCode = (await this.UrunAgaciService.GetCode()).items.kod;
   }
   colDefs: ColDef[] = [
     { field: "stokKodu", width: 150 },
@@ -122,10 +122,10 @@ export class CreateUrunAgaciComponent implements OnInit {
 
   }
   async GetListUrunAgaci() {
-    this.UrunAgaciDataSource = (await this.UrunAgaciService.GetList(() => { })).data.items;
+    this.UrunAgaciDataSource = (await this.UrunAgaciService.GetList(() => { })).items;
   }
   async GetListStok() {
-    this.StokDataSource = (await this.StokService.GetList(() => { })).data.items;
+    this.StokDataSource = (await this.StokService.GetList(() => { })).items;
   }
 
 

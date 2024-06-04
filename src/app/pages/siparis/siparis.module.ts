@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 
 
@@ -24,14 +25,14 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
 
-        { path: "siparis", component: SiparisComponent, },
+        { path: "siparis", component: SiparisComponent,canActivate:[authGuard] },
         {
             path: '', 
-            children: [{ path: '', loadChildren: () => import("../siparis/alinan-siparis/alinan-siparis.module").then(m => m.AlinanSiparisModule) },]
+            children: [{ path: '', loadChildren: () => import("../siparis/alinan-siparis/alinan-siparis.module").then(m => m.AlinanSiparisModule) ,canActivate:[authGuard]},]
         },
         {
             path: '', 
-            children: [{ path: '', loadChildren: () => import("../siparis/verilen-siparis/verilen-siparis.module").then(m => m.VerilenSiparisModule) },]
+            children: [{ path: '', loadChildren: () => import("../siparis/verilen-siparis/verilen-siparis.module").then(m => m.VerilenSiparisModule) ,canActivate:[authGuard]},]
         },
     ])
   ]

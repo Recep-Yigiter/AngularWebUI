@@ -40,7 +40,7 @@ export class UretimEmriComponent implements OnInit {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-     this.rowData = (await this.UretimEmriService.GetList(() => { })).data.items;
+     this.rowData = (await this.UretimEmriService.GetList(() => { })).items;
   }
   onSelectionChanged() {
   

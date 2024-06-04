@@ -79,7 +79,7 @@ export class DetailUretimMaliyetAnaliziComponent implements OnInit {
       this.rowData2 = this.stateData.operasyonlar;
     }
     else {
-      this.urunRecete = (await this.UretimEmriService.getByHourId(this.stateData.hourId, () => { })).data
+      this.urunRecete = (await this.UretimEmriService.getByHourId(this.stateData.hourId, () => { }))
       this.rowData = this.urunRecete.urunReceteBilesenler;
       this.rowData2 = this.urunRecete.operasyonlar;
     }

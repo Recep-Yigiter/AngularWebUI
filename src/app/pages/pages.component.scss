@@ -336,7 +336,15 @@ a:hover {
 
 
 
-  .back-color {
+
+
+
+
+
+
+
+@import "src/assets/custom/custom-list-page";
+.back-color {
     background-color: transparent !important;
 }
 .top-bar-section ul li{
@@ -352,5 +360,47 @@ h1 {
 }
 
 .top-bar .name {
-    padding: 0 16px;
+    padding: 0 16px 0 10px;
 }
+.top-bar .name:hover {
+    .home-icon {
+        color: #dbe0f3 !important;
+    }
+    cursor: pointer;
+    background-color: #717997;
+}
+
+.home-icon{
+    font-size: 45px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+      color: #aab2d3 !important;
+}
+.home-icon:hover{
+      
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

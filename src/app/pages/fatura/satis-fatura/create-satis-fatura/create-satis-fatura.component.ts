@@ -6,11 +6,12 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { CurrencyPipe, DatePipe, formatDate } from '@angular/common';
-import { CreateFaturaModel } from '../core/models/create-fatura.model';
-import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
-import { DepoSelectModalComponent } from '../components/depo-select-modal/depo-select-modal.component';
-import { CariSelectModalComponent } from '../components/cari-select-modal/cari-select-modal.component';
-import { FaturaService } from '../core/services/fatura.service';
+import { FaturaService } from 'src/app/core/services/repository/fatura.service';
+import { CreateFaturaModel } from 'src/app/core/models/faturalar/create-fatura.model';
+import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
+import { DepoSelectModalComponent } from 'src/app/shared/components/depo-select-modal/depo-select-modal.component';
+import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
+
 
 @Component({
   selector: 'app-create-satis-fatura',
@@ -136,6 +137,8 @@ export class CreateSatisFaturaComponent {
     createModel.faturaHareketler.forEach((element) => {
       element.depoId = this.selectedDepo.id
     })
+
+
 
     if (this.getAllRowData().length > 0) {
       
@@ -294,7 +297,7 @@ export class CreateSatisFaturaComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.FaturaService.GetCode()).data.kod;
+    this.belgeNoGetCode = await this.FaturaService.GetCode();
   }
   getDateAndTime() {
     this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');

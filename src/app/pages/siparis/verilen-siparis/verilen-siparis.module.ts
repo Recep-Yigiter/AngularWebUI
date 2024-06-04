@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import {MatBadgeModule} from '@angular/material/badge';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListVerilenSiparisComponent } from './list-verilen-siparis/list-verilen-siparis.component';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 
 @NgModule({
@@ -29,25 +30,25 @@ import { ListVerilenSiparisComponent } from './list-verilen-siparis/list-verilen
   imports: [
     CommonModule,
     FormsModule,
-    DirectiveModule,
     AgGridAngular,
     MatIconModule,
     MatButtonModule,
+    DirectiveModule,
     MatCheckboxModule,
     MatBadgeModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "verilen-siparis", component: ListVerilenSiparisComponent,
+        path: "verilen-siparis", component: ListVerilenSiparisComponent,canActivate:[authGuard],
        
       },
       {
         path: "verilen-siparis", component: VerilenSiparisComponent,
         children: [
-          { path: "create", component: CreateVerilenSiparisComponent },
-          { path: "update", component: UpdateVerilenSiparisComponent },
-          { path: "detail", component: DetailVerilenSiparisComponent },
-        ]
+          { path: "create", component: CreateVerilenSiparisComponent ,canActivate:[authGuard]},
+          { path: "update", component: UpdateVerilenSiparisComponent ,canActivate:[authGuard]},
+          { path: "detail", component: DetailVerilenSiparisComponent ,canActivate:[authGuard]},
+        ],canActivate:[authGuard]
       }
 
     ])

@@ -1,0 +1,37 @@
+@import "src/assets/custom/custom-list-page";
+.back-color {
+    background-color: transparent !important;
+}
+.top-bar-section ul li{
+    background-color: transparent !important;
+}
+
+h1 {
+    font-size: 24px !important;
+    background: -webkit-linear-gradient(#ffffff, hsl(0, 0%, 89%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px #333);
+}
+
+.top-bar .name {
+    padding: 0 16px 0 10px;
+}
+.top-bar .name:hover {
+    .home-icon {
+        color: #dbe0f3 !important;
+    }
+    cursor: pointer;
+    background-color: #717997;
+}
+
+.home-icon{
+    font-size: 45px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+      color: #aab2d3 !important;
+}
+.home-icon:hover{
+      
+}

@@ -1,8 +1,27 @@
-<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
-  <ul class="title-area">
+<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66); ">
+  <ul class="title-area" style="display: flex; justify-content: space-between; width: 100%;">
     <li class="name">
       <h1>YÜKSELİŞ ASANSÖR</h1>
     </li>
+    <div class="btn-group mr-4" role="group" aria-label="Button group with nested dropdown "
+    style="display: grid; grid-template-columns: max-content max-content max-content;">
+
+    <div class="btn-group mr-1" role="group">
+      <button style="border: none;
+        display: grid;
+        top: 0;
+        height: 45px;
+        color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
+       <i class="small fa fa-user" style="font-size: 34px !important; color: white;"></i> 
+      </button>
+      <ul class="dropdown-menu topbar-dropdown-menu">
+        <li  (click)="cikis()"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Çıkış</a></li>
+        
+      </ul>
+
+    </div>
+
+  </div>
 
 
   </ul>
@@ -21,9 +40,12 @@
       </hgroup>
 
 
+
+
+
       <ul style="margin-top: 70px;" class="small-block-grid-2 medium-block-grid-3 flip-cards ">
 
-        <li [routerLink]="['/stok/list-stok']" ontouchstart="this.classList.toggle('hover');">
+        <li (dblclick)="stokRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Stok</a>
             <!-- <i class="fa fa-code card-icon "></i> -->
@@ -76,7 +98,7 @@
           </div>
         </li>
 
-        <li [routerLink]="['/satinalma/alinan-teklif']" ontouchstart="this.classList.toggle('hover');">
+        <li (dblclick)="satinalmaRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Satın Alma</a>
             <!-- <i class="fa fa-pencil-square-o card-icon"></i> -->
@@ -109,7 +131,7 @@
           </div>
         </li>
 
-        <li  [routerLink]="['/satis/verilen-teklif']" ontouchstart="this.classList.toggle('hover');">
+        <li (dblclick)="satisRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Satış</a>
             <!-- <i class="fa fa-paper-plane-o card-icon"></i> -->
@@ -139,10 +161,32 @@
             <small class="clear">Updated Mondays.</small>
           </div>
         </li>
+        <li (dblclick)="faturaRouter()" ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>Fatura</a>
+            <i class="fa fa-users card-icon"></i>
+          </div>
+        </li>
 
+        <li (dblclick)="irsaliyeRouter()" ontouchstart="this.classList.toggle('hover');">
+          <div class="large button card-front">
+            <a>İrsaliye</a>
+            <i class="fa fa-users card-icon"></i>
+          </div>
+
+          <div class="panel card-back">
+            <i class="fa fa-users card-icon"></i>
+            <div class="hub-info">
+              <a>AICFChurch.org</a>
+              <p>Listen to sermon podcasts or download church graphic design resources.</p>
+            </div>
+            <small class="clear">Updated the 4th Sunday.</small>
+          </div>
+        </li>
+        
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Üretim</a>
+            <!-- <a>Üretim</a>
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
 
@@ -165,7 +209,7 @@
                 <path d="M140 380 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
            0 -20 -7 -20 -20z" />
               </g>
-            </svg>
+            </svg> -->
           </div>
 
           <div class="panel card-back">
@@ -180,7 +224,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Finans</a>
+            <!-- <a>Finans</a>
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
 
@@ -193,7 +237,7 @@
            45 0 0 -160z m-270 -65 l0 -95 -45 0 -45 0 0 95 0 95 45 0 45 0 0 -95z m405 0
            l0 -90 -45 0 -45 0 -3 79 c-4 104 -2 108 50 104 l43 -3 0 -90z" />
               </g>
-            </svg>
+            </svg> -->
           </div>
 
           <div class="panel card-back">
@@ -206,21 +250,8 @@
           </div>
         </li>
 
-        <li [routerLink]="['/fatura']" ontouchstart="this.classList.toggle('hover');">
-          <div class="large button card-front">
-             <a>Fatura</a>
-            <i class="fa fa-users card-icon"></i> 
-          </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-users card-icon"></i>
-            <div class="hub-info">
-              <a>AICFChurch.org</a>
-              <p>Listen to sermon podcasts or download church graphic design resources.</p>
-            </div>
-            <small class="clear">Updated the 4th Sunday.</small>
-          </div>
-        </li>
+
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <!-- <a>Church</a>
@@ -236,21 +267,7 @@
             <small class="clear">Updated the 4th Sunday.</small>
           </div>
         </li>
-        <li ontouchstart="this.classList.toggle('hover');">
-          <div class="large button card-front">
-            <!-- <a>Church</a>
-            <i class="fa fa-users card-icon"></i> -->
-          </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-users card-icon"></i>
-            <div class="hub-info">
-              <a>AICFChurch.org</a>
-              <p>Listen to sermon podcasts or download church graphic design resources.</p>
-            </div>
-            <small class="clear">Updated the 4th Sunday.</small>
-          </div>
-        </li>
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <!-- <a>Church</a>

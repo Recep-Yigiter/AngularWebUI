@@ -11,6 +11,7 @@ export class UpdateTeklifModel {
     opsiyonTarihi?:any;
     durum?:any;
     cariId?: any;
+    onay?: any;
   
     teklifHareketler?: UpdateTeklifHareketModel[];
 }

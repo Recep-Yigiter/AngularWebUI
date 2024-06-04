@@ -25,7 +25,7 @@ export class AlinanTeklifModalComponent implements OnInit {
 
   }
   ngOnInit(): void {
- console.log(this.selectedCari);
+
     
   }
 
@@ -75,7 +75,7 @@ export class AlinanTeklifModalComponent implements OnInit {
   }
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.TeklifService.GetList(() => { })).data.items;
+    this.rowData = (await this.TeklifService.GetList(() => { })).items;
     this.rowData = this.rowData.filter(c => c.seri == "AT" && c.cariId == this.selectedCari.cariId && c.durum == "Açık");
 
     this.rowData.forEach((teklif) => {

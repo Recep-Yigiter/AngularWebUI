@@ -37,7 +37,7 @@ export class UrunAgaciSelectModalComponent{
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.UrunAgaciService.GetList(() => { })).data.items;
+    this.rowData = (await this.UrunAgaciService.GetList(() => { })).items;
   }
   selectedRow: any;
 

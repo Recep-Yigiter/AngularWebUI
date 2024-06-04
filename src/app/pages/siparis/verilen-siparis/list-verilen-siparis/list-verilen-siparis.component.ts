@@ -61,7 +61,7 @@ export class ListVerilenSiparisComponent implements OnInit {
   rowDataCount: any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.StokService.GetList(() => { })).data.items;
+    this.rowData = (await this.StokService.GetList(() => { })).items;
     this.rowData = this.rowData.filter(c => c.seri == "VS");
     this.rowData.sort((val1, val2) => { return <any>new Date(val2.createdDate) - <any>new Date(val1.createdDate) })
 
@@ -161,9 +161,12 @@ export class ListVerilenSiparisComponent implements OnInit {
 
     const selectedRows = this.gridApi.getSelectedRows()[0];
     this.selectedSiparisHareket = selectedRows
+    // this.router.navigate(['/satinalma/verilen-siparis/detail'], { state: selectedRows })
+  }
+  rowDblClick() {
+    const selectedRows = this.gridApi.getSelectedRows()[0];
     this.router.navigate(['/satinalma/verilen-siparis/detail'], { state: selectedRows })
   }
-
   onBtAdd() {
     var selectedRows = this.gridApi.getSelectedNodes();
 

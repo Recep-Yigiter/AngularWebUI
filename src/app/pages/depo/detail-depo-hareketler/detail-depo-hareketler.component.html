@@ -1,0 +1,265 @@
+
+<nav class="breadcrumbs">
+    <a class="unavailable">Depo</a>
+    <a class="unavailable">{{stateData.ad}}</a>
+    <a class="unavailable">Depo Hareketleri</a>
+</nav>
+
+
+<div class="demo-container" style="position: relative;">
+    <div class=" yks-filemanager" style="height: 791px;">
+
+        <div class=" yks-drawer">
+            <div class="yks-drawer-wrapper">
+                <div class="yks-drawer-content deneme"
+                    style="transform: translate(0px, 0px); padding: 0px; left: 0px; ">
+
+                    <div class="yks-filemanager-notification-drawer-panel">
+
+                        <div class="yks-filemanager-wrapper">
+
+
+                            
+                            <div class="yks_control_panel">
+                                <div class="yks_cpanel_top">
+                                    <div class="yks_cpanel_top_left">
+                                        <div>
+
+
+                                            <div class=" yks-toolbar-item ">
+
+
+                                                <div class="yks-button-has-text">
+                                                    <ul class="yks-menu-items-container"
+                                                        style="    display: flex; align-items: center; justify-content: center;">
+
+                                                      
+                                                        <li (click)="islemler()" class="yks-menu-item-wrapper yks-download-btn cursor-pointer"style="margin: 0 2px;" >
+                                                            <div class="">
+                                                              <div class="yks-menu-item-content">
+                                                                <i class="fa fa-arrow-left"></i>
+                                                                <span class="d-none d-sm-inline ml-1 "
+                                                                          style="font-size: 13px;">Geri</span>
+                                                              </div>
+                                                            </div>
+                                                          </li>
+
+
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                            <div class="yks-filemanager-container">
+                                <div class="yks-drawer">
+                                    <div class="yks-drawer-wrapper">
+                                        <div id="filter_menu"
+                                            class="yks-drawer-panel-content yks-drawer-panel-content-initial"
+                                            style="margin-left: 0px; display: none; border: 1px solid #c1c1c1;">
+                                        </div>
+                                        <div class="yks-drawer-content" style="padding: 0px;">
+                                            <div class=" yks-filemanager-breadcrumbs"></div>
+
+                                            <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
+
+
+                                                
+                                                <div>
+                                                    <div class="pane" style="padding: 1em;">
+                                                        <div class="grid">
+                                                            <div class="col-12 lg:col-6 xl:col-6 pl-4">
+                                                                <table>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span
+                                                                                    style="font-weight: 600; font-size: 13px;">
+                                                                                    Depo Adı </span>
+                                                                            </td>
+
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                <span
+                                                                                    style="font-weight: 600; font-size: 18px;">
+                                                                                    <i class="fa fa-star"
+                                                                                        style="color: #f3cc00; font-size: 22px;"></i>
+                                                                                    {{stateData.ad}}
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+
+                                                    <div class="grid">
+                                                        <div class="col-12 lg:col-6 xl:col-6 pl-4">
+                                                            <table class="yks_table_group" style="margin-left: 3rem;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="yks_td_label"></td>
+                                                                        <td style="width: 100%; "></td>
+                                                                    </tr>
+
+
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000;">
+
+                                                                            <label
+                                                                                style=" min-width: 80px; font-weight: 600; font-size: 13px;">Depo
+                                                                                Kodu
+                                                                            </label>
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label
+                                                                                style=" min-width: 80px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                                                {{stateData.kod}}
+                                                                            </label>
+                                                                        </td>
+                                                                        
+                                                                    </tr>
+                                                                
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000;">
+
+
+                                                                          
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label class="font-italic"
+                                                                                style=" min-width: 80px; font-size: 13px; color: #666666;">
+                                                                                Depolanabilir ürünler envanter seviyesini yönettiğin fiziksel maddelerdir.
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000;">
+                                                                            <label
+                                                                            style=" min-width: 80px; font-weight: 600; font-size: 13px;">Giren
+                                                                        </label>
+                                                                          
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label class="font-italic"
+                                                                                style=" min-width: 80px; font-size: 13px; color: #666666;">
+                                                                               {{stateData.giren}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000;">
+                                                                            <label
+                                                                            style=" min-width: 80px; font-weight: 600; font-size: 13px;">Çıkan
+                                                                        </label>
+                                                                          
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label class="font-italic"
+                                                                                style=" min-width: 80px; font-size: 13px; color: #666666;">
+                                                                               {{stateData.cikan}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="table_row_group">
+                                                                        <td class="yks_td_label"
+                                                                            style="border-left: #000000;">
+                                                                            <label
+                                                                            style=" min-width: 80px; font-weight: 600; font-size: 13px;">Mevcut
+                                                                        </label>
+                                                                          
+                                                                        </td>
+
+                                                                        <td style="width: 100%;"
+                                                                            class="table_row_group">
+                                                                            <label class="font-italic"
+                                                                                style=" min-width: 80px; font-size: 13px; color: #666666;">
+                                                                               {{stateData.mevcut}}
+                                                                            </label>
+                                                                        </td>
+                                                                    </tr>
+                                                                   
+
+
+
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+
+
+                                                        <div class="col-12 lg:col-6 xl:col-6 pl-4 pr-4">
+
+                                                           
+                                                        </div>
+
+
+                                                        <div class="col-12 lg:col-12 xl:col-12 pl-4 pr-4">
+
+                                                            <ag-grid-angular
+                                                            style="width: 100%;min-height: 315px; height:100%;"
+                                                            class="ag-theme-quartz" [rowData]="rowData"
+                                                            [columnDefs]="colDefs"
+                                                            [rowSelection]="rowSelection"
+                                                            [rowHeight]="30" [headerHeight]="29"
+                                                            [components]="frameworkComponents">
+                                                        </ag-grid-angular>
+                                                        </div>
+                                                        
+
+
+
+                                                    </div>
+
+
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

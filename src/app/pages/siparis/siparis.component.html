@@ -153,7 +153,7 @@
           display: grid;
           top: 0;
           height: 45px;
-          color: white;" type="button" class="btn yks-btn " data-bs-toggle="dropdown" aria-expanded="false">
+          color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
           <!-- <i class="small fa fa-list" style="font-size: 18px !important; color: white;"></i> -->
   
           <svg style="width: 100%;" version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +185,7 @@
          </svg>
           Siparişler
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu topbar-dropdown-menu">
           <li [routerLink]="['/siparis/alinan-siparis']"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Alınan Siparişler</a></li>
           <li [routerLink]="['/siparis/verilen-siparis']"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Verilen Siparişler</a></li>
           
@@ -197,12 +197,12 @@
           display: grid;
           top: 0;
           height: 45px;
-          color: white;" type="button" class="btn yks-btn " data-bs-toggle="dropdown" aria-expanded="false">
+          color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
        <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
   
           Sipariş İşlemleri
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu topbar-dropdown-menu">
           <li [routerLink]="['/siparis/alinan-siparis/create']"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Alınan Sipariş Ekle</a></li>
           <li [routerLink]="['/siparis/verilen-siparis/create']"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Verilen Sipariş Ekle</a></li>
          

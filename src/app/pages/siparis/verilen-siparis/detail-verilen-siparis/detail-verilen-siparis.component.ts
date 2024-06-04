@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { DatePipe } from '@angular/common';
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class DetailVerilenSiparisComponent implements OnInit {
    *
    */
   stateData: any;
-  constructor(private router: Router, private SiparisService: SiparisService, private DatePipe: DatePipe, private DepoService: DepoService) {
+  constructor(private router: Router, private SiparisService: SiparisService, private DatePipe: DatePipe) {
     this.stateData = history.state
 
   }
@@ -72,7 +71,7 @@ export class DetailVerilenSiparisComponent implements OnInit {
   async stateControl() {
 
 
-    this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { })).data;
+    this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { }));
 
 
     this.siparis.satirSayisi = this.siparis.siparisHareketler.length;
@@ -103,7 +102,7 @@ export class DetailVerilenSiparisComponent implements OnInit {
       this.router.navigate(['/satinalma/verilen-siparis/update'], { state: this.stateData })
     }
     else {
-      this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { })).data
+      this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { }))
 
       this.router.navigate(['/satinalma/verilen-siparis/update'], { state: this.siparis })
     }

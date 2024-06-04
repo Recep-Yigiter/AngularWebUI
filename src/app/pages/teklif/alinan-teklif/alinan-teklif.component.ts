@@ -75,7 +75,7 @@ export class AlinanTeklifComponent implements OnInit {
   rowDataCount: any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.TeklifService.GetList(() => { })).data.items;
+    this.rowData = (await this.TeklifService.GetList(() => { })).items;
     this.rowData = this.rowData.filter(c => c.seri == "AT")
 
     this.rowData.forEach((rowData) => {
@@ -199,7 +199,7 @@ export class AlinanTeklifComponent implements OnInit {
   defaultAciklama: any;
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.TeklifService.GetCode()).data.kod;
+    this.belgeNoGetCode = (await this.TeklifService.GetCode()).items.kod;
     this.defaultAciklama = 'VS' + "-" + this.belgeNoGetCode + " no lu Verilen Sipariş"
   }
   alinanTeklifModal() {

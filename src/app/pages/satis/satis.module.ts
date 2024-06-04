@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 
 
@@ -28,9 +29,9 @@ import { RouterModule } from '@angular/router';
         {
             path: '',
             children: [
-              { path: '', loadChildren: () => import("../teklif/verilen-teklif/verilen-teklif.module").then(m => m.VerilenTeklifModule) },
-              { path: '', loadChildren: () => import("../siparis/alinan-siparis/alinan-siparis.module").then(m => m.AlinanSiparisModule) },
-            ]
+              { path: '', loadChildren: () => import("../teklif/verilen-teklif/verilen-teklif.module").then(m => m.VerilenTeklifModule),canActivate:[authGuard] },
+              { path: '', loadChildren: () => import("../siparis/alinan-siparis/alinan-siparis.module").then(m => m.AlinanSiparisModule) ,canActivate:[authGuard]},
+            ],canActivate:[authGuard]
         },
         
     ])

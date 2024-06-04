@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { CariService } from 'src/app/pages/finans/cari/services/cari.service';
+import { CariService } from 'src/app/core/services/repository/cari.service';
 
 @Component({
   selector: 'app-cari-select-modal',
@@ -37,7 +37,7 @@ export class CariSelectModalComponent  {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.CariService.GetList(() => { })).data.items;
+    this.rowData = (await this.CariService.GetList(() => { })).items;
   }
   selectedRow: any;
 

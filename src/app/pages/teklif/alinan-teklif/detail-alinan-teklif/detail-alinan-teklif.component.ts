@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { DatePipe } from '@angular/common';
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
 import { TeklifService } from 'src/app/core/services/repository/teklif.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
+import { SiparisService } from 'src/app/core/services/repository/siparis.service';
+import { CreateSiparisModel } from 'src/app/core/models/siparisler/create-siparis-model';
+import { UpdateTeklifModel } from 'src/app/core/models/teklifler/update-teklif-model';
+import { DepoService } from 'src/app/core/services/repository/depo.service';
 
 @Component({
   selector: 'app-detail-alinan-teklif',
@@ -16,7 +21,7 @@ export class DetailAlinanTeklifComponent implements OnInit {
    *
    */
   stateData: any;
-  constructor(private router: Router, private TeklifService: TeklifService, private DatePipe: DatePipe, private DepoService: DepoService) {
+  constructor(private router: Router, private SiparisService: SiparisService, private modalService: NgbModal, private TeklifService: TeklifService, private DatePipe: DatePipe, private DepoService: DepoService) {
     this.stateData = history.state
 
   }
@@ -73,7 +78,7 @@ export class DetailAlinanTeklifComponent implements OnInit {
   async stateControl() {
 
 
-    this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).data;
+    this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { }));
 
 
     this.teklif.satirSayisi = this.teklif.teklifHareketler.length;
@@ -98,8 +103,8 @@ export class DetailAlinanTeklifComponent implements OnInit {
     this.dateTime = this.DatePipe.transform(this.teklif.createdDate, 'yyyy-MM-dd');
     this.dateTimeOpsiyon = this.DatePipe.transform(this.teklif.opsiyonTarihi, 'yyyy-MM-dd');
     this.time = this.DatePipe.transform(this.teklif.createdDate, 'hh : mm ');
-
-    if (this.stateData.durum == 'Kapalı') {
+    this.onaySelect = this.stateData.onay
+    if (this.stateData.durum == 'Kapalı' || this.stateData.onay != "Onaylandı") {
       this.teklifAktarbuttonDisable = true;
     }
   }
@@ -114,12 +119,155 @@ export class DetailAlinanTeklifComponent implements OnInit {
       this.router.navigate(['/satinalma/alinan-teklif/update'], { state: this.stateData })
     }
     else {
-      this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).data
+      this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { }))
 
       this.router.navigate(['/satinalma/alinan-teklif/update'], { state: this.teklif })
     }
   }
 
+  selectedOnayOption: any;
+  onayOptions: any = [
+    "Onay Bekliyor",
+    "Onaylandı",
+    "Reddedildi",
+  ]
+  changed(event) {
+    this.selectedOnayOption = event
+    // if (this.onayOptions != undefined) {
+    //   this.selectedObject = this.onayOptions.find((el: any) => {
+    //     return el?.id == this.selectedOnayOption;
+    //   });
+    // }
+  }
+  onaySelect: any;
+  onChangeOnay(event) {
+    this.editing = true
+    this.selectedOnayOption = event
+
+  }
+
+
+
+  durumOnayButton: boolean;
+  verilenSiparisDonustur() {
+
+    const modalRef = this.modalService.open(ConfirmModalComponent, { size: 'sm', backdrop: 'static' });
+    modalRef.componentInstance.confirmationBoxTitle = ' Dikkat !';
+    modalRef.result.then((onay) => {
+
+      if (onay) {
+
+        const createModel = new CreateSiparisModel();
+        createModel.belgeNo = this.stateData.belgeNo;
+        createModel.siparisTuru = 2;
+        createModel.seri = "VS";
+        createModel.referans = this.stateData.referans;
+        createModel.cariId = this.stateData.cariId;
+        createModel.kdv = this.stateData.kdv;
+        createModel.otv = this.stateData.otv;
+        createModel.aciklama = this.stateData.aciklama;
+        createModel.teslimTarihi = this.stateData.opsiyonTarihi;
+        createModel.hourId = String(new Date().valueOf());
+
+        this.stateData.teklifHareketler.forEach(element => {
+          element.siparisHareketTuru = element.teklifHareketTuru;
+        });
+
+        createModel.siparisHareketler = this.stateData.teklifHareketler
+
+
+
+        this.SiparisService.create(createModel, () => {
+          const createModel = new UpdateTeklifModel();
+          createModel.id = this.stateData.id;
+          createModel.belgeNo = this.stateData.belgeNo;
+          createModel.teklifTuru = this.stateData.teklifTuru;
+          createModel.seri = this.stateData.seri;
+          createModel.durum = "Kapalı";
+          createModel.onay = "Onaylandı";
+          createModel.referans = this.stateData.referans;
+          createModel.cariId = this.stateData.cariId;
+          createModel.kdv = this.stateData.kdv;
+          createModel.otv = this.stateData.otv;
+          createModel.aciklama = this.stateData.aciklama;
+          createModel.hourId = this.stateData.hourId;
+          createModel.opsiyonTarihi = this.stateData.opsiyonTarihi;
+          createModel.teklifHareketler = this.stateData.teklifHareketler
+
+          this.TeklifService.update(createModel, () => {
+            this.durumOnayButton = false;
+            this.teklifAktarbuttonDisable = true;
+          }, errorMessage => { })
+
+        }, errorMessage => { })
+
+
+
+      }
+
+    });
+
+
+
+
+
+
+
+
+  }
+
+
+  editing: any = false;
+
+  onRowEditSave() {
+
+    const createModel = new UpdateTeklifModel();
+    createModel.id = this.stateData.id;
+    createModel.belgeNo = this.stateData.belgeNo;
+    createModel.teklifTuru = this.stateData.teklifTuru;
+    createModel.seri = this.stateData.seri;
+    createModel.onay = this.selectedOnayOption;
+    createModel.referans = this.stateData.referans;
+    createModel.cariId = this.stateData.cariId;
+    createModel.kdv = this.stateData.kdv;
+    createModel.otv = this.stateData.otv;
+    createModel.aciklama = this.stateData.aciklama;
+    createModel.hourId = this.stateData.hourId;
+    createModel.opsiyonTarihi = this.stateData.opsiyonTarihi;
+    createModel.teklifHareketler = this.stateData.teklifHareketler;
+    createModel.durum = this.stateData.durum
+
+
+    if (createModel.onay != "Onaylandı") {
+      this.teklifAktarbuttonDisable = true
+    }
+
+
+
+    this.TeklifService.update(createModel, async () => {
+      this.durumOnayButton = false;
+      this.editing = false;
+
+
+      var teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { }))
+
+      if (teklif.durum == "Açık" && teklif.onay == "Onaylandı") {
+        this.teklifAktarbuttonDisable = false
+      }
+
+
+    }, errorMessage => { })
+
+
+
+
+  }
+
+  async onRowEditCancel() {
+
+    this.onaySelect = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).onay;
+    this.editing = false;
+  }
 }
 
 

@@ -5,7 +5,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { StokService } from 'src/app/pages/stok/stok/core/services/stok.service';
+import { StokService } from 'src/app/core/services/repository/stok.service';
 import { CreateUretimEmriModel } from '../core/models/create-uretim-emri-model';
 import { UretimEmriService } from '../core/services/uretim-emri.service';
 import { DeleteButtonComponent } from '../../urun-recete/components/delete-button/delete-button.component';
@@ -160,7 +160,7 @@ export class UpdateUretimEmriComponent implements OnInit {
 
 
     if (this.stateData?.id) {
-      this.getByIdDataSource = (await this.UretimEmriService.getById(this.stateData.id)).data;
+      this.getByIdDataSource = (await this.UretimEmriService.getById(this.stateData.id)).items;
       this.rowData = this.getByIdDataSource.uretimEmriBilesenler;
       // this.rowData2 = this.getByIdDataSource.operasyonlar;
       
@@ -236,7 +236,7 @@ export class UpdateUretimEmriComponent implements OnInit {
     return this.rowData;
   }
   async getAllStok() {
-    this.stokDataSource = (await this.StokService.GetListTreeView(() => { })).data.items;
+    this.stokDataSource = (await this.StokService.GetListTreeView(() => { })).items;
     this.selectedStok = this.stokDataSource.find((el: any) => {
       return el?.id == this.stateData.stokId;
     });
@@ -244,7 +244,7 @@ export class UpdateUretimEmriComponent implements OnInit {
   }
 
   async getAllUrunRecete() {
-    this.UrunReceteDataSource = (await this.UrunReceteService.GetList(() => { })).data.items;
+    this.UrunReceteDataSource = (await this.UrunReceteService.GetList(() => { })).items;
     this.selectedUrunRecete = this.UrunReceteDataSource.find((el: any) => {
       return el?.id == this.stateData.urunReceteId;
     });

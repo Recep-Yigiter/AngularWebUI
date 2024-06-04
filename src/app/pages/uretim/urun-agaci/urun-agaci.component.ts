@@ -36,7 +36,7 @@ export class UrunAgaciComponent implements OnInit {
   tabs: any[] = ["Kabin", "Kapı", "Buton", "Ağırlık Şasesi", "Makine Şasesi", "Pano"]
 
   detay(){
-    console.log(this.selectedNode);
+  
   }
 
 
@@ -45,7 +45,7 @@ export class UrunAgaciComponent implements OnInit {
     const getList = await this.UrunAgaciService.GetList();
     this.treeViewDataSource = getList;
 
-    const deneme = this.treeViewDataSource.data.items
+    const deneme = this.treeViewDataSource.data
 
     deneme.forEach(element => {
 
@@ -80,7 +80,7 @@ export class UrunAgaciComponent implements OnInit {
   }
 
   selectNode(node: any) {
-console.log(node);
+
 
     this.UrunAgaciDetayList = []
     this.selectedNode = node;
@@ -108,7 +108,7 @@ console.log(node);
     this.treeViewDataSource = [];
     const getList = await this.UrunAgaciService.GetList();
     this.treeViewDataSource = getList;
-    const deneme = this.treeViewDataSource.data.items.filter(d => d.urunGrubu == event.tab.textLabel);
+    const deneme = this.treeViewDataSource.data.filter(d => d.urunGrubu == event.tab.textLabel);
     this.selectedUrunGrubu = event.tab.textLabel;
     deneme.forEach(element => {
       if (element.parentId == "00000000-0000-0000-0000-000000000000" || element.parentId == null) {

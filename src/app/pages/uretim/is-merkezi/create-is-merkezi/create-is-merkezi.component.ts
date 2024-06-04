@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiClientService } from 'src/app/core/services/api-client.service';
 import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { StokService } from 'src/app/pages/stok/stok/core/services/stok.service';
-import { BirimService } from 'src/app/pages/stok/birim/core/services/birim.service';
-import { CreateStokModel } from 'src/app/pages/stok/stok/core/models/create-stok-model';
+import { StokService } from 'src/app/core/services/repository/stok.service';
+import { CreateStokModel } from 'src/app/core/models/stok/create-stok-model';
+import { BirimService } from 'src/app/core/services/repository/birim.service';
 
 @Component({
   selector: 'app-create-is-merkezi',
@@ -27,7 +27,7 @@ export class CreateIsMerkeziComponent implements OnInit {
 
   }
   async ngOnInit() {
-    this.BirimDataSource = (await this.BirimService.list()).data.items;
+    this.BirimDataSource = (await this.BirimService.list()).items;
 
     this.selectedBirim = this.BirimDataSource[0];
 

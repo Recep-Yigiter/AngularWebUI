@@ -1,5 +1,7 @@
 :host ::ng-deep {
-
+  .yks_cpanel_top_right table.yks_table_group tr.table_row_group{
+    height: 100% !important;
+}
   .mat-mdc-icon-button.mat-mdc-button-base {
     width: 90px;
     height: 30px;

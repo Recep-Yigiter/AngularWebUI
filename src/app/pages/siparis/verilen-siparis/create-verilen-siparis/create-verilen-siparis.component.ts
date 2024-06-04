@@ -127,7 +127,7 @@ export class CreateVerilenSiparisComponent {
     createModel.hourId = String(new Date().valueOf());
     createModel.siparisHareketler = this.getAllRowData()
 
-    console.log(createModel);
+
 
     if (this.getAllRowData().length > 0) {
       this.SiparisService.create(createModel, () => {
@@ -143,7 +143,7 @@ export class CreateVerilenSiparisComponent {
 
 
   vazgec() {
-    this.router.navigate(['/siparis/verilen-siparis/detail'])
+    this.router.navigate(['/satinalma/verilen-siparis'])
   }
 
   SiparisHareketDelete(params) {
@@ -212,7 +212,7 @@ export class CreateVerilenSiparisComponent {
 
       if (stoks != false) {
         stoks.forEach(stok => {
-          console.log(stok);
+        
           stok.toplamTutar = stok.miktar * stok.birimFiyat;
           stok.hourId = String(new Date().valueOf())
           this.gridApi.applyTransaction({ add: [stok], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
@@ -235,7 +235,7 @@ export class CreateVerilenSiparisComponent {
       if (depo != false) {
         this.selectedCari = depo;
         this.disableButtons=false
-        this.teklifList = ((await this.TeklifService.GetList(() => { })).data.items).filter(c => c.seri == "AT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
+        this.teklifList = ((await this.TeklifService.GetList(() => { })).items).filter(c => c.seri == "AT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
         this.aktarmaCount = this.teklifList.length;
         if (this.teklifList.length > 0) {
           this.aktarma = true;
@@ -307,7 +307,7 @@ export class CreateVerilenSiparisComponent {
       teklif.durum = "Kapalı"
       this.TeklifService.update(teklif, async () => {
 
-        this.teklifList = ((await this.TeklifService.GetList(() => { })).data.items).filter(c => c.seri == "AT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
+        this.teklifList = ((await this.TeklifService.GetList(() => { })).items).filter(c => c.seri == "AT" && c.cariId == this.selectedCari.id && c.durum == "Açık");
         this.aktarmaCount = this.teklifList.length;
         if (this.teklifList.length > 0) {
           this.aktarma = true;
@@ -339,7 +339,7 @@ export class CreateVerilenSiparisComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.SiparisService.GetCode()).data.kod;
+    this.belgeNoGetCode = (await this.SiparisService.GetCode()).items.kod;
     this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Verilen Sipariş"
   }
   getDateAndTime() {

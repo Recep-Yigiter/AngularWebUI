@@ -14,8 +14,10 @@ import { RouterModule } from '@angular/router';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListAlinanTeklifComponent } from './list-alinan-teklif/list-alinan-teklif.component';
-
-
+import { ButtonModule } from 'primeng/button';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 @NgModule({
   declarations: [
     AlinanTeklifComponent,
@@ -23,7 +25,7 @@ import { ListAlinanTeklifComponent } from './list-alinan-teklif/list-alinan-tekl
     UpdateAlinanTeklifComponent,
     DetailAlinanTeklifComponent,
     ListAlinanTeklifComponent,
-  
+
   ],
   imports: [
     CommonModule,
@@ -33,16 +35,17 @@ import { ListAlinanTeklifComponent } from './list-alinan-teklif/list-alinan-tekl
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    ButtonModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      
-      { path: "alinan-teklif", component: ListAlinanTeklifComponent,},
+
+      { path: "alinan-teklif", component: ListAlinanTeklifComponent,canActivate:[authGuard]},
       {
-        path: "alinan-teklif", component: AlinanTeklifComponent,
+        path: "alinan-teklif", component: AlinanTeklifComponent,canActivate:[authGuard],
         children: [
-          { path: "create", component: CreateAlinanTeklifComponent },
-          { path: "update", component: UpdateAlinanTeklifComponent },
-          { path: "detail", component: DetailAlinanTeklifComponent },
+          { path: "create", component: CreateAlinanTeklifComponent ,canActivate:[authGuard]},
+          { path: "update", component: UpdateAlinanTeklifComponent ,canActivate:[authGuard]},
+          { path: "detail", component: DetailAlinanTeklifComponent ,canActivate:[authGuard]},
         ]
       }
 

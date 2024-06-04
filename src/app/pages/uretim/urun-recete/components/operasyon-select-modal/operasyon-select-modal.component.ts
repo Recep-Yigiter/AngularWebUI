@@ -38,7 +38,7 @@ export class OperasyonSelectModalComponent implements OnInit {
 
   async getList() {
 
-    this.IsMerkeziDataSource = (await this.IsMerkeziService.GetList(() => { })).data.items;
+    this.IsMerkeziDataSource = (await this.IsMerkeziService.GetList(() => { })).items;
   }
   selectedRows: any;
   onSelectionChanged() {

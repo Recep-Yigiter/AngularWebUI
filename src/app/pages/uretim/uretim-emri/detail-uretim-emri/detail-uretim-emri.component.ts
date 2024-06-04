@@ -82,7 +82,7 @@ export class DetailUretimEmriComponent implements OnInit {
       // this.rowData2 = this.stateData.operasyonlar;
     }
     else {
-      this.UretimEmri = (await this.UretimEmriService.getByHourId(this.stateData.hourId, () => { })).data
+      this.UretimEmri = (await this.UretimEmriService.getByHourId(this.stateData.hourId, () => { }))
       this.rowData = this.UretimEmri.uretimEmriBilesenler;
       // this.rowData2 = this.UretimEmri.operasyonlar;
     }

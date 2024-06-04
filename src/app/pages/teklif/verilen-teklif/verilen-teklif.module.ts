@@ -14,7 +14,8 @@ import { DetailVerilenTeklifComponent } from './detail-verilen-teklif/detail-ver
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListVerilenTeklifComponent } from './list-verilen-teklif/list-verilen-teklif.component';
 import { TeklifComponent } from '../teklif.component';
-
+import { ButtonModule } from 'primeng/button';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { TeklifComponent } from '../teklif.component';
     UpdateVerilenTeklifComponent,
     DetailVerilenTeklifComponent,
     ListVerilenTeklifComponent,
-   
+
   ],
   imports: [
     CommonModule,
@@ -33,18 +34,19 @@ import { TeklifComponent } from '../teklif.component';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    ButtonModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "verilen-teklif", component: ListVerilenTeklifComponent,
-       
+        path: "verilen-teklif", component: ListVerilenTeklifComponent,canActivate:[authGuard],
+
       },
       {
-        path: "verilen-teklif", component: VerilenTeklifComponent,
+        path: "verilen-teklif", component: VerilenTeklifComponent,canActivate:[authGuard],
         children: [
-          { path: "create", component: CreateVerilenTeklifComponent },
-          { path: "update", component: UpdateVerilenTeklifComponent },
-          { path: "detail", component: DetailVerilenTeklifComponent },
+          { path: "create", component: CreateVerilenTeklifComponent,canActivate:[authGuard]},
+          { path: "update", component: UpdateVerilenTeklifComponent,canActivate:[authGuard]},
+          { path: "detail", component: DetailVerilenTeklifComponent,canActivate:[authGuard]},
         ]
       }
 

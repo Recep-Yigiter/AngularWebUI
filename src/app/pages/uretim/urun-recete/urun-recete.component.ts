@@ -35,7 +35,7 @@ export class UrunReceteComponent implements OnInit {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-     this.rowData = (await this.UrunReceteService.GetList(() => { })).data.items;
+     this.rowData = (await this.UrunReceteService.GetList(() => { })).items;
   }
   onSelectionChanged() {
   

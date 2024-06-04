@@ -40,7 +40,7 @@ export class IsMerkeziComponent implements OnInit {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-     this.rowData = (await this.IsMerkeziService.GetList(() => { })).data.items;
+     this.rowData = (await this.IsMerkeziService.GetList(() => { })).items;
     
    
   }

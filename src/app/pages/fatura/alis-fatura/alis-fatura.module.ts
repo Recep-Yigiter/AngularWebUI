@@ -10,15 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
-import { TabItemComponent } from './components/tab-item.component';
-import { TabMainComponent } from './components/tab-main.component';
-import { StokSelectModalComponent } from './components/stok-select-modal/stok-select-modal.component';
-import { DepoSelectModalComponent } from './components/depo-select-modal/depo-select-modal.component';
-import { CariSelectModalComponent } from './components/cari-select-modal/cari-select-modal.component';
 
-import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
-import { NumberInputDirective } from './core/directives/number-input.directive';
 import { ListAlisFaturaComponent } from './list-alis-fatura/list-alis-fatura.component';
+import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
+import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 
 
@@ -28,34 +24,28 @@ import { ListAlisFaturaComponent } from './list-alis-fatura/list-alis-fatura.com
     CreateAlisFaturaComponent,
     UpdateAlisFaturaComponent,
     DetailAlisFaturaComponent,
-    TabItemComponent,
-    TabMainComponent,
-    StokSelectModalComponent,
-    DepoSelectModalComponent,
-    CariSelectModalComponent,
-    DeleteButtonComponent,
-    NumberInputDirective,
     ListAlisFaturaComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AgGridAngular,
+    DirectiveModule,
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "alis-faturasi", component: ListAlisFaturaComponent,
+        path: "alis-faturasi", component: ListAlisFaturaComponent,canActivate:[authGuard]
        
       },
       {
-        path: "alis-faturasi", component: AlisFaturaComponent,
+        path: "alis-faturasi", component: AlisFaturaComponent,canActivate:[authGuard],
         children: [
-          { path: "create", component: CreateAlisFaturaComponent },
-          { path: "update", component: UpdateAlisFaturaComponent },
-          { path: "detail", component: DetailAlisFaturaComponent },
+          { path: "create", component: CreateAlisFaturaComponent ,canActivate:[authGuard]},
+          { path: "update", component: UpdateAlisFaturaComponent,canActivate:[authGuard] },
+          { path: "detail", component: DetailAlisFaturaComponent,canActivate:[authGuard] },
         ]
       }
 

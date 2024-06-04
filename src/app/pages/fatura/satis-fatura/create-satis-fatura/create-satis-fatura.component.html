@@ -1,3 +1,12 @@
+
+<nav class="breadcrumbs">
+    <a class="unavailable">Satış Faturası</a>
+
+    <a class="unavailable">Yeni</a>
+
+</nav>
+
+
 <form [formGroup]="frm" (keydown.enter)="$event.preventDefault()">
     <div class="demo-container" style="position: relative;">
         <div class=" yks-filemanager" style="height: 791px;">
@@ -15,26 +24,6 @@
                                     <div class="yks_cpanel_top">
                                         <div class="yks_cpanel_top_left">
                                             <div>
-                                                <div class=" yks-toolbar-item ">
-                                                    <div class="yks-button-has-text">
-                                                        <a class="title-router"
-                                                            [routerLink]="['/pages/fatura/fatura']">Fatura</a>
-                                                        <span style="margin: 0 5px;">/</span>
-                                                        <a class="title-router"
-                                                            [routerLink]="['/pages/fatura/create-fatura']">Yeni</a>
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="yks_cpanel_top_right"></div>
-                                    </div>
-                                </div>
-                                <div class="yks_control_panel">
-                                    <div class="yks_cpanel_top">
-                                        <div class="yks_cpanel_top_left">
-                                            <div>
 
 
                                                 <div class=" yks-toolbar-item ">
@@ -43,6 +32,15 @@
                                                     <div class="yks-button-has-text">
                                                         <ul class="yks-menu-items-container"
                                                             style="    display: flex; align-items: center; justify-content: center;">
+                                                            <li routerLink="/fatura/satis-faturasi" class="yks-menu-item-wrapper yks-download-btn cursor-pointer"style="margin: 0 2px;" >
+                                                                <div class="">
+                                                                  <div class="yks-menu-item-content">
+                                                                    <i class="fa fa-arrow-left"></i>
+                                                                    <span class="d-none d-sm-inline ml-1 "
+                                                                              style="font-size: 13px;">Geri</span>
+                                                                  </div>
+                                                                </div>
+                                                              </li>
 
                                                             <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 

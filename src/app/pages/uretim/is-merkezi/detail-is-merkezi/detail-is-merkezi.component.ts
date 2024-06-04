@@ -15,7 +15,7 @@ export class DetailIsMerkeziComponent implements OnInit {
   }
   async ngOnInit() {
 
-console.log(this.stateData);
+
   }
 
 }

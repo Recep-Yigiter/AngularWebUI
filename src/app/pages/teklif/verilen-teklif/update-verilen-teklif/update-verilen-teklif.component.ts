@@ -7,12 +7,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { CurrencyPipe, DatePipe, formatDate } from '@angular/common';
 
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
 import { TeklifService } from 'src/app/core/services/repository/teklif.service';
 import { TeklifHareketService } from 'src/app/core/services/repository/teklif-hareket.service';
 import { UpdateTeklifModel } from 'src/app/core/models/teklifler/update-teklif-model';
 import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
 import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
+import { DepoService } from 'src/app/core/services/repository/depo.service';
 
 @Component({
   selector: 'app-update-verilen-teklif',
@@ -142,8 +142,8 @@ export class UpdateVerilenTeklifComponent implements OnInit {
   async stateControl() {
 
 
-    this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { })).data;
-    const depoList = (await this.DepoService.GetList(() => { })).data.items;
+    this.teklif = (await this.TeklifService.getByHourId(this.stateData.hourId, () => { }));
+    const depoList = (await this.DepoService.GetList(() => { })).items;
 
     if (this.stateData.depoId != undefined) {
       this.selectedObject = depoList.find((el: any) => {
@@ -225,7 +225,7 @@ export class UpdateVerilenTeklifComponent implements OnInit {
 
   async TeklifHareketUpdate(event) {
 
-    const TeklifHareket = (await this.TeklifHareketService.getByHourId(event.data.hourId, () => { })).data;
+    const TeklifHareket = (await this.TeklifHareketService.getByHourId(event.data.hourId, () => { }));
     const editdata = {
       id: TeklifHareket.id,
       stokId: TeklifHareket.stokId,

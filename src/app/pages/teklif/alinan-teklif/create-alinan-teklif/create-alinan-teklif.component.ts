@@ -75,6 +75,7 @@ export class CreateAlinanTeklifComponent {
     tarih: [null,],
     saat: [null,],
     opsiyonTarihi: [null,],
+    onay: [null,],
 
 
   })
@@ -89,6 +90,7 @@ export class CreateAlinanTeklifComponent {
   get tarih() { return this.frm.get('tarih') }
   get saat() { return this.frm.get('saat') }
   get opsiyonTarihi() { return this.frm.get('opsiyonTarihi') }
+  get onay() { return this.frm.get('onay') }
 
 
 
@@ -146,7 +148,7 @@ export class CreateAlinanTeklifComponent {
     createModel.cariId = this.selectedCari.id;
     createModel.kdv = String(this.frm.value.kdv);
     createModel.otv = String(this.frm.value.otv);
-
+    createModel.onay = this.selectedOnayOption;
     createModel.aciklama = this.frm.value.aciklama;
     createModel.opsiyonTarihi = this.frm.value.opsiyonTarihi;
     createModel.hourId = String(new Date().valueOf());
@@ -249,20 +251,28 @@ export class CreateAlinanTeklifComponent {
     const modalRef = this.modalService.open(CariSelectModalComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
     modalRef.result.then((depo) => {
-      if (depo!=false) {
+      if (depo != false) {
         this.selectedCari = depo;
-        this.disableButtons=false
+        this.disableButtons = false
       }
-      else{
-       
+      else {
+
         if (!this.selectedCari) {
-          this.disableButtons=true;
+          this.disableButtons = true;
         }
 
       }
 
     });
 
+  }
+
+
+  onayOptions: any = ["Onay Bekliyor", "Onaylandı", "Reddedildi"]
+
+  selectedOnayOption: any = "Onay Bekliyor";
+  onChangeOnay(event) {
+    this.selectedOnayOption = event
   }
 
 
@@ -282,7 +292,7 @@ export class CreateAlinanTeklifComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.TeklifService.GetCode()).data.kod;
+    this.belgeNoGetCode = (await this.TeklifService.GetCode()).items.kod;
     this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Alınan Teklif"
   }
   getDateAndTime() {

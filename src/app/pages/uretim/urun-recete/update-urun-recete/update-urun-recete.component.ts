@@ -7,8 +7,7 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
 import { DeleteButtonComponent } from '../components/delete-button/delete-button.component';
-import { StokService } from 'src/app/pages/stok/stok/core/services/stok.service';
-import { BirimService } from 'src/app/pages/stok/birim/core/services/birim.service';
+import { StokService } from 'src/app/core/services/repository/stok.service';
 import { CreateUrunReceteModel } from '../core/models/create-urun-recete-model';
 import { UpdateUrunReceteModel } from '../core/models/update-urun-recete-model';
 import { UrunReceteService } from '../core/services/urun-recete.service';
@@ -130,8 +129,8 @@ export class UpdateUrunReceteComponent implements OnInit {
 
   async stateControl() {
     if (this.stateData?.id) {
-      console.log("RECETE",this.stateData);
-      this.getByIdDataSource = (await this.UrunReceteService.getById(this.stateData.id)).data;
+
+      this.getByIdDataSource = (await this.UrunReceteService.getById(this.stateData.id)).items;
       this.rowData = this.getByIdDataSource.urunReceteBilesenler;
       this.rowData2 = this.getByIdDataSource.operasyonlar;
     }
@@ -143,7 +142,7 @@ export class UpdateUrunReceteComponent implements OnInit {
   }
 
   async stokSelectDropdown() {
-    this.StokDataSource = (await this.StokService.GetListTreeView(() => { })).data.items;
+    this.StokDataSource = (await this.StokService.GetListTreeView(() => { })).items;
   }
 
   stokSelectListModal() {

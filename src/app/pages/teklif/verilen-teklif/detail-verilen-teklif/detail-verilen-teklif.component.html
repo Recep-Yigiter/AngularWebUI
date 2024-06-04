@@ -1,3 +1,15 @@
+<nav class="breadcrumbs">
+    <a class="unavailable">Alınan Teklif</a>
+    <a class="unavailable">{{stateData.seri}} - {{stateData.belgeNo}}</a>
+    <!-- <a class="unavailable">Lower Airways</a>
+    <a class="current">Carina</a>
+    <a class="right">Take Exam</a> -->
+</nav>
+
+
+
+
+
 <div class="demo-container" style="position: relative;">
     <div class=" yks-filemanager" style="height: 791px;">
 
@@ -10,27 +22,7 @@
                         <div class="yks-filemanager-wrapper">
 
 
-                            <div class="yks_control_panel">
-                                <div class="yks_cpanel_top">
-                                    <div class="yks_cpanel_top_left">
-                                        <div>
-                                            <div class=" yks-toolbar-item ">
-                                                <div class="yks-button-has-text">
-                                                    <a class="title-router"
-                                                        [routerLink]="['/pages/teklif/alinan-teklif']">Verilen
-                                                        Teklif</a>
-                                                    <span style="margin: 0 5px;">/</span>
-                                                    <a class="title-router">{{stateData.seri}} - {{stateData.belgeNo}}
-                                                    </a>
 
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="yks_cpanel_top_right"></div>
-                                </div>
-                            </div>
                             <div class="yks_control_panel">
                                 <div class="yks_cpanel_top">
                                     <div class="yks_cpanel_top_left">
@@ -43,7 +35,14 @@
                                                 <div class="yks-button-has-text">
                                                     <ul class="yks-menu-items-container"
                                                         style="    display: flex; align-items: center; justify-content: center;">
-
+                                                        <li routerLink="/satis/verilen-teklif" class="yks-menu-item-wrapper yks-download-btn cursor-pointer"style="margin: 0 2px;" >
+                                                            <div class="">
+                                                              <div class="yks-menu-item-content">
+                                                                <i class="fa fa-arrow-left"></i>
+                                                                <span class="d-none d-sm-inline ml-1 " style="font-size: 13px;">Geri</span>
+                                                              </div>
+                                                            </div>
+                                                          </li>
                                                         <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
                                                             <div class=" yks-menu-item-content">
@@ -88,8 +87,95 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
+                                    <div class="yks_cpanel_top_right"
+                                        style="display: grid; justify-content: end; grid-template-columns: auto">
 
+
+
+                                        <table class="yks_table_group">
+                                            <tbody>
+
+                                                <tr class="table_row_group">
+                                                    <td class="yks_td_label"
+                                                        style="border-left: #000000; text-align: end; ">
+
+                                                        <label
+                                                            style=" min-width: 150px; font-weight: 600; font-size: 13px;cursor: default !important;">Onay
+                                                            Drumu
+                                                            :
+
+                                                        </label>
+                                                    </td>
+
+                                                    <td style="width: 100%;display: grid; grid-template-columns: 170px auto; "
+                                                        class="table_row_group" >
+
+
+                                                        <label
+                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666; display: flex;line-height: 25px;">
+
+                                                            <select  [(ngModel)]="onaySelect"
+                                                                 (ngModelChange)="onChangeOnay($event)"
+                                                                class="form-select shadow-none" style="background-color: #fff;
+                                        border: 1px solid rgb(177 177 177);
+                                        padding: 2px 2.25rem 2px 0.75rem;">
+
+                                                                <option *ngFor="let item of onayOptions"
+                                                                    [ngValue]="item">
+                                                                    {{item}} </option>
+                                                            </select>
+
+
+                                                        </label>
+                                                        <label
+                                                            style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
+
+                                                            <div *ngIf="editing"
+                                                                class="flex align-items-center justify-content-center gap-2">
+
+                                                                <button *ngIf="editing" pButton
+                                                                    style="border: 1px solid;" icon="fa fa-check"
+                                                                    (click)=" onRowEditSave()"
+                                                                    class="p-button-rounded p-button-text p-button-success ml-1 mr-1"></button>
+
+                                                                <button *ngIf="editing" pButton
+                                                                    style="border: 1px solid;" icon="fa fa-times"
+                                                                    (click)="onRowEditCancel()"
+                                                                    class="p-button-rounded p-button-text p-button-danger ml-1 mr-1"></button>
+
+
+
+
+
+
+
+                                                                <!-- <button *ngIf="!editing" pButton 
+                                                                     icon="fa fa-pencil"
+                                                                    (click)="test()"
+                                                                    class="p-button-rounded p-button-text"></button>
+                                                                <button *ngIf="editing" pButton  style="margin-left: 100px; border: 1px solid;"
+                                                                     icon="fa fa-check"
+                                                                     (click)=" onRowEditSave()"
+                                                                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+
+                                                                <button *ngIf="editing" pButton  
+                                                                     icon="fa fa-times"
+                                                                     (click)="editing=false"
+                                                                    class="p-button-rounded p-button-text p-button-danger"></button> -->
+                                                            </div>
+                                                        </label>
+
+                                                    </td>
+                                                </tr>
+
+
+
+
+
+
+
+                                            </tbody>
+                                        </table>
 
                                     </div>
                                 </div>
@@ -110,139 +196,133 @@
                                         </div>
                                         <div class="yks-drawer-content" style="padding: 0px;">
                                             <div class=" yks-filemanager-breadcrumbs"></div>
-                                            <ul class="yks-menu-items-container m-1"
-                                                style="    display: flex; align-items: center; justify-content: center;">
+                                            <div style="display: flex; justify-content: center;align-items: center;">
+                                                <ul class="yks-menu-items-container m-1"
+                                                    style="    display: flex; align-items: center; justify-content: center;">
 
-                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                                    <div class=" yks-menu-item-content">
-
-
-                                                        <button type="button" class="btn btn-success"
-                                                            style="padding:2px 10px; border-radius: 3px; border-color: #52374b; background-color: #624159;">
-                                                            <i class="fa fa-envelope"
-                                                                style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-                                                            <span class="d-none d-sm-inline"
-                                                                style="font-size: 13px;">E-posta ile Gönder</span>
-                                                        </button>
-
-                                                    </div>
-
-                                                </li>
-                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                    <div class=" yks-menu-item-content">
+                                                        <div class=" yks-menu-item-content">
 
 
-                                                        <div class="btn-group" role="group"
-                                                            aria-label="Button group with nested dropdown">
-
-                                                            <div class="btn-group mr-1" role="group">
-
-                                                                <button id="filter-button" 
-                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
-                                                                    type="button" class="btn yks-btn "
-                                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    <i class="small mr-1 fa fa-cog"
-                                                                        style="font-size: 14px !important;"></i>
-                                                                    İşlemler
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-
-                                                                    <li style="border-bottom:1px solid #ddd ;"></li>
-                                                                    <li>
-                                                                        <a class="dropdown-item yks-dropdown-item"
-                                                                            style="color: black;">Onay Durumu
-                                                                            Değiştir</a>
-                                                                    </li>
-                                                                    <li style="border-bottom:1px solid #ddd ;"></li>
-                                                                    <li><a class="dropdown-item yks-dropdown-item"
-                                                                            style="color: black;">Revize Et</a>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-
-
-
+                                                            <button type="button" class="btn btn-success"
+                                                                style="padding:2px 10px; border-radius: 3px; border-color: #52374b; background-color: #624159;">
+                                                                <i class="fa fa-envelope"
+                                                                    style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+                                                                <span class="d-none d-sm-inline"
+                                                                    style="font-size: 13px;">E-posta ile Gönder</span>
+                                                            </button>
 
                                                         </div>
 
-                                                    </div>
+                                                    </li>
+                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                                </li>
-                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                    <div class=" yks-menu-item-content">
+                                                        <div class=" yks-menu-item-content">
 
 
-                                                        <div class="btn-group" role="group"
-                                                            aria-label="Button group with nested dropdown">
+                                                            <div class="btn-group" role="group"
+                                                                aria-label="Button group with nested dropdown">
 
-                                                            <div class="btn-group mr-1" role="group">
+                                                                <div class="btn-group mr-1" role="group">
 
-                                                                <button id="filter-button" [disabled]="teklifAktarbuttonDisable"
-                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
-                                                                    type="button" class="btn yks-btn "
-                                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    <i class="small mr-1 fa fa-exchange"
-                                                                        style="font-size: 14px !important;"></i>
-                                                                    Dönüştür
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a class="dropdown-item yks-dropdown-item"
-                                                                            style="color: black;">
-                                                                            Verilen Siparişe Dönüştür</a></li>
+                                                                    <button id="filter-button"
+                                                                        style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                        type="button" class="btn yks-btn "
+                                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="small mr-1 fa fa-cog"
+                                                                            style="font-size: 14px !important;"></i>
+                                                                        İşlemler
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
 
-
-                                                                    <li><a class="dropdown-item yks-dropdown-item"
-                                                                            style="color: black;">Faturaya Dönüştür</a>
-                                                                    </li>
+                                                                      
+                                                                        <li><a class="dropdown-item yks-dropdown-item"
+                                                                                style="color: black;">Revize Et</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
 
 
 
-                                                                </ul>
-                                                            </div>
-
-
-
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </li>
-                                                <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                    <div class=" yks-menu-item-content">
-
-
-                                                        <div class="btn-group" role="group"
-                                                            aria-label="Button group with nested dropdown">
-
-                                                            <div class="btn-group mr-1" role="group">
-
-                                                                <button id="filter-button"
-                                                                    style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
-                                                                    type="button" class="btn yks-btn "
-                                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    <i class="small mr-1 fa fa-flag"
-                                                                        style="font-size: 14px !important;"></i>
-                                                                    Notlar
-                                                                </button>
 
                                                             </div>
 
+                                                        </div>
+
+                                                    </li>
+                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                        <div class=" yks-menu-item-content">
 
 
+                                                            <div class="btn-group" role="group"
+                                                                aria-label="Button group with nested dropdown">
+
+                                                                <div class="btn-group mr-1" role="group">
+
+                                                                    <button id="filter-button"
+                                                                        [disabled]="teklifAktarbuttonDisable"
+                                                                        style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                        type="button" class="btn yks-btn "
+                                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="small mr-1 fa fa-exchange"
+                                                                            style="font-size: 14px !important;"></i>
+                                                                        Dönüştür
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a class="dropdown-item yks-dropdown-item"
+                                                                                (click)="alinanSiparisDonustur()"
+                                                                                style="color: black;">
+                                                                                Alinan Siparişe Dönüştür</a></li>
+
+
+
+
+
+
+                                                                    </ul>
+                                                                </div>
+
+
+
+
+                                                            </div>
 
                                                         </div>
 
-                                                    </div>
+                                                    </li>
+                                                    <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                                </li>
+                                                        <div class=" yks-menu-item-content">
 
-                                                <!-- <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
+
+                                                            <div class="btn-group" role="group"
+                                                                aria-label="Button group with nested dropdown">
+
+                                                                <div class="btn-group mr-1" role="group">
+
+                                                                    <button id="filter-button"
+                                                                        style="color: #212529;border: none;border: 1px solid #ddd;padding: 4px 10px;"
+                                                                        type="button" class="btn yks-btn "
+                                                                        aria-expanded="false">
+                                                                        <i class="small mr-1 fa fa-flag"
+                                                                            style="font-size: 14px !important;"></i>
+                                                                        Notlar
+                                                                    </button>
+
+                                                                </div>
+
+
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </li>
+
+                                                    <!-- <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
                                                 <div class=" yks-menu-item-content">
 
@@ -277,8 +357,27 @@
 
                                             </li> -->
 
+                                                    <div>
+                                                        <!-- <select  class="form-select shadow-none" style="    background-color: #fff;
+                                                    border: 1px solid rgb(177 177 177);
+                                                    padding: 2px 2.25rem 2px 0.75rem;"
+                                                        aria-label="Default select example">
+                                                        <option selected [ngValue]="null">Lütfen
+                                                            seçim yapınız...
+                                                        </option>
+                                                        <option> Onay Bekliyor</option>
+                                                        <option> Onaylandı</option>
+                                                        <option> Reddedildi</option>
+                                                    </select> -->
+                                                    </div>
 
-                                            </ul>
+
+                                                </ul>
+
+                                            </div>
+
+
+
                                             <div class="card mr-5 ml-5"
                                                 style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
 
@@ -399,8 +498,7 @@
 
 
                                                     </div>
-                                                    <div class="col-12 lg:col-4 xl:col-4 " style="    padding-left: 0px;
-                                                    padding-right: 0px;">
+                                                    <div class="col-12 lg:col-4 xl:col-4 ">
                                                         <div class="mt-1" style="border: 1px solid #ddd">
                                                             <div class="form-title pl-2" style="font-weight: 500;">
                                                                 Müşteri / Satıcı
@@ -533,9 +631,7 @@
                                                                             <label
                                                                                 style=" min-width: 150px; font-weight: 600; font-size: 13px; color: #666666; display: flex;">
 
-                                                                                {{dateTimeOpsiyon | date: 'dd / MM /
-                                                                                yyyy '
-                                                                                }}
+                                                                                {{dateTimeOpsiyon | date: 'dd.MM.yyyy'}}
 
                                                                             </label>
 

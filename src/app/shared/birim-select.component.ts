@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Injectable, Input, OnInit } from '@angular/core';
-import { BirimService } from '../pages/stok/birim/core/services/birim.service';
+import { BirimService } from '../core/services/repository/birim.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,11 +41,11 @@ export class BirimSelect implements OnInit {
       
     }
    async ngOnInit() {
-        this.data=(await this.BirimService.list(()=>{})).data.items;
+        this.data=(await this.BirimService.list(()=>{})).items;
 
         this.categoryTypes = this.data;
         this.selectedValue = this.categoryTypes[0];
-        console.log(this.selectedValue);
+
     }
 
     ngAfterContentChecked() {

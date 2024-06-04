@@ -28,7 +28,7 @@ export class ListAlinanTeklifComponent implements OnInit {
   private gridApi!: GridApi<any>;
 
   colDefs: ColDef[] = [
-    { field: "onayDurumu", headerName: "Onay Durumu", width: 130, pinned: "left", cellClass: cellClass,},
+    { field: "onay", headerName: "Onay Durumu", width: 130, pinned: "left", cellClass: cellClass,},
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
     { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
     { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
@@ -75,7 +75,7 @@ export class ListAlinanTeklifComponent implements OnInit {
   rowDataCount: any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.TeklifService.GetList(() => { })).data.items;
+    this.rowData = (await this.TeklifService.GetList(() => { })).items;
     this.rowData = this.rowData.filter(c => c.seri == "AT")
 
     this.rowData.forEach((rowData) => {
@@ -199,7 +199,7 @@ export class ListAlinanTeklifComponent implements OnInit {
   defaultAciklama: any;
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.TeklifService.GetCode()).data.kod;
+    this.belgeNoGetCode = (await this.TeklifService.GetCode()).items.kod;
     this.defaultAciklama = 'VS' + "-" + this.belgeNoGetCode + " no lu Verilen Sipariş"
   }
   alinanTeklifModal() {
@@ -292,5 +292,16 @@ function stringFormatter(params) {
 }
 
 function cellClass(params: CellClassParams) {
-  return params.value === "Siparişe Aktarıldı" ? "rag-green" : "rag-gray";
+
+
+  if (params.value === "Onaylandı") {
+    return params.value === "Onaylandı" ? "rag-green" : "rag-gray"
+  }
+  else if (params.value === "Reddedildi") {
+   return params.value === "Reddedildi" ? "rag-red" : "rag-gray"
+  }
+  else {
+    return params.value === "Onay Bekliyor" ? "rag-gray" : "rag-gray"
+  }
+
 }

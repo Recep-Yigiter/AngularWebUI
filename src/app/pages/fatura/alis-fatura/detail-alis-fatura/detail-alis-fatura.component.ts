@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { DatePipe } from '@angular/common';
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
-import { FaturaService } from '../core/services/fatura.service';
+import { FaturaService } from 'src/app/core/services/repository/fatura.service';
+import { DepoService } from 'src/app/core/services/repository/depo.service';
 @Component({
   selector: 'app-detail-alis-fatura',
   templateUrl: './detail-alis-fatura.component.html',
@@ -70,18 +70,19 @@ export class DetailAlisFaturaComponent implements OnInit {
   async stateControl() {
 
 
-    this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { })).data;
-
-    const depoList = (await this.DepoService.GetList(() => { })).data.items;
+    this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { }));
+  
+    const depoList = (await this.DepoService.GetList(() => { })).items;
 
     if (this.stateData.depoId != undefined) {
       this.selectedObject = depoList.find((el: any) => {
         return el?.id == this.stateData.depoId;
       });
     }
-    this.fatura.depoAdi = this.selectedObject.ad;
-    this.fatura.depoKodu = this.selectedObject.kod;
-    this.fatura.depoId = this.selectedObject.id;
+
+    this.fatura.depoAdi = this.stateData.faturaHareketler[0].depoAdi;
+    this.fatura.depoKodu = this.stateData.faturaHareketler[0].depoKodu;
+    this.fatura.depoId = this.stateData.faturaHareketler[0].depoId;
     this.fatura.satirSayisi = this.fatura.faturaHareketler.length;
     this.fatura.faturaHareketler.forEach((faturaHareket, index) => {
       faturaHareket.satirTutar = (faturaHareket.miktar * faturaHareket.birimFiyat);
@@ -105,13 +106,16 @@ export class DetailAlisFaturaComponent implements OnInit {
     this.time = this.DatePipe.transform(this.fatura.createdDate, 'hh : mm ')
 
   }
+  vazgec(){
+    this.router.navigate(['/fatura/alis-faturasi'],)
+  }
   async duzenle() {
 
     if (this.stateData?.id) {
       this.router.navigate(['/fatura/alis-faturasi/update'], { state: this.stateData })
     }
     else {
-      this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { })).data
+      this.fatura = await this.FaturaService.getByHourId(this.stateData.hourId, () => { })
 
       this.router.navigate(['/fatura/alis-faturasi/update'], { state: this.fatura })
     }

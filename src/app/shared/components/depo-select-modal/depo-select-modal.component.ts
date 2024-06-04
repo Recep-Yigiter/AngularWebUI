@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
+import { DepoService } from 'src/app/core/services/repository/depo.service';
 
 @Component({
   selector: 'app-depo-select-modal',
@@ -36,7 +36,7 @@ export class DepoSelectModalComponent {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.DepoService.GetList(() => { })).data.items;
+    this.rowData = (await this.DepoService.GetList(() => { })).items;
   
   }
   selectedRow: any;

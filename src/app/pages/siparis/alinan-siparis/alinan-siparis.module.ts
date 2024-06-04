@@ -18,6 +18,7 @@ import { CurrencyInputDirective } from 'src/app/shared/directives/currency-input
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListAlinanSiparisComponent } from './list-alinan-siparis/list-alinan-siparis.component';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 
 @NgModule({
@@ -34,22 +35,22 @@ import { ListAlinanSiparisComponent } from './list-alinan-siparis/list-alinan-si
     FormsModule,
     AgGridAngular,
     MatIconModule,
-    MatButtonModule,
     DirectiveModule,
+    MatButtonModule,
     MatCheckboxModule,
     MatBadgeModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {
-        path: "alinan-siparis", component: ListAlinanSiparisComponent,
+        path: "alinan-siparis", component: ListAlinanSiparisComponent,canActivate:[authGuard]
        
       },
       {
-        path: "alinan-siparis", component: AlinanSiparisComponent,
+        path: "alinan-siparis", component: AlinanSiparisComponent,canActivate:[authGuard],
         children: [
-          { path: "create", component: CreateAlinanSiparisComponent },
-          { path: "update", component: UpdateAlinanSiparisComponent },
-          { path: "detail", component: DetailAlinanSiparisComponent },
+          { path: "create", component: CreateAlinanSiparisComponent ,canActivate:[authGuard]},
+          { path: "update", component: UpdateAlinanSiparisComponent ,canActivate:[authGuard]},
+          { path: "detail", component: DetailAlinanSiparisComponent ,canActivate:[authGuard]},
         ]
       }
 

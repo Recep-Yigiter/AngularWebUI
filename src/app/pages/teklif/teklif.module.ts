@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
+import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { authGuard } from 'src/app/Auth/guard/auth.guard';
 
 
 
@@ -24,14 +26,14 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
 
-        { path: "teklif", component: TeklifComponent, },
+        { path: "teklif", component: TeklifComponent,canActivate:[authGuard]},
         {
             path: '', 
-            children: [{ path: '', loadChildren: () => import("../teklif/alinan-teklif/alinan-teklif.module").then(m => m.AlinanTeklifModule) },]
+            children: [{ path: '', loadChildren: () => import("../teklif/alinan-teklif/alinan-teklif.module").then(m => m.AlinanTeklifModule) ,canActivate:[authGuard]},],canActivate:[authGuard]
         },
         {
             path: '', 
-            children: [{ path: '', loadChildren: () => import("../teklif/verilen-teklif/verilen-teklif.module").then(m => m.VerilenTeklifModule) },]
+            children: [{ path: '', loadChildren: () => import("../teklif/verilen-teklif/verilen-teklif.module").then(m => m.VerilenTeklifModule) ,canActivate:[authGuard]}],canActivate:[authGuard]
         },
 
 

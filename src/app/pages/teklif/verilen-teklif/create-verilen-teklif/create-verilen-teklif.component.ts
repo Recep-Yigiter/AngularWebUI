@@ -270,7 +270,7 @@ export class CreateVerilenTeklifComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.TeklifService.GetCode()).data.kod;
+    this.belgeNoGetCode = (await this.TeklifService.GetCode()).items.kod;
     this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu irsaliye"
   }
   getDateAndTime() {

@@ -2,18 +2,18 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { CreateFaturaModel } from '../core/models/create-fatura.model';
+import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
-import { DepoSelectModalComponent } from '../components/depo-select-modal/depo-select-modal.component';
-import { CariSelectModalComponent } from '../components/cari-select-modal/cari-select-modal.component';
 import { CurrencyPipe, DatePipe, formatDate } from '@angular/common';
-import { DeleteButtonComponent } from '../components/delete-button/delete-button.component';
-import { UpdateFaturaModel } from '../core/models/update-fatura.model';
-import { DepoService } from 'src/app/pages/stok/depo/core/services/depo.service';
-import { FaturaService } from '../core/services/fatura.service';
-import { FaturaHareketService } from '../core/services/fatura-hareket.service';
+import { FaturaService } from 'src/app/core/services/repository/fatura.service';
+import { FaturaHareketService } from 'src/app/core/services/repository/fatura-hareket.service';
+import { DeleteButtonComponent } from 'src/app/shared/components/delete-button/delete-button.component';
+import { UpdateFaturaModel } from 'src/app/core/models/faturalar/update-fatura.model';
+import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
+import { DepoSelectModalComponent } from 'src/app/shared/components/depo-select-modal/depo-select-modal.component';
+import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
+import { DepoService } from 'src/app/core/services/repository/depo.service';
+
 
 @Component({
   selector: 'app-update-satis-fatura',
@@ -142,8 +142,8 @@ export class UpdateSatisFaturaComponent implements OnInit {
   async stateControl() {
 
 
-    this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { })).data;
-    const depoList = (await this.DepoService.GetList(() => { })).data.items;
+    this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { }));
+    const depoList = (await this.DepoService.GetList(() => { })).items;
 
     if (this.stateData.depoId != undefined) {
       this.selectedObject = depoList.find((el: any) => {
@@ -229,7 +229,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
   async FaturaHareketUpdate(event) {
 
-    const faturaHareket = (await this.FaturaHareketService.getByHourId(event.data.hourId, () => { })).data;
+    const faturaHareket = (await this.FaturaHareketService.getByHourId(event.data.hourId, () => { }));
     const editdata = {
       id: faturaHareket.id,
       stokId: faturaHareket.stokId,

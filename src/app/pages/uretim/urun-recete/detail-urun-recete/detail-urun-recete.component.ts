@@ -77,13 +77,13 @@ export class DetailUrunReceteComponent implements OnInit {
   async stateControl() {
     
     if (this.stateData?.id) {
-      console.log("List",this.stateData);
+
       this.rowData = this.stateData.urunReceteBilesenler;
       this.rowData2 = this.stateData.operasyonlar;
     }
     else {
-      console.log("Create",this.stateData);
-      this.urunRecete = (await this.UrunReceteService.getByHourId(this.stateData.hourId, () => { })).data
+    
+      this.urunRecete = (await this.UrunReceteService.getByHourId(this.stateData.hourId, () => { }))
       this.rowData = this.urunRecete.urunReceteBilesenler;
       this.rowData2 = this.urunRecete.operasyonlar;
     }

@@ -15,7 +15,7 @@
           display: grid;
           top: 0;
           height: 45px;
-          color: white;" type="button" class="btn yks-btn ">
+          color: white;" type="button" class="btn yks-btn topbar-button">
         <!-- <i class="small fa fa-list" style="font-size: 18px !important; color: white;"></i> -->
 
         <svg style="width: 100%;" version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt"
@@ -53,7 +53,7 @@
           display: grid;
           top: 0;
           height: 45px;
-          color: white;" type="button" class="btn yks-btn ">
+          color: white;" type="button" class="btn yks-btn topbar-button">
         <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
 
         Siparişler
@@ -65,12 +65,12 @@
           display: grid;
           top: 0;
           height: 45px;
-          color: white;" type="button" class="btn yks-btn " data-bs-toggle="dropdown" aria-expanded="false">
+          color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
 
         İşlemler
       </button>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu topbar-dropdown-menu">
         <li [routerLink]="['/satinalma/alinan-teklif/create']"><a class="dropdown-item yks-dropdown-item"
             style="color: #fbfbfb !important;">Teklif Oluştur</a></li>
         <li [routerLink]="['/satinalma/verilen-siparis/create']"><a class="dropdown-item yks-dropdown-item"

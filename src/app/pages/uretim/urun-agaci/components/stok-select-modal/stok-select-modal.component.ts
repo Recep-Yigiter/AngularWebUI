@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { StokService } from 'src/app/pages/stok/stok/core/services/stok.service';
+import { StokService } from 'src/app/core/services/repository/stok.service';
 
 @Component({
   selector: 'app-stok-select-modal',
@@ -37,7 +37,7 @@ export class StokSelectModalComponent  {
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.StokService.GetList(() => { })).data.items;
+    this.rowData = (await this.StokService.GetList(() => { })).items;
   }
   selectedRow: any;
 
