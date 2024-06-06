@@ -15,7 +15,7 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListVerilenTeklifComponent } from './list-verilen-teklif/list-verilen-teklif.component';
 import { TeklifComponent } from '../teklif.component';
 import { ButtonModule } from 'primeng/button';
-import { authGuard } from 'src/app/Auth/guard/auth.guard';
+import { authGuard } from 'src/app/Auth/auth.guard';
 
 @NgModule({
   declarations: [

@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
-import { authGuard } from 'src/app/Auth/guard/auth.guard';
+import { authGuard } from 'src/app/Auth/auth.guard';
 
 
 

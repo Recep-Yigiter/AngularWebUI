@@ -1,0 +1,52 @@
+<!-- <div class="continer" >
+  <form [formGroup]="frm" class="login-form" style="display: flex; height: 100vh; align-items: center; justify-content: center; min-width: 300px;">
+    <div style="width: 100%;">
+      <p class="login-text">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-lock fa-stack-1x"></i>
+        </span>
+      </p>
+      <input formControlName="tenant" type="text" id="tenat" class="login-username" autofocus="true" required="true" placeholder="Tenant" />
+      <input formControlName="email" type="text" id="email" class="login-username" autofocus="true" required="true" placeholder="Email" />
+      <input formControlName="password" type="password"  id="password" class="login-password" required="true" placeholder="Password" />
+      
+<div style="display: flex;justify-content: end;">
+  <input (click)="login()" type="submit" name="Login" value="Giriş" class="login-submit" />
+</div>
+      
+    </div>
+ 
+  </form>   
+  <a href="#" class="login-forgot-pass">forgot password?</a>
+  <div class="underlay-photo"></div>
+  <div class="underlay-black"></div> 
+</div> -->
+
+<div class="continer">
+  <form class="login-form"
+    style="display: flex; height: 100vh; align-items: center; justify-content: center; min-width: 300px;">
+    <div style="width: 100%;">
+      <p class="login-text">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-lock fa-stack-1x"></i>
+        </span>
+      </p>
+      <input [(ngModel)]="loginObj.tenant" name="tenant" type="text" class="login-username" autofocus="true"
+        placeholder="Tenant" />
+      <input [(ngModel)]="loginObj.email" name="email" type="text" class="login-username" placeholder="Email" />
+      <input [(ngModel)]="loginObj.password" name="password" type="password" class="login-password"
+        placeholder="Password" />
+
+      <div style="display: flex;justify-content: end;">
+        <input (click)="login()" type="submit" name="Login" value="Giriş" class="login-submit" />
+      </div>
+
+    </div>
+
+  </form>
+  <a href="#" class="login-forgot-pass">forgot password?</a>
+  <div class="underlay-photo"></div>
+  <div class="underlay-black"></div>
+</div>

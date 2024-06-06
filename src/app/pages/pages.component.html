@@ -15,8 +15,8 @@
        <i class="small fa fa-user" style="font-size: 34px !important; color: white;"></i> 
       </button>
       <ul class="dropdown-menu topbar-dropdown-menu">
+        <li *ngIf="admin" [routerLink]="['/yonetim']" ><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Yönetim</a></li>
         <li  (click)="cikis()"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Çıkış</a></li>
-        
       </ul>
 
     </div>

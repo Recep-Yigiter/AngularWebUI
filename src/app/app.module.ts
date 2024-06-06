@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -29,10 +29,10 @@ import { AlinanTeklifModalComponent } from './shared/components/alinan-teklif-mo
 import { AlinanTeklifHareketModalComponent } from './shared/components/alinan-teklif-hareket-modal/alinan-teklif-hareket-modal.component';
 import { OnayDurumSelectComponent } from './shared/components/onay-durum-select/onay-durum-select.component';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
-import { LoginComponent } from './Auth/login/login.component';
-import { RegisterComponent } from './Auth/register/register.component';
+import { LoginComponent } from './pages/Auth/login/login.component';
+import { RegisterComponent } from './pages/Auth/register/register.component';
 import { JwtHelperService, JWT_OPTIONS, JwtModule  } from '@auth0/angular-jwt';
-import { HtppErrorHandlerInterceptorService } from './core/services/repository/http-error-handler-interceptor.service';
+import { HtppErrorHandlerInterceptorService } from './core/services/http-error-handler-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -68,16 +68,18 @@ import { HtppErrorHandlerInterceptorService } from './core/services/repository/h
     MatCheckboxModule,
     JwtModule.forRoot({
       config:{
-        tokenGetter:()=>localStorage.getItem("token"),
+        tokenGetter:()=>localStorage.getItem("tokenData"),
         allowedDomains:["localhost:7051","192.168.4.211"]
       }
     }),
     NgbModule
   ],
   providers: [
-   { provide: "baseUrl", useValue: "https://localhost:7051/api", multi: true },
+
+   { provide: "baseUrl", useValue: "http://192.168.5.67/api", multi: true },
    { provide: LocationStrategy, useClass: HashLocationStrategy, },
    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
+   //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
    {provide:HTTP_INTERCEPTORS,useClass:HtppErrorHandlerInterceptorService,multi:true}
   ],
   bootstrap: [AppComponent],

@@ -14,39 +14,28 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService,
-    private fb: FormBuilder,
     private router: Router) {
 
 
   }
 
-  public frm: FormGroup = this.fb.group({
-
-    tenant: [null],
-    email: [null],
-    password: [null],
-
-  })
-  get tenant() { return this.frm.get('tenant') }
-  get email() { return this.frm.get('email') }
-  get password() { return this.frm.get('password') }
 
 
+  loginObj: any = {
+    "tenant": "",
+    "email": "",
+    "password": ""
+  }
 
 
 
 
   async login() {
 
-    // this.frm.value.email = "admin.root@yukselis.com"
-    // this.frm.value.password = "yukselis001@root"
-    let loginModel = Object.assign({}, this.frm.value);
 
-     this.authService.login(loginModel, (res) => {
+    this.authService.login(this.loginObj, (res) => {
 
-      localStorage.setItem("token", res.data.jwtToken);
-      localStorage.setItem("refreshToken", res.data.refreshToken);
-      
+      localStorage.setItem("tokenData", JSON.stringify(res.data));
       if (this.authService.redirectUrl) {
         this.router.navigate([this.authService.redirectUrl])
       }
@@ -58,4 +47,7 @@ export class LoginComponent {
     })
 
   }
+
+
+
 }

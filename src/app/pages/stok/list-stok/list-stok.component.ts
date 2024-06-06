@@ -4,6 +4,7 @@ import { Router, Routes } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { StokService } from '../../../core/services/repository/stok.service';
+import { AuthService } from 'src/app/core/services/repository/Auth.service';
 
 @Component({
   selector: 'app-list-stok',
@@ -26,7 +27,7 @@ export class ListStokComponent implements OnInit{
   /**
    *
    */
-  constructor(private StokService: StokService,private router:Router) {
+  constructor(private StokService: StokService,private router:Router,private ayt:AuthService) {
 
 
   }
@@ -46,6 +47,11 @@ rowDataCount:any;
     this.onBtAdd()
   }
 
+
+  deneme(){
+    let test:any;
+    this.ayt.refreshToken(test)
+  }
   
 
   onSelectionChanged() {

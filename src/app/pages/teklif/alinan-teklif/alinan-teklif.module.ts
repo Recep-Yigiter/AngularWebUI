@@ -17,7 +17,7 @@ import { ListAlinanTeklifComponent } from './list-alinan-teklif/list-alinan-tekl
 import { ButtonModule } from 'primeng/button';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import { authGuard } from 'src/app/Auth/guard/auth.guard';
+import { authGuard } from 'src/app/Auth/auth.guard';
 @NgModule({
   declarations: [
     AlinanTeklifComponent,

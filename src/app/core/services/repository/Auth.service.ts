@@ -1,7 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable, Subject } from 'rxjs';
 import { ApiClientService } from 'src/app/core/services/api-client.service';
 
 
@@ -11,7 +11,13 @@ import { ApiClientService } from 'src/app/core/services/api-client.service';
 })
 export class AuthService {
 
-    constructor(private apiService: ApiClientService,private jwtHelperService: JwtHelperService, ) { }
+    public $refreshToken:Subject<any>;
+    constructor(
+        private apiService: ApiClientService,
+        private jwtHelperService: JwtHelperService,
+     ) {
+
+     }
 
     public redirectUrl: string;
 
@@ -29,14 +35,21 @@ export class AuthService {
         return await promiseData;
     }
 
-    async refreshToken(login: any, successCallBack?: (res) => void, errorCallback?: (errorMessage: string) => void) {
+    async refreshToken( successCallBack?: (res) => void, errorCallback?: (errorMessage: string) => void) {
 
-        const headers = new HttpHeaders({ 'tenant': `${login.tenant}` });
+        var tokenData:any = localStorage.getItem("tokenData");
+        const loggedUserData:any=JSON.parse(tokenData)
+     
+        const obj={
+            "currentJwtToken": loggedUserData.jwtToken,
+            "currentRefreshToken": loggedUserData.refreshToken
+          }
+        // const headers = new HttpHeaders({ 'tenant': `${login.tenant}` });
         const observable = this.apiService.post({
             controller: "Tokens",
             action: "refresh",
-            headers: headers
-        }, login)
+
+        }, obj)
 
         const promiseData = firstValueFrom(observable);
         promiseData.then(successCallBack).catch(errorCallback);

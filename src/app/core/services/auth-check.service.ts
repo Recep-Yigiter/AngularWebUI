@@ -16,32 +16,34 @@ export class AuthCheckService {
 
   role: any;
   identityCheck() {
-    const token: string = localStorage.getItem("token");
+
+    const tokenData: string = localStorage.getItem("tokenData");
+    if (tokenData) {
+      const token = JSON.parse(tokenData).jwtToken
+  
+   
     let expired: any;
 
-    try {
-      expired = this.jwtHelperService.isTokenExpired(token);
-    } catch {
-      expired = true;
-    }
+
 
     if (_isAuthenticated == undefined) {
-      if (token && !expired) {
+      
+      if (token ) {
         _isAuthenticated = true;
 
       }
     }
     else {
-      _isAuthenticated = token != null && !expired
+      _isAuthenticated = token != null 
     }
 
   }
 
+
+  }
   get isAuthenticated(): boolean {
     return _isAuthenticated;
   }
-
-
 }
 
 export let _isAuthenticated: boolean;

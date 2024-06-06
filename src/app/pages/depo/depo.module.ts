@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailDepoComponent } from '../depo/detail-depo/detail-depo.component';
 import { UpdateDepoComponent } from '../depo/update-depo/update-depo.component';
 import { DetailDepoHareketlerComponent } from '../depo/detail-depo-hareketler/detail-depo-hareketler.component';
-import { authGuard } from 'src/app/Auth/guard/auth.guard';
+import { authGuard } from 'src/app/Auth/auth.guard';
 
 
 

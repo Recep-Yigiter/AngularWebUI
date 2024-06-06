@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 import {MatBadgeModule} from '@angular/material/badge';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListVerilenSiparisComponent } from './list-verilen-siparis/list-verilen-siparis.component';
-import { authGuard } from 'src/app/Auth/guard/auth.guard';
+import { authGuard } from 'src/app/Auth/auth.guard';
 
 
 @NgModule({
