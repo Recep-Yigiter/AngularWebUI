@@ -50,6 +50,7 @@ a:hover {
   .button.large {
     margin: 0;
     padding: 3.25rem 0.25rem;
+    text-align: center;
   }
   .button.large a {
     color: white;
@@ -222,24 +223,25 @@ a:hover {
 
 
   .flip-cards li:nth-child(6) > .button {
-    background-color: rgba(75, 135, 150, 0.8);
+    background-color: rgba(47, 135, 77 , 0.8);
   }
   .flip-cards li:nth-child(6) > .panel {
-    background-color: rgba(75, 135, 150, 1);
+    background-color: rgba(47, 135, 77 , 1);
   }
 
   .flip-cards li:nth-child(7) > .button {
-    background-color: rgba(75, 135, 150, 0.8);
+    background-color: rgba(210, 0, 0, 0.8);
   }
   .flip-cards li:nth-child(7) > .panel {
     background-color: rgba(75, 135, 150, 1);
   }
   
   .flip-cards li:nth-child(8) > .button {
-    background-color: rgba(75, 135, 150, 0.8);
+    background-color: rgba(129, 79, 29 , 0.8);
   }
   .flip-cards li:nth-child(8) > .panel {
-    background-color: rgba(75, 135, 150, 1);
+    background-color: rgba(129, 79, 29 ,1);
+    
   }
   /* Sixth (last) button color */
   .flip-cards li:last-child > .button {

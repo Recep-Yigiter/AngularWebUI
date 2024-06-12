@@ -13,7 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 @NgModule({
   declarations: [

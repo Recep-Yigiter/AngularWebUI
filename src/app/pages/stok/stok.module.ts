@@ -29,7 +29,7 @@ import { StokComponent } from './stok.component';
 import { CreateStokComponent } from './create-stok/create-stok.component';
 import { TabItemComponent } from './components/tab-item.component';
 import { TabMainComponent } from './components/tab-main.component';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 
 

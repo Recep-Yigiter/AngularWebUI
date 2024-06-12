@@ -9,12 +9,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { authGuard } from '../Auth/auth.guard';
+import { authGuard } from '../Auth/guards/auth.guard';
+import { IsGrantedDirective } from '../Auth/is-granted.directive';
 
 @NgModule({
   declarations: [
     PagesComponent,
-    
+    IsGrantedDirective
 
 
   ],

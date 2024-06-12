@@ -1,4 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { firstValueFrom, Observable, Subject } from 'rxjs';
@@ -21,7 +21,7 @@ export class AuthService {
 
     public redirectUrl: string;
 
-    async login(login: any, successCallBack?: (res) => void, errorCallback?: (errorMessage: string) => void) {
+    async login(login: any, successCallBack?: (res) => void, errorCallback?: (errorMessage: HttpErrorResponse) => void) {
 
         const headers = new HttpHeaders({ 'tenant': `${login.tenant}` });
         const observable = this.apiService.post({
@@ -31,6 +31,7 @@ export class AuthService {
         }, login)
 
         const promiseData = firstValueFrom(observable);
+  
         promiseData.then(successCallBack).catch(errorCallback);
         return await promiseData;
     }

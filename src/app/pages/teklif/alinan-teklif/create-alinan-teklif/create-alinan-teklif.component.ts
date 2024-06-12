@@ -292,7 +292,7 @@ export class CreateAlinanTeklifComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.TeklifService.GetCode()).items.kod;
+    this.belgeNoGetCode = (await this.TeklifService.GetCode()).kod;
     this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Alınan Teklif"
   }
   getDateAndTime() {

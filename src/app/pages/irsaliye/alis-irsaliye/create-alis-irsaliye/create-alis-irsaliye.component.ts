@@ -290,7 +290,7 @@ export class CreateAlisIrsaliyeComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.IrsaliyeService.GetCode()).items.kod;
+    this.belgeNoGetCode = (await this.IrsaliyeService.GetCode()).kod;
   }
   getDateAndTime() {
     this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');

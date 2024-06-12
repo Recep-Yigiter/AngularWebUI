@@ -7,7 +7,7 @@ import { DetailBirimComponent } from './detail-birim/detail-birim.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
 import { RouterModule } from '@angular/router';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 
 

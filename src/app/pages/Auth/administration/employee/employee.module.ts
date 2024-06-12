@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AdminGuard } from 'src/app/Auth/admin.guard';
+import { AdminGuard } from 'src/app/Auth/guards/admin.guard';
 
 
 

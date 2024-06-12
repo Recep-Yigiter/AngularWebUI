@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 
 

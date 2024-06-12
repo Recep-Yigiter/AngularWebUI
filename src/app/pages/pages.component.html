@@ -1,7 +1,8 @@
 <nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66); ">
   <ul class="title-area" style="display: flex; justify-content: space-between; width: 100%;">
     <li class="name">
-      <h1>YÜKSELİŞ ASANSÖR</h1>
+      <h1 >YÜKSELİŞ ASANSÖR</h1>
+
     </li>
     <div class="btn-group mr-4" role="group" aria-label="Button group with nested dropdown "
     style="display: grid; grid-template-columns: max-content max-content max-content;">
@@ -15,7 +16,7 @@
        <i class="small fa fa-user" style="font-size: 34px !important; color: white;"></i> 
       </button>
       <ul class="dropdown-menu topbar-dropdown-menu">
-        <li *ngIf="admin" [routerLink]="['/yonetim']" ><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Yönetim</a></li>
+        <li *isGranted="'Admin'" [routerLink]="['/yonetim']" ><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Yönetim</a></li>
         <li  (click)="cikis()"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Çıkış</a></li>
       </ul>
 
@@ -28,13 +29,15 @@
 
 </nav>
 
+
+
+
 <section class="hero-unit" style="height: calc(100vh - 1.8125rem); position: fixed; width: 100%; overflow-y: auto;">
 
   <div class="row">
     <div class="large-12 columns">
       <hgroup>
-        <!-- <h1>Code. Design. Education.</h1>
-        <h4>Just keep learning. In a gentle way you can shake the world...</h4> -->
+
         <h1></h1>
         <h4></h4>
       </hgroup>
@@ -48,8 +51,7 @@
         <li (dblclick)="stokRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Stok</a>
-            <!-- <i class="fa fa-code card-icon "></i> -->
-            <!-- <i class="fa fa-warehouse card-icon"></i> -->
+
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
@@ -101,8 +103,7 @@
         <li (dblclick)="satinalmaRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Satın Alma</a>
-            <!-- <i class="fa fa-pencil-square-o card-icon"></i> -->
-            <!-- <img class="card-icon" src="../../assets/icons/purchase.png" style="color: white;" width="50px" height="50px" alt=""> -->
+
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" style="color: white;"
               width="40.000000pt" height="40.000000pt" viewBox="0 0 64.000000 64.000000"
               preserveAspectRatio="xMidYMid meet">
@@ -134,7 +135,7 @@
         <li (dblclick)="satisRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Satış</a>
-            <!-- <i class="fa fa-paper-plane-o card-icon"></i> -->
+        
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
@@ -186,30 +187,7 @@
         
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <!-- <a>Üretim</a>
-            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
-              height="40.000000pt" viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
-
-              <g transform="translate(0.000000,72.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
-                <path d="M70 360 l0 -290 290 0 290 0 0 211 0 211 -28 -17 c-15 -10 -43 -29
-           -62 -42 l-35 -23 -3 40 c-2 22 -5 40 -8 40 -3 0 -32 -18 -64 -40 -32 -22 -61
-           -40 -64 -40 -3 0 -6 18 -8 40 l-3 40 -60 -40 -60 -40 -3 120 -3 120 -89 0 -90
-           0 0 -290z m162 140 l3 -130 60 40 60 40 3 -40 c2 -22 5 -40 8 -40 3 0 32 18
-           64 40 32 22 61 40 64 40 3 0 6 -18 8 -40 l3 -40 35 23 c19 13 47 32 63 42 l27
-           17 0 -181 0 -181 -45 0 -45 0 0 100 0 100 -180 0 -180 0 0 -100 0 -100 -45 0
-           -45 0 0 270 0 270 70 0 69 0 3 -130z m286 -252 c-3 -23 -5 -23 -158 -23 -153
-           0 -155 0 -158 23 l-3 22 161 0 161 0 -3 -22z m2 -68 c0 -19 -7 -20 -160 -20
-           -153 0 -160 1 -160 20 0 19 7 20 160 20 153 0 160 -1 160 -20z m-2 -67 l3 -23
-           -160 0 c-149 0 -161 1 -161 18 0 10 3 22 7 26 4 3 75 5 157 4 148 -3 151 -3
-           154 -25z" />
-                <path d="M140 560 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
-           0 -20 -7 -20 -20z" />
-                <path d="M140 470 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
-           0 -20 -7 -20 -20z" />
-                <path d="M140 380 c0 -13 7 -20 20 -20 13 0 20 7 20 20 0 13 -7 20 -20 20 -13
-           0 -20 -7 -20 -20z" />
-              </g>
-            </svg> -->
+    
           </div>
 
           <div class="panel card-back">
@@ -224,20 +202,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <!-- <a>Finans</a>
-            <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
-              height="40.000000pt" viewBox="0 0 72.000000 72.000000" preserveAspectRatio="xMidYMid meet">
-
-              <g transform="translate(0.000000,72.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
-                <path d="M50 360 l0 -270 310 0 c303 0 310 0 310 20 0 13 -7 20 -20 20 -19 0
-           -20 7 -20 115 l0 115 -70 0 -70 0 0 65 0 65 -65 0 c-63 0 -65 1 -65 25 0 25
-           -1 25 -90 25 l-90 0 0 -90 0 -90 -45 0 -45 0 0 135 c0 128 -1 135 -20 135 -20
-           0 -20 -7 -20 -270z m265 -45 l0 -180 -45 0 -45 0 -3 170 c-1 93 0 175 3 183 3
-           9 19 12 47 10 l43 -3 0 -180z m135 -25 l0 -160 -45 0 -45 0 0 160 0 160 45 0
-           45 0 0 -160z m-270 -65 l0 -95 -45 0 -45 0 0 95 0 95 45 0 45 0 0 -95z m405 0
-           l0 -90 -45 0 -45 0 -3 79 c-4 104 -2 108 50 104 l43 -3 0 -90z" />
-              </g>
-            </svg> -->
+      
           </div>
 
           <div class="panel card-back">
@@ -254,8 +219,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <!-- <a>Church</a>
-            <i class="fa fa-users card-icon"></i> -->
+           
           </div>
 
           <div class="panel card-back">
@@ -270,8 +234,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <!-- <a>Church</a>
-            <i class="fa fa-users card-icon"></i> -->
+            
           </div>
 
           <div class="panel card-back">
@@ -302,7 +265,7 @@
           </p>
         </a>
       </div>
-      <!-- end .clients -->
+     
     </div>
 
   </div>

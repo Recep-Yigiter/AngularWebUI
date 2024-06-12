@@ -9,7 +9,7 @@ import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { AlisFaturaComponent } from "./alis-fatura/alis-fatura.component";
 import { SatisFaturaComponent } from "./satis-fatura/satis-fatura.component";
-import { authGuard } from "src/app/Auth/auth.guard";
+import { authGuard } from "src/app/Auth/guards/auth.guard";
 
 
 

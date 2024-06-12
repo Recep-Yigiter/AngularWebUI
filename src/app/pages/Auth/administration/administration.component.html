@@ -25,6 +25,37 @@
   
       </div>
 
+
+      <div class="btn-group mr-1" role="group">
+        <button data-bs-toggle="dropdown" aria-expanded="false"  style="border: none;
+          display: grid;
+          top: 0;
+          height: 45px;
+          color: white;" type="button" class="btn yks-btn topbar-button">
+         <i class="small fa fa-list" style="font-size: 18px !important; color: white;"></i> 
+          Kimlik Yönetimi
+        </button>
+        
+        <ul class="dropdown-menu topbar-dropdown-menu">
+          <li [routerLink]="['/yonetim/role']"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Roller</a></li>
+          <li ><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Kullanıcılar</a></li>
+          
+        </ul>
+  
+      </div>
+      <div class="btn-group mr-1" role="group">
+        <button  style="border: none;
+          display: grid;
+          top: 0;
+          height: 45px;
+          color: white;" type="button" class="btn yks-btn topbar-button">
+         <i class="small fa fa-list" style="font-size: 18px !important; color: white;"></i> 
+          Tenant Yönetimi
+        </button>
+        
+        
+      </div>
+
     </div>
   </nav>
   

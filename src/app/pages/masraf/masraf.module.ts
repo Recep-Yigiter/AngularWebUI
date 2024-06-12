@@ -7,7 +7,7 @@ import { DetailMasrafComponent } from './detail-masraf/detail-masraf.component';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 
 

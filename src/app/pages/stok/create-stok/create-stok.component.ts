@@ -62,20 +62,20 @@ export class CreateStokComponent implements OnInit {
 
   createStok() {
 
-    // const createModel = new CreateStokModel();
-    // createModel.ad = this.frm.value.ad;
-    // createModel.kod = this.frm.value.kod;
-    // createModel.birimId = this.frm.value.birimId.id;
-    // createModel.birimAdi = this.frm.value.birimId.ad;
-    // createModel.birimFiyat = this.frm.value.birimFiyat;
-    // createModel.stokGrup = this.frm.value.stokGrup;
-    // createModel.durum = true;
-    // createModel.aciklama = this.frm.value.aciklama;
-    // createModel.hourId = String(new Date().valueOf());
+    const createModel = new CreateStokModel();
+    createModel.ad = this.frm.value.ad;
+    createModel.kod = this.frm.value.kod;
+    createModel.birimId = this.frm.value.birimId?.id;
+    createModel.birimAdi = this.frm.value.birimId?.ad;
+    createModel.birimFiyat = this.frm.value.birimFiyat;
+    createModel.stokGrup = this.frm.value.stokGrup;
+    createModel.durum = true;
+    createModel.aciklama = this.frm.value.aciklama;
+    createModel.hourId = String(new Date().valueOf());
 
-    // this.StokService.create(createModel, () => {
-    //   this.router.navigate(['/stok/detail'], { state: createModel })
-    // }, errorMessage => { })
+    this.StokService.create(createModel, () => {
+      this.router.navigate(['/stok/detail'], { state: createModel })
+    }, errorMessage => { })
 
 
 

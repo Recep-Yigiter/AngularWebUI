@@ -15,7 +15,7 @@ export class ApiClientService{
 
 
 
-    get<T>(requestParameter: Partial<RequestParameters>, id?: string): Observable<T> {
+    get<T>(requestParameter: Partial<RequestParameters>, id?: string) {
       let url: string = "";
       if (requestParameter.fullEndPoint) {
         url = requestParameter.fullEndPoint;
@@ -26,7 +26,7 @@ export class ApiClientService{
       return this.http.get<T>(url, { headers: requestParameter.headers });
     }
 
-    postbyDynamic<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
+    postbyDynamic<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>) {
       let url: string = ""
       requestParameter.action = "ByDynamic"
       if (requestParameter.fullEndPoint) {
@@ -40,7 +40,7 @@ export class ApiClientService{
     }
 
 
-    post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
+    post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>) {
       let url: string = ""
       if (requestParameter.fullEndPoint) {
         url = requestParameter.fullEndPoint;
@@ -51,7 +51,7 @@ export class ApiClientService{
       return this.http.post<T>(url, body, { headers: requestParameter.headers })
     }
 
-    put<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
+    put<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>) {
       let url: string = ""
       if (requestParameter.fullEndPoint) {
         url = requestParameter.fullEndPoint;
@@ -62,7 +62,7 @@ export class ApiClientService{
       return this.http.put<T>(url, body, { headers: requestParameter.headers })
     }
     
-    delete<T>(requestParameter: Partial<RequestParameters>): Observable<T> {
+    delete<T>(requestParameter: Partial<RequestParameters>) {
       let url: string;
       if (requestParameter.fullEndPoint) {
         url = requestParameter.fullEndPoint;
@@ -75,7 +75,7 @@ export class ApiClientService{
     }
     
 
-    deleteRange<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
+    deleteRange<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>) {
       let url: string = ""
       if (requestParameter.fullEndPoint) {
         url = requestParameter.fullEndPoint;
@@ -86,7 +86,7 @@ export class ApiClientService{
       return this.http.post<T>(url, body, { headers: requestParameter.headers })
     }
 
-    getById<T>(requestParameter: Partial<RequestParameters>,id:string): Observable<T>{
+    getById<T>(requestParameter: Partial<RequestParameters>,id:string){
 
       let url: string = "";
       if (requestParameter.fullEndPoint) {

@@ -37,7 +37,7 @@ export class StokComponent implements OnInit {
 rowDataCount:any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.StokService.GetList(() => { })).items;
+    this.rowData = (await this.StokService.GetList(() => { },error=>console.log(error))).items;
    this.rowDataCount=this.rowData.length
    
   }

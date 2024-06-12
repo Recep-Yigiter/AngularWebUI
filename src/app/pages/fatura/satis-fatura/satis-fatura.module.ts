@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ListSatisFaturaComponent } from './list-satis-fatura/list-satis-fatura.component';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 
 @NgModule({

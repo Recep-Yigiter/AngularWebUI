@@ -199,7 +199,7 @@ export class ListVerilenTeklifComponent implements OnInit {
   defaultAciklama: any;
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.TeklifService.GetCode()).items.kod;
+    this.belgeNoGetCode = (await this.TeklifService.GetCode()).kod;
     this.defaultAciklama = 'VS' + "-" + this.belgeNoGetCode + " no lu Verilen Sipariş"
   }
   alinanTeklifModal() {

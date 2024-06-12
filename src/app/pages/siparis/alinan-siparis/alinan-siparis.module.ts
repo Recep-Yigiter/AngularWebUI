@@ -18,7 +18,7 @@ import { CurrencyInputDirective } from 'src/app/shared/directives/currency-input
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListAlinanSiparisComponent } from './list-alinan-siparis/list-alinan-siparis.component';
-import { authGuard } from 'src/app/Auth/auth.guard';
+import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 
 @NgModule({

@@ -10,9 +10,9 @@ import { SatinalmaComponent } from './pages/satinalma/satinalma.component';
 import { SatisComponent } from './pages/satis/satis.component';
 import { IrsaliyeComponent } from './pages/irsaliye/irsaliye.component';
 import { LoginComponent } from './pages/Auth/login/login.component';
-import { authGuard } from './Auth/auth.guard';
+import { authGuard } from './Auth/guards/auth.guard';
 import { AdministrationComponent } from './pages/Auth/administration/administration.component';
-import { AdminGuard } from './Auth/admin.guard';
+import { AdminGuard } from './Auth/guards/admin.guard';
 
 
 const routes: Routes = [

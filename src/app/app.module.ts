@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -32,7 +32,16 @@ import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm
 import { LoginComponent } from './pages/Auth/login/login.component';
 import { RegisterComponent } from './pages/Auth/register/register.component';
 import { JwtHelperService, JWT_OPTIONS, JwtModule  } from '@auth0/angular-jwt';
-import { HtppErrorHandlerInterceptorService } from './core/services/http-error-handler-interceptor.service';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { AddRoleClaimsButtonComponent } from './shared/components/add-role-claims-button/add-role-claims-button.component';
+import { RequestInterceptor } from './core/request.interceptor';
+
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
+import { AlertService } from './core/services/alert.service';
+import { HtppErrorHandlerInterceptor } from './core/http-error-handler.interceptor';
+import { HandleErrorInterceptor } from './core/handle-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,6 +61,9 @@ import { HtppErrorHandlerInterceptorService } from './core/services/http-error-h
     ConfirmModalComponent,
     LoginComponent,
     RegisterComponent,
+    AddRoleClaimsButtonComponent,
+    AlertModalComponent,
+    
 
   ],
   imports: [
@@ -66,21 +78,26 @@ import { HtppErrorHandlerInterceptorService } from './core/services/http-error-h
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    MessagesModule,
+MessageModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     JwtModule.forRoot({
       config:{
         tokenGetter:()=>localStorage.getItem("tokenData"),
-        allowedDomains:["localhost:7051","192.168.4.211"]
+        allowedDomains:["localhost:7051","192.168.5.67"]
       }
     }),
     NgbModule
   ],
   providers: [
-
-   { provide: "baseUrl", useValue: "http://192.168.5.67/api", multi: true },
+    AlertService,
+   { provide: "baseUrl", useValue: "https://localhost:7051/api", multi: true },
    { provide: LocationStrategy, useClass: HashLocationStrategy, },
    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
    //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
-   {provide:HTTP_INTERCEPTORS,useClass:HtppErrorHandlerInterceptorService,multi:true}
+   {provide:HTTP_INTERCEPTORS,useClass:HtppErrorHandlerInterceptor,multi:true},
+   {provide:HTTP_INTERCEPTORS,useClass:RequestInterceptor,multi:true},
+   { provide: ErrorHandler, useClass: HandleErrorInterceptor }
   ],
   bootstrap: [AppComponent],
   schemas: [

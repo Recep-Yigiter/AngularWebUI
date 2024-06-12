@@ -15,7 +15,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { EmployeeComponent } from './employee/employee.component';
-import { AdminGuard } from 'src/app/Auth/admin.guard';
+import { AdminGuard } from 'src/app/Auth/guards/admin.guard';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -37,6 +37,10 @@ import { BrowserModule } from '@angular/platform-browser';
       {
         path: '',
         children: [{ path: '', loadChildren: () => import("../administration/employee/employee.module").then(m => m.EmployeeModule), canActivate: [AdminGuard] },], canActivate: [AdminGuard]
+      },
+      {
+        path: '',
+        children: [{ path: '', loadChildren: () => import("../administration/role/role.module").then(m => m.RoleModule), canActivate: [AdminGuard] },], canActivate: [AdminGuard]
       },
 
 

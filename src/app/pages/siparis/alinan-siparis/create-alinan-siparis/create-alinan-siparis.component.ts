@@ -361,7 +361,7 @@ export class CreateAlinanSiparisComponent {
 
 
   async belgeNoGetKod() {
-    this.belgeNoGetCode = (await this.SiparisService.GetCode()).items.kod;
+    this.belgeNoGetCode = (await this.SiparisService.GetCode()).kod;
     this.defaultAciklama = this.seriNo + "-" + this.belgeNoGetCode + " no lu Alınan Sipariş"
   }
   getDateAndTime() {

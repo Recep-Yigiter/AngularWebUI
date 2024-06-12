@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+
 declare var $:any;
 @Component({
   selector: 'app-root',
@@ -8,7 +10,14 @@ declare var $:any;
 export class AppComponent  {
   title = 'AngularWebERP';
 
+  constructor() {}
 
-  constructor() {
+  ngOnInit() {
+
+
+    
   }
+
+
+
 }

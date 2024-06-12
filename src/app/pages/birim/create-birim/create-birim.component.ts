@@ -55,7 +55,9 @@ export class CreateBirimComponent implements OnInit {
 
     this.BirimService.create(createModel, () => {
       this.router.navigate(['/birim/detail'], { state: createModel })
-    }, errorMessage => { })
+    }, errorMessage => {
+      
+     })
 
 
 

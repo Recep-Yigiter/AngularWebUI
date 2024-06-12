@@ -40,7 +40,7 @@ export class CreateUrunAgaciComponent implements OnInit {
   async ngOnInit() {
     this.GetListUrunAgaci();
     this.GetListStok();
-    this.GetCode = (await this.UrunAgaciService.GetCode()).items.kod;
+    this.GetCode = (await this.UrunAgaciService.GetCode()).kod;
   }
   colDefs: ColDef[] = [
     { field: "stokKodu", width: 150 },
