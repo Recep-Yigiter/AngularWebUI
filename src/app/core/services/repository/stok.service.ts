@@ -73,6 +73,7 @@ export class StokService {
 
     promiseData.then(successCallBack).catch(errorCallBack);
 
+   
     return await promiseData;
   }
 

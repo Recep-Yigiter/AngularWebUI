@@ -6,7 +6,9 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { FaturaService } from 'src/app/core/services/repository/fatura.service';
-
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import * as resize from '../../../../../assets/js/resizable-layout';
 @Component({
   selector: 'app-list-satis-fatura',
   templateUrl: './list-satis-fatura.component.html',
@@ -19,7 +21,8 @@ export class ListSatisFaturaComponent implements OnInit {
 
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
-  // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
+  public localeText: { [key: string]: string; } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
   colDefs: ColDef[] = [
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
     { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
@@ -47,7 +50,7 @@ export class ListSatisFaturaComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
+    resize.resizeFunction()
   }
 
   CurrencyCellRendererTR(params: any) {
@@ -167,7 +170,7 @@ this.rowData=this.rowData.filter(c=>c.seri=="SF");
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/fatura/satis-faturasi/detail'], { state: selectedRows })
+    this.router.navigate(['/menu/fatura/satis-fatura/detail'], { state: selectedRows })
   }
   onBtAdd() {
     var selectedRows = this.gridApi.getSelectedNodes();

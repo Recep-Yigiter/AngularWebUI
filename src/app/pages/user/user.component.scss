@@ -1,0 +1,71 @@
+@import "src/assets/custom/custom-list-page";
+
+.card  .card-body-hover:hover {
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+}
+.card-header{
+    color: #6c757d !important;
+    font-size: 14px;
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    border-bottom: 0;
+}
+
+.card-body-hover{
+    background-color: rgba(44, 0, 0, 0.005);
+}
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: rgba(0, 0, 0, .03);
+    border-top: 0 solid rgba(0, 0, 0, .125);
+}
+.text-muted{
+    color: #6c757d !important;
+}
+.small{
+    color: #6c757d !important;
+    font-size: 13px !important;
+    font-style: italic !important;
+
+}
+
+
+
+
+.back-color {
+    background-color: transparent !important;
+}
+.top-bar-section ul li{
+    background-color: transparent !important;
+}
+
+h1 {
+    font-size: 24px !important;
+    background: -webkit-linear-gradient(#ffffff, hsl(0, 0%, 89%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px #333);
+}
+
+.top-bar .name {
+    padding: 0 16px 0 10px;
+}
+.top-bar .name:hover {
+    .home-icon {
+        color: #dbe0f3 !important;
+    }
+    cursor: pointer;
+    background-color: #717997;
+}
+
+.home-icon{
+    font-size: 45px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+      color: #aab2d3 !important;
+}
+.home-icon:hover{
+      
+}

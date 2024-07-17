@@ -211,7 +211,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.FaturaService.update(createModel, () => {
-        this.router.navigate(['/fatura/satis-faturasi/detail'], { state: createModel })
+        this.router.navigate(['/menu/fatura/satis-fatura/detail'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Faturaya Satır Eklemelisiniz !')
@@ -223,7 +223,7 @@ export class UpdateSatisFaturaComponent implements OnInit {
 
   vazgec() {
     this.stateData.faturaHareketler = this.getAllRowData()
-    this.router.navigate(['/fatura/satis-faturasi'], { state: this.stateData })
+    this.router.navigate(['/menu/fatura/satis-fatura/list'], { state: this.stateData })
   }
 
 

@@ -107,17 +107,17 @@ export class DetailSatisFaturaComponent implements OnInit {
 
   }
   vazgec(){
-    this.router.navigate(['/fatura/satis-faturasi'],)
+    this.router.navigate(['/menu/fatura/satis-fatura/list'],)
   }
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/fatura/satis-faturasi/update'], { state: this.stateData })
+      this.router.navigate(['/menu/fatura/satis-fatura/update'], { state: this.stateData })
     }
     else {
       this.fatura = (await this.FaturaService.getByHourId(this.stateData.hourId, () => { }))
 
-      this.router.navigate(['/fatura/satis-faturasi/update'], { state: this.fatura })
+      this.router.navigate(['/menu/fatura/satis-fatura/update'], { state: this.fatura })
     }
   }
 

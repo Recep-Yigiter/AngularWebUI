@@ -1,0 +1,132 @@
+
+  <div class="demo-container" style="position: relative;">
+    <div class=" yks-filemanager" style="height: calc(100vh - 80px); min-height: 500px;">
+  
+      <div class=" yks-drawer">
+        <div class="yks-drawer-wrapper">
+          <div class="yks-drawer-content" style="transform: translate(0px, 0px); padding: 0px; left: 0px;">
+  
+            <div class="yks-filemanager-notification-drawer-panel">
+              <div class="yks-filemanager-wrapper">
+                <div class="yks_control_panel">
+                  <div class="yks_cpanel_top">
+  
+                    <div class="yks_cpanel_top_right">
+                      <div class="yks_cpanel_searchview">
+                        <div class="yks_searchview yks_searchview_mobile">
+                          <i class="yks_searchview_icon fa fa-search"></i>
+                          <div class="yks_searchview_input_container" style="position: relative; ">
+                            <input type="text"
+                              class="form-control shadow-none" placeholder="Ara...">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="yks_control_panel">
+                  <div class="yks_cpanel_top">
+                    <div class="yks_cpanel_top_left">
+                      <div>
+  
+  
+                        <div class=" yks-toolbar-item ">
+                          <div class="yks-button-has-text">
+                            <ul class="yks-menu-items-container"
+                              style="    display: flex; align-items: center; justify-content: center;">
+
+
+
+
+
+                              <ng-content select=".caption-left-layout"></ng-content>
+               
+
+
+
+
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
+
+                      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+
+
+
+
+
+
+                        <ng-content select=".caption-right-layout"></ng-content>
+
+
+
+
+
+
+
+                      </div>
+  
+                    </div>
+                  </div>
+  
+  
+  
+  
+                </div>
+  
+  
+  
+  
+  
+  
+  
+                <div class="yks-filemanager-container">
+                  <div class="yks-drawer">
+                    <div class="yks-drawer-wrapper">
+                      <div id="filter_menu" class="yks-drawer-panel-content yks-drawer-panel-content-initial"
+                        style="margin-left: 0px; border: 1px solid #c1c1c1; overflow-y: auto;">
+  
+
+
+
+
+
+
+                        <ng-content select=".p-accordion-layout"></ng-content>
+
+
+                  
+  
+  
+  
+  
+  
+                      </div>
+                      <div class="yks-drawer-content" style="padding: 0px; overflow-y: hidden;">
+                        <div class=" yks-filemanager-breadcrumbs"></div>
+  
+  
+  
+                        <ng-content select=".ag-grid-angular-layout"></ng-content>
+  
+  
+  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+  
+    </div>
+  </div>

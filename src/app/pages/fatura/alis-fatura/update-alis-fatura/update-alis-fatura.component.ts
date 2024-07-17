@@ -213,7 +213,7 @@ export class UpdateAlisFaturaComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.FaturaService.update(createModel, () => {
-        this.router.navigate(['/fatura/alis-faturasi/detail'], { state: createModel })
+        this.router.navigate(['/menu/fatura/alis-fatura/detail'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Faturaya Satır Eklemelisiniz !')
@@ -226,7 +226,7 @@ export class UpdateAlisFaturaComponent implements OnInit {
 
   vazgec() {
     this.stateData.faturaHareketler = this.getAllRowData()
-    this.router.navigate(['/fatura/alis-faturasi/detail'], { state: this.stateData })
+    this.router.navigate(['/menu/fatura/alis-fatura/list'], { state: this.stateData })
   }
 
 

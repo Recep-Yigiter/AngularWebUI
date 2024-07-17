@@ -107,17 +107,17 @@ export class DetailAlisFaturaComponent implements OnInit {
 
   }
   vazgec(){
-    this.router.navigate(['/fatura/alis-faturasi'],)
+    this.router.navigate(['/menu/fatura/alis-fatura'],)
   }
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/fatura/alis-faturasi/update'], { state: this.stateData })
+      this.router.navigate(['/menu/fatura/alis-fatura/update'], { state: this.stateData })
     }
     else {
       this.fatura = await this.FaturaService.getByHourId(this.stateData.hourId, () => { })
 
-      this.router.navigate(['/fatura/alis-faturasi/update'], { state: this.fatura })
+      this.router.navigate(['/menu/fatura/alis-fatura/update'], { state: this.fatura })
     }
   }
 

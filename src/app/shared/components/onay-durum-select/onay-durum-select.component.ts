@@ -13,7 +13,14 @@ export class OnayDurumSelectComponent implements ICellRendererAngularComp {
       this.params = params;
   }
 
-  refresh() {
-      return false
+  refresh(params: any): boolean {
+  
+    params.data.create.checked = params.value
+    if (params.data.create.checked ) {
+    
+    }
+
+    params.api.refreshCells(params);
+    return false;
   }
 }

@@ -6,7 +6,7 @@ import { RbacService } from '../Auth/rbac.service';
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.scss']
+  styleUrls: ['./pages.component.scss'],
 })
 export class PagesComponent implements OnInit {
  
@@ -16,13 +16,13 @@ export class PagesComponent implements OnInit {
 
 
   stokRouter() {
-    this.Router.navigate(['/stok/list'])
+    this.Router.navigate(['/menu/malzeme-yonetimi'])
   }
   satinalmaRouter() {
-    this.Router.navigate(['/satinalma'])
+    this.Router.navigate(['/menu/satinalma'])
   }
   satisRouter() {
-    this.Router.navigate(['/satis'])
+    this.Router.navigate(['/menu/satis'])
   }
   uretimRouter() {
 
@@ -31,10 +31,10 @@ export class PagesComponent implements OnInit {
 
   }
   faturaRouter() {
-    this.Router.navigate(['/fatura'])
+    this.Router.navigate(['/menu/fatura'])
   }
   irsaliyeRouter() {
-    this.Router.navigate(['/irsaliye'])
+    this.Router.navigate(['/menu/irsaliye'])
   }
 
 

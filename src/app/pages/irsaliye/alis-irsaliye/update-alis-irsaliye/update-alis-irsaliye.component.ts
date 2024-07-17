@@ -207,7 +207,7 @@ export class UpdateAlisIrsaliyeComponent implements OnInit {
 
     if (this.getAllRowData().length > 0) {
       this.IrsaliyeService.update(createModel, () => {
-        this.router.navigate(['/irsaliye/alis-irsaliyesi/detail'], { state: createModel })
+        this.router.navigate(['/menu/irsaliye/alis-irsaliye/detail'], { state: createModel })
       }, errorMessage => { })
     } else {
       alert('Irsaliyeya Satır Eklemelisiniz !')
@@ -220,7 +220,7 @@ export class UpdateAlisIrsaliyeComponent implements OnInit {
 
   vazgec() {
     this.stateData.IrsaliyeHareketler = this.getAllRowData()
-    this.router.navigate(['/irsaliye/alis-irsaliyesi/detail'], { state: this.stateData })
+    this.router.navigate(['/menu/irsaliye/alis-irsaliye/detail'], { state: this.stateData })
   }
 
 

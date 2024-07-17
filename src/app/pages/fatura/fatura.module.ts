@@ -22,24 +22,16 @@ import { authGuard } from "src/app/Auth/guards/auth.guard";
     ],
     imports: [
         CommonModule,
-        FormsModule,
-        AgGridAngular,
-        MatIconModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         RouterModule.forChild([
+      
+            { path: 'alis-fatura', loadChildren: () => import("../fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule),canActivate:[authGuard] },
+            { path: 'satis-fatura', loadChildren: () => import("../fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) ,canActivate:[authGuard]},
+              
+              
+          ])
 
-            { path: "fatura", component: FaturaComponent,canActivate:[authGuard] },
-            {
-                path: '',
-                children: [{ path: '', loadChildren: () => import("../fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule),canActivate:[authGuard] },],canActivate:[authGuard]
-            },
-            {
-                path: '', 
-                children: [{ path: '', loadChildren: () => import("../fatura/satis-fatura/satis-fatura.module").then(m => m.SatisFaturaModule) ,canActivate:[authGuard]},],canActivate:[authGuard]
-            },
-        ])
+
+
     ]
 })
 export class FaturaModule { }

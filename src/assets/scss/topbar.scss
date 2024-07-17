@@ -1,0 +1,50 @@
+
+
+nav.top-bar .name {
+    padding: 0 16px 0 10px;
+}
+
+nav.top-bar .name:hover {
+    cursor: pointer;
+    background-color: #717997;
+}
+
+nav.top-bar .name:hover .home-icon {
+    color: #dbe0f3 !important;
+}
+
+nav .home-icon {
+    font-size: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aab2d3 !important;
+}
+
+nav .topbar-dropdown-menu.show {
+    background-color: #474D66;
+}
+
+nav .topbar-dropdown-menu.dropdown-menu {
+    background-color: #474D66;
+    border-radius: 2px;
+    max-width: 250px;
+}
+
+nav .topbar-button.yks-btn:hover {
+    background-color: #474D66;
+
+}
+
+nav .dropdown-item:hover,
+.dropdown-item:focus {
+  color: #212529;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.yks-dropdown-item {
+    color: #666666 !important;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+  }

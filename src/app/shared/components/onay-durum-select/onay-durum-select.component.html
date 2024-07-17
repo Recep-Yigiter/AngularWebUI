@@ -1,2 +1,1 @@
-<div [style.overflow]="'hidden'" [style.textOverflow]="'ellipsis'"><span
-        [style.borderLeft]="'10px solid ' + params.value" [style.paddingRight]="'5px'"></span>{{params.value}}</div>
+<input type="checkbox" [(ngModel)]="params.value" (change)="this.refresh(this.params)">

@@ -104,17 +104,17 @@ export class DetailAlisIrsaliyeComponent implements OnInit {
 
   }
   vazgec(){
-    this.router.navigate(['/irsaliye/alis-irsaliyesi'],)
+    this.router.navigate(['/menu/irsaliye/alis-irsaliye/list'],)
   }
   async duzenle() {
 
     if (this.stateData?.id) {
-      this.router.navigate(['/irsaliye/alis-irsaliyesi/update'], { state: this.stateData })
+      this.router.navigate(['/menu/irsaliye/alis-irsaliye/update'], { state: this.stateData })
     }
     else {
       this.Irsaliye = (await this.IrsaliyeService.getByHourId(this.stateData.hourId, () => { }))
 
-      this.router.navigate(['/irsaliye/alis-irsaliyesi/update'], { state: this.Irsaliye })
+      this.router.navigate(['/menu/irsaliye/alis-irsaliye/update'], { state: this.Irsaliye })
     }
   }
 

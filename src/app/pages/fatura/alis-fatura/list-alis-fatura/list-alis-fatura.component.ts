@@ -6,7 +6,9 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { FaturaService } from 'src/app/core/services/repository/fatura.service';
-
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import * as resize from '../../../../../assets/js/resizable-layout';
 @Component({
   selector: 'app-list-alis-fatura',
   templateUrl: './list-alis-fatura.component.html',
@@ -19,6 +21,8 @@ export class ListAlisFaturaComponent implements OnInit {
   frameworkComponents: any;
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
+  public localeText: { [key: string]: string; } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
   // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
   colDefs: ColDef[] = [
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
@@ -28,7 +32,7 @@ export class ListAlisFaturaComponent implements OnInit {
     { field: "kdvTutar", headerName: "Kdv Tutarı", width: 100,cellRenderer: this.CurrencyCellRendererTR },
     { field: "satirOtv", headerName: "ÖTV Tutarı" ,width: 100,cellRenderer: this.CurrencyCellRendererTR},
     { field: "cariKodu", headerName: "Cari Kodu", width: 150 },
-    { field: "cariAdi", headerName: "Cari Adı", width: 350 },
+    { field: "cariAdi", headerName: "Cari Adı", width: 350 , filter: "agTextColumnFilter"},
     { field: "referans", headerName: "Referans No", width: 150 },
     { field: "teslimatDurumuString", headerName: "Teslimat Durumu", width: 150, },
     { field: "teslimTarihi", headerName: "Teslim Tarihi", width: 150 ,valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy')},
@@ -47,7 +51,7 @@ export class ListAlisFaturaComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
+    resize.resizeFunction();
   }
 
   CurrencyCellRendererTR(params: any) {
@@ -167,7 +171,7 @@ this.rowData=this.rowData.filter(c=>c.seri=="AF");
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/fatura/alis-faturasi/detail'], { state: selectedRows })
+    this.router.navigate(['/menu/fatura/alis-fatura/detail'], { state: selectedRows })
   }
   onBtAdd() {
     var selectedRows = this.gridApi.getSelectedNodes();

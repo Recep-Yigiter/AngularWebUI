@@ -22,7 +22,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     UpdateAlisIrsaliyeComponent,
     DetailAlisIrsaliyeComponent,
     ListAlisIrsaliyeComponent,
-    
+
   ],
   imports: [
     CommonModule,
@@ -34,22 +34,12 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     MatCheckboxModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      {
-        path: "alis-irsaliyesi", component: ListAlisIrsaliyeComponent,canActivate:[authGuard]
-    
-      },
-      {
-        path: "alis-irsaliyesi", component: AlisIrsaliyeComponent,canActivate:[authGuard],
-        children: [
-          { path: "create", component: CreateAlisIrsaliyeComponent ,canActivate:[authGuard]},
-          { path: "update", component: UpdateAlisIrsaliyeComponent ,canActivate:[authGuard]},
-          { path: "detail", component: DetailAlisIrsaliyeComponent ,canActivate:[authGuard]},
-        ]
-      },
+      { path: "list", component: ListAlisIrsaliyeComponent, canActivate: [authGuard] },
+      { path: "create", component: CreateAlisIrsaliyeComponent, canActivate: [authGuard] },
+      { path: "update", component: UpdateAlisIrsaliyeComponent, canActivate: [authGuard] },
+      { path: "detail", component: DetailAlisIrsaliyeComponent, canActivate: [authGuard] },
 
-      //  {
-      //    path: "Alis-Irsaliyesi", component: AlisIrsaliyeComponent
-      //  },
+
 
     ])
   ]

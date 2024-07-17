@@ -15,6 +15,7 @@ import { ListSatisFaturaComponent } from './list-satis-fatura/list-satis-fatura.
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -30,29 +31,17 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     CommonModule,
     FormsModule,
     AgGridAngular,
-    DirectiveModule,
     MatIconModule,
     MatButtonModule,
+    DirectiveModule,
     MatCheckboxModule,
+    MatBadgeModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      {
-        path: "satis-faturasi", component: ListSatisFaturaComponent,
-    
-      },
-      {
-        path: "satis-faturasi", component: SatisFaturaComponent,canActivate:[authGuard],
-        children: [
-          { path: "create", component: CreateSatisFaturaComponent ,canActivate:[authGuard]},
-          { path: "update", component: UpdateSatisFaturaComponent ,canActivate:[authGuard]},
-          { path: "detail", component: DetailSatisFaturaComponent ,canActivate:[authGuard]},
-        ]
-      },
-
-      //  {
-      //    path: "satis-faturasi", component: SatisFaturaComponent
-      //  },
-
+      { path: "list", component: ListSatisFaturaComponent, },
+      { path: "create", component: CreateSatisFaturaComponent, canActivate: [authGuard] },
+      { path: "update", component: UpdateSatisFaturaComponent, canActivate: [authGuard] },
+      { path: "detail", component: DetailSatisFaturaComponent, canActivate: [authGuard] },
     ])
   ]
 })

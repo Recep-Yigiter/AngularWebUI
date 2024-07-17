@@ -1,28 +1,30 @@
-<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66); ">
+<nav class="top-bar" data-topbar>
   <ul class="title-area" style="display: flex; justify-content: space-between; width: 100%;">
     <li class="name">
-      <h1 >YÜKSELİŞ ASANSÖR</h1>
+      <h1>YÜKSELİŞ ASANSÖR</h1>
 
     </li>
     <div class="btn-group mr-4" role="group" aria-label="Button group with nested dropdown "
-    style="display: grid; grid-template-columns: max-content max-content max-content;">
+      style="display: grid; grid-template-columns: max-content max-content max-content;">
 
-    <div class="btn-group mr-1" role="group">
-      <button style="border: none;
+      <div class="btn-group mr-1" role="group">
+        <button style="border: none;
         display: grid;
         top: 0;
         height: 45px;
         color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
-       <i class="small fa fa-user" style="font-size: 34px !important; color: white;"></i> 
-      </button>
-      <ul class="dropdown-menu topbar-dropdown-menu">
-        <li *isGranted="'Admin'" [routerLink]="['/yonetim']" ><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Yönetim</a></li>
-        <li  (click)="cikis()"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Çıkış</a></li>
-      </ul>
+          <i class="small fa fa-user" style="font-size: 34px !important; color: white;"></i>
+        </button>
+        <ul class="dropdown-menu topbar-dropdown-menu">
+          <li *isGranted="'Admin'" [routerLink]="['/administration']"><a class="dropdown-item yks-dropdown-item"
+              style="color: #fbfbfb !important;">Yönetim</a></li>
+          <li (click)="cikis()"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Çıkış</a>
+          </li>
+        </ul>
+
+      </div>
 
     </div>
-
-  </div>
 
 
   </ul>
@@ -37,7 +39,6 @@
   <div class="row">
     <div class="large-12 columns">
       <hgroup>
-
         <h1></h1>
         <h4></h4>
       </hgroup>
@@ -47,8 +48,7 @@
 
 
       <ul style="margin-top: 70px;" class="small-block-grid-2 medium-block-grid-3 flip-cards ">
-
-        <li (dblclick)="stokRouter()" ontouchstart="this.classList.toggle('hover');">
+        <li (click)="stokRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Stok</a>
 
@@ -100,7 +100,7 @@
           </div>
         </li>
 
-        <li (dblclick)="satinalmaRouter()" ontouchstart="this.classList.toggle('hover');">
+        <li (click)="satinalmaRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Satın Alma</a>
 
@@ -132,10 +132,10 @@
           </div>
         </li>
 
-        <li (dblclick)="satisRouter()" ontouchstart="this.classList.toggle('hover');">
+        <li (click)="satisRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Satış</a>
-        
+
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
@@ -162,14 +162,15 @@
             <small class="clear">Updated Mondays.</small>
           </div>
         </li>
-        <li (dblclick)="faturaRouter()" ontouchstart="this.classList.toggle('hover');">
+
+        <li (click)="faturaRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>Fatura</a>
             <i class="fa fa-users card-icon"></i>
           </div>
         </li>
 
-        <li (dblclick)="irsaliyeRouter()" ontouchstart="this.classList.toggle('hover');">
+        <li (click)="irsaliyeRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
             <a>İrsaliye</a>
             <i class="fa fa-users card-icon"></i>
@@ -184,11 +185,13 @@
             <small class="clear">Updated the 4th Sunday.</small>
           </div>
         </li>
-        
+
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-    
+            <a>Finans</a>
+            <i class="fa fa-users card-icon"></i>
           </div>
+
 
           <div class="panel card-back">
             <i class="fa fa-map-o card-icon"></i>
@@ -202,7 +205,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-      
+
           </div>
 
           <div class="panel card-back">
@@ -215,11 +218,9 @@
           </div>
         </li>
 
-
-
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-           
+
           </div>
 
           <div class="panel card-back">
@@ -234,7 +235,7 @@
 
         <li ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            
+
           </div>
 
           <div class="panel card-back">
@@ -246,9 +247,6 @@
             <small class="clear">Updated the 4th Sunday.</small>
           </div>
         </li>
-
-
-
 
       </ul>
     </div>
@@ -265,7 +263,7 @@
           </p>
         </a>
       </div>
-     
+
     </div>
 
   </div>

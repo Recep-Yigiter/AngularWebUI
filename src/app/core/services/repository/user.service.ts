@@ -122,11 +122,35 @@ export class UserService {
     return await promiseData;
   }
 
+  async updateRoles(update:any,userId: any, successCallBack?: () => void, errorCallback?: (errorMessage: HttpErrorResponse) => void) {
+        
+ 
+
+    const observable = await this.apiService.put({
+      controller: "Users",
+      action: "update-roles/"+`${userId}`,
+    
+    }, update)
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(successCallBack).catch(errorCallback);
+    return await promiseData;
+  }
 
 
 
+  async getRolesByUserId(userId:any,successCallBack?: () => void, errorCallBack?: (errorMessage: HttpErrorResponse) => void) {
+    const observable: Observable<any> = this.apiService.get(
+      {
+        controller: "Users",
+      action: "user-roles/" + `${userId}`,
+   
+      });
+    const promiseData = firstValueFrom(observable);
 
+    promiseData.then(successCallBack).catch(errorCallBack);
 
+    return await promiseData;
+  }
 
 
 

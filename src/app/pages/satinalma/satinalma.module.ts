@@ -8,6 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
+import { AlinanSiparisComponent } from '../satis/alinan-siparis/alinan-siparis.component';
+import { AlinanTeklifComponent } from './alinan-teklif/alinan-teklif.component';
+import { VerilenSiparisComponent } from './verilen-siparis/verilen-siparis.component';
 
 
 
@@ -17,22 +20,17 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    AgGridAngular,
-    MatIconModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    // FormsModule,
+    // AgGridAngular,
+    // MatIconModule,
+    // MatButtonModule,
+    // MatCheckboxModule,
+    // ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-
-        // { path: "fatura", component: FaturaComponent, },
-        {
-            path: '',
-            children: [
-              { path: '', loadChildren: () => import("../teklif/alinan-teklif/alinan-teklif.module").then(m => m.AlinanTeklifModule),canActivate:[authGuard] },
-              { path: '', loadChildren: () => import("../siparis/verilen-siparis/verilen-siparis.module").then(m => m.VerilenSiparisModule),canActivate:[authGuard] },
-            ],canActivate:[authGuard]
-        },
+      
+      { path: 'alinan-teklif', component:AlinanTeklifComponent, loadChildren: () => import("../satinalma/alinan-teklif/alinan-teklif.module").then(m => m.AlinanTeklifModule) ,canActivate:[authGuard]},
+      { path: 'verilen-siparis', component:VerilenSiparisComponent, loadChildren: () => import("../satinalma/verilen-siparis/verilen-siparis.module").then(m => m.VerilenSiparisModule) ,canActivate:[authGuard]},
+        
         
     ])
   ]

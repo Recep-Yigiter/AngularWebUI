@@ -34,18 +34,10 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     MatCheckboxModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      {
-        path: "satis-irsaliyesi", component: ListSatisIrsaliyeComponent,canActivate:[authGuard]
-    
-      },
-      {
-        path: "satis-irsaliyesi", component: SatisIrsaliyeComponent,canActivate:[authGuard],
-        children: [
-          { path: "create", component: CreateSatisIrsaliyeComponent ,canActivate:[authGuard]},
-          { path: "update", component: UpdateSatisIrsaliyeComponent,canActivate:[authGuard] },
-          { path: "detail", component: DetailSatisIrsaliyeComponent ,canActivate:[authGuard]},
-        ]
-      },
+      { path: "list", component: ListSatisIrsaliyeComponent, canActivate: [authGuard] },
+      { path: "create", component: CreateSatisIrsaliyeComponent, canActivate: [authGuard] },
+      { path: "update", component: UpdateSatisIrsaliyeComponent, canActivate: [authGuard] },
+      { path: "detail", component: DetailSatisIrsaliyeComponent, canActivate: [authGuard] },
 
       //  {
       //    path: "satis-Irsaliyesi", component: SatisIrsaliyeComponent

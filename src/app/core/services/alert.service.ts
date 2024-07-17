@@ -12,7 +12,6 @@ export class AlertService {
     let ifObject = ""
     if (typeof (alert.errorMessage) == typeof (ifObject)) {
       Swal.fire({
-
         title: alert.title,
         text: alert.errorMessage,
         icon: 'error',
@@ -25,7 +24,8 @@ export class AlertService {
       let template = [];
       for(let item of alert.errorMessage){
 
-       template.push(`<span style=' display:flex; position:absolute;font-style: italic;'>- ${item} </span> <br> `)
+      //  template.push(`<span style=' display:flex; position:absolute;font-family:Monospace; font-size:16px;'>- ${item} </span> <br> `)
+       template.push(`<span style=' display:flex; position:absolute;font-family:cursive; font-size:16px;'>- ${item} </span> <br> `)
       }
   
       Swal.fire({

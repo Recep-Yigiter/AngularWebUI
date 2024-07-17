@@ -138,7 +138,7 @@ export class CreateSatisIrsaliyeComponent {
     if (this.getAllRowData().length > 0) {
       
       this.IrsaliyeService.create(createModel, () => {
-        this.router.navigate(['/irsaliye/satis-irsaliyesi/detail'], { state: createModel })
+        this.router.navigate(['/menu/irsaliye/satis-irsaliye/detail'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -174,7 +174,7 @@ export class CreateSatisIrsaliyeComponent {
   }
 
   vazgec() {
-    this.router.navigate(['/irsaliye/satis-irsaliyesi'])
+    this.router.navigate(['/menu/irsaliye/satis-irsaliye/list'])
   }
 
   IrsaliyeHareketDelete(params) {

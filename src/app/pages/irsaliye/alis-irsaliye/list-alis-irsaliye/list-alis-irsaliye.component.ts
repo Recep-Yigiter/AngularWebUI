@@ -6,7 +6,9 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { IrsaliyeService } from 'src/app/core/services/repository/irsaliye.service';
-
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import * as resize from '../../../../../assets/js/resizable-layout';
 @Component({
   selector: 'app-list-alis-irsaliye',
   templateUrl: './list-alis-irsaliye.component.html',
@@ -19,32 +21,30 @@ export class ListAlisIrsaliyeComponent implements OnInit {
 
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
+  public localeText: { [key: string]: string; } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
   // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
   colDefs: ColDef[] = [
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
     { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
     { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
     { field: "irsaliyeString", headerName: "Türü", width: 80, pinned: "left" },
-    { field: "kdvTutar", headerName: "Kdv Tutarı", width: 100,cellRenderer: this.CurrencyCellRendererTR },
-    { field: "satirOtv", headerName: "ÖTV Tutarı" ,width: 100,cellRenderer: this.CurrencyCellRendererTR},
+    { field: "kdvTutar", headerName: "Kdv Tutarı", width: 100, cellRenderer: this.CurrencyCellRendererTR },
+    { field: "satirOtv", headerName: "ÖTV Tutarı", width: 100, cellRenderer: this.CurrencyCellRendererTR },
     { field: "cariKodu", headerName: "Cari Kodu", width: 150 },
     { field: "cariAdi", headerName: "Cari Adı", width: 350 },
     { field: "referans", headerName: "Referans No", width: 150 },
     { field: "aciklama", headerName: "Açıklama" },
-    { field: "satirSayisi", headerName: "Satır S.",width: 80 },
+    { field: "satirSayisi", headerName: "Satır S.", width: 80 },
     { field: "referansNo", headerName: "Ref. No" },
-    { field: "genelToplam", headerName: "Toplam Tutar", pinned: "right",cellRenderer: this.CurrencyCellRendererTR  },
+    { field: "genelToplam", headerName: "Toplam Tutar", pinned: "right", cellRenderer: this.CurrencyCellRendererTR },
   ];
 
-  /**
-   *
-   */
-  constructor(private IrsaliyeService: IrsaliyeService, private router: Router, private DatePipe: DatePipe) {
 
-
-  }
+  constructor(private IrsaliyeService: IrsaliyeService, private router: Router, private DatePipe: DatePipe) { }
   ngOnInit(): void {
 
+    resize.resizeFunction()
   }
 
   CurrencyCellRendererTR(params: any) {
@@ -60,8 +60,8 @@ export class ListAlisIrsaliyeComponent implements OnInit {
     this.gridApi = params.api;
     this.rowData = (await this.IrsaliyeService.GetList(() => { })).items;
 
-this.rowData=this.rowData.filter(c=>c.seri=="AI");
- this.rowData.sort((val1, val2)=> {return <any> new Date(val2.createdDate) - <any> new Date(val1.createdDate)})
+    this.rowData = this.rowData.filter(c => c.seri == "AI");
+    this.rowData.sort((val1, val2) => { return <any>new Date(val2.createdDate) - <any>new Date(val1.createdDate) })
 
     this.rowData.forEach((rowData) => {
       const dateParts = rowData.createdDate.split("/");
@@ -90,12 +90,12 @@ this.rowData=this.rowData.filter(c=>c.seri=="AI");
       });
 
       irsaliye.satirTutar = irsaliye.irsaliyeHareketler.reduce((prev: any, next: any) => prev + next.satirTutar, 0)
-      irsaliye.iskontoTutar =irsaliye.irsaliyeHareketler.reduce((prev: any, next: any) => prev + next.iskontoTutar, 0)
+      irsaliye.iskontoTutar = irsaliye.irsaliyeHareketler.reduce((prev: any, next: any) => prev + next.iskontoTutar, 0)
       irsaliye.iskontoSonrasiTutar = irsaliye.irsaliyeHareketler.reduce((prev: any, next: any) => prev + next.iskontoSonrasiTutar, 0)
       irsaliye.kdvTutar = irsaliye.irsaliyeHareketler.reduce((prev: any, next: any) => prev + next.kdvTutar, 0);
       irsaliye.satirOtv = (irsaliye.iskontoSonrasiTutar * irsaliye.otv) / 100;
       irsaliye.genelToplam = irsaliye.iskontoSonrasiTutar + irsaliye.kdvTutar;
-      irsaliye.satirSayisi=irsaliye.irsaliyeHareketler.length;
+      irsaliye.satirSayisi = irsaliye.irsaliyeHareketler.length;
 
     })
 
@@ -155,11 +155,11 @@ this.rowData=this.rowData.filter(c=>c.seri=="AI");
 
     const selectedRows = this.gridApi.getSelectedRows()[0];
     this.selectedSiparisHareket = selectedRows
-    // this.router.navigate(['/irsaliye/alis-irsaliyesi/detail'], { state: selectedRows })
+    // this.router.navigate(['/irsaliye/alis-irsaliye/detail'], { state: selectedRows })
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/irsaliye/alis-irsaliyesi/detail'], { state: selectedRows })
+    this.router.navigate(['/menu/irsaliye/alis-irsaliye/detail'], { state: selectedRows })
   }
   onBtAdd() {
     var selectedRows = this.gridApi.getSelectedNodes();

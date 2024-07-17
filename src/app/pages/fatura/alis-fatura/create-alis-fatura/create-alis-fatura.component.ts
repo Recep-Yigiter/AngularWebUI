@@ -141,7 +141,7 @@ export class CreateAlisFaturaComponent {
     if (this.getAllRowData().length > 0) {
       
       this.FaturaService.create(createModel, () => {
-        this.router.navigate(['/fatura/alis-faturasi/detail'], { state: createModel })
+        this.router.navigate(['/menu/fatura/alis-fatura/detail'], { state: createModel })
       }, errorMessage => { })
 
     } else {
@@ -179,7 +179,7 @@ export class CreateAlisFaturaComponent {
   }
 
   vazgec() {
-    this.router.navigate(['/fatura/alis-faturasi'])
+    this.router.navigate(['/menu/fatura/alis-fatura'])
   }
 
   FaturaHareketDelete(params) {

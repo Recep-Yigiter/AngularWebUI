@@ -6,7 +6,9 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { IrsaliyeService } from 'src/app/core/services/repository/irsaliye.service';
-
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import * as resize from '../../../../../assets/js/resizable-layout';
 @Component({
   selector: 'app-list-satis-irsaliye',
   templateUrl: './list-satis-irsaliye.component.html',
@@ -19,6 +21,8 @@ export class ListSatisIrsaliyeComponent implements OnInit {
 
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
+  public localeText: { [key: string]: string; } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
   // this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
   colDefs: ColDef[] = [
     { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
@@ -44,7 +48,7 @@ export class ListSatisIrsaliyeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
+    resize.resizeFunction()
   }
 
   CurrencyCellRendererTR(params: any) {
@@ -160,7 +164,7 @@ this.rowData=this.rowData.filter(c=>c.seri=="SI");
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/irsaliye/satis-irsaliyesi/detail'], { state: selectedRows })
+    this.router.navigate(['/menu/irsaliye/satis-irsaliye/detail'], { state: selectedRows })
   }
   onBtAdd() {
     var selectedRows = this.gridApi.getSelectedNodes();

@@ -124,8 +124,6 @@ export class RoleService {
     return await promiseData;
   }
 
-
-
   async getByRoleIdFull(id: string, successCallBack?: () => void, errorCallback?: (errorMessage: HttpErrorResponse) => void) {
      
 
@@ -142,7 +140,20 @@ export class RoleService {
     return await promiseData;
   }
 
+  async updatePermissions(update: any, successCallBack?: () => void, errorCallback?: (errorMessage: HttpErrorResponse) => void) {
+     
 
+
+    const observable = await this.apiService.put({
+      controller: "Roles",
+      action: "update-permissions",
+       
+    }, update)
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(successCallBack).catch(errorCallback);
+    return await promiseData;
+
+  }
 
 
 

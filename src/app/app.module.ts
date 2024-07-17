@@ -9,11 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UretimComponent } from './pages/uretim/uretim.component';
 
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import { BirimSelect } from './shared/birim-select.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AgGridAngular } from 'ag-grid-angular';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -31,17 +31,16 @@ import { OnayDurumSelectComponent } from './shared/components/onay-durum-select/
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
 import { LoginComponent } from './pages/Auth/login/login.component';
 import { RegisterComponent } from './pages/Auth/register/register.component';
-import { JwtHelperService, JWT_OPTIONS, JwtModule  } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AddRoleClaimsButtonComponent } from './shared/components/add-role-claims-button/add-role-claims-button.component';
 import { RequestInterceptor } from './core/request.interceptor';
-
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
 import { AlertService } from './core/services/alert.service';
 import { HtppErrorHandlerInterceptor } from './core/http-error-handler.interceptor';
-import { HandleErrorInterceptor } from './core/handle-error.interceptor';
+import { PageModule } from './pages/page.module';
 
 @NgModule({
   declarations: [
@@ -63,7 +62,7 @@ import { HandleErrorInterceptor } from './core/handle-error.interceptor';
     RegisterComponent,
     AddRoleClaimsButtonComponent,
     AlertModalComponent,
-    
+
 
   ],
   imports: [
@@ -79,25 +78,40 @@ import { HandleErrorInterceptor } from './core/handle-error.interceptor';
     MatButtonModule,
     MatCheckboxModule,
     MessagesModule,
-MessageModule,
+    MessageModule,
+    PageModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     JwtModule.forRoot({
-      config:{
-        tokenGetter:()=>localStorage.getItem("tokenData"),
-        allowedDomains:["localhost:7051","192.168.5.67"]
+      config: {
+        tokenGetter: () => localStorage.getItem("tokenData"),
+        allowedDomains: ["localhost:7051", "192.168.4.216"]
       }
     }),
-    NgbModule
+    NgbModule,
+    AgGridAngular,
+
+
+
+
+
+
+
+
+
+
+
+
   ],
   providers: [
     AlertService,
-   { provide: "baseUrl", useValue: "https://localhost:7051/api", multi: true },
-   { provide: LocationStrategy, useClass: HashLocationStrategy, },
-   { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
-   //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
-   {provide:HTTP_INTERCEPTORS,useClass:HtppErrorHandlerInterceptor,multi:true},
-   {provide:HTTP_INTERCEPTORS,useClass:RequestInterceptor,multi:true},
-   { provide: ErrorHandler, useClass: HandleErrorInterceptor }
+    { provide: "baseUrl", useValue: "https://localhost:7051/api", multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy, },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
+    //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
+    { provide: HTTP_INTERCEPTORS, useClass: HtppErrorHandlerInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+
+    // { provide: ErrorHandler, useClass: HandleErrorInterceptor }
   ],
   bootstrap: [AppComponent],
   schemas: [
