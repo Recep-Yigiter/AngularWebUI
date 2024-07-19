@@ -57,11 +57,14 @@ export class CreateMasrafComponent implements OnInit {
     const createModel = new CreateMasrafModel();
     createModel.ad = this.frm.value.ad;
     createModel.kod = this.frm.value.kod;
+    createModel.kdvOrani = 0;
+    createModel.barkod ="";
+    createModel.birimId =this.selectedBirim.id;
     createModel.hourId = String(new Date().valueOf());
-
+console.log(createModel);
 
     this.MasrafService.create(createModel, () => {
-      this.router.navigate(['/pages/masraf/detail'], { state: createModel })
+      this.router.navigate(['/menu/malzeme-yonetimi/masraf/detail'], { state: createModel })
     }, errorMessage => { })
 
 

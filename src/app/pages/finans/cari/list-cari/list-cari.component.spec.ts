@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IrsaliyeComponent } from './irsaliye.component';
+import { ListCariComponent } from './list-cari.component';
 
-describe('IrsaliyeComponent', () => {
-  let component: IrsaliyeComponent;
-  let fixture: ComponentFixture<IrsaliyeComponent>;
+describe('ListCariComponent', () => {
+  let component: ListCariComponent;
+  let fixture: ComponentFixture<ListCariComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [IrsaliyeComponent]
+      declarations: [ListCariComponent]
     });
-    fixture = TestBed.createComponent(IrsaliyeComponent);
+    fixture = TestBed.createComponent(ListCariComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

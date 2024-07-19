@@ -32,6 +32,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
+import { DesignComponent } from './core/design/design.component';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     UpdateAlinanSiparisComponent,
     DetailAlinanSiparisComponent,
     ListAlinanSiparisComponent,
-
+DesignComponent
   ],
   imports: [
     CommonModule,

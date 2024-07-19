@@ -33,6 +33,7 @@ import { SatinalmaComponent } from './satinalma/satinalma.component';
 import { SatisComponent } from './satis/satis.component';
 import { FaturaComponent } from './fatura/fatura.component';
 import { IrsaliyeComponent } from './irsaliye/irsaliye.component';
+import { FinansComponent } from './finans/finans.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { IrsaliyeComponent } from './irsaliye/irsaliye.component';
             { path: 'satis', component: SatisComponent, loadChildren: () => import("../pages/satis/satis.module").then(m => m.SatisModule), canActivate: [authGuard] },
             { path: 'fatura',component:FaturaComponent, loadChildren: () => import("../pages/fatura/fatura.module").then(m => m.FaturaModule), canActivate: [authGuard] },
             { path: 'irsaliye',component:IrsaliyeComponent, loadChildren: () => import("../pages/irsaliye/irsaliye.module").then(m => m.IrsaliyeModule), canActivate: [authGuard] },
+            { path: 'finans',component:FinansComponent, loadChildren: () => import("../pages/finans/finans.module").then(m => m.FinansModule), canActivate: [authGuard] },
           ]
         },
 

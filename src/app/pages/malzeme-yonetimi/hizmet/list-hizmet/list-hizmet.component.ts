@@ -45,7 +45,7 @@ export class ListHizmetComponent {
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/hizmet/detail'],{state:selectedRows})
+    this.router.navigate(['/menu/malzeme-yonetimi/hizmet/detail'],{state:selectedRows})
   }
 
   filterSideMenu() {

@@ -1,9 +1,8 @@
-
 <nav class="breadcrumbs">
   <a class="unavailable">Alınan Teklif</a>
 </nav>
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="panel header" data-resize-name="header">
 
     <div class="content">
@@ -34,30 +33,7 @@
             </div>
           </div>
   
-          <!-- <div class="action-rigth">
-            <div class="btn-group mr-1" role="group">
-              <button style="color: #212529; border: none;" type="button" class="btn yks-btn " data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i class="small fa fa-list"></i>
-                İşlemler
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item yks-dropdown-item" style="color: black;">Teklif Al</a></li>
-                <li><a class="dropdown-item yks-dropdown-item" style="color: black;">Teklif Ver</a></li>
-                <li><a class="dropdown-item yks-dropdown-item" style="color: black;">Sipariş Al</a></li>
-                <li><a class="dropdown-item yks-dropdown-item" style="color: black;">Sipariş Ver</a></li>
-              </ul>
-  
-            </div>
-            <div class="btn-group mr-1" role="group">
-              <button style="color: #212529; border: none;" type="button" class="btn yks-btn ">
-                <i class="small mr-1 fa fa-star"></i>
-                Sık Kullanılanlar
-              </button>
-            </div>
-
-            
-          </div> -->
+   
         </div>
 
         <div class="search" style="display: flex;justify-content: end; width: 100%; align-items: center;">
@@ -96,6 +72,46 @@
     </div>
   </div>
 
-</div>
+</div> -->
 
 
+
+
+
+<app-design>
+
+  <div design-buttons>
+    <button routerLink="/menu/satinalma" type="button" class="btn btn-success"
+      style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
+      <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
+      <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
+    </button>
+    <button routerLink="/menu/satinalma/alinan-teklif/create" type="button" class="btn btn-success"
+      style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+      <i class="fa fa-plus" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+      <span class="d-none d-sm-inline" style="font-size: 13px;">Oluştur</span>
+    </button>
+  </div>
+  <div design-search style="width: 100%;">
+    <div class="p-inputgroup" style="background-color: white; border: 1px solid #ccc; ">
+      <input type="text" class="shadow-none form-control" pInputText placeholder="Ara...">
+      <span class="p-inputgroup-addon" style="background: transparent;border: none; padding: 0 0.2rem;min-width: 2rem;">
+        <i class="fa fa-search"></i>
+      </span>
+    </div>
+  </div>
+
+
+  <div design-table-filter> FILTERS</div>
+
+  <div design-table style="height: 100%;">
+
+
+    <ag-grid-angular #agGrid style=" height:100%;" class="ag-theme-quartz" [rowData]="rowData"
+      [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
+      (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
+      [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
+    </ag-grid-angular>
+  </div>
+
+</app-design>

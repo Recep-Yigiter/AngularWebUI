@@ -49,11 +49,11 @@ export class UpdateHizmetComponent {
     createModel.hourId = this.stateData.hourId;
 
     this.HizmetService.update(createModel, () => {
-      this.router.navigate(['/hizmet/detail'], { state: createModel })
+      this.router.navigate(['/menu/malzeme-yonetimi/hizmet/detail'], { state: createModel })
     }, errorMessage => { })
   }
   vazgec(){
-    this.router.navigate(['/hizmet/detail'],{state:history.state})
+    this.router.navigate(['/menu/malzeme-yonetimi/hizmet/detail'],{state:history.state})
   }
 
 

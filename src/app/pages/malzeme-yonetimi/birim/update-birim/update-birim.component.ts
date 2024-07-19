@@ -50,11 +50,11 @@ export class UpdateBirimComponent implements OnInit {
     createModel.hourId = this.stateData.hourId;
 
     this.BirimService.update(createModel, () => {
-      this.router.navigate(['/birim/detail'], { state: createModel })
+      this.router.navigate(['/menu/malzeme-yonetimi/birim/detail'], { state: createModel })
     }, errorMessage => { })
   }
   vazgec(){
-    this.router.navigate(['/birim/detail'],{state:history.state})
+    this.router.navigate(['/menu/malzeme-yonetimi/birim/detail'],{state:history.state})
   }
 
 

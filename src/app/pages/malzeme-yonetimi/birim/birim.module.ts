@@ -9,6 +9,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { ListBirimComponent } from './list-birim/list-birim.component';
+import { DesignComponent } from './core/design/design.component';
 
 
 
@@ -18,7 +19,9 @@ import { ListBirimComponent } from './list-birim/list-birim.component';
     CreateBirimComponent,
     UpdateBirimComponent,
     DetailBirimComponent,
-    ListBirimComponent
+    ListBirimComponent,
+
+    DesignComponent
   ],
   imports: [
     CommonModule,

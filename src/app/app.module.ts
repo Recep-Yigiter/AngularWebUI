@@ -41,6 +41,7 @@ import { AlertModalComponent } from './shared/components/alert-modal/alert-modal
 import { AlertService } from './core/services/alert.service';
 import { HtppErrorHandlerInterceptor } from './core/http-error-handler.interceptor';
 import { PageModule } from './pages/page.module';
+import { PageDesignComponent } from './shared/components/page-design/page-design.component';
 
 @NgModule({
   declarations: [
@@ -62,33 +63,36 @@ import { PageModule } from './pages/page.module';
     RegisterComponent,
     AddRoleClaimsButtonComponent,
     AlertModalComponent,
+    PageDesignComponent,
 
 
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
-    HttpClientModule,
-    BirimSelect,
+   
+     AppRoutingModule,
+     BrowserAnimationsModule,
+     HttpClientModule,
+    //  FormsModule,
+    //  ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    // BrowserModule,
+    // BirimSelect,
+    // MatIconModule,
+    // MatButtonModule,
+    // MatCheckboxModule,
+    // MessagesModule,
+    // MessageModule,
+    // NgbModule,
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: () => localStorage.getItem("tokenData"),
+    //     allowedDomains: ["localhost:7051", "192.168.4.216"]
+    //   }
+    // }),
     AgGridAngular,
-    MatIconModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MessagesModule,
-    MessageModule,
     PageModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => localStorage.getItem("tokenData"),
-        allowedDomains: ["localhost:7051", "192.168.4.216"]
-      }
-    }),
-    NgbModule,
-    AgGridAngular,
+
+
 
 
 
@@ -107,10 +111,9 @@ import { PageModule } from './pages/page.module';
     { provide: "baseUrl", useValue: "https://localhost:7051/api", multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy, },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
-    //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
     { provide: HTTP_INTERCEPTORS, useClass: HtppErrorHandlerInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-
+    //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
     // { provide: ErrorHandler, useClass: HandleErrorInterceptor }
   ],
   bootstrap: [AppComponent],

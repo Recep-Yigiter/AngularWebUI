@@ -13,6 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
+import { DesignComponent } from './core/design/design.component';
 
 
 
@@ -22,7 +23,8 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     ListSatisIrsaliyeComponent,
     CreateSatisIrsaliyeComponent,
     UpdateSatisIrsaliyeComponent,
-    DetailSatisIrsaliyeComponent
+    DetailSatisIrsaliyeComponent,
+    DesignComponent
   ],
   imports: [
     CommonModule,

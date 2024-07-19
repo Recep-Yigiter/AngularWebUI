@@ -46,7 +46,7 @@ export class ListMasrafComponent {
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/masraf/detail'],{state:selectedRows})
+    this.router.navigate(['/menu/malzeme-yonetimi/masraf/detail'],{state:selectedRows})
   }
   filterSideMenu() {
     // document.getElementById("filter_menu").style.width ="200px";

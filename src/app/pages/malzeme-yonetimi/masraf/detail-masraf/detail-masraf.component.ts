@@ -22,13 +22,13 @@ export class DetailMasrafComponent implements OnInit {
 
     if (this.stateData?.id) {
 
-      this.router.navigate(['/masraf/update'], { state: history.state })
+      this.router.navigate(['/menu/malzeme-yonetimi/masraf/update'], { state: history.state })
 
     }
     else {
 
       this.Masraf = (await this.MasrafService.getByHourId(this.stateData.hourId, () => { }));
-      this.router.navigate(['/masraf/update'], { state: this.Masraf })
+      this.router.navigate(['/menu/malzeme-yonetimi/masraf/update'], { state: this.Masraf })
 
     }
   }

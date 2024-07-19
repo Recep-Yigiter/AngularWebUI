@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { ListMasrafComponent } from './list-masraf/list-masraf.component';
+import { DesignComponent } from './core/design/design.component';
 
 
 
@@ -18,7 +19,8 @@ import { ListMasrafComponent } from './list-masraf/list-masraf.component';
     CreateMasrafComponent,
     UpdateMasrafComponent,
     DetailMasrafComponent,
-    ListMasrafComponent
+    ListMasrafComponent,
+    DesignComponent
   ],
   imports: [
     CommonModule,

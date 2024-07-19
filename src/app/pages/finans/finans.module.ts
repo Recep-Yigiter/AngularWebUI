@@ -25,14 +25,8 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
 
-        // { path: "fatura", component: FaturaComponent, },
-        {
-            path: '',
-            children: [
-              { path: '', loadChildren: () => import("../cari/cari.module").then(m => m.CariModule),canActivate:[authGuard] },
-            ],canActivate:[authGuard]
-        },
-        
+
+        { path: 'cari', loadChildren: () => import("./cari/cari.module").then(m => m.CariModule),canActivate:[authGuard] },
     ])
   ]
 })

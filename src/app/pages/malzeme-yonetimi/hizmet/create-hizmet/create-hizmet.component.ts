@@ -59,7 +59,7 @@ export class CreateHizmetComponent {
 
 
     this.HizmetService.create(createModel, () => {
-      this.router.navigate(['/hizmet/detail'], { state: createModel })
+      this.router.navigate(['/menu/malzeme-yonetimi/hizmet/detail'], { state: createModel })
     }, errorMessage => { })
 
 

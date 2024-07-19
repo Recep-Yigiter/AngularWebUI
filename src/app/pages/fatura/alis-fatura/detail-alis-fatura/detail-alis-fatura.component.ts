@@ -107,7 +107,7 @@ export class DetailAlisFaturaComponent implements OnInit {
 
   }
   vazgec(){
-    this.router.navigate(['/menu/fatura/alis-fatura'],)
+    this.router.navigate(['/menu/fatura/alis-fatura/list'],)
   }
   async duzenle() {
 

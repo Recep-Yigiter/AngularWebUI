@@ -143,7 +143,7 @@ export class CreateVerilenSiparisComponent {
 
 
   vazgec() {
-    this.router.navigate(['/menu/satinalma/verilen-siparis'])
+    this.router.navigate(['/menu/satinalma/verilen-siparis/list'])
   }
 
   SiparisHareketDelete(params) {

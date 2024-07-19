@@ -10,6 +10,7 @@ import { DetailHizmetComponent } from './detail-hizmet/detail-hizmet.component';
 import { CreateHizmetComponent } from './create-hizmet/create-hizmet.component';
 import { UpdateHizmetComponent } from './update-hizmet/update-hizmet.component';
 import { ListHizmetComponent } from './list-hizmet/list-hizmet.component';
+import { DesignComponent } from './core/design/design.component';
 
 
 
@@ -20,6 +21,7 @@ import { ListHizmetComponent } from './list-hizmet/list-hizmet.component';
     CreateHizmetComponent,
     UpdateHizmetComponent,
     ListHizmetComponent,
+    DesignComponent,
 
   ],
   imports: [

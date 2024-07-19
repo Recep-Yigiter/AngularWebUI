@@ -46,7 +46,7 @@ export class ListBirimComponent implements OnInit {
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/birim/detail'],{state:selectedRows})
+    this.router.navigate(['/menu/malzeme-yonetimi/birim/detail'],{state:selectedRows})
   }
 
 

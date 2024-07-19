@@ -22,7 +22,7 @@ Hizmet:any;
 
     if (this.stateData?.id) {
    
-      this.router.navigate(['/hizmet/update'], { state: history.state })
+      this.router.navigate(['/menu/malzeme-yonetimi/hizmet/update'], { state: history.state })
 
     }
     else {

@@ -8,139 +8,98 @@
 <form [formGroup]="frm">
 
 
-    <div class="container-fluid">
-        <div class="panel header" data-resize-name="header">
 
-            <div class="content">
+    <app-design w100="width:100%;" displayNone="display:none;">
+
+        <div design-buttons>
+            <button routerLink="/menu/malzeme-yonetimi/stok/list" type="button" class="btn btn-success"
+                style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
+                <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
+            </button>
+            <button (click)="createStok()" type="button" class="btn btn-success"
+                style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+                <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
+            </button>
+            <button type="button" class="btn " routerLink="/menu/malzeme-yonetimi/stok/list"
+                style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+                <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+            </button>
+        </div>
 
 
-                <div class="actions" style="padding: 13px 0px 13px 0px; display: flex;">
 
 
 
-                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+        <div design-table style="height: 100%;">
+            <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
 
-                        <div class="action-left">
-                            <div class="btn-group ml-1 mr-1">
-                                <button routerLink="/menu/malzeme-yonetimi/stok/list" type="button" class="btn btn-success"
-                                    style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
-                                    <i class="fa fa-arrow-left"
-                                        style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
-                                    <span class="d-none d-sm-inline"
-                                        style="font-size: 13px;color: #000000; ">Geri</span>
-                                </button>
-                            </div>
-                            <div class="btn-group ml-1 mr-1">
-                                <button (click)="createStok()" type="button" class="btn btn-success"
-                                    style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
-                                    <i class="fa fa-check"
-                                        style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-                                    <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
-                                </button>
-                            </div>
-                            <div class="btn-group ml-1 mr-1">
-                                <button type="button" class="btn " routerLink="/stok/list"
-                                    style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
-                                    <i class="fa fa-times"
-                                        style="color: #000; margin-right: 5px; font-weight: 600;"></i>
-                                    <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
-                                </button>
-                            </div>
+
+                <div class="yks_button_box yks_not_full" style="width: 140px;">
+
+                    <button class="btn yks_stat_button">
+                        <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
+                        <div class="yks_field_widget yks_stat_info">
+                            <span class="yks_stat_value">
+                                <span>0</span>
+                            </span>
+                            <span class="yks_title_value">Extra Fiyatlar</span>
+
                         </div>
+                    </button>
+                    <button class="btn yks_stat_button">
+                        <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
+                        <div class="yks_field_widget yks_stat_info">
+                            <span class="yks_stat_value">
+                                <span>0</span>
+                            </span>
+                            <span class="yks_title_value">Extra Fiyatlar</span>
 
-
-                    </div>
-
-
-
-
-
-
+                        </div>
+                    </button>
 
                 </div>
 
 
-            </div>
-        </div>
+                <div class="pane" style="padding: 1em;">
+                    <div class="grid">
+                        <div class="col-12 lg:col-6 xl:col-6 pl-4">
 
-        <div class="body">
-            <!-- <div style="display: none;" class="panel sidebar" data-resize-name="sidebar"></div> -->
-            <!-- <div class="resize-handle" draggable="true" data-resize-axis="x" data-resize-target="sidebar" data-resize-target-b="page"></div> -->
-
-
-            <div style="width: calc(100% - 0px);" class="panel page" data-resize-name="page">
+                            <!-- <input type="file" (change)="onFileChange($event)"> -->
+                            <!-- <button (click)="Upload()">Tamam</button> -->
 
 
 
 
 
 
-                <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span style="font-weight: 600; font-size: 13px;">
+                                                Stok Adı </span>
+                                        </td>
 
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span
+                                                style="font-weight: 600; font-size: 18px; display: flex;justify-content: center;align-items: center;">
+                                                <i class="fa fa-star"
+                                                    style="color: #f3cc00; font-size: 22px; display: inline-block;"></i>
+                                                <input formControlName="ad"
+                                                    style="border: 1px solid  rgb(145, 145, 243) ;margin-left: 10px; border-radius: 5px; max-width: 50%; min-width: 300px; background-color: rgb(210, 210, 255);"
+                                                    type="text" class="form-control shadow-none"
+                                                    id="exampleFormControlInput1" placeholder="Ad giriniz...">
 
-                    <div class="yks_button_box yks_not_full" style="width: 140px;">
-
-                        <button class="btn yks_stat_button">
-                            <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
-                            <div class="yks_field_widget yks_stat_info">
-                                <span class="yks_stat_value">
-                                    <span>0</span>
-                                </span>
-                                <span class="yks_title_value">Extra Fiyatlar</span>
-
-                            </div>
-                        </button>
-                        <button class="btn yks_stat_button">
-                            <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
-                            <div class="yks_field_widget yks_stat_info">
-                                <span class="yks_stat_value">
-                                    <span>0</span>
-                                </span>
-                                <span class="yks_title_value">Extra Fiyatlar</span>
-
-                            </div>
-                        </button>
-
-                    </div>
-
-
-                    <div class="pane" style="padding: 1em;">
-                        <div class="grid">
-                            <div class="col-12 lg:col-6 xl:col-6 pl-4">
-
-                                <!-- <input type="file" (change)="onFileChange($event)"> -->
-                                <!-- <button (click)="Upload()">Tamam</button> -->
-
-
-                               
-
-
-
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <span style="font-weight: 600; font-size: 13px;">
-                                                    Stok Adı </span>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span
-                                                    style="font-weight: 600; font-size: 18px; display: flex;justify-content: center;align-items: center;">
-                                                    <i class="fa fa-star"
-                                                        style="color: #f3cc00; font-size: 22px; display: inline-block;"></i>
-                                                    <input formControlName="ad"
-                                                        style="border: 1px solid  rgb(145, 145, 243) ;margin-left: 10px; border-radius: 5px; max-width: 50%; min-width: 300px; background-color: rgb(210, 210, 255);"
-                                                        type="text" class="form-control shadow-none"
-                                                        id="exampleFormControlInput1" placeholder="Ad giriniz...">
-
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
 
 
@@ -153,100 +112,85 @@
 
 
 
-                            </div>
                         </div>
                     </div>
-                    <div>
+                </div>
+                <div>
 
-                        <tab-main>
-                            <tab-item [tabTitle]="'Genel Bilgiler'">
+                    <tab-main>
+                        <tab-item [tabTitle]="'Genel Bilgiler'">
 
-                                <div class="grid">
-                                    <div class="col-12 lg:col-6 xl:col-6 pl-4">
+                            <div class="grid">
+                                <div class="col-12 lg:col-6 xl:col-6 pl-4">
 
-                                        <app-table>
-                                            <app-input-tr [formControlNames]="kod" label="Stok Kodu"
-                                                selectClass="form-control-required"></app-input-tr>
-                                            <app-select-tr [formControlNames]="birimId" (childFunc)="changed($event)"
-                                                label="Ölçü Birimi" selectClass="form-control-required"></app-select-tr>
-                                            <app-input-tr [formControlNames]="stokGrup" label="Stok Grubu"
-                                                selectClass="form-control-required"></app-input-tr>
-                                        </app-table>
-
-                                    </div>
-
-
-                                    <div class="col-12 lg:col-6 xl:col-6 pl-4 pr-4">
-
-                                        <app-table>
-                                            <app-input-tr [formControlNames]="birimFiyat"
-                                                label="Birim Fiyat"></app-input-tr>
-                                        </app-table>
-                                    </div>
-
-
-                                    <table class="yks_table_group " style="width: 100%;">
-                                        <tbody>
-                                            <tr>
-                                                <td style="width: 100px;">
-                                                    <div style="color: #017e84;">
-                                                        İç Notlar
-                                                    </div>
-                                                </td>
-                                                <td></td>
-
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 100%;">
-                                                    <textarea formControlName="aciklama"
-                                                        class="form-control shadow-none border-1"
-                                                        placeholder="Bu not sadece dahili amaçlar içindir"
-                                                        style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
-                                                </td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-
+                                    <app-table>
+                                        <app-input-tr [formControlNames]="kod" label="Stok Kodu"
+                                            selectClass="form-control-required"></app-input-tr>
+                                        <app-select-tr [formControlNames]="birimId" (childFunc)="changed($event)"
+                                            label="Ölçü Birimi" selectClass="form-control-required"></app-select-tr>
+                                        <app-input-tr [formControlNames]="stokGrup" label="Stok Grubu"
+                                            selectClass="form-control-required"></app-input-tr>
+                                    </app-table>
 
                                 </div>
 
 
+                                <div class="col-12 lg:col-6 xl:col-6 pl-4 pr-4">
+
+                                    <app-table>
+                                        <app-input-tr [formControlNames]="birimFiyat"
+                                            label="Birim Fiyat"></app-input-tr>
+                                    </app-table>
+                                </div>
+
+
+                                <table class="yks_table_group " style="width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 100px;">
+                                                <div style="color: #017e84;">
+                                                    İç Notlar
+                                                </div>
+                                            </td>
+                                            <td></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100%;">
+                                                <textarea formControlName="aciklama"
+                                                    class="form-control shadow-none border-1"
+                                                    placeholder="Bu not sadece dahili amaçlar içindir"
+                                                    style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
 
 
 
 
-                            </tab-item>
-                            <tab-item tabTitle="Nitelik & Varyantlar">
-                                Tab 2 content
-                            </tab-item>
-                        </tab-main>
+
+
+                        </tab-item>
+                        <tab-item tabTitle="Nitelik & Varyantlar">
+                            Tab 2 content
+                        </tab-item>
+                    </tab-main>
 
 
 
 
 
 
-                    </div>
                 </div>
-
-
-
-
-
-
-
             </div>
         </div>
 
-    </div>
-
-
-
-
-
-
-
+    </app-design>
 
 
 </form>

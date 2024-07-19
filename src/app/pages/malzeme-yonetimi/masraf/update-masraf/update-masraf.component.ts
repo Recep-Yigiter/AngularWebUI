@@ -50,14 +50,18 @@ export class UpdateMasrafComponent implements OnInit {
     createModel.id = this.stateData.id;
     createModel.ad = this.frm.value.ad ? this.frm.value.ad : this.stateData.ad;
     createModel.kod = this.frm.value.kod ? this.frm.value.kod : this.stateData.kod;
+    createModel.kdvOrani = 0;
+    createModel.barkod ="";
+    createModel.birimId =this.selectedBirim;
     createModel.hourId = this.stateData.hourId;
 
-    this.MasrafService.update(createModel, () => {
-      this.router.navigate(['/masraf/detail'], { state: createModel })
-    }, errorMessage => { })
+
+     this.MasrafService.update(createModel, () => {
+       this.router.navigate(['/menu/malzeme-yonetimi/masraf/detail'], { state: createModel })
+     }, errorMessage => { })
   }
   vazgec(){
-    this.router.navigate(['/masraf/detail'],{state:history.state})
+    this.router.navigate(['/menu/malzeme-yonetimi/masraf/detail'],{state:history.state})
   }
 
   selectedObject:any;

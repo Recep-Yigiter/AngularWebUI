@@ -41,6 +41,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { TabItemComponent } from './components/tab-item.component';
 import { TabMainComponent } from './components/tab-main.component';
 import { CurrencyInputDirective } from './components/currency-input.directive';
+import { DesignComponent } from './core/design/design.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { CurrencyInputDirective } from './components/currency-input.directive';
     InputTrComponent,
     SelectTrComponent,
     TitleInputTrComponent,
-
+DesignComponent
 
 
   
@@ -93,6 +94,7 @@ import { CurrencyInputDirective } from './components/currency-input.directive';
       { path: 'update', component: UpdateStokComponent, canActivate: [authGuard] },
       { path: 'detail', component: DetailStokComponent, canActivate: [authGuard] },
       { path: 'list', component: ListStokComponent, canActivate: [authGuard] },
+      { path: 'detail-stok-actions', component: DetailStokActionsComponent, canActivate: [authGuard] },
 
 
     ])

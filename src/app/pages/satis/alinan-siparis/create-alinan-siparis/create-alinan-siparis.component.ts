@@ -41,8 +41,8 @@ export class CreateAlinanSiparisComponent {
   defaultKDV: any = 0;
   defaultOTV: any = 0;
   selectedSiparisTuru: any
-  siparisTuruAdi: any = 'Verilen';
-  seriNo: any = 'VS';
+  siparisTuruAdi: any = 'Alınan';
+  seriNo: any = 'AS';
   private gridApi!: GridApi<any>;
   public rowSelection: "single" | "multiple" = "single";
 

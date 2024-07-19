@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
+import { DesignComponent } from './core/design/design.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     UpdateAlisIrsaliyeComponent,
     DetailAlisIrsaliyeComponent,
     ListAlisIrsaliyeComponent,
-
+DesignComponent
   ],
   imports: [
     CommonModule,

@@ -16,6 +16,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListVerilenSiparisComponent } from './list-verilen-siparis/list-verilen-siparis.component';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
+import { DesignComponent } from './core/design/design.component';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     UpdateVerilenSiparisComponent,
     DetailVerilenSiparisComponent,
     ListVerilenSiparisComponent,
-
+    DesignComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +39,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     MatBadgeModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      { path: "list", component: ListVerilenSiparisComponent, canActivate: [authGuard]},
+      { path: "list", component: ListVerilenSiparisComponent, canActivate: [authGuard] },
       { path: "create", component: CreateVerilenSiparisComponent, canActivate: [authGuard] },
       { path: "update", component: UpdateVerilenSiparisComponent, canActivate: [authGuard] },
       { path: "detail", component: DetailVerilenSiparisComponent, canActivate: [authGuard] },

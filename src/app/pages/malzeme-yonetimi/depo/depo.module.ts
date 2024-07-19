@@ -10,11 +10,12 @@ import { UpdateDepoComponent } from '../depo/update-depo/update-depo.component';
 import { DetailDepoHareketlerComponent } from '../depo/detail-depo-hareketler/detail-depo-hareketler.component';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { ListDepoComponent } from './list-depo/list-depo.component';
+import { DesignComponent } from './core/design/design.component';
 
 
 
 @NgModule({
-  declarations: [DepoComponent, CreateDepoComponent, DetailDepoComponent, UpdateDepoComponent, DetailDepoHareketlerComponent, ListDepoComponent],
+  declarations: [DepoComponent, CreateDepoComponent, DetailDepoComponent, UpdateDepoComponent, DetailDepoHareketlerComponent, ListDepoComponent, DesignComponent],
   imports: [
     CommonModule,
     FormsModule,

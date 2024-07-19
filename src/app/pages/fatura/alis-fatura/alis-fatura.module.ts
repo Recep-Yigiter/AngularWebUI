@@ -16,6 +16,7 @@ import { NumberInputDirective } from 'src/app/shared/directives/number-input.dir
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { MatBadgeModule } from '@angular/material/badge';
+import { DesignComponent } from './core/design/design.component';
 
 
 
@@ -25,7 +26,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     CreateAlisFaturaComponent,
     UpdateAlisFaturaComponent,
     DetailAlisFaturaComponent,
-    ListAlisFaturaComponent
+    ListAlisFaturaComponent,
+    DesignComponent
   ],
   imports: [
     CommonModule,

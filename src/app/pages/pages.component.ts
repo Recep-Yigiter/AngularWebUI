@@ -28,7 +28,7 @@ export class PagesComponent implements OnInit {
 
   }
   finansRouter() {
-
+    this.Router.navigate(['/menu/finans'])
   }
   faturaRouter() {
     this.Router.navigate(['/menu/fatura'])

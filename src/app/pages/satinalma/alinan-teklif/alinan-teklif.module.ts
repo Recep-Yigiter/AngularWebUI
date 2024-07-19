@@ -18,6 +18,7 @@ import { ButtonModule } from 'primeng/button';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
+import { DesignComponent } from './core/design/design.component';
 @NgModule({
   declarations: [
     AlinanTeklifComponent,
@@ -25,7 +26,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
     UpdateAlinanTeklifComponent,
     DetailAlinanTeklifComponent,
     ListAlinanTeklifComponent,
-
+    DesignComponent
   ],
   imports: [
     CommonModule,
