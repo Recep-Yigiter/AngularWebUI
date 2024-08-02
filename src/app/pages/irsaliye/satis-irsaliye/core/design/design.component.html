@@ -27,20 +27,8 @@
         </div>
     </div>
 
-    <div class="body">
-        <div [style]="displayNone" class="panel sidebar" data-resize-name="sidebar">
-            <ng-content select="[design-table-filter]"></ng-content>
-        </div> 
-        <div [style]="displayNone" class="resize-handle" draggable="true" data-resize-axis="x" data-resize-target="sidebar" data-resize-target-b="page"></div> 
-     
-        <div [style]="w100" class="panel page" data-resize-name="page">
+    <ng-content select="[full-page]"></ng-content>
 
 
-           
-            <ng-content select="[design-table]"></ng-content>
-
-
-        </div>
-    </div>
 
 </div>

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { StokService } from 'src/app/core/services/repository/stok.service';
 import { CreateStokModel } from 'src/app/core/models/stok/create-stok-model';
+import { BirimService } from 'src/app/core/services/repository/birim.service';
+import { ROUTER_NAVIGATE } from 'src/ROUTER_NAVIGATE';
 
 @Component({
   selector: 'app-create-stok',
@@ -18,12 +20,17 @@ export class CreateStokComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private StokService: StokService
+    private StokService: StokService,
+    private BirimService: BirimService
   ) {
 
 
   }
+  BirimDataSource: any;
+  selectedBirim: any
   async ngOnInit() {
+    this.BirimDataSource = (await this.BirimService.list(() => { })).items;
+    this.selectedBirim = this.BirimDataSource[0];
 
 
   }
@@ -59,7 +66,7 @@ export class CreateStokComponent implements OnInit {
 
 
   createStok() {
-    
+
     const createModel = new CreateStokModel();
     createModel.ad = this.frm.value.ad;
     createModel.kod = this.frm.value.kod;
@@ -102,10 +109,7 @@ export class CreateStokComponent implements OnInit {
 
   }
 
-  changed(event) {
-
-
-  }
+  changed(event) { }
 
 
   onFileChange(event) {
@@ -167,6 +171,28 @@ export class CreateStokComponent implements OnInit {
 
 
 
-}
 
+
+
+
+
+
+  geri() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_list])
+  }
+
+  vazgec() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_list])
+  }
+
+
+
+
+
+
+
+
+
+
+}
 

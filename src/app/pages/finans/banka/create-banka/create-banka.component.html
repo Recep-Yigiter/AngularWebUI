@@ -1,0 +1,160 @@
+<nav class="breadcrumbs">
+    <a [routerLink]="['/stok']">Banka</a>
+    <a class="unavailable">Yeni</a>
+
+</nav>
+<form [formGroup]="frm">
+
+    <app-design w100="width:100%;" displayNone="display:none;">
+
+        <div design-buttons>
+            <button routerLink="/menu/finans/banka/list" type="button" class="btn btn-success"
+                style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
+                <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
+            </button>
+            <button (click)="createBanka()" type="button" class="btn btn-success"
+                style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+                <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
+            </button>
+            <button type="button" class="btn " routerLink="/menu/finans/banka/list"
+                style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+                <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+            </button>
+        </div>
+
+
+
+
+
+        <div full-page style="height: 100%;">
+ 
+            <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
+
+                <div class="grid">
+
+
+                    <div class="col-12 lg:col-4 xl:col-4 pl-4">
+
+                        <table class="yks_table_group">
+                            <tbody>
+                                <tr>
+                                    <td class="yks_td_label"></td>
+                                    <td style="width: 100%; "></td>
+                                </tr>
+
+
+
+                                <tr class="table_row_group">
+                                    <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                        <label style=" min-width: 90px; font-weight: 600; font-size: 13px;">Banka Adı
+                                            :
+                                        </label>
+                                    </td>
+                                    <td>
+
+                                        <input type="text" formControlName="ad"
+                                            class="form-control shadow-none form-control-nullable"
+                                            id="exampleFormControlInput1">
+                                    </td>
+
+                                </tr>
+                                <tr class="table_row_group">
+                                    <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                        <label style=" min-width: 90px; font-weight: 600; font-size: 13px;">Banka Kodu
+                                            :
+                                        </label>
+                                    </td>
+                                    <td>
+
+                                        <input type="text" formControlName="kod"
+                                            class="form-control shadow-none form-control-nullable"
+                                            id="exampleFormControlInput1">
+                                    </td>
+
+                                </tr>
+                                <tr class="table_row_group">
+                                    <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                        <label
+                                            style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
+                                            :
+
+                                        </label>
+                                    </td>
+
+                                    <td style="width: 100%;" class="table_row_group">
+
+                                        <label
+                                            style=" min-width: 100%; font-weight: 600; font-size: 13px; color: #666666;">
+                                            <textarea formControlName="aciklama"
+                                                class="form-control shadow-none border-1"
+                                                style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
+                                        </label>
+                                    </td>
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+                <div>
+                    <div
+                        style="padding: 0.5rem 0 0 1rem;border: 1px solid rgba(0, 0, 0, 0.15); display: grid; grid-template-columns: 100px 90px 50px;  gap: 2px;">
+                        <button (click)="createBankaHesap()" mat-icon-button style="width: 100px; " color="primary"
+                            aria-label="Example icon button with a home icon">
+                            <mat-icon style="font-size: 18px; font-weight: 600;">add</mat-icon>
+                            <label style="font-weight: 600; font-size: 14px; color: #666666;">Hesap Ekle</label>
+                        </button>
+                        <button mat-icon-button style="width: 50px;" color="primary"
+                            aria-label="Example icon button with a home icon">
+                            <mat-icon style="font-size: 18px; font-weight: 600;color: rgb(172, 0, 0);">delete</mat-icon>
+                            <label style="font-weight: 600; font-size: 14px; color: #666666;">Sil</label>
+                        </button>
+
+                    </div>
+                    <ag-grid-angular style="width: 100%;min-height: 190px; height:100px; margin-top: 4px;"
+                        class="ag-theme-quartz" [rowData]="rowData" [columnDefs]="colDefs" (gridReady)="getList($event)"
+                        [rowSelection]="rowSelection" [rowHeight]="22" [headerHeight]="23"
+                        (rowSelected)="rowSelected($event)"
+                      >
+                    </ag-grid-angular> 
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </app-design>
+
+
+
+
+
+</form>

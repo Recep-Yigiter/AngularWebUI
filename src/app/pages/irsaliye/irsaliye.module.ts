@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
-
+import {DividerModule} from 'primeng/divider';
 
 
 @NgModule({
@@ -22,6 +22,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
         MatIconModule,
         MatButtonModule,
         MatCheckboxModule,
+        DividerModule,
         ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         RouterModule.forChild([
           { path: 'alis-irsaliye', loadChildren: () => import("../irsaliye/alis-irsaliye/alis-irsaliye.module").then(m => m.AlisIrsaliyeModule),canActivate:[authGuard] },

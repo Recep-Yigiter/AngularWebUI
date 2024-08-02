@@ -1,0 +1,319 @@
+<div class="modal-header ">
+    <h4 class="modal-title"></h4>
+    <h4 class="modal-title"> </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+</div>
+
+
+
+<div class="">
+    <form [formGroup]="frm">
+        <div class="grid">
+
+
+
+            <div class="col-12 lg:col-12 xl:col-12 pl-3 pr-3">
+
+                <div class="mt-1" style="border: 1px solid #ddd">
+                    <div class="form-title pl-2" style="font-weight: 500;">
+                        Hesap Bilgileri
+                    </div>
+
+
+                    <table class="yks_table_group">
+                        <tbody>
+                            <tr class="table_row_group">
+                                <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                    <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">Hesap No :
+
+                                    </label>
+                                </td>
+
+                                <td class="table_row_group" style="position: relative;">
+
+                                    <input [ngClass]="{ 'is-invalid': submitted && f.hesapNo.errors }"
+                                        formControlName="hesapNo" style="width: 33.33%;" type="text"
+                                        class="form-control shadow-none form-control-required"
+                                        id="exampleFormControlInput1">
+
+                                </td>
+                            </tr>
+                            <tr class="table_row_group">
+                                <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                    <label style=" min-width: 50px; font-weight: 600; font-size: 13px;">Hesap Adı :
+
+                                    </label>
+                                </td>
+
+                                <td style="width: 100%;" class="table_row_group">
+
+                                    <input [ngClass]="{ 'is-invalid': submitted && f.hesapAdi.errors }"
+                                        formControlName="hesapAdi" type="text"
+                                        class="form-control shadow-none form-control-required"
+                                        id="exampleFormControlInput1">
+                                </td>
+                            </tr>
+                            <tr class="table_row_group">
+                                <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                    <label style=" min-width:145px; font-weight: 600; font-size: 13px;">IBAN No :
+
+                                    </label>
+                                </td>
+
+                                <td style="width: 100%;" class="table_row_group">
+
+                                    <input [ngClass]="{ 'is-invalid': submitted && f.ibanNo.errors }"
+                                        formControlName="ibanNo" type="text"
+                                        class="form-control shadow-none form-control-required"
+                                        id="exampleFormControlInput1">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+
+
+                    <div class="grid">
+
+
+                        <div class="col-12 lg:col-6 xl:col-6">
+
+
+                            <table class="yks_table_group">
+                                <tbody>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">Hesap
+                                                Türü
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <select [ngClass]="{ 'is-invalid': submitted && f.hesapTuru.errors }"
+                                                (ngModelChange)="changed($event)" formControlName="hesapTuru"
+                                                class="form-select shadow-none" aria-label="Default select example">
+                                                <option selected [ngValue]="null">Lütfen
+                                                    seçim yapınız...
+                                                </option>
+                                                <option *ngFor="let item of Hesapturleri" [ngValue]="item.hesapTuru">
+                                                    {{item.hesapTuruAdi}} </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label
+                                                style=" min-width: 145px; font-weight: 600; font-size: 13px;">Mutabakat
+                                                Tar. :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <input [ngClass]="{ 'is-invalid': submitted && f.mutabakatTarihi.errors }"
+                                                formControlName="mutabakatTarihi" [(ngModel)]="dateTime" type="date"
+                                                class="form-control shadow-none form-control-required"
+                                                id="exampleFormControlInput1">
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">EMKB
+                                                Banka
+                                                Kodu :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <input [ngClass]="{ 'is-invalid': submitted && f.emkbBankaKodu.errors }"
+                                                formControlName="emkbBankaKodu" type="text"
+                                                class="form-control shadow-none form-control-required"
+                                                id="exampleFormControlInput1">
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">EMKB
+                                                Şube
+                                                Kodu :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <input [ngClass]="{ 'is-invalid': submitted && f.emkbSubeKodu.errors }"
+                                                formControlName="emkbSubeKodu" type="text"
+                                                class="form-control shadow-none form-control-required"
+                                                id="exampleFormControlInput1">
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">Müşteri
+                                                No :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <input [ngClass]="{ 'is-invalid': submitted && f.musteriNo.errors }"
+                                                formControlName="musteriNo" type="text"
+                                                class="form-control shadow-none form-control-required"
+                                                id="exampleFormControlInput1">
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                        <div class="col-12 lg:col-6 xl:col-6">
+
+
+                            <table class="yks_table_group">
+                                <tbody>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">Faiz(%)
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <input [ngClass]="{ 'is-invalid': submitted && f.faiz.errors }" numberInput
+                                                [maxDigits]="2" [(ngModel)]="defaultFaiz" formControlName="faiz"
+                                                type="text" class="form-control shadow-none form-control-required"
+                                                id="exampleFormControlInput1">
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label
+                                                style=" min-width: 145px; font-weight: 600; font-size: 13px;">Komisyon(%)
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <input [ngClass]="{ 'is-invalid': submitted && f.komisyon.errors }"
+                                                numberInput [maxDigits]="2" [(ngModel)]="defaultKomisyon"
+                                                formControlName="komisyon" type="text"
+                                                class="form-control shadow-none form-control-required"
+                                                id="exampleFormControlInput1">
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">Para
+                                                Birimi
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+
+                                            <mat-radio-group
+                                                [ngClass]="{ 'is-invalid': submitted && f.paraBirimi.errors }"
+                                                formControlName="paraBirimi" aria-labelledby="example-radio-group-label"
+                                                (change)="changeParaBirimi($event)" class="example-radio-group"
+                                                [(ngModel)]="selectedOption">
+                                                <mat-radio-button class="example-radio-button"
+                                                    *ngFor="let option of radioButtonOptions"
+                                                    [value]="option.paraBirimiAdi" [checked]="option.checked">
+                                                    {{ option.paraBirimiAdi }}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group"
+                                        [ngStyle]="{'display': dovizSelectedDisabled ? 'none' : '' }">
+                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
+
+                                            <label style=" min-width: 145px; font-weight: 600; font-size: 13px;">Döviz
+                                                Cinsi :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+
+                                            <select [ngClass]="{ 'is-invalid': submitted && f.dovizCinsi.errors }"
+                                                formControlName="dovizCinsi" (ngModelChange)="changedDovizCins($event)"
+                                                [ngClass]="{disabled:dovizSelectedDisabled==true }"
+                                                class="form-select shadow-none" aria-label="Default select example">
+                                                <option selected [ngValue]="null">Lütfen
+                                                    seçim yapınız...
+                                                </option>
+                                                <option *ngFor="let item of dovizCinsleri" [ngValue]="item.dovizCinsiAdi">
+                                                    {{item.dovizCinsiAdi}} </option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </form>
+
+
+</div>
+
+
+<div class="modal-footer">
+    <button  type="button" class="btn btn-success" (click)="submit()"
+        style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+        <i class="fa fa-plus" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Ekle</span>
+    </button>
+    <button type="button" class="btn " (click)="activeModal.close(false)"
+        style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+        <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+    </button>
+</div>

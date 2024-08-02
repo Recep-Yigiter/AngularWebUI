@@ -7,6 +7,7 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UrunReceteService } from 'src/app/pages/uretim/urun-recete/core/services/urun-recete.service';
 import { StokService } from 'src/app/core/services/repository/stok.service';
+import { ROUTER_NAVIGATE } from 'src/ROUTER_NAVIGATE';
 
 @Component({
   selector: 'app-detail-stok-actions',
@@ -169,11 +170,11 @@ export class DetailStokActionsComponent implements OnInit {
   }
 
 
-  titleRouter(){
+  geri(){
     if (this.stateData?.id) {
-      this.router.navigate(['/menu/malzeme-yonetimi/stok/detail'], { state: this.stateData })
+      this.router.navigate([ROUTER_NAVIGATE.stok_detail], { state: this.stateData })
     } else {
-      this.router.navigate(['/menu/malzeme-yonetimi/stok/detail'], { state: this.Stok })
+      this.router.navigate([ROUTER_NAVIGATE.stok_detail], { state: this.Stok })
     }
   }
 

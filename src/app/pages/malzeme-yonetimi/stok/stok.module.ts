@@ -42,18 +42,17 @@ import { TabItemComponent } from './components/tab-item.component';
 import { TabMainComponent } from './components/tab-main.component';
 import { CurrencyInputDirective } from './components/currency-input.directive';
 import { DesignComponent } from './core/design/design.component';
-
+import { StokTabItem, StokTabMain } from 'src/app/shared/components/tabs/stok-tab';
+import { AngularSplitModule } from 'angular-split';
 @NgModule({
   declarations: [
     StokComponent,
     CreateStokComponent,
     UpdateStokComponent,
     ListStokComponent,
-   DetailStokComponent,
+    DetailStokComponent,
     DetailStokActionsComponent,
     CreateStokComponent,
-    TabItemComponent,
-    TabMainComponent,
     CurrencyInputDirective,
 
     
@@ -61,9 +60,10 @@ import { DesignComponent } from './core/design/design.component';
     InputTrComponent,
     SelectTrComponent,
     TitleInputTrComponent,
-DesignComponent
+    DesignComponent,
 
-
+    StokTabItem,
+    StokTabMain
   
   ],
   imports: [
@@ -87,7 +87,7 @@ DesignComponent
     MatListModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     HttpClientModule,
-
+    AngularSplitModule,
 
     RouterModule.forChild([
       { path: 'create', component: CreateStokComponent, canActivate: [authGuard] },

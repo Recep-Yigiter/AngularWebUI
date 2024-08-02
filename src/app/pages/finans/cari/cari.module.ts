@@ -16,6 +16,7 @@ import { UpdateCariComponent } from './update-cari/update-cari.component';
 import { DetailCariComponent } from './detail-cari/detail-cari.component';
 import { DesignComponent } from './core/design/design.component';
 import { DetailCariHareketlerComponent } from './detail-cari-hareketler/detail-cari-hareketler.component';
+import { AngularSplitModule } from 'angular-split';
 
 
 
@@ -38,6 +39,7 @@ import { DetailCariHareketlerComponent } from './detail-cari-hareketler/detail-c
     MatButtonModule,
     MatCheckboxModule,
     ButtonModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
 

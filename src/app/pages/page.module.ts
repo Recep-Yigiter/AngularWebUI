@@ -34,11 +34,15 @@ import { SatisComponent } from './satis/satis.component';
 import { FaturaComponent } from './fatura/fatura.component';
 import { IrsaliyeComponent } from './irsaliye/irsaliye.component';
 import { FinansComponent } from './finans/finans.component';
-
+import { DenemeComponent } from './deneme/deneme.component';
+import { ResizeDirective } from './deneme/resize.directive';
+import { AngularSplitModule } from 'angular-split';
 @NgModule({
   declarations: [
     PagesComponent,
     IsGrantedDirective,
+    DenemeComponent,
+    ResizeDirective
 
   ],
   imports: [
@@ -64,6 +68,7 @@ import { FinansComponent } from './finans/finans.component';
     ListboxModule,
     FormsModule,
     DividerModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild(
       [

@@ -8,15 +8,16 @@ import { HizmetComponent } from './hizmet/hizmet.component';
 import { MasrafComponent } from './masraf/masraf.component';
 import { StokComponent } from './stok/stok.component';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
-
-
+import {DividerModule} from 'primeng/divider';
 
 @NgModule({
   declarations: [
-    MalzemeYonetimiComponent
+    MalzemeYonetimiComponent,
+
   ],
   imports: [
     CommonModule,
+    DividerModule,
     RouterModule.forChild([
       { path: 'birim', component:BirimComponent, loadChildren: () => import("../malzeme-yonetimi/birim/birim.module").then(m => m.BirimModule) ,canActivate:[authGuard]},
       { path: 'depo', component:DepoComponent, loadChildren: () => import("../malzeme-yonetimi/depo/depo.module").then(m => m.DepoModule) ,canActivate:[authGuard]},

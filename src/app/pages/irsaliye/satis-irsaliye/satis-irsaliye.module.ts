@@ -15,7 +15,7 @@ import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { DesignComponent } from './core/design/design.component';
 
-
+import { AngularSplitModule } from 'angular-split';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { DesignComponent } from './core/design/design.component';
     MatButtonModule,
     DirectiveModule,
     MatCheckboxModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       { path: "list", component: ListSatisIrsaliyeComponent, canActivate: [authGuard] },

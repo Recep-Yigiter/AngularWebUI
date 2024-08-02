@@ -20,13 +20,19 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private messageService: MessageService
+    private messageService: MessageService,
+  
   ) {
 
   }
   
   ngOnInit(): void {
+
   }
+
+
+
+
 
 
 
@@ -40,9 +46,6 @@ export class LoginComponent implements OnInit {
 
 
   async login() {
-
-
-
 
     this.spinner.show("spinner-1")
 

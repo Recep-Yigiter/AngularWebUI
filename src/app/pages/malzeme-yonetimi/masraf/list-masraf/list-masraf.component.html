@@ -33,12 +33,22 @@
   
   
   
-    <div design-table style="height: 100%;">
-      <ag-grid-angular #agGrid style=" height:100%;" class="ag-theme-quartz" [rowData]="rowData"
-      [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
-      (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
-      [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
-    </ag-grid-angular> 
+    <div full-page class="full-page">
+      <as-split [useTransition]="true" unit="percent" [gutterSize]="10" class="as-horizontal" >
+  
+    
+        <as-split-area [size]="100" [order]="2" [visible]="true" class="main-content" >
+    
+          <ag-grid-angular #agGrid style="height:100%;" class="ag-theme-quartz" [rowData]="rowData"
+          [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
+          (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
+          [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
+        </ag-grid-angular>
+    
+        </as-split-area>
+    
+    
+      </as-split>
     </div>
   
   </app-design>

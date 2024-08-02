@@ -1,12 +1,19 @@
-
-
+.top-bar {
+    background: linear-gradient(#70789A, #474D66);
+    height: 3.9125rem;
+}
+.top-bar .title-area{
+    float: left;
+}
 nav.top-bar .name {
     padding: 0 16px 0 10px;
+    height: 3.9125rem;
+    display: flex;
 }
 
 nav.top-bar .name:hover {
     cursor: pointer;
-    background-color: #717997;
+    // background-color: #717997;
 }
 
 nav.top-bar .name:hover .home-icon {
@@ -32,19 +39,65 @@ nav .topbar-dropdown-menu.dropdown-menu {
 }
 
 nav .topbar-button.yks-btn:hover {
+
     background-color: #474D66;
 
 }
 
 nav .dropdown-item:hover,
 .dropdown-item:focus {
-  color: #212529;
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.08);
+    color: #212529;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.08);
 }
+
 .yks-dropdown-item {
     color: #666666 !important;
     font-size: 13px;
     font-weight: 500;
     font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
-  }
+}
+
+
+:host ::ng-deep {
+    .p-divider.p-divider-vertical {
+        margin: 0;
+        padding: 1px;
+    }
+
+    .grid-container {
+        display: grid;
+    }
+
+    .top-footer {
+        line-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / span 16;
+        grid-row: 1;
+        height: 16px;
+        color: #f5ebd8;
+        background: #70789A;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 500;
+    }
+
+    .topbar-button {
+        border: none;
+        display: grid;
+        top: 0;
+        height: 45px;
+        color: white;
+    }
+
+    .btn-button-icon {
+        font-size: 18px !important;
+        color: white;
+    }
+
+    .topbar-button:hover {
+        border-radius: 0;
+    }
+}

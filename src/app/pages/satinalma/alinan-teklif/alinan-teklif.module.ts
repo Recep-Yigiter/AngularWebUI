@@ -19,6 +19,8 @@ import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { DesignComponent } from './core/design/design.component';
+import { AngularSplitModule } from 'angular-split';
+
 @NgModule({
   declarations: [
     AlinanTeklifComponent,
@@ -37,6 +39,7 @@ import { DesignComponent } from './core/design/design.component';
     MatButtonModule,
     MatCheckboxModule,
     ButtonModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
 

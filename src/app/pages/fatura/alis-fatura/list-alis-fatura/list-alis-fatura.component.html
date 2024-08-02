@@ -1,10 +1,6 @@
-
-
-
-  <nav class="breadcrumbs">
-    <a class="unavailable">Alış Faturası</a>
-  </nav>
-  
+<nav class="breadcrumbs">
+  <a class="unavailable">Alış Faturası</a>
+</nav>
 
 
 
@@ -14,40 +10,54 @@
 
 
 
-  <app-design>
 
-    <div design-buttons>
-      <button routerLink="/menu/fatura/alis-fatura" type="button" class="btn btn-success"
+<app-design>
+
+  <div design-buttons>
+    <button routerLink="/menu/fatura/alis-fatura" type="button" class="btn btn-success"
       style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
       <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
       <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
     </button>
-<button routerLink="/menu/fatura/alis-fatura/create" type="button" class="btn btn-success"
+    <button routerLink="/menu/fatura/alis-fatura/create" type="button" class="btn btn-success"
       style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
       <i class="fa fa-plus" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
       <span class="d-none d-sm-inline" style="font-size: 13px;">Oluştur</span>
     </button>
+  </div>
+  <div design-search style="width: 100%;">
+    <div class="p-inputgroup" style="background-color: white; border: 1px solid #ccc; ">
+      <input type="text" class="shadow-none form-control" pInputText placeholder="Ara...">
+      <span class="p-inputgroup-addon" style="background: transparent;border: none; padding: 0 0.2rem;min-width: 2rem;">
+        <i class="fa fa-search"></i>
+      </span>
     </div>
-    <div design-search style="width: 100%;">
-      <div class="p-inputgroup" style="background-color: white; border: 1px solid #ccc; ">
-        <input type="text" class="shadow-none form-control" pInputText placeholder="Ara...">
-        <span class="p-inputgroup-addon" style="background: transparent;border: none; padding: 0 0.2rem;min-width: 2rem;">
-          <i class="fa fa-search"></i>
-        </span>
-      </div>
-    </div>
+  </div>
+
+
+  <div full-page class="full-page">
+    <as-split [useTransition]="true" unit="percent" [gutterSize]="10" class="as-horizontal" >
+      <as-split-area [size]="15" [order]="1" [visible]="true" class="split-left">
+  
+    
+    
+
+  
+      </as-split-area>
+  
+      <as-split-area [size]="85" [order]="2" [visible]="true" class="main-content" >
+  
+        <ag-grid-angular #agGrid style=" height:100%;" class="ag-theme-quartz" [rowData]="rowData"
+        [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
+        (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
+        [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
+      </ag-grid-angular>
+  
+      </as-split-area>
   
   
-    <div design-table-filter> FILTERS</div>
-  
-    <div design-table style="height: 100%;">
-  
-  
-      <ag-grid-angular #agGrid style=" height:100%;" class="ag-theme-quartz" [rowData]="rowData"
-      [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
-      (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
-      [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
-    </ag-grid-angular>
-    </div>
-  
-  </app-design>
+    </as-split>
+  </div>
+
+
+</app-design>

@@ -14,7 +14,7 @@
     <app-design w100="width:100%;" displayNone="display:none;">
 
         <div design-buttons>
-            <button routerLink="/menu/malzeme-yonetimi/stok/list" type="button" class="btn btn-success"
+            <button (click)="geri()" type="button" class="btn btn-success"
                 style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
                 <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
                 <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
@@ -24,7 +24,7 @@
                 <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
                 <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
             </button>
-            <button type="button" class="btn " routerLink="/stok/list"
+            <button type="button" class="btn " (click)="vazgec()"
                 style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
                 <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
                 <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
@@ -35,34 +35,9 @@
 
 
 
-        <div design-table style="height: 100%;">
+        <div full-page style="height: 100%;">
             <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
 
-
-                <div class="yks_button_box yks_not_full" style="width: 140px;">
-
-                    <!-- <button class="btn yks_stat_button">
-                    <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
-                    <div class="yks_field_widget yks_stat_info">
-                        <span class="yks_stat_value">
-                            <span>0</span>
-                        </span>
-                        <span class="yks_title_value">Extra Fiyatlar</span>
-
-                    </div>
-                </button>
-                <button class="btn yks_stat_button">
-                    <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
-                    <div class="yks_field_widget yks_stat_info">
-                        <span class="yks_stat_value">
-                            <span>0</span>
-                        </span>
-                        <span class="yks_title_value">Extra Fiyatlar</span>
-
-                    </div>
-                </button> -->
-
-                </div>
 
 
                 <div class="pane" style="padding: 1em;">
@@ -200,11 +175,6 @@
                                     </table>
 
 
-                                    <!-- <app-table>
-                                    <app-input-tr [field]="stateData.kod" [formControlNames]="kod" label="Stok Kodu" selectClass="form-control-required"></app-input-tr>
-                                    <app-select-tr [field]="stateData.birimAdi" [formControlNames]="birimId" (childFunc)="changed($event)"  label="Ölçü Birimi" selectClass="form-control-required"></app-select-tr>
-                                    <app-input-tr [field]="stateData.stokGrup" [formControlNames]="stokGrup" label="Stok Grubu" selectClass="form-control-required"></app-input-tr>
-                                </app-table> -->
 
 
                                 </div>
@@ -226,7 +196,7 @@
                                                 <td>
 
                                                     <input formControlName="birimFiyat" autocomplete="off" currencyInput
-                                                        [maxDigits]=9 [ngModel]="stateData.birimFiyat" style=" padding: 0px 0 0px 0.75rem;
+                                                        [maxDigits]="9" [ngModel]="stateData.birimFiyat" style=" padding: 0px 0 0px 0.75rem;
                                             font-size: 13px;
                                             border-radius: 1px;
                                             background-color: rgb(210, 210, 255) !important;

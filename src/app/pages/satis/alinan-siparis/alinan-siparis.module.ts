@@ -19,20 +19,9 @@ import { NumberInputDirective } from 'src/app/shared/directives/number-input.dir
 import { DirectiveModule } from 'src/app/shared/directives/directive.module';
 import { ListAlinanSiparisComponent } from './list-alinan-siparis/list-alinan-siparis.component';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { AccordionModule } from 'primeng/accordion';
-import { ListboxModule } from 'primeng/listbox';
-import { DividerModule } from 'primeng/divider';
-import { DropdownModule } from 'primeng/dropdown';
-import { CheckboxModule } from 'primeng/checkbox';
-import { MatListModule } from '@angular/material/list';
-import { HttpClientModule } from '@angular/common/http';
+
 import { DesignComponent } from './core/design/design.component';
+import { AngularSplitModule } from 'angular-split';
 
 
 @NgModule({
@@ -53,6 +42,7 @@ DesignComponent
     DirectiveModule,
     MatCheckboxModule,
     MatBadgeModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
 
     RouterModule.forChild([

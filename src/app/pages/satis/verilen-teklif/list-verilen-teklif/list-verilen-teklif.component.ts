@@ -11,8 +11,6 @@ import { AlinanTeklifModalComponent } from 'src/app/shared/components/alinan-tek
 import { AlinanTeklifHareketModalComponent } from 'src/app/shared/components/alinan-teklif-hareket-modal/alinan-teklif-hareket-modal.component';
 import { CreateSiparisModel } from 'src/app/core/models/siparisler/create-siparis-model';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
-import { OnayDurumSelectComponent } from 'src/app/shared/components/onay-durum-select/onay-durum-select.component';
-import { confirmation } from 'src/app/shared/confirmation';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
 import * as resize from '../../../../../assets/js/resizable-layout';

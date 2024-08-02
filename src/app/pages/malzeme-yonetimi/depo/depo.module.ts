@@ -12,7 +12,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { ListDepoComponent } from './list-depo/list-depo.component';
 import { DesignComponent } from './core/design/design.component';
 
-
+import { AngularSplitModule } from 'angular-split';
 
 @NgModule({
   declarations: [DepoComponent, CreateDepoComponent, DetailDepoComponent, UpdateDepoComponent, DetailDepoHareketlerComponent, ListDepoComponent, DesignComponent],
@@ -20,6 +20,7 @@ import { DesignComponent } from './core/design/design.component';
     CommonModule,
     FormsModule,
     AgGridAngular,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {  path: 'create', component: CreateDepoComponent,canActivate:[authGuard]},

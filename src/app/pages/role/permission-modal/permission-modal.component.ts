@@ -141,6 +141,8 @@ export class PermissionModalComponent implements OnInit {
       roleId: this.RoleId,
       permissions: this.permissions
     }
+
+
     this.RoleService.updatePermissions(deneme, () => {
       this.activeModal.close()
      })

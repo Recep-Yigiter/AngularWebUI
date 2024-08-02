@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/Auth/login/login.component';
 import { authGuard } from './Auth/guards/auth.guard';
 import { AdminGuard } from './Auth/guards/admin.guard';
 import { AdministrationComponent } from './pages/administration/administration.component';
+import { DenemeComponent } from './pages/deneme/deneme.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
 
   { path: '', component: PagesComponent, canActivate: [authGuard] },
   { path: 'menu', component: PagesComponent, canActivate: [authGuard] },
+  { path: 'deneme', component: DenemeComponent, canActivate: [authGuard] },
 
   // {
   //   path: 'fatura', component: FaturaComponent, canActivate: [authGuard],

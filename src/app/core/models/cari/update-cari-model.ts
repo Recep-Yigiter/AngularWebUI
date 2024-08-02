@@ -1,4 +1,4 @@
-export class CreateCariModel {
+export class UpdateCariModel {
     id?: any;
     kod?: any;
     ad?: any;

@@ -1,4 +1,5 @@
 @import "src/assets/custom/custom-list-page";
+@import "src/assets/scss/topbar.scss";
 .back-color {
     background-color: transparent !important;
 }
@@ -9,7 +10,7 @@
 h1 {
     font-size: 24px !important;
     background: -webkit-linear-gradient(#ffffff, hsl(0, 0%, 89%));
-    -webkit-background-clip: text;
+   
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(2px 2px #333);
 }
@@ -31,7 +32,4 @@ h1 {
      align-items: center;
      justify-content: center;
       color: #aab2d3 !important;
-}
-.home-icon:hover{
-      
 }

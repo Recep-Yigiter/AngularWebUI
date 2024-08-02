@@ -1,22 +1,12 @@
 import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { UretimComponent } from './pages/uretim/uretim.component';
-
-import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
-import { BirimSelect } from './shared/birim-select.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AgGridAngular } from 'ag-grid-angular';
 import { StokSelectModalComponent } from './shared/components/stok-select-modal/stok-select-modal.component';
 import { CariSelectModalComponent } from './shared/components/cari-select-modal/cari-select-modal.component';
 import { DeleteButtonComponent } from './shared/components/delete-button/delete-button.component';
@@ -31,17 +21,19 @@ import { OnayDurumSelectComponent } from './shared/components/onay-durum-select/
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
 import { LoginComponent } from './pages/Auth/login/login.component';
 import { RegisterComponent } from './pages/Auth/register/register.component';
-import { JwtHelperService, JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { JwtHelperService, JWT_OPTIONS, } from '@auth0/angular-jwt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AddRoleClaimsButtonComponent } from './shared/components/add-role-claims-button/add-role-claims-button.component';
 import { RequestInterceptor } from './core/request.interceptor';
-import { MessagesModule } from 'primeng/messages';
-import { MessageModule } from 'primeng/message';
 import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
 import { AlertService } from './core/services/alert.service';
 import { HtppErrorHandlerInterceptor } from './core/http-error-handler.interceptor';
 import { PageModule } from './pages/page.module';
 import { PageDesignComponent } from './shared/components/page-design/page-design.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { DesignComponent } from './shared/design/design.component';
+import { ResizeDirective } from './pages/deneme/resize.directive';
 
 @NgModule({
   declarations: [
@@ -53,8 +45,6 @@ import { PageDesignComponent } from './shared/components/page-design/page-design
     DepoSelectModalComponent,
     VerilenTeklifModalComponent,
     VerilenTeklifHareketModalComponent,
-    TabMainComponent,
-    TabItemComponent,
     AlinanTeklifModalComponent,
     AlinanTeklifHareketModalComponent,
     OnayDurumSelectComponent,
@@ -64,46 +54,21 @@ import { PageDesignComponent } from './shared/components/page-design/page-design
     AddRoleClaimsButtonComponent,
     AlertModalComponent,
     PageDesignComponent,
+    DesignComponent,
 
 
   ],
   imports: [
-   
-     AppRoutingModule,
-     BrowserAnimationsModule,
-     HttpClientModule,
-    //  FormsModule,
-    //  ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
-    // BrowserModule,
-    // BirimSelect,
-    // MatIconModule,
-    // MatButtonModule,
-    // MatCheckboxModule,
-    // MessagesModule,
-    // MessageModule,
-    // NgbModule,
-    // JwtModule.forRoot({
-    //   config: {
-    //     tokenGetter: () => localStorage.getItem("tokenData"),
-    //     allowedDomains: ["localhost:7051", "192.168.4.216"]
-    //   }
-    // }),
+
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserModule,
     AgGridAngular,
     PageModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   ],
   providers: [
@@ -113,8 +78,7 @@ import { PageDesignComponent } from './shared/components/page-design/page-design
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
     { provide: HTTP_INTERCEPTORS, useClass: HtppErrorHandlerInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-    //provideHttpClient(withInterceptors([HtppErrorHandlerInterceptorService])),
-    // { provide: ErrorHandler, useClass: HandleErrorInterceptor }
+
   ],
   bootstrap: [AppComponent],
   schemas: [

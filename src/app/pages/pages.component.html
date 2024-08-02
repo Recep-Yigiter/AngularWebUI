@@ -1,6 +1,6 @@
 <nav class="top-bar" data-topbar>
-  <ul class="title-area" style="display: flex; justify-content: space-between; width: 100%;">
-    <li class="name">
+  <ul class="title-area" style="display: flex;align-items: center; justify-content: space-between; width: 100%;">
+    <li class="name" style="display: flex;align-items: center;">
       <h1>YÜKSELİŞ ASANSÖR</h1>
 
     </li>
@@ -50,7 +50,7 @@
       <ul style="margin-top: 70px;" class="small-block-grid-2 medium-block-grid-3 flip-cards ">
         <li (click)="stokRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Stok</a>
+            <a class="card-title">Stok</a>
 
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -90,19 +90,12 @@
               </g>
             </svg>
           </div>
-          <div class="panel card-back">
-            <i class="fa fa-code card-icon"></i>
-            <div class="hub-info">
-              <a>JKLCode.com</a>
-              <p>Find coding gists, cheatsheets, plugins, themes, resources, and tutorials.</p>
-            </div>
-            <small class="clear">Updated TTH.</small>
-          </div>
+
         </li>
 
         <li (click)="satinalmaRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Satın Alma</a>
+            <a class="card-title">Satın Alma</a>
 
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" style="color: white;"
               width="40.000000pt" height="40.000000pt" viewBox="0 0 64.000000 64.000000"
@@ -122,19 +115,11 @@
             </svg>
           </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-pencil-square-o card-icon"></i>
-            <div class="hub-info">
-              <a>AaronSnowberger.com</a>
-              <p>Take a look at my graphic design portfolio and contact me for design work.</p>
-            </div>
-            <small class="clear">Updated Saturdays.</small>
-          </div>
         </li>
 
         <li (click)="satisRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Satış</a>
+            <a class="card-title">Satış</a>
 
             <svg class="card-icon" version="1.0" xmlns="http://www.w3.org/2000/svg" width="40.000000pt"
               height="40.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
@@ -153,54 +138,33 @@
             </svg>
           </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-paper-plane-o card-icon"></i>
-            <div class="hub-info">
-              <a>Udemy.com</a>
-              <p>Join classes about Computers, Technology, Coding, Design, and Language Learning.</p>
-            </div>
-            <small class="clear">Updated Mondays.</small>
-          </div>
+          
         </li>
 
         <li (click)="faturaRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Fatura</a>
+            <a class="card-title">Fatura</a>
             <i class="fa fa-users card-icon"></i>
           </div>
         </li>
 
         <li (click)="irsaliyeRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>İrsaliye</a>
+            <a class="card-title">İrsaliye</a>
             <i class="fa fa-users card-icon"></i>
           </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-users card-icon"></i>
-            <div class="hub-info">
-              <a>AICFChurch.org</a>
-              <p>Listen to sermon podcasts or download church graphic design resources.</p>
-            </div>
-            <small class="clear">Updated the 4th Sunday.</small>
-          </div>
+          
         </li>
 
         <li (click)="finansRouter()" ontouchstart="this.classList.toggle('hover');">
           <div class="large button card-front">
-            <a>Finans</a>
+            <a class="card-title">Finans</a>
             <i class="fa fa-users card-icon"></i>
           </div>
 
 
-          <div class="panel card-back">
-            <i class="fa fa-map-o card-icon"></i>
-            <div class="hub-info">
-              <a>KeysToAGoodLife.com</a>
-              <p>Find resources about business, family, exercise, and other various topics.</p>
-            </div>
-            <small class="clear">Updated monthly.</small>
-          </div>
+          
         </li>
 
         <li ontouchstart="this.classList.toggle('hover');">
@@ -208,14 +172,7 @@
 
           </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-language card-icon"></i>
-            <div class="hub-info">
-              <a>KeyToKorean.com</a>
-              <p>Take your Korean from "foreign" to fluent with vocab lists and grammar guides.</p>
-            </div>
-            <small class="clear">Updated MWF.</small>
-          </div>
+          
         </li>
 
         <li ontouchstart="this.classList.toggle('hover');">
@@ -223,14 +180,7 @@
 
           </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-users card-icon"></i>
-            <div class="hub-info">
-              <a>AICFChurch.org</a>
-              <p>Listen to sermon podcasts or download church graphic design resources.</p>
-            </div>
-            <small class="clear">Updated the 4th Sunday.</small>
-          </div>
+         
         </li>
 
         <li ontouchstart="this.classList.toggle('hover');">
@@ -238,14 +188,7 @@
 
           </div>
 
-          <div class="panel card-back">
-            <i class="fa fa-users card-icon"></i>
-            <div class="hub-info">
-              <a>AICFChurch.org</a>
-              <p>Listen to sermon podcasts or download church graphic design resources.</p>
-            </div>
-            <small class="clear">Updated the 4th Sunday.</small>
-          </div>
+          
         </li>
 
       </ul>

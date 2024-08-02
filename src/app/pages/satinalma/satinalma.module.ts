@@ -11,6 +11,7 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { AlinanSiparisComponent } from '../satis/alinan-siparis/alinan-siparis.component';
 import { AlinanTeklifComponent } from './alinan-teklif/alinan-teklif.component';
 import { VerilenSiparisComponent } from './verilen-siparis/verilen-siparis.component';
+import {DividerModule} from 'primeng/divider';
 
 
 
@@ -20,12 +21,7 @@ import { VerilenSiparisComponent } from './verilen-siparis/verilen-siparis.compo
   ],
   imports: [
     CommonModule,
-    // FormsModule,
-    // AgGridAngular,
-    // MatIconModule,
-    // MatButtonModule,
-    // MatCheckboxModule,
-    // ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
+    DividerModule,
     RouterModule.forChild([
       
       { path: 'alinan-teklif', component:AlinanTeklifComponent, loadChildren: () => import("../satinalma/alinan-teklif/alinan-teklif.module").then(m => m.AlinanTeklifModule) ,canActivate:[authGuard]},

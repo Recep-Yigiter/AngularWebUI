@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { VerilenTeklifComponent } from './verilen-teklif/verilen-teklif.component';
 import { AlinanSiparisComponent } from './alinan-siparis/alinan-siparis.component';
+import {DividerModule} from 'primeng/divider';
 
 
 
@@ -19,6 +20,7 @@ import { AlinanSiparisComponent } from './alinan-siparis/alinan-siparis.componen
   ],
   imports: [
     CommonModule,
+    DividerModule,
     RouterModule.forChild([
 
       { path: 'verilen-teklif', component:VerilenTeklifComponent, loadChildren: () => import("../satis/verilen-teklif/verilen-teklif.module").then(m => m.VerilenTeklifModule) ,canActivate:[authGuard]},

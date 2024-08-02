@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { ListBirimComponent } from './list-birim/list-birim.component';
 import { DesignComponent } from './core/design/design.component';
-
-
+ 
+import { AngularSplitModule } from 'angular-split';
 
 @NgModule({
   declarations: [
@@ -27,22 +27,24 @@ import { DesignComponent } from './core/design/design.component';
     CommonModule,
     FormsModule,
     AgGridAngular,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      {
-        path: 'create', component: CreateBirimComponent,canActivate:[authGuard]
-      },
-      {
-        path: 'detail', component: DetailBirimComponent,canActivate:[authGuard]
-      },
-      {
-        path: 'update', component: UpdateBirimComponent,canActivate:[authGuard]
-      },
-      {
-        path:"list",component:ListBirimComponent,canActivate:[authGuard]
-      }
-    ])
-  ]
+        {
+            path: 'create', component: CreateBirimComponent, canActivate: [authGuard]
+        },
+        {
+            path: 'detail', component: DetailBirimComponent, canActivate: [authGuard]
+        },
+        {
+            path: 'update', component: UpdateBirimComponent, canActivate: [authGuard]
+        },
+        {
+            path: "list", component: ListBirimComponent, canActivate: [authGuard]
+        }
+    ]),
+  
+]
   
 })
 export class BirimModule { }

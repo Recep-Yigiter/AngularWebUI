@@ -11,6 +11,8 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { ListMasrafComponent } from './list-masraf/list-masraf.component';
 import { DesignComponent } from './core/design/design.component';
 
+import { AngularSplitModule } from 'angular-split';
+
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { DesignComponent } from './core/design/design.component';
   imports: [
     CommonModule,
     AgGridAngular,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       {

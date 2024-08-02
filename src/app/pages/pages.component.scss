@@ -1,2 +1,8 @@
 @import "src/assets/scss/topbar.scss";
 @import "src/assets/scss/main-page";
+
+@media only screen and (max-width: 25em) {
+.card-title{
+    display: none;
+}
+}

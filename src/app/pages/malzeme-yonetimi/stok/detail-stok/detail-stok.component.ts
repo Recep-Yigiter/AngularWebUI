@@ -2,6 +2,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StokService } from 'src/app/core/services/repository/stok.service';
+import { ROUTER_NAVIGATE } from 'src/ROUTER_NAVIGATE';
 
 @Component({
   selector: 'app-detail-stok',
@@ -29,12 +30,12 @@ export class DetailStokComponent implements OnInit {
   async duzenle() {
     if (this.stateData?.id) {
 
-      this.router.navigate(['/menu/malzeme-yonetimi/stok/update'], { state: this.stateData })
+      this.router.navigate([ROUTER_NAVIGATE.stok_update], { state: this.stateData })
     }
     else {
 
       this.Stok = (await this.StokService.getByHourId(this.stateData.hourId, () => { }));
-      this.router.navigate(['/menu/malzeme-yonetimi/stok/update'], { state: this.Stok })
+      this.router.navigate([ROUTER_NAVIGATE.stok_update], { state: this.Stok })
     }
   }
 
@@ -48,17 +49,34 @@ export class DetailStokComponent implements OnInit {
 
     if (this.stateData?.id) {
 
-      this.router.navigate(['/menu/malzeme-yonetimi/stok/detail-stok-actions'], { state: history.state })
+      this.router.navigate([ROUTER_NAVIGATE.stok_detail_actions], { state: history.state })
 
 
     }
     else {
 
        this.Stok = (await this.StokService.getByHourId(this.stateData.hourId, () => { }));
-      this.router.navigate(['/menu/malzeme-yonetimi/stok/detail-stok-actions'], { state: this.Stok })
+      this.router.navigate([ROUTER_NAVIGATE.stok_detail_actions], { state: this.Stok })
 
     }
 
   }
+
+
+
+
+
+
+  geri() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_list])
+  }
+
+  vazgec() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_list])
+  }
+
+
+
+
 
 }

@@ -6,9 +6,9 @@ import { TeklifService } from 'src/app/core/services/repository/teklif.service';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { CreateSiparisModel } from 'src/app/core/models/siparisler/create-siparis-model';
 import { UpdateTeklifModel } from 'src/app/core/models/teklifler/update-teklif-model';
-import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DepoService } from 'src/app/core/services/repository/depo.service';
+import { ConfirmModalComponent } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-detail-verilen-teklif',

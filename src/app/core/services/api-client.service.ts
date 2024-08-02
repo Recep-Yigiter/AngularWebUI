@@ -41,6 +41,7 @@ export class ApiClientService{
 
 
     post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>) {
+
       let url: string = ""
       if (requestParameter.fullEndPoint) {
         url = requestParameter.fullEndPoint;

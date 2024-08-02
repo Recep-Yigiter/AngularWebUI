@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ColDef, GridApi, GridReadyEvent, LocaleService, IDateFilterParams, } from 'ag-grid-community';
-import { Router, Routes } from '@angular/router';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { Observable, Subscription, filter, map, startWith } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { AuthService } from 'src/app/core/services/repository/Auth.service';
@@ -15,6 +15,7 @@ import * as resize from '../../../../../assets/js/resizable-layout.js';
 import { StokFilterService } from '../core/stok-filter.service';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { StokService } from 'src/app/core/services/repository/stok.service';
+import { ROUTER_NAVIGATE } from 'src/ROUTER_NAVIGATE';
 
 @Component({
   selector: 'app-list-stok',
@@ -34,13 +35,18 @@ export class ListStokComponent implements OnInit {
   public defaultColDef = defaultColDef;
   constructor(
     private StokService: StokService,
-    private router: Router,
     private DatePipe: DatePipe,
     private spinnerService: NgxSpinnerService,
-    private stokFilterService: StokFilterService
+    private stokFilterService: StokFilterService,
+    private route: ActivatedRoute, private router: Router
   ) {
   }
+
+  reload() {
+    window.location.reload()
+  }
   async ngOnInit() {
+
     resize.resizeFunction()
 
 
@@ -51,9 +57,9 @@ export class ListStokComponent implements OnInit {
     { field: "ad", width: 500, filter: "agTextColumnFilter", },
   ];
   filterObj: any = [];
-  componentShow: boolean=true;
+  componentShow: boolean = true;
   async getList(params: GridReadyEvent<any>) {
-  
+
     this.spinnerService.show();
     this.gridApi = params.api;
     this.gridApi.onFilterChanged()
@@ -98,7 +104,7 @@ export class ListStokComponent implements OnInit {
   }
   rowDblClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/menu/malzeme-yonetimi/stok/detail'], { state: selectedRows })
+    this.router.navigate([ROUTER_NAVIGATE.stok_detail], { state: selectedRows })
   }
 
 
@@ -183,7 +189,9 @@ export class ListStokComponent implements OnInit {
 
 
 
-
+  olustur() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_create],)
+  }
 
 
 }

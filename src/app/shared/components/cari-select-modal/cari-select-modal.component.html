@@ -8,100 +8,42 @@
 <div class="">
 
 
-    <div class="demo-container" style="position: relative;">
-        <div class=" yks-filemanager" style="height: 100%;">
-
-            <div class=" yks-drawer">
-                <div class="yks-drawer-wrapper">
-                    <div class="yks-drawer-content" style="transform: translate(0px, 0px); padding: 0px; left: 0px;">
-
-                        <div class="yks-filemanager-notification-drawer-panel">
-                            <div class="yks-filemanager-wrapper">
-                                <div class="yks_control_panel">
-                                    <div class="yks_cpanel_top">
-                                        <div class="yks_cpanel_top_left">
-
-                                        </div>
-                                        <div class="yks_cpanel_top_right">
-                                            <div class="yks_cpanel_searchview">
-                                                <div class="yks_searchview yks_searchview_mobile">
-                                                    <i class="yks_searchview_icon fa fa-search"></i>
-                                                    <div class="yks_searchview_input_container"
-                                                        style="position: relative; ">
-                                                        <input type="text" class="form-control shadow-none"
-                                                            placeholder="Ara...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="yks_control_panel">
-                                    <div class="yks_cpanel_top">
-                                        <div class="yks_cpanel_top_left">
-                                            <div>
-
-
-                                                <div class=" yks-toolbar-item ">
-                                                    <div class="yks-button-has-text">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
-                                            <div class="btn-group" role="group"
-                                                aria-label="Button group with nested dropdown">
-
-                                                <div class="btn-group mr-1" role="group">
-
-                                                    <button id="filter-button" style="color: #212529; border: none;"
-                                                        type="button" class="btn yks-btn " data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="small mr-1 fa fa-filter"></i>
-                                                        Filtreler
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item yks-dropdown-item"
-                                                                style="color: black;">Filter Menu</a></li>
-
-                                                    </ul>
-                                                </div>
 
 
 
-                                                <div class="btn-group mr-1" role="group">
-                                                    <button style="color: #212529; border: none;" type="button"
-                                                        class="btn yks-btn " data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="small fa fa-list"></i>
-                                                        Grupla
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item yks-dropdown-item"
-                                                                style="color: black;">Dropdown link</a></li>
-                                                        <li><a class="dropdown-item yks-dropdown-item"
-                                                                style="color: black;">Dropdown link</a></li>
-                                                    </ul>
-
-                                                </div>
-                                                <div class="btn-group mr-1" role="group">
-                                                    <button style="color: #212529; border: none;" type="button"
-                                                        class="btn yks-btn " data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="small mr-1 fa fa-star"></i>
-                                                        Sık Kullanılanlar
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
+    <app-design w100="width:100%;" displayNone="display:none;">
 
 
+        <div design-search style="width: 100%;">
+            <div class="p-inputgroup" style="background-color: white; border: 1px solid #ccc; ">
+                <input type="text" class="shadow-none form-control" pInputText placeholder="Ara...">
+                <span class="p-inputgroup-addon"
+                    style="background: transparent;border: none; padding: 0 0.2rem;min-width: 2rem;">
+                    <i class="fa fa-search"></i>
+                </span>
+            </div>
+        </div>
 
 
-                                </div>
+        <div full-page-filter> </div>
+
+        <div full-page style="height: 100%;">
+
+
+            <div>
+
+                <ag-grid-angular style="width: 100%; height:390px;"
+                class="ag-theme-quartz" 
+                [rowData]="rowData" 
+                [columnDefs]="colDefs"
+                [defaultColDef]="defaultColDef"
+              
+                (gridReady)="getList($event)"
+                (rowClicked)="onSelectionChanged()"
+                [rowSelection]="rowSelection" 
+                [rowHeight]="22" 
+                [headerHeight]="23">
+            </ag-grid-angular>
 
 
 
@@ -109,52 +51,14 @@
 
 
 
-                                <div class="yks-filemanager-container">
-                                    <div class="yks-drawer">
-                                        <div class="yks-drawer-wrapper">
-                                            <div id="filter_menu"
-                                                class="yks-drawer-panel-content yks-drawer-panel-content-initial"
-                                                style="margin-left: 0px; display: none; border: 1px solid #c1c1c1;">
-                                            </div>
-                                            <div class="yks-drawer-content" style="padding: 0px;">
-                                                <div class=" yks-filemanager-breadcrumbs">
 
 
 
-                                                </div>
-
-
-
-
-                                                <ag-grid-angular style="width: 100%; height:390px;"
-                                                    class="ag-theme-quartz" 
-                                                    [rowData]="rowData" 
-                                                    [columnDefs]="colDefs"
-                                                    [defaultColDef]="defaultColDef"
-                                                  
-                                                    (gridReady)="getList($event)"
-                                                    (rowClicked)="onSelectionChanged()"
-                                                    [rowSelection]="rowSelection" 
-                                                    [rowHeight]="22" 
-                                                    [headerHeight]="23">
-                                                </ag-grid-angular>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
-
         </div>
-    </div>
+
+    </app-design>
 
 </div>
 

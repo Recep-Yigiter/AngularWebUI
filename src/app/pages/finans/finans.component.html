@@ -1,4 +1,4 @@
-<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
+<nav class="top-bar" data-topbar >
   <ul class="title-area">
     <li class="name" [routerLink]="['/menu']">
       <i class="fa fa-home home-icon" aria-hidden="true"></i>
@@ -7,83 +7,78 @@
     <li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
   </ul>
 
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-
-    <div class="btn-group mr-1" role="group">
-      <button [routerLink]="['/menu/finans/cari/list']" style="border: none;
-          display: grid;
-          top: 0;
-          height: 45px;
-          color: white;" type="button" class="btn yks-btn topbar-button" aria-expanded="false">
-        <i class="small fa fa-list" style="font-size: 18px !important; color: white;"></i>
 
 
-        Cari
-      </button>
+
+  <div role="group" style="display: grid; grid-template-columns: max-content max-content max-content;height: 100%;">
+
+    <div class="grid-container">
+      <div class="btn-group " role="group">
+        <button [routerLink]="['/menu/finans/cari/list']" type="button" class="btn yks-btn topbar-button">
+          <i class="small fa fa-list btn-button-icon"></i>
+          Cariler
+        </button>
+      </div>
+      <div class="btn-group " role="group">
+        <button [routerLink]="['/menu/finans/banka/list']" type="button" class="btn yks-btn topbar-button">
+          <i class="small fa fa-list btn-button-icon"></i>
+          Bankalar
+        </button>
+      </div>
+      <div class="btn-group " role="group">
+        <button [routerLink]="['/menu/finans/kasa/list']" type="button" class="btn yks-btn topbar-button">
+          <i class="small fa fa-list btn-button-icon"></i>
+          Kasalar
+        </button>
+      </div>
+      <div class="btn-group mr-1" role="group">
+        <button style="border: none;
+            display: grid;
+            top: 0;
+            height: 45px;
+            color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="small fa fa-database btn-button-icon"  aria-hidden="true"></i>
+  
+          Çekler
+        </button>
+        <ul class="dropdown-menu topbar-dropdown-menu">
+          <li ><a class="dropdown-item yks-dropdown-item"
+              style="color: #fbfbfb !important;">Verilen Çekler</a></li>
+          <li ><a class="dropdown-item yks-dropdown-item"
+              style="color: #fbfbfb !important;">Alınan Çekler</a></li>
+  
+        </ul>
+      </div>
+      <div class="btn-group mr-1" role="group">
+        <button style="border: none;
+            display: grid;
+            top: 0;
+            height: 45px;
+            color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
+  
+          Senetler
+        </button>
+  
+        <ul class="dropdown-menu topbar-dropdown-menu">
+          <li ><a class="dropdown-item yks-dropdown-item"
+              style="color: #fbfbfb !important;">Borç Senedi</a></li>
+          <li ><a class="dropdown-item yks-dropdown-item"
+              style="color: #fbfbfb !important;">Alacak Senedi</a></li>
+  
+        </ul>
+      </div>
+
+      <span class="top-footer">
+        Listeler
+      </span>
     </div>
 
-    <div class="btn-group mr-1" role="group">
-      <button [routerLink]="['/menu/finans/banka/list']" style="border: none;
-          display: grid;
-          top: 0;
-          height: 45px;
-          color: white;" type="button" class="btn yks-btn topbar-button" aria-expanded="false">
+    <p-divider layout="vertical"></p-divider>
 
-        <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
-        Banka
-      </button>
-    </div>
-
-    <div class="btn-group mr-1" role="group">
-      <button [routerLink]="['/menu/finans/kasa/list']" style="border: none;
-          display: grid;
-          top: 0;
-          height: 45px;
-          color: white;" type="button" class="btn yks-btn topbar-button" aria-expanded="false">
-        <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
-
-        Kasa
-      </button>
-    </div>
-    <div class="btn-group mr-1" role="group">
-      <button style="border: none;
-          display: grid;
-          top: 0;
-          height: 45px;
-          color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
-
-        Çekler
-      </button>
-      <ul class="dropdown-menu topbar-dropdown-menu">
-        <li ><a class="dropdown-item yks-dropdown-item"
-            style="color: #fbfbfb !important;">Verilen Çekler</a></li>
-        <li ><a class="dropdown-item yks-dropdown-item"
-            style="color: #fbfbfb !important;">Alınan Çekler</a></li>
-
-      </ul>
-    </div>
-    <div class="btn-group mr-1" role="group">
-      <button style="border: none;
-          display: grid;
-          top: 0;
-          height: 45px;
-          color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
-
-        Senetler
-      </button>
-
-      <ul class="dropdown-menu topbar-dropdown-menu">
-        <li ><a class="dropdown-item yks-dropdown-item"
-            style="color: #fbfbfb !important;">Borç Senedi</a></li>
-        <li ><a class="dropdown-item yks-dropdown-item"
-            style="color: #fbfbfb !important;">Alacak Senedi</a></li>
-
-      </ul>
-    </div>
   </div>
+
 </nav> 
 
 

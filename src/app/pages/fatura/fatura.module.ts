@@ -10,6 +10,8 @@ import { NgModule } from "@angular/core";
 import { AlisFaturaComponent } from "./alis-fatura/alis-fatura.component";
 import { SatisFaturaComponent } from "./satis-fatura/satis-fatura.component";
 import { authGuard } from "src/app/Auth/guards/auth.guard";
+import {DividerModule} from 'primeng/divider';
+
 
 
 
@@ -22,6 +24,7 @@ import { authGuard } from "src/app/Auth/guards/auth.guard";
     ],
     imports: [
         CommonModule,
+        DividerModule,
         RouterModule.forChild([
       
             { path: 'alis-fatura', loadChildren: () => import("../fatura/alis-fatura/alis-fatura.module").then(m => m.AlisFaturaModule),canActivate:[authGuard] },

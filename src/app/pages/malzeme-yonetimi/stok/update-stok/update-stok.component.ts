@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { StokService } from 'src/app/core/services/repository/stok.service';
 import { BirimService } from 'src/app/core/services/repository/birim.service';
 import { UpdateStokModel } from 'src/app/core/models/stok/update-stok-model';
+import { ROUTER_NAVIGATE } from 'src/ROUTER_NAVIGATE';
 
 @Component({
   selector: 'app-update-stok',
@@ -14,9 +15,8 @@ import { UpdateStokModel } from 'src/app/core/models/stok/update-stok-model';
   providers: [CurrencyPipe,]
 })
 export class UpdateStokComponent {
-  /**
-   *
-   */
+
+
   BirimDataSource: any[]
   selectedBirim: any;
   stateData: any;
@@ -85,9 +85,9 @@ export class UpdateStokComponent {
   }
 
 
-  vazgec() {
-    this.router.navigate(['/menu/malzeme-yonetimi/stok/detail'], { state: history.state })
-  }
+
+
+
   selectedObject:any;
   changed(event) {
     this.selectedBirim = event
@@ -97,5 +97,21 @@ export class UpdateStokComponent {
       });
     }
   }
+
+
+
+
+
+
+
+
+  
+  geri() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_detail])
+  }
+  vazgec() {
+    this.router.navigate([ROUTER_NAVIGATE.stok_detail])
+  }
+
 
 }

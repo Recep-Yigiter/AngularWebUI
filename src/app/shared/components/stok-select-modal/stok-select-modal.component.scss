@@ -1,10 +1,2 @@
-@import "src/assets/custom/custom-list-page";
-
-
-:host ::ng-deep{
-    .mat-mdc-menu-item {
-        padding-left: 5px;
-        padding-right: 10px;
-        min-height: 30px !important;
-    }
-}
+@import "src/assets/scss/caption";
+@import "src/assets/scss/section";
