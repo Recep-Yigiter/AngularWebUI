@@ -19,6 +19,9 @@ import { CreateUrunReceteComponent } from '../create-urun-recete/create-urun-rec
 import { CreateUrunReceteHareketComponent } from '../../urun-recete-hareket/create-urun-recete-hareket/create-urun-recete-hareket.component';
 import { ListUrunReceteHareketComponent } from '../../urun-recete-hareket/list-urun-recete-hareket/list-urun-recete-hareket.component';
 import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.service';
+import { UpdateUrunReceteComponent } from '../update-urun-recete/update-urun-recete.component';
+import { DeleteModalComponents } from 'src/app/shared/utilities/confirms/delete-modal';
+import { UrunReceteHareketService } from 'src/app/core/services/repository/urun-recete-hareket.service';
 
 @Component({
   selector: 'app-list-urun-recete',
@@ -28,16 +31,18 @@ import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.
 })
 export class ListUrunReceteComponent implements OnInit {
   rowData: any[];
-
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
   public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
   public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
+
   colDefs: ColDef[] = [
-    { field: 'kod', headerName: 'Kod',width:120 },
+    { field: 'kod', headerName: 'Kod', width: 120 },
     { field: 'ad', headerName: 'Reçete Adı' },
     { field: 'stokAdi', headerName: 'Stok Adı' },
-    { field: 'bilesenSayisi', headerName: 'Bileşen Sayısı',width:90 },
+    { field: 'bilesenSayisi', headerName: 'Bileşen Sayısı', width: 90 },
   ];
 
   /**
@@ -45,6 +50,7 @@ export class ListUrunReceteComponent implements OnInit {
    */
   constructor(
     private UrunReceteService: UrunReceteService,
+    private UrunReceteHareketService:UrunReceteHareketService,
     private router: Router,
     private DatePipe: DatePipe,
     private NgbModal: NgbModal
@@ -53,62 +59,84 @@ export class ListUrunReceteComponent implements OnInit {
     resize.resizeFunction();
   }
 
-  rowDataCount: any;
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.UrunReceteService.GetList(() => {})).items;
-    this.rowData.forEach((item)=>{
-
-      item.bilesenSayisi=item.urunReceteHareketler.length
-    }) 
-
+    this.rowData = (
+      await this.UrunReceteService.GetList(
+        () => {},
+        (errorMessage) => {
+          console.log('Hata....', errorMessage.error);
+        }
+      )
+    ).items;
   }
 
-  filterSideMenu() {
-    var element = document.getElementById('filter_menu');
-    element.classList.toggle('mystyle');
-  }
-
-  getAllRowData() {
-    let rowData = [];
-    this.gridApi.forEachNode((node) => rowData.push(node.data));
-
-    return rowData;
-  }
-
-  onSelectionChanged() {
+  rowClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
+    this.selectedRow = selectedRows;
+    this.buttonDisabled = false;
   }
   rowDblClick() {
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-
-    this.urunReceteHareketModal(selectedRows);
+    this.updateModal();
   }
 
-  createRecete() {
+  createModal() {
     const modalRef = this.NgbModal.open(CreateUrunReceteComponent, {
-      size: 'md',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then(async (bankaHesap) => {
-      this.rowData = (await this.UrunReceteService.GetList(() => {})).items;
-    });
-  }
-
-  urunReceteHareketModal(item) {
-    const modalRef = this.NgbModal.open(ListUrunReceteHareketComponent, {
       size: 'xl',
       backdrop: 'static',
     });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.componentInstance.urunReceteData =item;
-    modalRef.result.then(async (bankaHesap) => {
-      this.rowData = (await this.UrunReceteService.GetList(() => {})).items;
-      this.rowData.forEach((item)=>{
-    
-        item.bilesenSayisi=item.urunReceteHareketler.length
-      })
+    modalRef.componentInstance.data = 'UrunRecete Kartı';
+
+    modalRef.result.then(async (item) => {
+      if (item) {
+        this.refresh();
+      }
     });
+  }
+
+  updateModal() {
+    if (this.selectedRow) {
+      const modalRef = this.NgbModal.open(UpdateUrunReceteComponent, {
+        size: 'xl',
+        backdrop: 'static',
+      });
+      modalRef.componentInstance.data = this.selectedRow;
+
+      modalRef.result.then(async (item) => {
+        if (item == true) {
+          this.refresh();
+        }
+      });
+    }
+  }
+
+  async refresh() {
+    window.location.reload();
+  }
+
+  delete() {
+    if (this.selectedRow) {
+      const modalRef = this.NgbModal.open(DeleteModalComponents, {
+        size: 'sm',
+        backdrop: 'static',
+      });
+      modalRef.result.then((event) => {
+        if (event == true) {
+          this.selectedRow.urunReceteHareketler.forEach((element) => {
+            this.UrunReceteHareketService.delete(element.id);
+          });
+
+          this.UrunReceteService.delete(this.selectedRow.id,()=>{
+            this.refresh();
+          });
+
+
+        }
+      });
+    }
+  }
+  filter: boolean = false;
+  filtrele() {
+    this.filter = !this.filter;
   }
 }

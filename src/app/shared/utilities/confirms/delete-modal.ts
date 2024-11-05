@@ -40,43 +40,13 @@ export class DeleteModalComponents {
     @Input() confirmationBoxTitle;
     @Input() confirmationMessage;
 
-    constructor(public activeModal: NgbActiveModal, private BankaService: BankaService) {
+    constructor(public activeModal: NgbActiveModal) {
 
     }
 
-    rowData: any[];
-
-    public rowSelection: 'single' | 'multiple' = 'multiple';
-    private gridApi!: GridApi<any>;
-
-    colDefs: ColDef[] = [
-        {
-            field: "ad",
-            minWidth: 200
-        },
-        { field: "kod" },
+    
 
 
-    ];
 
-
-    async getList(params: GridReadyEvent<any>) {
-        this.gridApi = params.api;
-        this.rowData = (await this.BankaService.GetList(() => { })).items;
-    }
-    selectedRow: any;
-
-
-    onSelectionChanged() {
-        this.selectedRow = this.gridApi.getSelectedRows()[0];
-    }
-
-    Bankas: any[] = [];
-    close() {
-
-
-        this.activeModal.close(this.selectedRow)
-
-    }
 }
 

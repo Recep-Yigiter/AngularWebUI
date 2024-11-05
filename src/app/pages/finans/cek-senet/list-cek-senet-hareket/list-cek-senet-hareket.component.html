@@ -1,0 +1,232 @@
+
+
+
+
+ 
+
+
+<div class="modal-header ">
+    <h4 class="modal-title"></h4>
+    <h4 class="modal-title"> </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+  </div>
+  
+  
+  
+  <div class="">
+    <div class="container-fluid">
+        <div class="panel header" data-resize-name="header">
+            <div class="content">
+                <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+    
+                        <div class="action-left">
+                            <div class="btn-group ml-1 mr-1">
+    
+                                <div class="button-container">
+
+                             
+
+  
+                                    <div  class="button-grup " aria-expanded="false"  [ngClass]="!createModalDisabled?'disabled':''"
+                                    data-bs-toggle="dropdown" >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/add-file.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Yeni Hareket</span>
+                                     
+                                    </div>
+
+                                    <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+
+                                      <li *ngIf="(data.durum==2&&data.cekSenetTipi==1)||(data.durum==2&&data.cekSenetTipi==2) " (click)="KasadanTahsilEdildiModel()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            Portföyde</a>
+                                      </li>
+
+                                      <li *ngIf="(data.durum==1&&data.cekSenetTipi==1)||(data.durum==1&&data.cekSenetTipi==2) " (click)="KasadanTahsilEdildiModel()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            Kasadan Tahsil Edildi</a>
+                                      </li>
+
+                                      <li *ngIf="((data.durum==1&&data.cekSenetTipi==1)||(data.durum==1&&data.cekSenetTipi==2)) || ((data.durum==2&&data.cekSenetTipi==1)||(data.durum==2&&data.cekSenetTipi==2))" (click)="IadeEdildiModal()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            İade Edildi</a>
+                                      </li>
+                                     
+                                      <li *ngIf="(data.durum==1&&data.cekSenetTipi==1)||(data.durum==1&&data.cekSenetTipi==2) "   (click)="BankayaTahsilataVerildiModel()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            Bankaya Tahsilata Verildi</a>
+                                      </li>
+
+                                      <li *ngIf="(data.durum==2&&data.cekSenetTipi==1)||(data.durum==1&&data.cekSenetTipi==2) "   (click)="BankadanTahsilKasaModel()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            Bankadan Tahsil (Kasa)</a>
+                                      </li>
+                                     
+                                       <li *ngIf="(data.durum==1&&data.cekSenetTipi==1)||(data.durum==1&&data.cekSenetTipi==2) "  (click)="CiroEdildiModel()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            Ciro Edildi</a>
+                                      </li> 
+
+
+                                      <li *ngIf="((data.durum==1&&data.cekSenetTipi==3)||(data.durum==1&&data.cekSenetTipi==4)) " (click)="IadeEdildiModal()" type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            İade Edildi</a>
+                                      </li>
+
+                                      <li *ngIf="(data.durum==1&&data.cekSenetTipi==3)||(data.durum==1&&data.cekSenetTipi==4) "  type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                             BS - Ödendi (Kasadan)</a>
+                                      </li>
+
+                                      <li *ngIf="(data.durum==1&&data.cekSenetTipi==3)||(data.durum==1&&data.cekSenetTipi==4) " type="button" style="    display: flex;
+                                      justify-content: center;
+                                      align-items: center;">
+                                        <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+                                          
+                                            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+                                            BS - Ödendi (Bankadan)</a>
+                                      </li>
+                                      
+
+                                    </ul> 
+
+                                   
+
+                                
+                                    <div  class="button-grup disabled"  >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/save.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+                                      
+                                    </div>
+  
+                                    <div  class="button-grup disabled"  >
+                                        <div class="img-container">
+                                          <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Sil</span>
+                                        
+                                      </div>
+                                
+                                    <div (click)="cikis()" class="button-grup">
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/close.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+                                     
+                                    </div> 
+                                
+                 
+                                    
+                                
+                                  </div>
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+  
+        <div class="panel panel-default" >
+          <div class="panel-heading" style="background-color: #f5f5f5;">
+            <ul class="nav nav-tabs">
+             
+              <li>
+                <a class="tab-item"> Genel Bilgileri</a>
+              </li>
+              <li class="active" style="position: relative;">
+                <a class="tab-item">Hareketler </a>
+              
+              </li>
+              <li>
+                <a class="tab-item"> Çek Senet İşlemleri</a>
+              </li>
+            </ul>
+          </div>
+    
+        </div>
+  
+        <div style="overflow-x: auto; line-height: 27px; padding: 5px;">
+     
+  
+          <ag-grid-angular #agGrid style="height:calc(100vh - 390px);" class="ag-theme-quartz" [rowData]="rowData"
+          [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
+          (gridReady)="getList($event)" (selectionChanged)="rowClick()" [rowSelection]="rowSelection" [rowHeight]="22"
+          [headerHeight]="23" [localeText]="localeText">
+        </ag-grid-angular> 
+    
+    
+    
+        </div>
+    
+    
+    
+    </div>
+  
+  
+  
+  
+  </div>
+  
+  
+  <div class="modal-footer">
+  
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

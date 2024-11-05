@@ -1,0 +1,158 @@
+<app-design>
+
+    <div design-buttons>
+        <div class="button-container">
+
+            <div class="button-grup " aria-expanded="false" data-bs-toggle="dropdown">
+                <div class="img-container">
+                    <img src="../../../../../assets/icons/add-file.png" alt="">
+                  </div>
+                  <span class="d-none d-sm-inline button-label">Yeni</span>
+                <!-- <i class="fa-solid fa-sort-down sort-down-icon"></i> -->
+            </div>
+
+            <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Bankaya Para Yatırma</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Havale Alma</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Banka Borç Dekontu</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Banka Alacak Dekontu</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Repo (Kasadan)</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Spot (Kasadan)</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Repo (Bankadan)</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Spot (Bankadan)</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Havale Gönderme</a>
+                </li>
+                <li type="button">
+                    <a class="dropdown-item dropdown-action-item">Bankadan Nakit Tahsilat</a>
+                </li>
+
+
+
+            </ul>
+
+
+
+
+            <div class="button-grup">
+                <div class="img-container">
+                    <img src="../../../../../assets/icons/refresh.png" alt="">
+                </div>
+                <span class="d-none d-sm-inline button-label">Yenile</span>
+
+            </div>
+
+            <div (click)="filtrele()" class="button-grup">
+                <div class="img-container">
+                    <img src="../../../../../assets/icons/filter.png" alt="">
+                </div>
+                <span class="d-none d-sm-inline button-label">Filtrele</span>
+
+            </div>
+
+            <div class="button-grup disabled">
+                <div class="img-container">
+                    <img src="../../../../../assets/icons/printer.png" alt="">
+                </div>
+                <span class="d-none d-sm-inline button-label">Yazdır</span>
+
+            </div>
+
+            <div class="button-grup " data-bs-toggle="dropdown">
+                <div class="img-container">
+                    <img src="../../../../../assets/icons/other.png" alt="">
+                </div>
+                <span class="d-none d-sm-inline button-label">Diğer</span>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div full-page class="full-page">
+        <form [formGroup]="frm" style="width: 410px;margin: 7px 0;">
+            <!-- <div class="button-container" style="display: flex;
+            justify-content: end;
+            margin: 4px 0;">
+               
+                <div (click)="BankaHesapHesapfiltrele()" class="button-grup " [ngClass]="BankaHesapFiltreButtonDisable?'disabled':''">
+                    <span class="button-label" style="display: flex;align-items: center;gap: 5px;font-size: 14px;justify-content: center;">
+                        <div class="img-container">
+                            <img style="width: 15px;
+    height: 15px;" src="../../../../../assets/icons/filter-sari.png" alt="">
+                        </div> Filtrele 
+                       
+                    </span>
+                </div>
+
+
+            </div> -->
+
+            <div style="display: grid;grid-template-columns: 400px;padding: 0 10px;">
+                
+                <app-form-input-select [status]="false" [field]="selectedBankaHesap?.hesapNo" (childFunc)="BankaHesapChildFunc($event)"
+                    [component]="BankaHesapSelectModalComponent" [formControlNames]="BankaHesapId" [span]="130"
+                    [label]="'Hesap No'"></app-form-input-select>
+                <app-form-label [status]="false" [readOnly]="true" [field]="selectedBankaHesap?.hesapAdi"
+                    [formControlNames]="BankaHesapAdi" [span]="130" [label]="'Hesap Adı'"></app-form-label>
+
+
+
+            </div>
+
+           
+
+
+        </form>
+
+
+
+
+
+        <as-split unit="percent" [gutterSize]="10" class="as-horizontal">
+            <as-split-area [size]="15" [order]="1" [visible]="filter" class="main-content">
+
+            </as-split-area>
+
+            <as-split-area [size]="85" [order]="2" [visible]="true" class="main-content">
+                <ag-grid-angular #agGrid style="height:calc(100vh - 180px);" class="ag-theme-quartz" [rowData]="rowData"
+                    [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
+                    (gridReady)="getList($event)" (selectionChanged)="rowClick()" [rowSelection]="rowSelection"
+                    [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
+                </ag-grid-angular>
+
+            </as-split-area>
+
+
+        </as-split>
+    </div>
+
+
+</app-design>

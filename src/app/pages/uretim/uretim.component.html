@@ -1,4 +1,4 @@
-<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
+<!-- <nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
     <ul class="title-area">
         <li class="name" [routerLink]="['/menu']">
             <i class="fa fa-home home-icon" aria-hidden="true"></i>
@@ -48,4 +48,106 @@
       </div>
 </nav>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="top-bar" style="height: 5.1rem; background: #ebebeb; line-height: 100%;">
+  <ul class="title-area">
+    <li class="name" [routerLink]="['/menu']">
+      <i class="fa fa-home home-icon"></i>
+    </li>
+
+
+  </ul>
+
+  <div style="display: flex;">
+    <p-divider layout="vertical"></p-divider>
+
+    <div style="display: grid;">
+      <div style="height: 4.1rem;">
+        <div class="buton-grup">
+
+          <button [routerLink]="['/menu/uretim/is-emri/list']"  [routerLinkActive]="['active']" type="button"
+            class="btn topbar-button disabled">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/is-merkezi.png" alt="">
+            </div>
+
+            <span   class="button-label">İş Merkezi
+            </span>
+
+          </button>
+
+
+
+          <button [routerLink]="['/menu/uretim/uretim-emri/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/uretim-emri.png" alt="">
+            </div>
+
+            <span class="button-label">Üretim Emri
+            </span>
+
+          </button>
+
+
+          <button [routerLink]="['/menu/uretim/urun-agaci/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button disabled">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/urun-agaci.png" alt="">
+            </div>
+
+            <span class="button-label">Ürün Ağacı
+            </span>
+
+          </button>
+
+          <button [routerLink]="['/menu/uretim/urun-recete/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/urun-recete.png" alt="">
+            </div>
+
+            <span class="button-label">Ürün Reçetesi
+            </span>
+
+          </button>
+
+
+
+
+
+        </div>
+
+      </div>
+      <div class="buton-grup-label">Listler</div>
+
+
+    </div>
+
+    <p-divider layout="vertical"></p-divider>
+
+  </div>
+
+  <nav  class="breadcrumbs"></nav>
+
+
+</nav>
+
+<div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
+  <router-outlet></router-outlet>
+</div>
+
+

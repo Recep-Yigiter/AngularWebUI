@@ -103,7 +103,7 @@ export class CreateUretimEmriComponent implements OnInit {
   CariSelectModalComponent: any = CariSelectModalComponents;
   DepoSelectModalComponent: any = DepoSelectModalComponents;
   UrunReceteSelectModalComponent: any = UrunReceteSelectModalComponents;
-  submit() {
+  Kaydet() {
     this.frm.value.uretimDurumu = this.frm.value.uretimDurumu.ad;
     this.frm.value.urunReceteId = this.selectedUrunRecete.id;
     this.frm.value.cariId = this.selectedCari.id;
@@ -113,7 +113,7 @@ export class CreateUretimEmriComponent implements OnInit {
     // this.frm.value.sevkTarihi = this.frm.value.sevkTarihi==undefined?'NULL':this.frm.value.sevkTarihi;
 
     this.UretimEmriService.create(this.frm.value, () => {
-      this.activeModal.close()
+      this.activeModal.close(false)
     },
      errorMessage => {})
   }
@@ -132,5 +132,9 @@ export class CreateUretimEmriComponent implements OnInit {
   UrunReceteChildFunc(event) {
     this.selectedUrunRecete = event;
 
+  }
+
+  cikis(){
+    this.activeModal.close(false)
   }
 }

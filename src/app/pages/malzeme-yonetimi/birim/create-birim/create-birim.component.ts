@@ -47,7 +47,7 @@ export class CreateBirimComponent implements OnInit {
     this.BirimService.create(
       createModel,
       () => {
-        this.activeModal.close();
+        this.activeModal.close(true);
       },
       (errorMessage) => {}
     );

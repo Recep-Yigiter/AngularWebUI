@@ -68,7 +68,9 @@ export class ListDepoComponent implements OnInit {
     modalRef.componentInstance.data = 'Depo Kartı';
 
     modalRef.result.then(async (item) => {
-      this.refresh();
+      if (item == true) {
+        this.refresh();
+      }
     });
   }
 

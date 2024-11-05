@@ -19,7 +19,7 @@ export class UpdateDepoBazindaStokComponent implements OnInit {
     private DepoBazindaStokService: DepoBazindaStokService
   ) {}
   ngOnInit(): void {
-    console.log(this.data);
+    
   }
 
   public frm: FormGroup = this.fb.group({

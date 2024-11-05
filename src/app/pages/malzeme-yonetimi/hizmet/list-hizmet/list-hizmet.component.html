@@ -112,7 +112,7 @@
   
         <ag-grid-angular #agGrid style="height:calc(100vh - 180px);" class="ag-theme-quartz" [rowData]="rowData"
         [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
-        (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
+        (gridReady)="getList($event)" (selectionChanged)="rowClick()" [rowSelection]="rowSelection"
         [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
       </ag-grid-angular>
   

@@ -1,41 +1,83 @@
-<nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
-    <ul class="title-area">
-        <li class="name" [routerLink]="['/menu']">
-            <i class="fa fa-home home-icon" aria-hidden="true"></i>
-        </li>
-
-        <li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
-    </ul>
 
 
 
+<nav class="top-bar" style="height: 5.1rem; background: #ebebeb; line-height: 100%;">
+  <ul class="title-area">
+    <li class="name" [routerLink]="['/menu']">
+      <i class="fa fa-home home-icon"></i>
+    </li>
 
 
-    <div role="group" style="display: grid; grid-template-columns: max-content max-content max-content;height: 100%;">
+  </ul>
 
-        <div class="grid-container">
-          <div class="btn-group " role="group">
-            <button [routerLink]="['/menu/satis/verilen-teklif/list']" type="button" class="btn yks-btn topbar-button">
-              <i class="small fa fa-list btn-button-icon"></i>
-              Teklifler
-            </button>
-          </div>
-          <div class="btn-group " role="group">
-            <button [routerLink]="['/menu/satis/alinan-siparis/list']" type="button" class="btn yks-btn topbar-button">
-              <i class="small fa fa-list btn-button-icon"></i>
-            Siparişler
-            </button>
-          </div>
-    
-    
-          <span class="top-footer">
-            Listeler
-          </span>
+  <div style="display: flex;">
+    <p-divider layout="vertical"></p-divider>
+
+    <div style="display: grid;">
+      <div style="height: 4.1rem;">
+        <div class="buton-grup">
+
+          <button [routerLink]="['/menu/satis/verilen-teklif/list']"  [routerLinkActive]="['active']" type="button"
+            class="btn topbar-button">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/satis/verilen-teklif.png" alt="">
+            </div>
+
+            <span   class="button-label">Verilen Teklif
+            </span>
+
+          </button>
+
+
+
+          <button [routerLink]="['/menu/satis/alinan-siparis/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/satis/alinan-siparis.png" alt="">
+            </div>
+
+            <span class="button-label">Alınan Sipariş
+            </span>
+
+          </button>
+
+
+
+
+
         </div>
-    
-        <p-divider layout="vertical"></p-divider>
-    
+
       </div>
+      <div class="buton-grup-label">Listler</div>
+
+
+    </div>
+
+    <p-divider layout="vertical"></p-divider>
+
+  </div>
+
+  <nav  class="breadcrumbs"></nav>
+
+
 </nav>
 
-<router-outlet></router-outlet>
+<div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateMasrafModel } from 'src/app/core/models/masraf/update-masraf-model';
 import { BirimService } from 'src/app/core/services/repository/birim.service';
 import { MasrafService } from 'src/app/core/services/repository/masraf.service';
+
+import { BirimSelectModalComponents } from 'src/app/shared/utilities/modals/birim-selected-modal';
 
 
 @Component({
@@ -12,68 +15,60 @@ import { MasrafService } from 'src/app/core/services/repository/masraf.service';
   styleUrls: ['./update-masraf.component.scss']
 })
 export class UpdateMasrafComponent implements OnInit {
+  @Input() data;
 
-
-
-  stateData: any;
   constructor(
     private fb: FormBuilder,
-    private MasrafService: MasrafService,
-    private router:Router,
-    private BirimService:BirimService
-  ) {
-
-    this.stateData = history.state;
-  }
-  async ngOnInit() {
-
-    this.BirimDataSource = (await this.BirimService.list()).items;
-
+    public activeModal: NgbActiveModal,
+    private MasrafService: MasrafService
+  ) {}
+  ngOnInit(): void {
+    
   }
 
-  public frm: FormGroup= this.fb.group({
+  public frm: FormGroup = this.fb.group({
+    kod: [null],
+    ad: [null],
+    birimId: [null],
+    aciklama: [null],
+  });
 
-    kod: [null, [Validators.required, Validators.maxLength(16)]],
-    ad: [null, [Validators.required, Validators.maxLength(16)]],
-    birimId: [null, [Validators.required, Validators.maxLength(16)]],
-    aciklama: [null, [Validators.required, Validators.maxLength(16)]],
-
-  })
-  get kod() { return this.frm.get('kod') }
-  get ad() { return this.frm.get('ad') }
-  get birimId() { return this.frm.get('birimId') }
-  get aciklama() { return this.frm.get('aciklama') }
-
-
-  updateMasraf() {
-    const createModel = new UpdateMasrafModel();
-    createModel.id = this.stateData.id;
-    createModel.ad = this.frm.value.ad ? this.frm.value.ad : this.stateData.ad;
-    createModel.kod = this.frm.value.kod ? this.frm.value.kod : this.stateData.kod;
-    createModel.kdvOrani = 0;
-    createModel.barkod ="";
-    createModel.birimId =this.selectedBirim;
-    createModel.hourId = this.stateData.hourId;
-
-
-     this.MasrafService.update(createModel, () => {
-       this.router.navigate(['/menu/malzeme-yonetimi/masraf/detail'], { state: createModel })
-     }, errorMessage => { })
+  get kod() {
+    return this.frm.get('kod');
   }
-  vazgec(){
-    this.router.navigate(['/menu/malzeme-yonetimi/masraf/detail'],{state:history.state})
+  get ad() {
+    return this.frm.get('ad');
+  }
+  get birimId() {
+    return this.frm.get('birimId');
+  }
+  get aciklama() {
+    return this.frm.get('aciklama');
   }
 
-  selectedObject:any;
-  BirimDataSource: any[]
+
+  Kaydet() {
+
+
+    this.data.ad = this.frm.value.ad;
+    this.data.kod = this.frm.value.kod;
+    this.data.birimId = this.selectedBirim?.id ? this.selectedBirim?.id : this.data.birimId;
+    this.data.aciklama = this.frm.value.miktar;
+
+    this.MasrafService.update(this.data, () => {
+      this.activeModal.close();
+    });
+  }
+
+  cikis() {
+    this.activeModal.close(false);
+  }
+
+
+
+  BirimSelectModalComponent: any = BirimSelectModalComponents;
   selectedBirim: any;
-  changed(event) {
-    this.selectedBirim = event
-    if (this.BirimDataSource != undefined) {
-      this.selectedObject = this.BirimDataSource.find((el: any) => {
-        return el?.id == this.selectedBirim;
-      });
-    }
+  BirimChildFunc(event) {
+    this.selectedBirim = event;
   }
-
 }

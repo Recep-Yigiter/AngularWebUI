@@ -19,6 +19,12 @@ import { CreateBankaHesapModalComponent } from './create-banka-hesap-modal/creat
 
 import {MatRadioModule} from '@angular/material/radio';
 import { AngularSplitModule } from 'angular-split';
+import { BankaFormLabelComponent } from './core/components/banka-form-label';
+import { BankaFormDateComponent } from './core/components/banka-form-date';
+import { BankaFormInputSelectComponent } from './core/components/banka-form-input-select';
+import { BankaFormDropDownComponent } from './core/components/banka-form-dropdown';
+import { BankaHesapComponent } from './core/components/banka-hesap/banka-hesap.component';
+import { BankaHesapHareketlerComponent } from './core/components/banka-hesap-hareketler/banka-hesap-hareketler.component';
 
 
 
@@ -30,7 +36,13 @@ import { AngularSplitModule } from 'angular-split';
     DetailBankaComponent,
     ListBankaComponent,
     DesignComponent,
-    CreateBankaHesapModalComponent
+    CreateBankaHesapModalComponent,
+    BankaFormLabelComponent,
+    BankaFormDateComponent,
+    BankaFormInputSelectComponent,
+    BankaFormDropDownComponent,
+    BankaHesapComponent,
+    BankaHesapHareketlerComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +61,8 @@ import { AngularSplitModule } from 'angular-split';
        { path: "list", component: ListBankaComponent,canActivate:[authGuard]},
        { path: "create", component: CreateBankaComponent,canActivate:[authGuard]},
        { path: "update", component: UpdateBankaComponent,canActivate:[authGuard]},
-       { path: "detail", component: DetailBankaComponent,canActivate:[authGuard]},
+       { path: "banka-hesap", component: BankaHesapComponent,canActivate:[authGuard]},
+       { path: "banka-hesap-hareketler", component: BankaHesapHareketlerComponent,canActivate:[authGuard]},
 
     ])
   ]

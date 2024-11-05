@@ -10,7 +10,7 @@ import { CariService } from 'src/app/core/services/repository/cari.service';
   <div class="modal-header ">
 
 <h4 class="modal-title"></h4>
-<h4 class="modal-title">{{confirmationBoxTitle}}</h4>
+<h4 class="modal-title">Cariler</h4>
 <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
 </div>
 
@@ -75,9 +75,8 @@ import { CariService } from 'src/app/core/services/repository/cari.service';
 
 })
 export class CariSelectModalComponents {
-    @Input() confirmationBoxTitle;
-    @Input() confirmationMessage;
 
+    confirmationBoxTitle:any;
     constructor(public activeModal: NgbActiveModal, private CariService: CariService) {
 
     }

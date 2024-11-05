@@ -11,6 +11,10 @@ export class CreateFaturaModel {
     hourId?:any;
     cariId?: any;
     depoId?: any;
+    hareketTipi?:any;
+    hareketId?:any;
+    hareketAdi?:any;
+    faturaDurumu?:any;
     faturaHareketler?: CreateFaturaHareketModel[];
 }
 

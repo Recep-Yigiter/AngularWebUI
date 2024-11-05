@@ -12,6 +12,10 @@ import { UpdateHizmetComponent } from './update-hizmet/update-hizmet.component';
 import { ListHizmetComponent } from './list-hizmet/list-hizmet.component';
 import { DesignComponent } from './core/design/design.component';
 import { AngularSplitModule } from 'angular-split';
+import { HizmetFormLabelComponent } from './core/components/hizmet-form-label';
+import { HizmetFormDateComponent } from './core/components/hizmet-form-date';
+import { HizmetFormInputSelectComponent } from './core/components/hizmet-form-input-select';
+import { HizmetFormDropDownComponent } from './core/components/hizmet-form-dropdown';
 
 
 
@@ -23,7 +27,10 @@ import { AngularSplitModule } from 'angular-split';
     UpdateHizmetComponent,
     ListHizmetComponent,
     DesignComponent,
-
+    HizmetFormLabelComponent,
+    HizmetFormDateComponent,
+    HizmetFormInputSelectComponent,
+    HizmetFormDropDownComponent,
   ],
   imports: [
     CommonModule,

@@ -10,85 +10,167 @@
 
 
 <div class="">
+    <div class="container-fluid">
+        <div class="panel header" data-resize-name="header">
+            <div class="content">
+                <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
 
-    <div style="overflow-x: auto; line-height: 27px; padding-top: 10px;">
-        <form [formGroup]="frm">
-            <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
+                        <div class="action-left">
+                            <div class="btn-group ml-1 mr-1">
+
+                                <div class="button-container">
+
+                                    <div class="button-grup disabled">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/add-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Yeni</span>
+                                        <!-- <i class="fa-solid fa-sort-down sort-down-icon"></i> -->
+                                    </div>
+
+                                    <div (click)="Kaydet()" class="button-grup ">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/save.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Kaydet</span>
+
+                                    </div>
+
+                                    <div class="button-grup disabled">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Sil</span>
+
+                                    </div>
+
+                                    <div (click)="cikis()" class="button-grup">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/close.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Çıkış</span>
+
+                                    </div>
 
 
-                <div style="border-top: 1px solid #dee2e6;
-                border-bottom: 1px solid #dee2e6; 
-                padding-left: 10px; color: #6b6b6b;
-                background-color: #f7f7f7;
-                grid-column: 1/span 2;
-                font-size: 14px;">
-                    Genel Bilgileri
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-
-                <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="siparisTarihi" [span]="130"
-                    [label]="'Sipariş Tarihi '"></app-form-date>
-
-                <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="teslimTarihi" [span]="130"
-                    [label]="'Teslim Tarihi '"></app-form-date>
-
-                <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="sevkTarihi" [span]="130"
-                    [label]="'Sevk Tarihi '"></app-form-date>
-
-
-
-                <div style="border-top: 1px solid #dee2e6;
-         border-bottom: 1px solid #dee2e6; 
-         padding-left: 10px; color: #6b6b6b;
-         background-color: #f7f7f7;
-         grid-column: 1 / span 2;
-         font-size: 14px;">
-                    Reçete Bilgileri
-                </div>
-                <app-form-input-select style=" grid-column: 1/span 2;" [field]="selectedUrunRecete?.ad"
-                    (childFunc)="UrunReceteChildFunc($event)" [component]="UrunReceteSelectModalComponent"
-                    [formControlNames]="urunReceteId" [span]="130" [label]="'Reçete '"></app-form-input-select>
-                <app-form-label style=" grid-column: 1/span 2;" [formControlNames]="urunReceteKodu" [span]="130"
-                    [field]="selectedUrunRecete?.kod" [label]="'Reçete Kodu '"></app-form-label>
-
-                <app-form-input-select style=" grid-column: 1/span 2;" [field]="selectedDepo?.ad"
-                    (childFunc)="DepoChildFunc($event)" [component]="DepoSelectModalComponent"
-                    [formControlNames]="depoId" [span]="130" [label]="'Depo '"></app-form-input-select>
-                <app-form-label style=" grid-column: 1/span 2; width: 100px;" [formControlNames]="miktar" [span]="130"
-                    [field]="1" [label]="'Miktar '"></app-form-label>
-                <app-form-dropdown  [dataSource]="dataSourceUretimDurumu" style=" grid-column: 1/span 2; width: 150px;"  [formControlNames]="uretimDurumu" [label]="'Üretim Durum'" [span]="130"></app-form-dropdown>
-
-
-
-
-
-                <div style="border-top: 1px solid #dee2e6;
-                border-bottom: 1px solid #dee2e6; 
-                padding-left: 10px; color: #6b6b6b;
-                background-color: #f7f7f7;
-                font-size: 14px;
-                grid-column: 1 / span 2;
-                 ">
-                    Cari Bilgileri
-                </div>
-
-                <app-form-input-select style=" grid-column: 1/span 2;" [field]="selectedCari?.ad"
-                    (childFunc)="CariChildFunc($event)" [component]="CariSelectModalComponent"
-                    [formControlNames]="cariId" [span]="130" [label]="'Firma '"></app-form-input-select>
-
-
-                <app-form-label style=" grid-column: 1/span 2; width: 200px;" [formControlNames]="cariKodu" [span]="130"  [field]="selectedCari?.kod"
-                    [label]="'Firma Kodu '"></app-form-label>
-
-                    <app-form-label style=" grid-column: 1/span 2;" [formControlNames]="referans" [span]="130"
-                    [label]="'Referans '"></app-form-label>
-
-
-
             </div>
+        </div>
 
-        </form>
 
+
+        <div style="overflow-x: auto; line-height: 27px; padding: 5px;">
+            <form [formGroup]="frm">
+                <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
+
+
+                    <div style="display: grid;grid-template-columns: auto auto auto;padding: 0 10px;">
+
+
+        
+                        <app-form-date [formControlNames]="siparisTarihi" [span]="130" [label]="'Sipariş Tarihi '"></app-form-date>
+                        <app-form-input-select [span]="130" [label]="'Reçete '" style=" grid-column: 2/span 2;" [field]="selectedUrunRecete?.ad"(childFunc)="UrunReceteChildFunc($event)" [component]="UrunReceteSelectModalComponent"[formControlNames]="urunReceteId" ></app-form-input-select>
+        
+                        <app-form-date  [formControlNames]="teslimTarihi" [span]="130"  [label]="'Teslim Tarihi '"></app-form-date>
+                        <app-form-label  [span]="130" [label]="'Reçete Kodu '" style=" grid-column: 2/span 2;" [formControlNames]="urunReceteKodu" [field]="selectedUrunRecete?.kod" ></app-form-label>
+
+                        <app-form-date  [formControlNames]="sevkTarihi" [span]="130" [label]="'Sevk Tarihi '"></app-form-date>
+                        <app-form-input-select [span]="130" [label]="'Depo '" style=" grid-column: 2/span 2;" [field]="selectedDepo?.ad"(childFunc)="DepoChildFunc($event)" [component]="DepoSelectModalComponent"[formControlNames]="depoId" ></app-form-input-select>
+        
+                        <app-form-input-select  [field]="selectedCari?.ad" (childFunc)="CariChildFunc($event)" [component]="CariSelectModalComponent" [formControlNames]="cariId" [span]="130" [label]="'Firma '"></app-form-input-select>
+                        <app-form-label style=" grid-column: 2/span 2; width: 100px;" [formControlNames]="miktar" [span]="130"[field]="1" [label]="'Miktar '"></app-form-label>
+
+                        <app-form-label  [formControlNames]="cariKodu" [span]="130"  [field]="selectedCari?.kod"[label]="'Firma Kodu '"></app-form-label>
+                        <app-form-dropdown  [dataSource]="dataSourceUretimDurumu" style=" grid-column: 2/span 2; width: 150px;"  [formControlNames]="uretimDurumu" [label]="'Üretim Durum'" [span]="130"></app-form-dropdown>
+        
+       
+                        <app-form-label  [formControlNames]="referans" [span]="130"[label]="'Referans '"></app-form-label>
+        
+        
+        
+                    </div>
+
+
+                    <!-- <div style="display: grid;grid-template-columns: auto auto auto;padding: 0 10px;">
+
+
+                        <div style="border-top: 1px solid #dee2e6;
+                        border-bottom: 1px solid #dee2e6; 
+                        padding-left: 10px; color: #6b6b6b;
+                        background-color: #f7f7f7;
+                        grid-column: 1/span 2;
+                        font-size: 14px;">
+                            Genel Bilgileri
+                        </div> 
+        
+        
+                        <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="siparisTarihi" [span]="130" [label]="'Sipariş Tarihi '"></app-form-date>
+        
+                        <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="teslimTarihi" [span]="130"  [label]="'Teslim Tarihi '"></app-form-date>
+        
+                        <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="sevkTarihi" [span]="130" [label]="'Sevk Tarihi '"></app-form-date>
+        
+        
+        
+                         <div style="border-top: 1px solid #dee2e6;
+                 border-bottom: 1px solid #dee2e6; 
+                 padding-left: 10px; color: #6b6b6b;
+                 background-color: #f7f7f7;
+                 grid-column: 1 / span 2;
+                 font-size: 14px;">
+                            Reçete Bilgileri
+                        </div> 
+                        <app-form-input-select [span]="130" [label]="'Reçete '" style=" grid-column: 1/span 2;" [field]="selectedUrunRecete?.ad"(childFunc)="UrunReceteChildFunc($event)" [component]="UrunReceteSelectModalComponent"[formControlNames]="urunReceteId" ></app-form-input-select>
+                        <app-form-label  [span]="130" [label]="'Reçete Kodu '" style=" grid-column: 1/span 2;" [formControlNames]="urunReceteKodu" [field]="selectedUrunRecete?.kod" ></app-form-label>
+                        <app-form-input-select [span]="130" [label]="'Depo '" style=" grid-column: 1/span 2;" [field]="selectedDepo?.ad"(childFunc)="DepoChildFunc($event)" [component]="DepoSelectModalComponent"[formControlNames]="depoId" ></app-form-input-select>
+                        <app-form-label style=" grid-column: 1/span 2; width: 100px;" [formControlNames]="miktar" [span]="130"[field]="1" [label]="'Miktar '"></app-form-label>
+                        <app-form-dropdown  [dataSource]="dataSourceUretimDurumu" style=" grid-column: 1/span 2; width: 150px;"  [formControlNames]="uretimDurumu" [label]="'Üretim Durum'" [span]="130"></app-form-dropdown>
+        
+        
+        
+        
+        
+                         <div style="border-top: 1px solid #dee2e6;
+                        border-bottom: 1px solid #dee2e6; 
+                        padding-left: 10px; color: #6b6b6b;
+                        background-color: #f7f7f7;
+                        font-size: 14px;
+                        grid-column: 1 / span 2;
+                         ">
+                            Cari Bilgileri
+                        </div>
+         
+                        <app-form-input-select style=" grid-column: 1/span 2;" [field]="selectedCari?.ad" (childFunc)="CariChildFunc($event)" [component]="CariSelectModalComponent" [formControlNames]="cariId" [span]="130" [label]="'Firma '"></app-form-input-select>
+                        <app-form-label style=" grid-column: 1/span 2; width: 200px;" [formControlNames]="cariKodu" [span]="130"  [field]="selectedCari?.kod"[label]="'Firma Kodu '"></app-form-label>
+
+                        <app-form-label style=" grid-column: 1/span 2;" [formControlNames]="referans" [span]="130"[label]="'Referans '"></app-form-label>
+        
+        
+        
+                    </div> -->
+
+
+
+
+
+                </div>
+
+            </form>
+
+
+
+
+        </div>
 
 
 
@@ -100,18 +182,18 @@
 
 
 
+
+
+
+
+
 </div>
 
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="submit()"
-        style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
-        <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-        <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
-    </button>
-    <button type="button" class="btn " (click)="activeModal.close(false)"
-        style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
-        <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
-        <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
-    </button>
+   
 </div>
+
+
+
+

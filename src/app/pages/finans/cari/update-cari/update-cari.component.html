@@ -1,175 +1,305 @@
-<nav class="breadcrumbs">
-    <a class="unavailable">Birim</a>
-    <a class="unavailable">{{stateData.ad}}</a>
-    <!-- <a class="unavailable">Lower Airways</a>
-    <a class="current">Carina</a>
-    <a class="right">Take Exam</a> -->
-</nav>
 
-<form [formGroup]="frm">
+<!-- 
 
-
-
-    <app-design w100="width:100%;" displayNone="display:none;">
-
-        <div design-buttons>
-            <button routerLink="/menu/finans/cari/list" type="button" class="btn btn-success"
-                style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
-                <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
-                <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
-            </button>
-            <button (click)="update()" type="button" class="btn btn-success"
-                style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
-                <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-                <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
-            </button>
-            <button type="button" class="btn " (click)="vazgec()"
-                style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
-                <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
-                <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
-            </button>
-        </div>
+<div class="modal-header ">
+    <h4 class="modal-title"></h4>
+    <h4 class="modal-title"> </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+</div>
 
 
 
+<div class="">
+    <div class="container-fluid">
+        <div class="panel header" data-resize-name="header">
+            <div class="content">
+                <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+    
+                        <div class="action-left">
+                            <div class="btn-group ml-1 mr-1">
+    
+                                <div class="button-container">
 
+                                    <div  class="button-grup disabled"  >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/add-file.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Yeni</span>
+                                     
+                                    </div>
+                                
+                                    <div (click)="Kaydet()" class="button-grup "  >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/save.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+                                      
+                                    </div>
 
-        <div full-page style="height: 100%;">
-            <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
-
-
-
-
-
-                <div class="pane" style="padding: 1em;">
-                    <div class="grid">
-                        <div class="col-12 lg:col-6 xl:col-6 pl-4">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <span style="font-weight: 600; font-size: 13px;">
-                                                Birim Adı </span>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <span
-                                                style="font-weight: 600; font-size: 18px; display: flex;justify-content: center;align-items: center;">
-                                                <i class="fa fa-star"
-                                                    style="color: #f3cc00; font-size: 22px; display: inline-block;"></i>
-                                                <input formControlName="ad"
-                                                    style="border: 1px solid  rgb(145, 145, 243) ;margin-left: 10px; border-radius: 5px; max-width: 50%; min-width: 300px; background-color: rgb(210, 210, 255);"
-                                                    type="text" class="form-control shadow-none"
-                                                    id="exampleFormControlInput1" placeholder="Ad giriniz..."
-                                                    [(ngModel)]="stateData.ad">
-
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <div  class="button-grup disabled"  >
+                                        <div class="img-container">
+                                          <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Sil</span>
+                                        
+                                      </div>
+                                
+                                    <div (click)="cikis()" class="button-grup">
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/close.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+                                     
+                                    </div> 
+                                
+                 
+                                    
+                                
+                                  </div>
+    
+    
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div>
-
-                    <div class="grid">
-                        <div class="col-12 lg:col-6 xl:col-6 pl-4">
-                            <table class="yks_table_group">
-                                <tbody>
-                                    <tr>
-                                        <td class="yks_td_label"></td>
-                                        <td style="width: 100%; "></td>
-                                    </tr>
-
-
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label" style="border-left: #000000;">
-
-                                            <label style=" min-width: 160px; font-weight: 600; font-size: 13px;">Birim
-                                                Kodu
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-                                            <input formControlName="kod" [(ngModel)]="stateData.kod" style=" padding: 0px 0 0px 0.75rem;
-                                    font-size: 13px;
-                                    border-radius: 1px;
-                                    background-color: rgb(210, 210, 255) !important;
-                                    border: 1px solid rgb(145, 145, 243);" type="text" class="form-control shadow-none"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label" style="border-left: #000000;">
-
-
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-                                            <label class="font-italic"
-                                                style=" min-width: 160px; font-size: 13px; color: #666666;">
-                                                Depolanabilir ürünler envanter
-                                                seviyesini yönettiğin fiziksel
-                                                maddelerdir.
-                                            </label>
-                                        </td>
-                                    </tr>
-
-
-
-
-
-                                </tbody>
-                            </table>
-
-                        </div>
-
-
-                        <div class="col-12 lg:col-6 xl:col-6 pl-4 pr-4">
-
-
-                        </div>
-
-                        <div class="col-12 lg:col-12 xl:col-12 pl-4 pr-4">
-
-                            <table class="yks_table_group " style="width: 100%;">
-                                <tbody>
-                                    <tr>
-                                        <td style="width: 100px;">
-                                            <div style="color: #017e84;">
-                                                İç Notlar
-                                            </div>
-                                        </td>
-                                        <td></td>
-
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 100%;">
-                                            <textarea formControlName="aciklama"
-                                                class="form-control shadow-none border-1"
-                                                placeholder="Bu not sadece dahili amaçlar içindir"
-                                                style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
-
-
-
-
+                   
                 </div>
             </div>
         </div>
+    
 
-    </app-design>
+        <div style="overflow-x: auto; line-height: 27px; padding: 5px;">
+     
 
-</form>
+
+            <form [formGroup]="frm">
+                <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
+    
+    
+                   
+    
+                
+                    <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="kod" [span]="130" [field]="data.kod"
+                         [label]="'Kod '"></app-form-label>
+    
+                    <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="ad" [span]="130" [field]="data.ad"
+                         [label]="'Ad '"></app-form-label>
+    
+                    <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="aciklama" [span]="130" [field]="data.aciklama"
+                         [label]="'Açıklama '"></app-form-label>
+    
+    
+    
+    
+                    
+    
+    
+                </div>
+    
+            </form>
+    
+    
+    
+    
+        </div>
+    
+    
+    
+    </div>
+
+
+
+
+</div>
+
+
+<div class="modal-footer">
+
+</div>
+
+
+
+
+
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+<div class="modal-header ">
+  <h4 class="modal-title"></h4>
+  <h4 class="modal-title"> </h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+</div>
+
+
+
+<div class="">
+  <div class="container-fluid">
+      <div class="panel header" data-resize-name="header">
+          <div class="content">
+              <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                  <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+
+                      <div class="action-left">
+                          <div class="btn-group ml-1 mr-1">
+
+                              <div class="button-container">
+
+                                  <div class="button-grup disabled">
+                                      <div class="img-container">
+                                          <img src="../../../../../assets/icons/add-file.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Yeni</span>
+                                  </div>
+
+                                  <div (click)="Kaydet()" class="button-grup ">
+                                      <div class="img-container">
+                                          <img src="../../../../../assets/icons/save.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+
+                                  </div>
+
+                                  <div class="button-grup disabled">
+                                      <div class="img-container">
+                                          <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Sil</span>
+
+                                  </div>
+
+                                  <div (click)="cikis()" class="button-grup">
+                                      <div class="img-container">
+                                          <img src="../../../../../assets/icons/close.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+
+                                  </div>
+
+
+
+
+                              </div>
+
+
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+      <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: #f5f5f5;">
+              <ul class="nav nav-tabs">
+
+                  <li [class.active]="selectedTab==='Genel Bilgiler'"
+                      (click)="tabChanceFilter('Genel Bilgiler',$event)">
+                      <a class="tab-item"> Genel Bilgileri</a>
+                  </li>
+                  <li [class.active]="selectedTab==='Muhasebe Kodları'"
+                      (click)="tabChanceFilter('Muhasebe Kodları',$event)">
+                      <a class="tab-item">Muhasebe Kodları</a>
+                  </li>
+
+              </ul>
+          </div>
+
+      </div>
+
+
+
+
+      <div [ngStyle]="{'display':selectedTab=='Genel Bilgiler'?'block':'none'}"
+          style="overflow-x: auto; line-height: 27px; padding: 5px; height:calc(100vh - 390px);">
+          <form [formGroup]="frm">
+              <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
+
+
+
+
+
+
+                <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="kod" [span]="130" [field]="data.kod"
+                [label]="'Kod '"></app-form-label>
+
+           <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="ad" [span]="130" [field]="data.ad"
+                [label]="'Ad '"></app-form-label>
+
+           <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="aciklama" [span]="130" [field]="data.aciklama"
+                [label]="'Açıklama '"></app-form-label>
+
+
+
+
+
+
+
+
+              </div>
+
+          </form>
+      </div>
+
+
+      <div [ngStyle]="{'display':selectedTab=='Muhasebe Kodları'?'block':'none'}"
+          style="overflow-x: auto; line-height: 27px; padding: 5px;">
+          <ag-grid-angular #agGrid style="height:calc(100vh - 390px);" class="ag-theme-quartz" [rowData]="rowData"
+              [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (gridReady)="getList($event)"
+              [rowSelection]="rowSelection" [rowHeight]="22" [headerHeight]="23" [localeText]="localeText"  [components]="frameworkComponents" >
+          </ag-grid-angular>  
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+  </div>
+
+
+
+
+</div>
+
+
+<div class="modal-footer">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

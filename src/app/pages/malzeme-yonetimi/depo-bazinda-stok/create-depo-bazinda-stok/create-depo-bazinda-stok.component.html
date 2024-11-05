@@ -74,16 +74,16 @@
 
 
 
-                    <app-form-input-select style=" grid-column: 1/span 2;" [status]="false"
-                        (childFunc)="DepoChildFunc($event)" [component]="DepoSelectModalComponent"
-                        [formControlNames]="depoId" [span]="130" [label]="'Depo '"></app-form-input-select>
-
-                    <app-form-input-select style=" grid-column: 1/span 2;" [status]="false"
-                        (childFunc)="StokChildFunc($event)" [component]="StokSelectModalComponent"
-                        [formControlNames]="stokId" [span]="130" [label]="'Stok '"></app-form-input-select>
-
-                    <app-form-label style=" grid-column: 1/span 2; width: 100px;" [formControlNames]="miktar"
-                        [span]="130" [label]="'Miktar '"></app-form-label>
+                    <app-form-input-select style=" grid-column: 1/span 2;" [status]="false" [field]="selectedDepo?.ad"
+                    (childFunc)="DepoChildFunc($event)" [component]="DepoSelectModalComponent"
+                    [formControlNames]="depoId" [span]="130" [label]="'Depo '"></app-form-input-select>
+    
+                    <app-form-input-select style=" grid-column: 1/span 2;" [status]="false" [field]="selectedStok?.ad"
+                    (childFunc)="StokChildFunc($event)" [component]="StokSelectModalComponent"
+                    [formControlNames]="stokId" [span]="130" [label]="'Stok '"></app-form-input-select>
+    
+                    <app-form-label style=" grid-column: 1/span 2; width: 100px;" [formControlNames]="miktar" [span]="130"
+                         [label]="'Miktar '"></app-form-label>
 
 
 

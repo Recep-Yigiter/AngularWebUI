@@ -13,47 +13,45 @@ import { DeleteModalComponents } from 'src/app/shared/utilities/confirms/delete-
   templateUrl: './list-hizmet.component.html',
   styleUrls: ['./list-hizmet.component.scss'],
 })
-export class ListHizmetComponent {
+export class ListHizmetComponent implements OnInit {
   rowData: any[];
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
   public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
   public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
 
-  constructor(
-    private HizmetService: HizmetService,
-    private router: Router,
-    private NgbModal: NgbModal
-  ) {}
+  constructor(private HizmetService: HizmetService, private NgbModal: NgbModal) {}
 
-  ngOnInit(): void {}
+  async ngOnInit() {}
 
-  colDefs: ColDef[] = [{ field: 'kod' }, { field: 'ad' }];
+  colDefs: ColDef[] = [
+    { field: 'ad', width: 200, filter: 'agTextColumnFilter' },
+    { field: 'kod', width: 200, filter: 'agTextColumnFilter' },
+  ];
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-    this.rowData = (await this.HizmetService.GetList(() => {})).items;
+    this.rowData = (
+      await this.HizmetService.GetList(
+        () => {},
+        (errorMessage) => {
+          console.log('Hata....', errorMessage.error);
+        }
+      )
+    ).items;
   }
-  onSelectionChanged() {
+
+  rowClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
+    this.selectedRow = selectedRows;
     this.buttonDisabled = false;
-    this.selectedHizmet = selectedRows;
   }
   rowDblClick() {
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-    // this.router.navigate(['/menu/malzeme-yonetimi/hizmet/detail'], {
-    //   state: selectedRows,
-    // });
     this.updateModal();
   }
 
-  filterSideMenu() {
-    // document.getElementById("filter_menu").style.width ="200px";
-    var element = document.getElementById('filter_menu');
-    element.classList.toggle('mystyle');
-  }
-  buttonDisabled: boolean = true;
-  selectedHizmet: any;
   createModal() {
     const modalRef = this.NgbModal.open(CreateHizmetComponent, {
       size: 'md',
@@ -62,17 +60,19 @@ export class ListHizmetComponent {
     modalRef.componentInstance.data = 'Hizmet Kartı';
 
     modalRef.result.then(async (item) => {
-      this.refresh();
+      if (item == true) {
+        this.refresh();
+      }
     });
   }
 
   updateModal() {
-    if (this.selectedHizmet) {
+    if (this.selectedRow) {
       const modalRef = this.NgbModal.open(UpdateHizmetComponent, {
         size: 'md',
         backdrop: 'static',
       });
-      modalRef.componentInstance.data = this.selectedHizmet;
+      modalRef.componentInstance.data = this.selectedRow;
 
       modalRef.result.then(async (item) => {
         if (item == true) {
@@ -87,14 +87,14 @@ export class ListHizmetComponent {
   }
 
   delete() {
-    if (this.selectedHizmet) {
+    if (this.selectedRow) {
       const modalRef = this.NgbModal.open(DeleteModalComponents, {
         size: 'sm',
         backdrop: 'static',
       });
       modalRef.result.then((event) => {
         if (event == true) {
-          this.HizmetService.delete(this.selectedHizmet.id, () => {
+          this.HizmetService.delete(this.selectedRow.id, () => {
             this.refresh();
           });
         }

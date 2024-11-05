@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KasaComponent } from './kasa.component';
 import { CreateKasaComponent } from './create-kasa/create-kasa.component';
-import { DetailKasaComponent } from './detail-kasa/detail-kasa.component';
 import { UpdateKasaComponent } from './update-kasa/update-kasa.component';
 import { ListKasaComponent } from './list-kasa/list-kasa.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +25,6 @@ import { KasaHareketFormInputSelectComponent } from './core/components/kasa-hare
   declarations: [
     KasaComponent,
     CreateKasaComponent,
-    DetailKasaComponent,
     UpdateKasaComponent,
     ListKasaComponent,
     DesignComponent,
@@ -51,7 +49,6 @@ import { KasaHareketFormInputSelectComponent } from './core/components/kasa-hare
        { path: "list", component: ListKasaComponent,canActivate:[authGuard]},
        { path: "create", component: CreateKasaComponent,canActivate:[authGuard]},
        { path: "update", component: UpdateKasaComponent,canActivate:[authGuard]},
-       { path: "detail", component: DetailKasaComponent,canActivate:[authGuard]},
 
 
     ])

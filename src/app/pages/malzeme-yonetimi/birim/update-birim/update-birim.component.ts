@@ -46,7 +46,7 @@ export class UpdateBirimComponent implements OnInit {
     this.BirimService.update(
       createModel,
       () => {
-        this.activeModal.close();
+        this.activeModal.close(true);
       },
       (errorMessage) => {}
     );

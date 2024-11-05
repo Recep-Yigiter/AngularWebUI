@@ -12,11 +12,13 @@ export class UpdateTeklifModel {
     durum?:any;
     cariId?: any;
     onay?: any;
+    tenantId?: any;
   
     teklifHareketler?: UpdateTeklifHareketModel[];
 }
 
 export class UpdateTeklifHareketModel{
+    id?:any;
     teklifHareketTuru?:any;
     birimFiyat?:number;
     stokId?:any;

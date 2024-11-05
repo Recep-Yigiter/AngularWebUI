@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { StokComponent } from './stok.component';
 import { CreateStokComponent } from './create-stok/create-stok.component';
 import { UpdateStokComponent } from './update-stok/update-stok.component';
@@ -8,7 +8,7 @@ import { ListStokComponent } from './list-stok/list-stok.component';
 
 import { CurrencyPipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgGridAngular } from 'ag-grid-angular';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { RouterModule } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -44,6 +44,14 @@ import { CurrencyInputDirective } from './components/currency-input.directive';
 import { DesignComponent } from './core/design/design.component';
 import { StokTabItem, StokTabMain } from 'src/app/shared/components/tabs/stok-tab';
 import { AngularSplitModule } from 'angular-split';
+import { StokFormLabelComponent } from './core/components/stok-form-label';
+import { StokFormDateComponent } from './core/components/stok-form-date';
+import { StokFormInputSelectComponent } from './core/components/stok-form-input-select';
+import { StokFormDropDownComponent } from './core/components/stok-form-dropdown';
+import {TableModule} from 'primeng/table';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { HesapPlaniSelectComponent } from './core/components/hesap-plani-select';
+import { AgGridAutoCompleteComponent } from './core/components/auto-complete';
 @NgModule({
   declarations: [
     StokComponent,
@@ -54,17 +62,19 @@ import { AngularSplitModule } from 'angular-split';
     DetailStokActionsComponent,
     CreateStokComponent,
     CurrencyInputDirective,
-
-    
     AppTableComponent,
     InputTrComponent,
     SelectTrComponent,
     TitleInputTrComponent,
     DesignComponent,
-
+    StokFormLabelComponent,
+    StokFormDateComponent,
+    StokFormInputSelectComponent,
+    StokFormDropDownComponent,
     StokTabItem,
-    StokTabMain
-  
+    StokTabMain,
+    HesapPlaniSelectComponent,
+    AgGridAutoCompleteComponent
   ],
   imports: [
     CommonModule,
@@ -85,6 +95,15 @@ import { AngularSplitModule } from 'angular-split';
     DropdownModule,
     CheckboxModule,
     MatListModule,
+    TableModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    MatAutocompleteModule,
+    
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     HttpClientModule,
     AngularSplitModule,
@@ -100,6 +119,7 @@ import { AngularSplitModule } from 'angular-split';
     ])
 
     
-  ]
+  ],
+  
 })
 export class StokModule { }

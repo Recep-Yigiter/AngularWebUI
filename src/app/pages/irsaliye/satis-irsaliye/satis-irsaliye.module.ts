@@ -16,6 +16,12 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { DesignComponent } from './core/design/design.component';
 
 import { AngularSplitModule } from 'angular-split';
+import { SatisIrsaliyeFormLabelComponent } from './core/components/satis-irsaliye-form-label';
+import { SatisIrsaliyeFormDateComponent } from './core/components/satis-irsaliye-form-date';
+import { SatisIrsaliyeFormInputSelectComponent } from './core/components/satis-irsaliye-form-input-select';
+import { SatisIrsaliyeFormDropDownComponent } from './core/components/satis-irsaliye-form-dropdown';
+import { SatisIrsaliyeFormNumberInputComponent } from './core/components/satis-irsaliye-form-number-input';
+import { SatisIrsaliyeFormCheckboxComponent } from './core/components/satis-irsaliye-farm-checkbox';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { AngularSplitModule } from 'angular-split';
     CreateSatisIrsaliyeComponent,
     UpdateSatisIrsaliyeComponent,
     DetailSatisIrsaliyeComponent,
-    DesignComponent
+    DesignComponent,
+    SatisIrsaliyeFormLabelComponent,
+    SatisIrsaliyeFormDateComponent,
+    SatisIrsaliyeFormInputSelectComponent,
+    SatisIrsaliyeFormDropDownComponent,
+    SatisIrsaliyeFormNumberInputComponent,
+    SatisIrsaliyeFormCheckboxComponent,
   ],
   imports: [
     CommonModule,

@@ -1,37 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { Router } from '@angular/router';
-import { UpdateBirimModel } from 'src/app/core/models/birim/update-birim-model';
+import { CreateBankaModel } from 'src/app/core/models/banka/create-banka-model';
 import { BankaService } from 'src/app/core/services/repository/banka.service';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
+import { CreateBankaHesapModalComponent } from '../create-banka-hesap-modal/create-banka-hesap-modal.component';
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { BankaHareketService } from 'src/app/core/services/repository/banka-hareket.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-update-banka',
   templateUrl: './update-banka.component.html',
-  styleUrls: ['./update-banka.component.scss']
+  styleUrls: ['./update-banka.component.scss'],
+  providers:[DatePipe]
 })
 export class UpdateBankaComponent implements OnInit {
+  @Input() data:any;
+  rowData: any[];
+  rowDataBankaHareketler: any[];
+  public rowSelection: 'single' | 'multiple' = 'single';
+  private gridApi!: GridApi<any>;
+  public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
+  selectedTab = 'genelBilgiler';
 
-
-
-  stateData: any;
-  constructor(
-    private fb: FormBuilder,
-    private BankaService: BankaService,
-    private router:Router
-  ) {
-
-    this.stateData = history.state;
+  useTab(tab: string) {
+      // this.translate.use(Tab);
+      this.selectedTab = tab;
   }
-  async ngOnInit() {
-
+  constructor(private fb: FormBuilder,
+     private router: Router,
+      private BankaService: BankaService,
+          public activeModal: NgbActiveModal,
+    private NgbModal: NgbModal,private DatePipe:DatePipe) {
 
 
   }
+  ngOnInit(): void {
 
-  public frm: FormGroup= this.fb.group({
+  }
 
+
+  colDefs: ColDef[] = [
+    { field: "hesapNo", headerName: "Hesap No", width: 100, },
+    { field: "hesapAdi", headerName: "Hesap Adı", width: 150 },
+    { field: "hesapTuruAdi", headerName: "Hesap Türü", width: 350, },
+  ];
+
+
+ 
+
+
+
+  public frm: FormGroup = this.fb.group({
     kod: [null, [Validators.required, Validators.maxLength(16)]],
     ad: [null, [Validators.required, Validators.maxLength(16)]],
     aciklama: [null, [Validators.required, Validators.maxLength(16)]],
@@ -42,31 +68,55 @@ export class UpdateBankaComponent implements OnInit {
   get aciklama() { return this.frm.get('aciklama') }
 
 
-  update() {
-    const createModel = new UpdateBirimModel();
-    createModel.id = this.stateData.id;
-    createModel.ad = this.frm.value.ad ? this.frm.value.ad : this.stateData.ad;
-    createModel.kod = this.frm.value.kod ? this.frm.value.kod : this.stateData.kod;
-    createModel.hourId = this.stateData.hourId;
+  Kaydet() {
 
-    this.BankaService.update(createModel, () => {
-      this.router.navigate(['/menu/finans/banka/detail'], { state: createModel })
-    }, errorMessage => { })
+    const createModel = new CreateBankaModel();
+    createModel.ad = this.frm.value.ad;
+    createModel.kod = this.frm.value.kod;
+    createModel.hourId = String(new Date().valueOf());
+    createModel.aciklama =this.frm.value.aciklama;
+    createModel.bankaHesaplar = this.getAllRowData();
+
+
+
+    this.BankaService.delete(this.data.id);
+    this.BankaService.create(createModel, () => {
+      this.activeModal.close(true)
+    }, errorMessage => {})
   }
-  vazgec(){
-    this.router.navigate(['/menu/finans/banka/detail'],{state:history.state})
+  getAllRowData() {
+    let rowData = [];
+    this.gridApi.forEachNode(node => rowData.push(node.data));
+    return rowData;
+  }
+  cikis() {
+    this.activeModal.close(false);
   }
 
+  async getList(params: GridReadyEvent<any>) {
 
-  public rowSelection: 'single' | 'multiple' = 'single';
-  private gridApi!: GridApi<any>;
-  frameworkComponents: any;
-  rowData: any=[];
+    this.gridApi = params.api;
+    this.rowData = this.data.bankaHesaplar;
+  }
+  rowClick(event) {
+    const selectedRows = this.gridApi.getSelectedRows()[0];
+    this.selectedRow = selectedRows;
+    this.buttonDisabled=false
+  }
 
-  colDefs: ColDef[] = [
-    { field: "hesapNo", headerName: "Hesap No", width: 100, },
-    { field: "hesapAdi", headerName: "Hesap Adı", width: 150 },
-    { field: "hesapTuruAdi", headerName: "Hesap Türü", width: 350, },
+  Ekle() {
+    const modalRef = this.NgbModal.open(CreateBankaHesapModalComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
+    modalRef.result.then((bankaHesap) => {
 
-  ];
+      if (bankaHesap != false) {
+        this.gridApi.applyTransaction({ add: [bankaHesap], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
+      }
+    });
+  }
+
+  deleteRowData() {
+    this.gridApi.applyTransaction({ remove: [this.selectedRow] });
+  }
+
 }

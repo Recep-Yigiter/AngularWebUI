@@ -1,0 +1,246 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal-header ">
+    <h4 class="modal-title"></h4>
+    <h4 class="modal-title"> </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+</div>
+
+
+
+<div class="">
+    <div class="container-fluid">
+        <div class="panel header" data-resize-name="header">
+            <div class="content">
+                <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+    
+                        <div class="action-left">
+                            <div class="btn-group ml-1 mr-1">
+    
+                                <div class="button-container">
+
+                                    <div (click)="yeniSatir()" class="button-grup " >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/add-file.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Yeni Satır</span>
+                                    </div>
+                                
+                                    <div (click)="Kaydet()" class="button-grup "  >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/save.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+                                      
+                                    </div>
+
+                                    <div  class="button-grup disabled"  >
+                                        <div class="img-container">
+                                          <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Sil</span>
+                                        
+                                      </div>
+                                
+                                    <div (click)="cikis()" class="button-grup">
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/close.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+                                     
+                                    </div> 
+                                
+                 
+                                    
+                                
+                                  </div>
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    
+      
+
+        <div style="overflow-x: auto; line-height: 27px; padding: 5px;">
+            <form [formGroup]="frm">
+                
+                <div style="display: grid;grid-template-columns: auto auto auto;padding: 0 10px;">
+
+
+                    <app-form-label [status]="false"[readOnly]="true" [formControlNames]="islemTuru" [span]="130" [label]="'İşlem Türü'" [field]="'Çek Senet Girişi'"></app-form-label>
+                    <app-form-input-select [status]="false" [field]="selectedCari?.kod" (childFunc)="CariChildFunc($event)" [component]="CariSelectModalComponent"  [formControlNames]="cariId" [span]="130" [label]="'Cari Kodu'"></app-form-input-select>
+                    <app-form-label  [status]="false" [readOnly]="true" [formControlNames]="bordroTutari" [span]="130" [label]="'Bordro Tutarı'" ></app-form-label>
+
+
+                    
+                    <app-form-label [stylesInput]="'color: #b7b7b7;'"  [status]="false"[readOnly]="true" [formControlNames]="seriNo" [span]="130" [label]="'Seri'" [field]="data.seriNo"></app-form-label>
+                    <app-form-label [status]="false" [readOnly]="true"[field]="selectedCari?.ad" [formControlNames]="cariAdi" [span]="130" [label]="'Cari Adı'"  ></app-form-label>
+                    <app-form-label [status]="false"[readOnly]="true" [formControlNames]="paraBirimi" [span]="130" [label]="'Para Birimi'" [field]="'TL'"></app-form-label>
+
+
+                    <app-form-label [stylesInput]="'color: #b7b7b7;'"   [status]="false" [readOnly]="true" [formControlNames]="islemNo" [span]="130" [label]="'İşlem No'" [field]="getIslemNo"></app-form-label>
+                    <app-form-label [status]="false" [readOnly]="true" [formControlNames]="personel" [span]="130" [label]="'Personel'" ></app-form-label>
+                    <app-form-label [status]="false" [formControlNames]="aciklama" [span]="130" [label]="'Açıklama'" ></app-form-label>
+
+
+
+                  <app-form-date [status]="false"[formControlNames]="alinisTarihi" [span]="130"
+                  [label]="'Alınış Tarihi'"></app-form-date>
+                
+
+
+
+
+             <!-- <div style="border-top: 1px solid #dee2e6;
+             border-bottom: 1px solid #dee2e6; 
+             padding-left: 10px; color: #6b6b6b;
+             background-color: #f7f7f7;
+             grid-column: 1/span 3; 
+             font-size: 14px;">
+                        Hesap Bilgileri
+                    </div>
+                    
+                    <app-form-label [readOnly]="true" [field]="'AÇ'" [formControlNames]="seri" [span]="130" [label]="'Seri'"></app-form-label>
+                    <app-form-date [formControlNames]="duzenlemeTarihi" [span]="130"
+                        [label]="'Düz. Tarihi'"></app-form-date>
+                    <app-form-date [formControlNames]="alinisTarihi" [span]="130" [label]="'Alınış Tarihi'"></app-form-date>
+                    <app-form-label [formControlNames]="belgeNo" [span]="130" [label]="'Belge No'"></app-form-label>
+                    <app-form-date [formControlNames]="vadeTarihi" [span]="130" [label]="'Vade Tarihi'"></app-form-date>
+                    <app-form-date [formControlNames]="valorTarihi" [span]="130" [label]="'Valör Tarihi'"></app-form-date>
+                    <app-form-label [formControlNames]="referans" [span]="130" [label]="'Referans'"></app-form-label>
+                    <app-form-label [formControlNames]="duzenleyen" [span]="130" [label]="'Düzenleyen'"
+                        style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-input-select [field]="selectedKasa?.kod" (childFunc)="KasaChildFunc($event)" [component]="KasaSelectModalComponent"  [formControlNames]="kasaId" [span]="130" [label]="'Ç/S Kasası'"></app-form-input-select>
+    
+              
+                   
+                    <app-form-label [field]="selectedKasa?.ad" [formControlNames]="kasaAdi" [span]="130" [label]="'Ç/S Kasası Adı'"
+                        style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-input-select [field]="selectedCari?.kod" (childFunc)="CariChildFunc($event)" [component]="CariSelectModalComponent"  [formControlNames]="cariId" [span]="130" [label]="'Borçlu'"></app-form-input-select>
+    
+                    <app-form-label [field]="selectedCari?.kod" [formControlNames]="cariAdi" [span]="130" [label]="'Borçlu Adı'"
+                        style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-label [formControlNames]="tutar" [span]="130" [label]="'Tutar'"></app-form-label>
+    
+                    <div style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b; background-color: #f7f7f7; grid-column: 1/span 3;
+            font-size: 14px;">
+                        Banka
+                    </div>
+    
+                    <app-form-input-select [field]="selectedBanka?.kod" (childFunc)="BankaChildFunc($event)" [component]="BankaSelectModalComponent" [formControlNames]="bankaId" [span]="130" [label]="'Banka'"></app-form-input-select>
+                    <app-form-label  [field]="selectedBanka?.ad" [formControlNames]="bankaAdi" [span]="130" [label]="'Banka Adı'"></app-form-label>
+                   <div></div>
+                    <app-form-input-select [field]="selectedSube?.kod" (childFunc)="SubeChildFunc($event)" [component]="SubeSelectModalComponent" [formControlNames]="subeId" [span]="130" [label]="'Şube '"></app-form-input-select>
+                    <app-form-label [field]="selectedSube?.ad" [formControlNames]="subeAdi" [span]="130" [label]="'Şube Adı'"></app-form-label>
+                    <div></div>
+                    <app-form-label [formControlNames]="hesapNo" [span]="130" [label]="'Hesap No'"></app-form-label>
+                    <div></div>
+                    <div></div>
+                    <app-form-label [formControlNames]="iban" [span]="130" [label]="'Iban'"></app-form-label>
+    
+                    <div style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b; background-color: #f7f7f7; grid-column: 1/span 3;
+            font-size: 14px;">
+                        Cirolu Teminat Karşılıksız FaizOranı
+                    </div>
+                    <app-form-label [formControlNames]="vergiNo" [span]="130" [label]="'Vergi No'"></app-form-label>
+                    <app-form-label [formControlNames]="vergiDairesi" [span]="130" [label]="'Vergi Dairesi'"
+                        style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-label [formControlNames]="aciklama" [span]="130" [label]="'Açıklama'"
+                        style="grid-column: 1/span 3;"></app-form-label>
+                    <app-form-label [formControlNames]="durum" [span]="130" [label]="'Durum'"></app-form-label>
+     -->
+                </div>
+               
+
+                <ag-grid-angular #agGrid style="height:calc(100vh - 390px);" class="ag-theme-quartz" [rowData]="rowData"
+                [defaultColDef]="defaultColDef" [columnDefs]="colDefs" 
+                (gridReady)="getList($event)"  [rowSelection]="rowSelection" [rowHeight]="22"
+                [headerHeight]="23" [localeText]="localeText">
+              </ag-grid-angular>
+    
+            </form>
+    
+    
+    
+    
+        </div>
+    
+    
+    
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="modal-footer">
+    <!-- <button (click)="Kaydet()" type="button" class="btn btn-success" 
+        style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+        <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
+    </button>
+    <button type="button" class="btn " (click)="activeModal.close(false)"
+        style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+        <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+    </button> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

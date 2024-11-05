@@ -10,10 +10,10 @@ import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import {DividerModule} from 'primeng/divider';
 
-
 @NgModule({
   declarations: [
     FinansComponent,
+
  
   ],
   imports: [
@@ -26,13 +26,14 @@ import {DividerModule} from 'primeng/divider';
     DividerModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-
-
         { path: 'cari', loadChildren: () => import("./cari/cari.module").then(m => m.CariModule),canActivate:[authGuard] },
         { path: 'kasa', loadChildren: () => import("./kasa/kasa.module").then(m => m.KasaModule),canActivate:[authGuard] },
-        { path: 'kasa-hareket', loadChildren: () => import("./kasa-hareket/kasa-hareket.module").then(m => m.KasaHareketModule),canActivate:[authGuard] },
         { path: 'banka', loadChildren: () => import("./banka/banka.module").then(m => m.BankaModule),canActivate:[authGuard] },
         { path: 'alinan-cek', loadChildren: () => import("./alinan-cek/alinan-cek.module").then(m => m.AlinanCekModule),canActivate:[authGuard] },
+        { path: 'cek-senet', loadChildren: () => import("./cek-senet/cek-senet.module").then(m => m.CekSenetModule),canActivate:[authGuard] },
+      
+        { path: 'virman', loadChildren: () => import("./virman/virman.module").then(m => m.VirmanModule),canActivate:[authGuard] },
+        { path: 'banka-hesap', loadChildren: () => import("./banka-hesap/banka-hesap.module").then(m => m.BankaHesapModule),canActivate:[authGuard] },
     ])
   ]
 })

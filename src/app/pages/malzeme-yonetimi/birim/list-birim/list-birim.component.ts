@@ -17,6 +17,9 @@ import { UpdateBirimComponent } from '../update-birim/update-birim.component';
   styleUrls: ['./list-birim.component.scss'],
 })
 export class ListBirimComponent implements OnInit {
+
+
+  
   rowData: any[];
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
@@ -106,4 +109,6 @@ export class ListBirimComponent implements OnInit {
   filtrele() {
     this.filter = !this.filter;
   }
+
+  
 }

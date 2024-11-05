@@ -51,8 +51,8 @@ export class ListDepoBazindaStokComponent implements OnInit {
   async ngOnInit() {}
 
   colDefs: ColDef[] = [
-    { field: 'depoAdi', width: 200 },
-    { field: 'stokAdi', width: 200, filter: 'agTextColumnFilter' },
+    { field: 'depoAdi', width: 100 },
+    { field: 'stokAdi', width: 300, filter: 'agTextColumnFilter' },
     {
       field: 'miktar',
       width: 100,
@@ -102,7 +102,9 @@ export class ListDepoBazindaStokComponent implements OnInit {
     modalRef.componentInstance.data = 'DepoBazindaStok Kartı';
 
     modalRef.result.then(async (item) => {
-      this.refresh();
+      if (item == true) {
+        this.refresh();
+      }
     });
   }
 

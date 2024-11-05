@@ -38,6 +38,10 @@ import { FinansComponent } from './finans/finans.component';
 import { AngularSplitModule } from 'angular-split';
 import { UretimComponent } from './uretim/uretim.component';
 import {AvatarModule} from 'primeng/avatar';
+import { MuhasebeComponent } from './muhasebe/muhasebe.component';
+import { TestComponent } from './test/test.component';
+import {MenuItem, PrimeIcons} from 'primeng/api';
+import { FisComponent } from './fis/fis.component';
 @NgModule({
   declarations: [
     PagesComponent,
@@ -97,9 +101,14 @@ import {AvatarModule} from 'primeng/avatar';
             { path: 'fatura',component:FaturaComponent, loadChildren: () => import("../pages/fatura/fatura.module").then(m => m.FaturaModule), canActivate: [authGuard] },
             { path: 'irsaliye',component:IrsaliyeComponent, loadChildren: () => import("../pages/irsaliye/irsaliye.module").then(m => m.IrsaliyeModule), canActivate: [authGuard] },
             { path: 'finans',component:FinansComponent, loadChildren: () => import("../pages/finans/finans.module").then(m => m.FinansModule), canActivate: [authGuard] },
+            { path: 'muhasebe',component:MuhasebeComponent, loadChildren: () => import("../pages/muhasebe/muhasebe.module").then(m => m.MuhasebeModule), canActivate: [authGuard] },
             { path: 'uretim',component:UretimComponent, loadChildren: () => import("../pages/uretim/uretim.module").then(m => m.UretimModule), canActivate: [authGuard] },
+            { path: '',component:FisComponent, loadChildren: () => import("../pages/fis/fis.module").then(m => m.FisModule), canActivate: [authGuard] },
           ]
         },
+        
+          { path: 'test',component:TestComponent, loadChildren: () => import("../pages/test/test.module").then(m => m.TestModule), canActivate: [authGuard] },
+        
 
 
 

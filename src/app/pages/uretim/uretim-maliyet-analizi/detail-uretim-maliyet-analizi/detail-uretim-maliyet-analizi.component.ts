@@ -5,7 +5,6 @@ import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UretimEmriService } from '../../uretim-emri/core/services/uretim-emri.service';
 
 @Component({
   selector: 'app-detail-uretim-maliyet-analizi',
@@ -41,7 +40,7 @@ export class DetailUretimMaliyetAnaliziComponent implements OnInit {
 
     private router: Router,
 
-    private UretimEmriService: UretimEmriService
+
   ) {
     this.stateData = history.state
 
@@ -79,9 +78,7 @@ export class DetailUretimMaliyetAnaliziComponent implements OnInit {
       this.rowData2 = this.stateData.operasyonlar;
     }
     else {
-      this.urunRecete = (await this.UretimEmriService.getByHourId(this.stateData.hourId, () => { }))
-      this.rowData = this.urunRecete.urunReceteBilesenler;
-      this.rowData2 = this.urunRecete.operasyonlar;
+      
     }
   }
 

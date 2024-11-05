@@ -1,0 +1,112 @@
+<!-- <nav class="breadcrumbs">
+  <a class="unavailable">Birim</a>
+</nav> -->
+
+
+
+<app-design>
+
+    <div design-buttons>
+      <div class="button-container">
+  
+        <div (click)="createModal()" class="button-grup ">
+          <div class="img-container">
+            <img src="../../../../../assets/icons/add-file.png" alt="">
+          </div>
+          <span class="d-none d-sm-inline button-label">Yeni</span>
+          <!-- <i class="fa-solid fa-sort-down sort-down-icon"></i> -->
+        </div>
+  
+        <div (click)="delete()" class="button-grup" [ngClass]="buttonDisabled?'disabled':''">
+          <div class="img-container">
+            <img src="../../../../../assets/icons/delete-file.png" alt="" >
+          </div>
+          <span class="d-none d-sm-inline button-label">Sil</span>
+  
+        </div>
+  
+        <div (click)="updateModal()" class="button-grup" [ngClass]="buttonDisabled?'disabled':''">
+          <div class="img-container">
+            <img src="../../../../../assets/icons/edit-file.png" alt="">
+          </div>
+          <span class="d-none d-sm-inline button-label">Düzelt</span>
+  
+        </div>
+  
+        <div (click)="refresh()" class="button-grup">
+          <div class="img-container">
+            <img src="../../../../../assets/icons/refresh.png" alt="">
+          </div>
+          <span class="d-none d-sm-inline button-label">Yenile</span>
+  
+        </div>
+  
+        <div (click)="filtrele()" class="button-grup" >
+          <div class="img-container">
+            <img src="../../../../../assets/icons/filter.png" alt="">
+          </div>
+          <span class="d-none d-sm-inline button-label">Filtrele</span>
+  
+        </div>
+  
+        <div class="button-grup disabled">
+          <div class="img-container">
+            <img src="../../../../../assets/icons/printer.png" alt="">
+          </div>
+          <span class="d-none d-sm-inline button-label">Yazdır</span>
+  
+        </div>
+  
+        <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''" aria-expanded="false"
+          data-bs-toggle="dropdown">
+          <div class="img-container">
+            <img src="../../../../../assets/icons/other.png" alt="">
+          </div>
+          <span class="d-none d-sm-inline button-label">Diğer</span>
+  
+        </div>
+  
+        <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+          <li (click)="cariHareketModal()" type="button">
+            <a class="dropdown-item dropdown-action-item">Cari Hareketler</a>
+          </li>
+          <li type="button">
+            <a class="dropdown-item dropdown-action-item">Sipariş Ver</a>
+          </li>
+  
+  
+  
+        </ul>
+  
+  
+      </div>
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+    <div full-page class="full-page">
+      <as-split unit="percent" [gutterSize]="10" class="as-horizontal">
+        <as-split-area [size]="15" [order]="1" [visible]="filter" class="main-content">
+  
+        </as-split-area>
+  
+        <as-split-area [size]="85" [order]="2" [visible]="true" class="main-content">
+          <ag-grid-angular #agGrid style="height:calc(100vh - 180px);" class="ag-theme-quartz" [rowData]="rowData"
+            [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
+            (gridReady)="getList($event)" (selectionChanged)="rowClick()" [rowSelection]="rowSelection"
+            [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
+          </ag-grid-angular>
+  
+        </as-split-area>
+  
+  
+      </as-split>
+    </div>
+  
+  
+  </app-design>

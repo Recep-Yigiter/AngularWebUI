@@ -19,6 +19,12 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { DesignComponent } from './core/design/design.component';
 
 import { AngularSplitModule } from 'angular-split';
+import { SatisFaturaFormLabelComponent } from './core/components/satis-fatura-form-label';
+import { SatisFaturaFormDateComponent } from './core/components/satis-fatura-form-date';
+import { SatisFaturaFormInputSelectComponent } from './core/components/satis-fatura-form-input-select';
+import { SatisFaturaFormDropDownComponent } from './core/components/satis-fatura-form-dropdown';
+import { SatisFaturaFormNumberInputComponent } from './core/components/satis-fatura-form-number-input';
+import { SatisFaturaFormCheckboxComponent } from './core/components/satis-fatura-farm-checkbox';
 
 
 @NgModule({
@@ -28,7 +34,13 @@ import { AngularSplitModule } from 'angular-split';
     UpdateSatisFaturaComponent,
     DetailSatisFaturaComponent,
     ListSatisFaturaComponent,
-    DesignComponent
+    DesignComponent,
+    SatisFaturaFormLabelComponent,
+    SatisFaturaFormDateComponent,
+    SatisFaturaFormInputSelectComponent,
+    SatisFaturaFormDropDownComponent,
+    SatisFaturaFormNumberInputComponent,
+    SatisFaturaFormCheckboxComponent
   ],
   imports: [
     CommonModule,
@@ -46,6 +58,7 @@ import { AngularSplitModule } from 'angular-split';
       { path: "create", component: CreateSatisFaturaComponent, canActivate: [authGuard] },
       { path: "update", component: UpdateSatisFaturaComponent, canActivate: [authGuard] },
       { path: "detail", component: DetailSatisFaturaComponent, canActivate: [authGuard] },
+
     ])
   ]
 })

@@ -1,77 +1,59 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+import { CreateTeklifModel } from 'src/app/core/models/teklifler/create-teklif-model';
+
+import { TeklifService } from 'src/app/core/services/repository/teklif.service';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { CurrencyPipe, DatePipe, formatDate } from '@angular/common';
-
-import { SiparisService } from 'src/app/core/services/repository/siparis.service';
-import { SiparisHareketService } from 'src/app/core/services/repository/siparis-hareket.service';
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { CariSelectModalComponents } from 'src/app/shared/utilities/modals/cari-selected-modal';
+import { StokSelectModalComponents } from 'src/app/shared/utilities/modals/stok-selected-modal';
+import { DatePipe } from '@angular/common';
+import { UpdateTeklifModel } from 'src/app/core/models/teklifler/update-teklif-model';
+import { TeklifHareketService } from 'src/app/core/services/repository/teklif-hareket.service';
 import { UpdateSiparisModel } from 'src/app/core/models/siparisler/update-siparis-model';
-import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
-import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
-import { DepoService } from 'src/app/core/services/repository/depo.service';
-
+import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 
 @Component({
   selector: 'app-update-verilen-siparis',
   templateUrl: './update-verilen-siparis.component.html',
   styleUrls: ['./update-verilen-siparis.component.scss'],
-  providers: [CurrencyPipe, DatePipe],
+  providers: [ DatePipe],
 })
 export class UpdateVerilenSiparisComponent implements OnInit {
-  defaultAciklama: any;
-  stateData: any;
-  defaultKDV: any = 0;
-  defaultOTV: any = 0;
-
-
-
-  kdvTutar: any;
-  iskontoSonrasiTutar: any;
-  iskontoTutar: any;
-  satirTutar: any;
-  genelToplam: any;
-  selectedSiparisHareket: any;
-  belgeNoGetCode: any;
-  dateTime: any = new Date();
-  dateTimeTeslimTarihi: any = new Date();
-  time: any = new Date();
-  rxTime: any = new Date();
-  selectedDepo: any
-  selectedCari: any
-  rowData: any;
-  frameworkComponents: any;
-  selectedSiparisTuru: any
-  getByIdDataSource: any;
-  selectedObject: any;
-  stokHareket: any;
-  siparis: any;
+  @Input() data: any;
+  rowData: any[];
+  public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
-  public rowSelection: "single" | "multiple" = "single";
-
-
-
-
-  constructor(private router: Router,
-    private SiparisService: SiparisService,
-    private DatePipe: DatePipe,
+  public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
+  createdDate: any = new Date();
+  dateTimeTeslim: any = new Date();
+  constructor(
     private fb: FormBuilder,
-    private modalService: NgbModal,
-    private SiparisHareketService: SiparisHareketService,
-    private DepoService: DepoService
-  ) {
-    this.stateData = history.state
-    
-  }
-
+    private router: Router,
+    private SiparisService: SiparisService,
+    public activeModal: NgbActiveModal,
+    private NgbModal: NgbModal,
+    private DatePipe: DatePipe,
+    private TeklifHareketService: TeklifHareketService
+  ) {}
   ngOnInit(): void {
-    this.stateControl();
-    this.getDateAndTime()
-
-
+    this.createdDate = this.DatePipe.transform(
+      this.data.createdDate,
+      'yyyy-MM-dd'
+    );
+    this.dateTimeTeslim = this.DatePipe.transform(
+      this.data.teslimTarihi,
+      'yyyy-MM-dd'
+    );
+    this.dataControl();
   }
 
   public frm: FormGroup = this.fb.group({
@@ -81,286 +63,258 @@ export class UpdateVerilenSiparisComponent implements OnInit {
     referans: [null, [Validators.required, Validators.maxLength(16)]],
     kdv: [null, [Validators.required, Validators.maxLength(16)]],
     otv: [null, [Validators.required, Validators.maxLength(16)]],
-    teslimTarihi: [null,],
-    cariId: [null,],
-    depoId: [null,],
-    aciklama: [null,],
-    tarih: [null,],
-    saat: [null,],
-  })
-  get siparisTuru() { return this.frm.get('siparisTuru') }
-  get seri() { return this.frm.get('seri') }
-  get belgeNo() { return this.frm.get('belgeNo') }
-  get referans() { return this.frm.get('referans') }
-  get kdv() { return this.frm.get('kdv') }
-  get otv() { return this.frm.get('otv') }
-  get cariId() { return this.frm.get('cariId') }
-  get depoId() { return this.frm.get('depoId') }
-  get aciklama() { return this.frm.get('aciklama') }
-  get tarih() { return this.frm.get('tarih') }
-  get saat() { return this.frm.get('saat') }
-  get teslimTarihi() { return this.frm.get('teslimTarihi') }
+    cariId: [null],
+    aciklama: [null],
+    tarih: [null],
+    teslimTarihi: [null],
+    onay: [null],
+    durum: [null],
+    duzenleyen: [null],
+    duzenlemeTarihi: [null],
+    satirTutari: [null],
+    iskontoTutari: [null],
+    iskontoSonTutar: [null],
+    satirKdvTutari: [null],
+    toplam: [null],
+  });
 
-
-
-
-
+  get siparisTuru() {
+    return this.frm.get('siparisTuru');
+  }
+  get seri() {
+    return this.frm.get('seri');
+  }
+  get belgeNo() {
+    return this.frm.get('belgeNo');
+  }
+  get referans() {
+    return this.frm.get('referans');
+  }
+  get kdv() {
+    return this.frm.get('kdv');
+  }
+  get otv() {
+    return this.frm.get('otv');
+  }
+  get cariId() {
+    return this.frm.get('cariId');
+  }
+  get teslimTarihi() {
+    return this.frm.get('teslimTarihi');
+  }
+  get onay() {
+    return this.frm.get('onay');
+  }
+  get durum() {
+    return this.frm.get('durum');
+  }
+  get aciklama() {
+    return this.frm.get('aciklama');
+  }
+  get duzenleyen() {
+    return this.frm.get('duzenleyen');
+  }
+  get duzenlemeTarihi() {
+    return this.frm.get('duzenlemeTarihi');
+  }
+  get satirTutari() {
+    return this.frm.get('satirTutari');
+  }
+  get iskontoTutari() {
+    return this.frm.get('iskontoTutari');
+  }
+  get iskontoSonTutar() {
+    return this.frm.get('iskontoSonTutar');
+  }
+  get satirKdvTutari() {
+    return this.frm.get('satirKdvTutari');
+  }
+  get toplam() {
+    return this.frm.get('toplam');
+  }
 
   colDefs: ColDef[] = [
-    { field: "siparisHareketTuruAdi", headerName: "S/H/M", width: 80, onCellValueChanged: (event) => { }, },
-    { field: "stokKodu", headerName: "Stok Kodu", width: 150 },
-    { field: "stokAdi", headerName: "Stok Adı", width: 350, onCellValueChanged: (event) => { }, },
-    { field: "miktar", editable: true, width: 90, type: 'rightAligned', onCellValueChanged: (event) => { this.SiparisHareketUpdate(event) }, valueFormatter: params => params.data.miktar.toFixed(2) },
-    { field: "birimAdi", headerName: "Birim", type: 'rightAligned', width: 80, onCellValueChanged: (event) => { }, },
-    { field: "birimFiyat", editable: true, width: 100, type: 'rightAligned', onCellValueChanged: (event) => { this.SiparisHareketUpdate(event) }, cellRenderer: this.CurrencyCellRendererTR },
-    { field: "iskonto", editable: true, headerName: "isk.(%)", type: 'rightAligned', width: 80, onCellValueChanged: (event) => { this.SiparisHareketUpdate(event) }, valueFormatter: params => params.data.iskonto.toFixed(2) + ' %' },
-    { field: "iskontoTutar", type: 'rightAligned', headerName: "isk. Tutarı", onCellValueChanged: (event) => { }, width: 120, cellRenderer: this.CurrencyCellRendererTR },
-    { field: "aciklama", headerName: "Açıklama", onCellValueChanged: (event) => { }, width: 200, },
-    { field: "satirTutar", type: 'rightAligned', width: 120, headerName: "Toplam Tutar", onCellValueChanged: (event) => { }, cellRenderer: this.CurrencyCellRendererTR },
-
-
-
+    { field: 'stokAdi', width: 300 },
+    {
+      field: 'miktar',
+      editable: true,
+      valueFormatter: (params) => params.data.miktar.toFixed(2),
+    },
+    { field: 'birimAdi' },
+    {
+      field: 'birimFiyat',
+      editable: true,
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
+    {
+      field: 'iskonto',
+      headerName: 'isk.(%)',
+      width: 80,
+      editable: true,
+      valueFormatter: (params) => params.data.iskonto.toFixed(2) + ' %',
+    },
+    {
+      field: 'iskontoTutar',
+      headerName: 'isk. Tutarı',
+      width: 120,
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
+    { field: 'satirTutar', cellRenderer: this.CurrencyCellRendererTR },
   ];
+  Kaydet() {
+    const createModel = new UpdateSiparisModel();
+    createModel.id = this.data.id;
+    createModel.belgeNo = this.frm.value.belgeNo;
+    createModel.siparisTuru = 1;
+    createModel.seri = 'VS';
+    createModel.siparisTuru = 'Verilen';
+    createModel.referans = this.frm.value.referans;
+    createModel.cariId = this.selectedCari?.id
+      ? this.selectedCari?.id
+      : this.data.cariId;
+    createModel.kdv = String(this.frm.value.kdv);
+    createModel.otv = String(this.frm.value.otv);
+    createModel.aciklama = this.frm.value.aciklama;
+    createModel.teslimTarihi = this.frm.value.opsiyonTarihi;
+    createModel.hourId = String(new Date().valueOf());
+    createModel.siparisHareketler = this.getAllRowData();
 
+    this.SiparisService.delete(this.data.id);
+    this.SiparisService.create(
+      createModel,
+      () => {
+        this.activeModal.close(true);
+      },
+      (errorMessage) => {}
+    );
+  }
 
+  cikis() {
+    this.activeModal.close(false);
+  }
 
+  async getList(params: GridReadyEvent<any>) {
+    this.gridApi = params.api;
+    this.rowData = this.data.siparisHareketler;
+  }
+  getAllRowData() {
+    let rowData = [];
+    this.gridApi.forEachNode((node) => rowData.push(node.data));
+    return rowData;
+  }
+  deleteRowData() {
+    this.gridApi.applyTransaction({ remove: [this.selectedRow] });
+  }
+  async dataControl() {
+    this.data.satirSayisi = this.data.siparisHareketler.length;
+    this.data.siparisHareketler.forEach((item, index) => {
+      item.iskontoTutar = (item.miktar * item.birimFiyat * item.iskonto) / 100;
+      item.satirTutar = item.miktar * item.birimFiyat;
+      item.kdvTutar =
+        ((item.satirTutar - item.iskontoTutar) * this.frm.value.kdv) / 100;
+    });
+    this.frmSatirTutari = this.data.siparisHareketler.reduce(
+      (prev: any, next: any) => prev + next.satirTutar,
+      0
+    );
+    this.frmIskontoTutari = this.data.siparisHareketler.reduce(
+      (prev: any, next: any) => prev + next.iskontoTutar,
+      0
+    );
+    this.frmSatirKdvTutari = this.data.kdvTutar;
+    this.frmIskontoSonTutar = this.frmSatirTutari - this.frmIskontoTutari;
+    this.frmToplam = this.frmIskontoSonTutar + this.frmSatirKdvTutari;
 
+    this.rowData = this.data.siparisHareketler;
+  }
 
+  rowClick(event) {
+    const selectedRows = this.gridApi.getSelectedRows()[0];
+    this.selectedRow = selectedRows;
+    this.buttonDisabled = false;
+  }
+
+  frmSatirTutari;
+  frmIskontoTutari;
+  frmSatirKdvTutari;
+  frmIskontoSonTutar;
+  frmToplam;
+  onCellValueChanged() {
+    this.getAllRowData().forEach((item) => {
+      item.toplamTutar = item.miktar * item.birimFiyat;
+      item.iskontoTutar = (item.miktar * item.birimFiyat * item.iskonto) / 100;
+      item.satirTutar = item.miktar * item.birimFiyat;
+      item.kdvTutar =
+        ((item.toplamTutar - item.iskontoTutar) * this.frm.value.kdv) / 100;
+    });
+    this.frmSatirTutari = this.getAllRowData().reduce(
+      (prev: any, next: any) => prev + next.satirTutar,
+      0
+    );
+    this.frmIskontoTutari = this.getAllRowData().reduce(
+      (prev: any, next: any) => prev + next.iskontoTutar,
+      0
+    );
+    this.frmSatirKdvTutari = this.getAllRowData().reduce(
+      (prev: any, next: any) => prev + next.kdvTutar,
+      0
+    );
+    this.frmIskontoSonTutar = this.frmSatirTutari - this.frmIskontoTutari;
+    this.frmToplam = this.frmIskontoSonTutar + this.frmSatirKdvTutari;
+
+    const selectedRows = this.gridApi.getSelectedRows()[0];
+
+    if (selectedRows != undefined) {
+      // this.selectedTeklifHareket = selectedRows;
+      this.gridApi.applyTransaction({
+        update: [selectedRows],
+        addIndex: this.gridApi.getLastDisplayedRow() + 1,
+      });
+    }
+  }
+
+  kdvChanced() {
+    this.onCellValueChanged();
+  }
+  otvChanced() {
+    this.onCellValueChanged();
+  }
+
+  ekle() {
+    const modalRef = this.NgbModal.open(StokSelectModalComponents, {
+      size: 'lg',
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
+    modalRef.result.then((stok) => {
+      if (stok != false) {
+        stok.stokId = stok.id;
+        stok.stokAdi = stok.ad;
+        stok.hourId = String(new Date().valueOf());
+        stok.miktar = 1;
+        stok.iskonto = 0;
+        stok.iskontoTutar = 0;
+        stok.satirTutar = stok.miktar * stok.birimFiyat;
+        this.gridApi.applyTransaction({
+          add: [stok],
+          addIndex: this.gridApi.getLastDisplayedRow() + 1,
+        });
+      }
+    });
+  }
+
+  CariSelectModalComponent: any = CariSelectModalComponents;
+  selectedCari: any;
+  CariChildFunc(event) {
+    this.selectedCari = event;
+  }
 
   CurrencyCellRendererTR(params: any) {
     var inrFormat = new Intl.NumberFormat('tr-TR', {
       style: 'currency',
       currency: 'TRY',
-      minimumFractionDigits: 2
+      minimumFractionDigits: 2,
     });
     return inrFormat.format(params.value);
   }
-
-  async stateControl() {
-
-    this.siparis = (await this.SiparisService.getByHourId(this.stateData.hourId, () => { }));
-    const depoList = (await this.DepoService.GetList(() => { })).items;
-
-    if (this.stateData.depoId != undefined) {
-      this.selectedObject = depoList.find((el: any) => {
-        return el?.id == this.stateData.depoId;
-      });
-    }
-
-    this.siparis.satirSayisi = this.siparis.siparisHareketler.length;
-    this.siparis.siparisHareketler.forEach((siparisHareket, index) => {
-     siparisHareket.satirTutar = (siparisHareket.miktar * siparisHareket.birimFiyat);
-     siparisHareket.iskontoTutar = (siparisHareket.satirTutar * siparisHareket.iskonto) / 100;
-     siparisHareket.iskontoSonrasiTutar = (siparisHareket.satirTutar) - siparisHareket.iskontoTutar;
-     siparisHareket.kdvTutar = (siparisHareket.iskontoSonrasiTutar) * Number(this.siparis.kdv) / 100;
-     siparisHareket.genelToplam = siparisHareket.iskontoSonrasiTutar + siparisHareket.kdvTutar
-
-    })
-    this.siparis.satirTutar = this.siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.satirTutar, 0)
-    this.siparis.iskontoTutar = this.siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.iskontoTutar, 0)
-    this.siparis.iskontoSonrasiTutar = this.siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.iskontoSonrasiTutar, 0)
-    this.siparis.kdvTutar = this.siparis.siparisHareketler.reduce((prev: any, next: any) => prev + next.kdvTutar, 0);
-    this.siparis.satirOtv = (this.siparis.iskontoSonrasiTutar * this.siparis.otv) / 100;
-    this.siparis.genelToplam = this.siparis.iskontoSonrasiTutar + this.siparis.kdvTutar
-
-    this.rowData = this.siparis.siparisHareketler;
-
-    this.stateData = this.siparis;
-    this.dateTime = this.DatePipe.transform(this.stateData.createdDate, 'yyyy-MM-dd');
-    this.time = this.DatePipe.transform(this.stateData.createdDate, 'hh : mm')
-
-
-
-
-
-
-
-
-
-  }
-
-
-
-  kaydet() {
-    const createModel = new UpdateSiparisModel();
-    createModel.id = this.stateData.id;
-    createModel.belgeNo = this.frm.value.belgeNo ? this.frm.value.belgeNo : this.stateData.belgeNo;
-    createModel.siparisTuru = this.selectedObject?.siparisTuru ? this.selectedObject?.siparisTuru : this.stateData.siparisTuru;
-    createModel.seri = this.selectedObject?.seri ? this.selectedObject?.seri : this.stateData.seri;
-    createModel.referans = this.frm.value.referans;
-    createModel.cariId = this.selectedCari?.id ? this.selectedCari?.id : this.stateData.cariId;
-    createModel.kdv = this.frm.value.kdv;
-    createModel.otv = this.frm.value.otv;
-    createModel.aciklama = this.frm.value.aciklama;
-    createModel.teslimTarihi = this.frm.value.teslimTarihi;
-    createModel.hourId = this.stateData.hourId;
-    createModel.siparisHareketler = this.getAllRowData()
-
-
-
-
-    if (this.getAllRowData().length > 0) {
-      this.SiparisService.update(createModel, () => {
-        this.router.navigate(['/menu/satinalma/verilen-siparis/detail'], { state: createModel })
-      }, errorMessage => { })
-    } else {
-      alert('Siparis e Satır Eklemelisiniz !')
-    }
-
-
-  }
-
-
-
-  vazgec() {
-    this.stateData.SiparisHareketler = this.getAllRowData()
-    this.router.navigate(['/menu/satinalma/verilen-siparis/list'], { state: this.stateData })
-  }
-
-
-  async SiparisHareketUpdate(event) {
-
-    const SiparisHareket = (await this.SiparisHareketService.getByHourId(event.data.hourId, () => { }));
-    const editdata = {
-      id: SiparisHareket.id,
-      stokId: SiparisHareket.stokId,
-      siparisId: SiparisHareket.siparisId,
-      depoId: this.selectedDepo?.id ? this.selectedDepo?.id : this.stateData.depoId,
-      birimFiyat: event.data.birimFiyat,
-      miktar: event.data.miktar,
-      iskonto: event.data.iskonto,
-      siparisHareketTuru: 1,
-      hourId: SiparisHareket.hourId
-    }
-
-    this.SiparisHareketService.update(editdata, () => { })
-
-
-  }
-  SiparisHareketDelete(params) {
-
-    this.gridApi.applyTransaction({ remove: [this.selectedSiparisHareket] });
-
-    this.SiparisHareketService.delete(this.selectedSiparisHareket.id, () => { })
-
-    this.onCellValueChanged()
-    return this.rowData;
-  }
-
-
-
-
-
-  stokSelectModal() {
-    const modalRef = this.modalService.open(StokSelectModalComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((stoks) => {
-
-      if (stoks != false) {
-        stoks.forEach(stok => {
-          stok.satirTutar = stok.miktar * stok.birimFiyat;
-          const updateData = {
-            stokId: stok.stokId,
-            siparisId: this.stateData.id,
-            depoId: this.stateData.depoId,
-            birimFiyat: stok.birimFiyat,
-            miktar: stok.miktar,
-            iskonto: stok.iskonto,
-            SiparisHareketTuru: 1,
-            hourId: String(new Date().valueOf())
-          }
-          stok.hourId = updateData.hourId;
-          this.SiparisHareketService.create(updateData, () => { });
-          this.gridApi.applyTransaction({ add: [stok], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
-
-        });
-
-      }
-    });
-
-  }
-
-
-
-  cariSelectModal() {
-    const modalRef = this.modalService.open(CariSelectModalComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((depo) => {
-      this.selectedCari = depo;
-
-    });
-
-  }
-
-
-
-  getAllRowData() {
-    let rowData = [];
-    this.gridApi.forEachNode(node => rowData.push(node.data));
-    return rowData;
-  }
-  onCellValueChanged() {
-
-
-    this.getAllRowData().forEach((item) => {
-      item.toplamTutar = (item.miktar * item.birimFiyat);
-      item.iskontoTutar = (item.miktar * item.birimFiyat) * item.iskonto / 100;
-      item.satirTutar = item.miktar * item.birimFiyat;
-
-    })
-
-
-
-    this.satirTutar = this.getAllRowData().reduce((prev: any, next: any) => prev + next.toplamTutar, 0);
-    this.iskontoTutar = this.getAllRowData().reduce((prev: any, next: any) => prev + next.iskontoTutar, 0)
-    this.kdvTutar = this.getAllRowData().reduce((prev: any, next: any) => prev + next.kdvTutar, 0)
-    this.iskontoSonrasiTutar = this.satirTutar - this.iskontoTutar
-    this.genelToplam = this.iskontoSonrasiTutar + this.kdvTutar;
-
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-    if (selectedRows != undefined) {
-      this.selectedSiparisHareket = selectedRows
-      this.gridApi.applyTransaction({ update: [selectedRows], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
-    }
-
-  }
-  rowSelected(event) {
-    this.selectedSiparisHareket = event.data
-  }
-  async getList(params: GridReadyEvent<any>) {
-    this.gridApi = params.api;
-  }
-
-
-
-
-  kdvChanced() { 
-    this.onCellValueChanged()
-  }
-  otvChanced() {
-    this.onCellValueChanged()
-  }
-  
-
-
-
-  getDateAndTime() {
-    this.dateTime = this.DatePipe.transform(this.stateData.createdDate, 'yyyy-MM-dd');
-    this.dateTimeTeslimTarihi = this.DatePipe.transform(this.stateData.teslimTarihi, 'yyyy-MM-dd');
-    this.time = this.DatePipe.transform(this.stateData.createdDate, 'hh : mm')
-  }
-
-}
-
-
-function currencyFormatter(currency, sign) {
-
-  var sansDec = currency.toFixed(2);
-  var formatted = sansDec.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return sign + `${formatted}`;
-}
-function stringFormatter(params) {
-  var fruit = params.value;
-  var firstChar = fruit.slice(0, 1).toUpperCase();
-  return firstChar + fruit.slice(1);
 }

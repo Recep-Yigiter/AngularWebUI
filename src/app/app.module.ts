@@ -42,6 +42,10 @@ import { StokSelectModalComponents } from './shared/utilities/modals/stok-select
 import { SubeSelectModalComponents } from './shared/utilities/modals/sube-selected-modal';
 import { UrunReceteSelectModalComponents } from './shared/utilities/modals/urun-recete-selected-modal';
 import { DeleteModalComponents } from './shared/utilities/confirms/delete-modal';
+import { BankaHesapSelectModalComponents } from './shared/utilities/modals/banka-hesap-selected-modal';
+import { HesapPlaniSelectModalComponents } from './shared/utilities/modals/hesap-plani-selected-modal';
+import { OnayModalComponents } from './shared/utilities/confirms/onay-modal';
+import { ConfirmModalComponents } from './shared/utilities/confirms/confirm-modal';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,11 @@ import { DeleteModalComponents } from './shared/utilities/confirms/delete-modal'
     StokSelectModalComponents,
     SubeSelectModalComponents,
     UrunReceteSelectModalComponents,
-    DeleteModalComponents
+    BankaHesapSelectModalComponents,
+    HesapPlaniSelectModalComponents,
+    DeleteModalComponents,
+    OnayModalComponents,
+    ConfirmModalComponents
   ],
   imports: [
 

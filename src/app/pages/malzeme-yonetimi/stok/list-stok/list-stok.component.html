@@ -22,13 +22,14 @@
 
       <div (click)="delete()" class="button-grup" [ngClass]="buttonDisabled?'disabled':''">
         <div class="img-container">
-          <img src="../../../../../assets/icons/delete-file.png" alt="" >
+          <img src="../../../../../assets/icons/delete-file.png" alt="">
         </div>
         <span class="d-none d-sm-inline button-label">Sil</span>
 
       </div>
 
-      <div (click)="updateModal()" class="button-grup" [ngClass]="buttonDisabled?'disabled':''">
+      <div (click)="updateModal()" class="button-grup"
+        [ngClass]="buttonDisabled?'disabled':'' || buttonUpdateDisabled?'disabled':''">
         <div class="img-container">
           <img src="../../../../../assets/icons/edit-file.png" alt="">
         </div>
@@ -44,7 +45,7 @@
 
       </div>
 
-      <div (click)="filtrele()" class="button-grup" >
+      <div (click)="filtrele()" class="button-grup">
         <div class="img-container">
           <img src="../../../../../assets/icons/filter.png" alt="">
         </div>
@@ -60,7 +61,9 @@
 
       </div>
 
-      <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''">
+
+      <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''" aria-expanded="false"
+        data-bs-toggle="dropdown">
         <div class="img-container">
           <img src="../../../../../assets/icons/other.png" alt="">
         </div>
@@ -68,6 +71,171 @@
 
       </div>
 
+      <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+        <li type="button">
+          <a class="dropdown-item dropdown-action-item">Teklif Al</a>
+        </li>
+        <li type="button">
+          <a class="dropdown-item dropdown-action-item">Sipariş Ver</a>
+        </li>
+
+
+
+      </ul>
+
+
+      <p-divider layout="vertical"></p-divider>
+
+
+      <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''" aria-expanded="false"
+        data-bs-toggle="dropdown">
+        <div class="img-container">
+          <img src="../../../../../assets/icons/irsaliye/irsaliye.png" alt="">
+        </div>
+        <span class="d-none d-sm-inline button-label" style="display: flex !important;">İrsaliye <i
+            class="fa-solid fa-sort-down sort-down-icon" style="margin-left: 5px;display: flex;  color: rgb(121, 1, 1); opacity: 0.8;
+        justify-content: center;
+        align-items: center;"></i></span>
+
+      </div>
+
+      <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+        <li type="button" style="    display: flex;
+      justify-content: center;
+      align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Alış İrsaliyesi</a>
+        </li>
+        <li type="button" style="    display: flex;
+      justify-content: center;
+      align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Satış İrsaliyesi</a>
+        </li>
+
+
+
+
+      </ul>
+
+      <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''" aria-expanded="false"
+        data-bs-toggle="dropdown">
+        <div class="img-container">
+          <img src="../../../../../assets/icons/fatura/fatura.png" alt="">
+        </div>
+        <span class="d-none d-sm-inline button-label" style="display: flex !important;">Fatura <i
+            class="fa-solid fa-sort-down sort-down-icon" style="margin-left: 5px;display: flex;  color: rgb(121, 1, 1); opacity: 0.8;
+        justify-content: center;
+        align-items: center;"></i></span>
+
+      </div>
+
+      <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+        <li type="button" style="    display: flex;
+      justify-content: center;
+      align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Alış Faturası</a>
+        </li>
+        <li type="button" style="    display: flex;
+      justify-content: center;
+      align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Satış Faturası</a>
+        </li>
+
+
+
+
+      </ul>
+
+
+
+
+
+
+
+
+
+      <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''" aria-expanded="false"
+        data-bs-toggle="dropdown">
+        <div class="img-container">
+          <img src="../../../../../assets/icons/satinalma/teklif.png" alt="">
+        </div>
+        <span class="d-none d-sm-inline button-label" style="display: flex !important;">Teklif <i
+            class="fa-solid fa-sort-down sort-down-icon" style="margin-left: 5px;display: flex;  color: rgb(121, 1, 1); opacity: 0.8;
+          justify-content: center;
+          align-items: center;"></i></span>
+
+      </div>
+
+      <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+        <li type="button" style="    display: flex;
+        justify-content: center;
+        align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Alınan Teklif</a>
+        </li>
+        <li type="button" style="    display: flex;
+        justify-content: center;
+        align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Verilen Teklif</a>
+        </li>
+
+
+
+
+      </ul>
+
+
+
+      <div class="button-grup " [ngClass]="buttonDisabled?'disabled':''" aria-expanded="false"
+        data-bs-toggle="dropdown">
+        <div class="img-container">
+          <img src="../../../../../assets/icons/satis/siparis.png" alt="">
+        </div>
+        <span class="d-none d-sm-inline button-label" style="display: flex !important;">Sipariş <i
+            class="fa-solid fa-sort-down sort-down-icon" style="margin-left: 5px;display: flex;  color: rgb(121, 1, 1); opacity: 0.8;
+          justify-content: center;
+          align-items: center;"></i></span>
+
+      </div>
+
+      <ul class="dropdown-menu dropdown-action-menu" style="z-index: 9999;">
+        <li type="button" style="    display: flex;
+        justify-content: center;
+        align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Alınan Sipariş</a>
+        </li>
+        <li type="button" style="    display: flex;
+        justify-content: center;
+        align-items: center;">
+          <a class="dropdown-item dropdown-action-item" style="padding: 3px 20px 3px 5px;">
+
+            <i class="fa-solid fa-bolt" style="color: rgb(88, 52, 52);"></i>
+            Verilen Sipariş</a>
+        </li>
+
+
+
+
+      </ul>
 
     </div>
 
@@ -103,9 +271,9 @@
       <as-split-area [size]="85" [order]="2" [visible]="true" class="main-content">
 
         <ag-grid-angular #agGrid style="height:calc(100vh - 180px);" class="ag-theme-quartz" [rowData]="rowData"
-          [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick()"
-          (gridReady)="getList($event)" (selectionChanged)="onSelectionChanged()" [rowSelection]="rowSelection"
-          [rowHeight]="22" [headerHeight]="23" [localeText]="localeText">
+          [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (rowDoubleClicked)="rowDblClick($event)"
+          (gridReady)="getList($event)" (selectionChanged)="rowClick()" [rowSelection]="rowSelection" [rowHeight]="22"
+          [headerHeight]="23" [localeText]="localeText">
         </ag-grid-angular>
 
       </as-split-area>

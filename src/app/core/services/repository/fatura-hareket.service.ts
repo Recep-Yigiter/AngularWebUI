@@ -118,6 +118,22 @@ export class FaturaHareketService {
 
     return await promiseData;
   }
+
+  async getByFaturaIdFaturaHareket(id: string, successCallBack?: () => void, errorCallback?: (errorMessage: HttpErrorResponse) => void) {
+        
+ 
+
+    const observable: Observable<any> = this.apiService.get({
+      controller: "FaturaHarekets",
+      action: "getByFaturaId/" + `${id}`,
+    
+    })
+
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(successCallBack).catch(errorCallback);
+
+    return await promiseData;
+  }
   async getCode(durum: boolean, successCallBack?: () => void, errorCallBack?: (errorMessage: HttpErrorResponse) => void) {
         
  

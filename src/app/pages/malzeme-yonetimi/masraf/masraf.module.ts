@@ -12,6 +12,10 @@ import { ListMasrafComponent } from './list-masraf/list-masraf.component';
 import { DesignComponent } from './core/design/design.component';
 
 import { AngularSplitModule } from 'angular-split';
+import { MasrafFormLabelComponent } from './core/components/masraf-form-label';
+import { MasrafFormDateComponent } from './core/components/masraf-form-date';
+import { MasrafFormInputSelectComponent } from './core/components/masraf-form-input-select';
+import { MasrafFormDropDownComponent } from './core/components/masraf-form-dropdown';
 
 
 
@@ -22,7 +26,11 @@ import { AngularSplitModule } from 'angular-split';
     UpdateMasrafComponent,
     DetailMasrafComponent,
     ListMasrafComponent,
-    DesignComponent
+    DesignComponent,
+    MasrafFormLabelComponent,
+    MasrafFormDateComponent,
+    MasrafFormInputSelectComponent,
+    MasrafFormDropDownComponent,
   ],
   imports: [
     CommonModule,

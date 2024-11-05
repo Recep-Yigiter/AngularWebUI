@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { KasaService } from 'src/app/core/services/repository/kasa.service';
 
 @Component({
     selector: 'app-kasa-select-modal',
     styleUrls: ['../modal.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
   <div class="modal-header ">
 
@@ -72,14 +74,19 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   `
 
 })
-export class KasaSelectModalComponents {
+export class KasaSelectModalComponents implements AfterViewChecked{
     @Input() confirmationBoxTitle;
     @Input() confirmationMessage;
 
-    constructor(public activeModal: NgbActiveModal, ) {
+    constructor(public activeModal: NgbActiveModal,private KasaService:KasaService ,private ref:ChangeDetectorRef) {
 
     }
-
+    ngAfterViewChecked(): void {
+        this.ref.detectChanges()
+    }
+    ngAfterViewInit(): void {
+        this.ref.detectChanges()
+    }
     rowData: any[];
 
     public rowSelection: 'single' | 'multiple' = 'multiple';
@@ -98,7 +105,7 @@ export class KasaSelectModalComponents {
 
     async getList(params: GridReadyEvent<any>) {
         this.gridApi = params.api;
-        // this.rowData = (await this.KasaService.GetList(() => { })).items;
+        this.rowData = (await this.KasaService.GetList(() => { })).items;
     }
     selectedRow: any;
 

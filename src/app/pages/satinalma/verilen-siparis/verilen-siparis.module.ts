@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { VerilenSiparisComponent } from './verilen-siparis.component';
 import { CreateVerilenSiparisComponent } from './create-verilen-siparis/create-verilen-siparis.component';
 import { UpdateVerilenSiparisComponent } from './update-verilen-siparis/update-verilen-siparis.component';
-import { DetailVerilenSiparisComponent } from './detail-verilen-siparis/detail-verilen-siparis.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -19,15 +18,27 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { DesignComponent } from './core/design/design.component';
 
 import { AngularSplitModule } from 'angular-split';
+import { VerilenSiparisFormLabelComponent } from './core/components/verilen-siparis-form-label';
+import { VerilenSiparisFormDateComponent } from './core/components/verilen-siparis-form-date';
+import { VerilenSiparisFormInputSelectComponent } from './core/components/verilen-siparis-form-input-select';
+import { VerilenSiparisFormDropDownComponent } from './core/components/verilen-siparis-form-dropdown';
+import { VerilenSiparisFormNumberInputComponent } from './core/components/verilen-siparis-form-number-input';
+
 
 @NgModule({
   declarations: [
     VerilenSiparisComponent,
     CreateVerilenSiparisComponent,
     UpdateVerilenSiparisComponent,
-    DetailVerilenSiparisComponent,
+
     ListVerilenSiparisComponent,
-    DesignComponent
+    DesignComponent,
+    VerilenSiparisFormLabelComponent,
+    VerilenSiparisFormDateComponent,
+    VerilenSiparisFormInputSelectComponent,
+    VerilenSiparisFormDropDownComponent,
+    VerilenSiparisFormNumberInputComponent,
+
   ],
   imports: [
     CommonModule,
@@ -44,9 +55,8 @@ import { AngularSplitModule } from 'angular-split';
       { path: "list", component: ListVerilenSiparisComponent, canActivate: [authGuard] },
       { path: "create", component: CreateVerilenSiparisComponent, canActivate: [authGuard] },
       { path: "update", component: UpdateVerilenSiparisComponent, canActivate: [authGuard] },
-      { path: "detail", component: DetailVerilenSiparisComponent, canActivate: [authGuard] },
-
-
+ 
+     
     ])
   ]
 })

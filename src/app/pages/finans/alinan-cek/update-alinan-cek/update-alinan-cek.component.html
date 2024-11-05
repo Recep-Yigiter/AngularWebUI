@@ -1,3 +1,44 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal-header ">
     <h4 class="modal-title"></h4>
     <h4 class="modal-title"> </h4>
@@ -7,510 +48,131 @@
 
 
 <div class="">
-    <!-- <form [formGroup]="frm">
-        <div class="grid">
+    <div class="container-fluid">
+        <div class="panel header" data-resize-name="header">
+            <div class="content">
+                <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+    
+                        <div class="action-left">
+                            <div class="btn-group ml-1 mr-1">
+    
+                                <div class="button-container">
 
-            <div class="col-12 lg:col-12 xl:col-12 pl-3 pr-3">
+                                    <div  class="button-grup disabled"  >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/add-file.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Yeni</span>
+                                      <!-- <i class="fa-solid fa-sort-down sort-down-icon"></i> -->
+                                    </div>
+                                
+                                    <div (click)="Kaydet()" class="button-grup "  >
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/save.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+                                      
+                                    </div>
 
-                <div class="mt-1" style="border: 1px solid #ddd">
-                    <div class="form-title pl-2" style="font-weight: 500;">
+                                    <div  class="button-grup disabled"  >
+                                        <div class="img-container">
+                                          <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Sil</span>
+                                        
+                                      </div>
+                                
+                                    <div (click)="cikis()" class="button-grup">
+                                      <div class="img-container">
+                                        <img src="../../../../../assets/icons/close.png" alt="">
+                                      </div>
+                                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+                                     
+                                    </div> 
+                                
+                 
+                                    
+                                
+                                  </div>
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    
+      
+
+        <div style="overflow-x: auto; line-height: 27px; padding: 5px;">
+            <form [formGroup]="frm">
+                <div style="display: grid;grid-template-columns: auto auto auto;padding: 0 10px;">
+                    <div style="border-top: 1px solid #dee2e6;
+             border-bottom: 1px solid #dee2e6; 
+             padding-left: 10px; color: #6b6b6b;
+             background-color: #f7f7f7;
+             grid-column: 1/span 3; 
+             font-size: 14px;">
                         Hesap Bilgileri
                     </div>
-
-                    <div class="grid">
-                        <div class="col-12 lg:col-4 xl:col-4">
-                            <table class="yks_table_group">
-                                <tbody>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Seri
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Belge No
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Referans
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 50px; font-weight: 600; font-size: 13px;">Ç/S
-                                                Kasası
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%; position: relative;" class="table_row_group">
-
-                                            <input readonly formControlName="cariId" [ngModel]="selectedCari?.ad"
-                                                type="text" class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-
-                                            <div
-                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px;">
-                                                <button (click)="cariSelectModal()" class="selected-ellipsis btn" style="height: 20px;
-                                            width: 20px;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;">
-                                                    <i class="fa-solid fa-ellipsis"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 50px; font-weight: 600; font-size: 13px;">Cari
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%; position: relative;" class="table_row_group">
-
-                                            <input readonly formControlName="cariId" [ngModel]="selectedCari?.ad"
-                                                type="text" class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-
-                                            <div
-                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px;">
-                                                <button (click)="cariSelectModal()" class="selected-ellipsis btn" style="height: 20px;
-                                            width: 20px;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;">
-                                                    <i class="fa-solid fa-ellipsis"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="col-12 lg:col-8 xl:col-8">
-                            <div style="display: flex;">
-                                <table style="width: 100%;" class="yks_table_group">
-                                    <tbody>
-
-                                        <tr class="table_row_group">
-                                            <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                                <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Düz
-                                                    Tar. :
-
-                                                </label>
-                                            </td>
-
-                                            <td style="width: 100%;" class="table_row_group">
-
-                                                <input
-                                                    [ngClass]="{ 'is-invalid': submitted && f.mutabakatTarihi.errors }"
-                                                    formControlName="mutabakatTarihi" [(ngModel)]="dateTime" type="date"
-                                                    class="form-control shadow-none form-control-required"
-                                                    id="exampleFormControlInput1">
-                                            </td>
-
-                                        </tr>
-                                        <tr class="table_row_group">
-                                            <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                                <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Vade
-                                                    Tar. :
-
-                                                </label>
-                                            </td>
-
-                                            <td style="width: 100%;" class="table_row_group">
-
-                                                <input
-                                                    [ngClass]="{ 'is-invalid': submitted && f.mutabakatTarihi.errors }"
-                                                    formControlName="mutabakatTarihi" [(ngModel)]="dateTime" type="date"
-                                                    class="form-control shadow-none form-control-required"
-                                                    id="exampleFormControlInput1">
-                                            </td>
-                                        </tr>
-
-
-                                    </tbody>
-                                </table>
-
-                                <table style="width: 100%;" class="yks_table_group">
-                                    <tbody>
-
-                                        <tr class="table_row_group">
-                                            <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                                <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Düz
-                                                    Tar. :
-
-                                                </label>
-                                            </td>
-
-                                            <td style="width: 100%;" class="table_row_group">
-
-                                                <input
-                                                    [ngClass]="{ 'is-invalid': submitted && f.mutabakatTarihi.errors }"
-                                                    formControlName="mutabakatTarihi" [(ngModel)]="dateTime" type="date"
-                                                    class="form-control shadow-none form-control-required"
-                                                    id="exampleFormControlInput1">
-                                            </td>
-
-                                        </tr>
-                                        <tr class="table_row_group">
-                                            <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                                <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Vade
-                                                    Tar. :
-
-                                                </label>
-                                            </td>
-
-                                            <td style="width: 100%;" class="table_row_group">
-
-                                                <input
-                                                    [ngClass]="{ 'is-invalid': submitted && f.mutabakatTarihi.errors }"
-                                                    formControlName="mutabakatTarihi" [(ngModel)]="dateTime" type="date"
-                                                    class="form-control shadow-none form-control-required"
-                                                    id="exampleFormControlInput1">
-                                            </td>
-                                        </tr>
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <table style="width: 100%;" class="yks_table_group">
-                                <tbody>
-
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label
-                                                style=" min-width: 70px; font-weight: 600; font-size: 13px;">Düzenleyen
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Ç/S
-                                                Kasası Adı
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Cari Adı
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
-
-
-
-
-
-                </div>
-
-                <div class="mt-1" style="border: 1px solid #ddd">
-                    <div class="form-title pl-2" style="font-weight: 500;">
+                    <app-form-label [field]="data.seri" [formControlNames]="seri" [span]="130" [label]="'Seri'"></app-form-label>
+                    <app-form-date [field]="createdDate" [formControlNames]="duzenlemeTarihi" [span]="130" [label]="'Düz. Tarihi'"></app-form-date>
+                    <app-form-date [field]="alinisDate" [formControlNames]="alinisTarihi" [span]="130" [label]="'Alınış Tarihi'"></app-form-date>
+                    <app-form-label [field]="data.belgeNo" [formControlNames]="belgeNo" [span]="130" [label]="'Belge No'"></app-form-label>
+                    <app-form-date [field]="vadeDate" [formControlNames]="vadeTarihi" [span]="130" [label]="'Vade Tarihi'"></app-form-date>
+                    <app-form-date [field]="valorDate" [formControlNames]="valorTarihi" [span]="130" [label]="'Valör Tarihi'"></app-form-date>
+                    <app-form-label [field]="data.referans" [formControlNames]="referans" [span]="130" [label]="'Referans'"></app-form-label>
+                    <app-form-label [field]="data.duzenleyen" [formControlNames]="duzenleyen" [span]="130" [label]="'Düzenleyen'"  style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-label [field]="selectedKasa?.kod?selectedKasa?.kod: data.kasaKodu" [formControlNames]="kasaId" [span]="130" [label]="'Ç/S Kasası'"></app-form-label>
+                    <app-form-label [field]="selectedKasa?.ad?selectedKasa?.ad: data.kasaAdi"  [formControlNames]="kasaAdi" [span]="130" [label]="'Ç/S Kasası Adı'"style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-label [field]="selectedCari?.kod?selectedCari?.kod: data.cariKodu" [formControlNames]="cariId" [span]="130" [label]="'Borçlu'"></app-form-label>
+                    <app-form-label [field]="selectedCari?.ad?selectedCari?.ad: data.cariAdi" [formControlNames]="cariAdi" [span]="130" [label]="'Borçlu Adı'"    style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-label [field]="data.tutar" [formControlNames]="tutar" [span]="130" [label]="'Tutar'"></app-form-label>
+    
+                    <div style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b; background-color: #f7f7f7; grid-column: 1/span 3;
+            font-size: 14px;">
                         Banka
                     </div>
-
-                    <div class="grid">
-                        <div class="col-12 lg:col-8 xl:col-8">
-
-                            <table style="width: 100%;" class="yks_table_group">
-                                <tbody>
-
-
-                                    <tr class="table_row_group">
-
-
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Banka
-                                                Kodu
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 30%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-
-                                        <td style="width: 70%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-
-
-
-
-
-                                    </tr>
-                                    <tr class="table_row_group">
-
-
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Şube
-                                                Kodu
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 30%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-
-                                        <td style="width: 70%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-
-
-
-
-
-                                    </tr>
-                                
-                                </tbody>
-                            </table>
-
-
-                            <table style="width: 100%;" class="yks_table_group">
-                                <tbody>
-                                    <tr class="table_row_group">
-
-
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Iban No
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td  class="table_row_group">
-
-                                            <input style="width: 70%;"  [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-
-
-
-
-
-
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-
-                        </div>
-                        <div class="col-12 lg:col-4 xl:col-4">
-
-                            <table style="width: 100%;" class="yks_table_group">
-                                <tbody>
-                                    <tr class="table_row_group">
-                                        <td class="yks_td_label pl-2" style="border-left: #000000; ">
-
-                                            <label style=" min-width: 70px; font-weight: 600; font-size: 13px;">Hesap No
-                                                :
-
-                                            </label>
-                                        </td>
-
-                                        <td style="width: 100%;" class="table_row_group">
-
-                                            <input [ngClass]="{ 'is-invalid': submitted && f.bankaKodu.errors }"
-                                                formControlName="emkbalinan-cekKodu" type="text"
-                                                class="form-control shadow-none form-control-required"
-                                                id="exampleFormControlInput1">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
+    
+                    <app-form-label [field]="selectedBanka?.kod?selectedBanka?.kod: data.bankaKodu" [formControlNames]="bankaId" [span]="130" [label]="'Banka'"></app-form-label>
+                    <app-form-label  [field]="selectedBanka?.ad?selectedBanka?.ad: data.bankaAdi"  [formControlNames]="bankaAdi" [span]="130" [label]="'Banka Adı'"></app-form-label>
+                    <app-form-label [field]="data.hesapNo" [formControlNames]="hesapNo" [span]="130" [label]="'Hesap No'"></app-form-label>
+                    <app-form-label [field]="selectedSube?.kod?selectedSube?.kod: data.subeKodu" [formControlNames]="subeId" [span]="130" [label]="'Şube '"></app-form-label>
+                    <app-form-label  [field]="selectedSube?.ad?selectedSube?.ad: data.subeAdi" [formControlNames]="subeAdi" [span]="130" [label]="'Şube Adı'"></app-form-label>
+                    <div></div>
+                    <app-form-label [field]="data.iban" [formControlNames]="iban" [span]="130" [label]="'Iban'"></app-form-label>
+    
+                    <div style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b; background-color: #f7f7f7; grid-column: 1/span 3;
+            font-size: 14px;">
+                        Cirolu Teminat Karşılıksız FaizOranı
                     </div>
-
+                    <app-form-label [field]="data.vergiNo" [formControlNames]="vergiNo" [span]="130" [label]="'Vergi No'"></app-form-label>
+                    <app-form-label [field]="data.vergiDairesi" [formControlNames]="vergiDairesi" [span]="130" [label]="'Vergi Dairesi'"
+                        style="grid-column: 2/span 2;"></app-form-label>
+                    <app-form-label [field]="data.aciklama" [formControlNames]="aciklama" [span]="130" [label]="'Açıklama'"
+                        style="grid-column: 1/span 3;"></app-form-label>
+                    <app-form-label [field]="data.durum" [formControlNames]="durum" [span]="130" [label]="'Durum'"></app-form-label>
+    
                 </div>
-
-
-            </div>
-
-
-
+    
+            </form>
+    
+    
+    
+    
         </div>
-
-        
-    </form> -->
-
-    <div style="overflow-x: auto; line-height: 27px; padding-top: 10px;">
-        <form [formGroup]="frm">
-            <div style="display: grid;grid-template-columns: auto auto auto;padding: 0 10px;">
-                <div style="border-top: 1px solid #dee2e6;
-         border-bottom: 1px solid #dee2e6; 
-         padding-left: 10px; color: #6b6b6b;
-         background-color: #f7f7f7;
-         grid-column: 1/span 3; 
-         font-size: 14px;">
-                    Hesap Bilgileri
-                </div>
-                <app-form-label [field]="stateData.seri" [formControlNames]="seri" [span]="130" [label]="'Seri'"></app-form-label>
-                <app-form-date [field]="stateData.duzenlemeTarihi" [formControlNames]="duzenlemeTarihi" [span]="130" [label]="'Düz. Tarihi'"></app-form-date>
-                <app-form-date [field]="stateData.alinisTarihi" [formControlNames]="alinisTarihi" [span]="130" [label]="'Alınış Tarihi'"></app-form-date>
-                <app-form-label [field]="stateData.belgeNo" [formControlNames]="belgeNo" [span]="130" [label]="'Belge No'"></app-form-label>
-                <app-form-date [field]="stateData.vadeTarihi" [formControlNames]="vadeTarihi" [span]="130" [label]="'Vade Tarihi'"></app-form-date>
-                <app-form-date [field]="stateData.valorTarihi" [formControlNames]="valorTarihi" [span]="130" [label]="'Valör Tarihi'"></app-form-date>
-                <app-form-label [field]="stateData.referans" [formControlNames]="referans" [span]="130" [label]="'Referans'"></app-form-label>
-                <app-form-label [field]="stateData.duzenleyen" [formControlNames]="duzenleyen" [span]="130" [label]="'Düzenleyen'"  style="grid-column: 2/span 2;"></app-form-label>
-                <app-form-label [field]="stateData.csKasasi" [formControlNames]="csKasasi" [span]="130" [label]="'Ç/S Kasası'"></app-form-label>
-                <app-form-label [field]="stateData.csKasasiAdi" [formControlNames]="csKasasiAdi" [span]="130" [label]="'Ç/S Kasası Adı'"style="grid-column: 2/span 2;"></app-form-label>
-                <app-form-label [field]="stateData.cariId" [formControlNames]="cariId" [span]="130" [label]="'Borçlu'"></app-form-label>
-                <app-form-label [field]="stateData.cariAdi" [formControlNames]="cariAdi" [span]="130" [label]="'Borçlu Adı'"    style="grid-column: 2/span 2;"></app-form-label>
-                <app-form-label [field]="stateData.tutar" [formControlNames]="tutar" [span]="130" [label]="'Tutar'"></app-form-label>
-
-                <div style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b; background-color: #f7f7f7; grid-column: 1/span 3;
-        font-size: 14px;">
-                    Banka
-                </div>
-
-                <app-form-label [field]="stateData.bankaId" [formControlNames]="bankaId" [span]="130" [label]="'Banka'"></app-form-label>
-                <app-form-label [field]="stateData.bankaAdi" [formControlNames]="bankaAdi" [span]="130" [label]="'Banka Adı'"></app-form-label>
-                <app-form-label [field]="stateData.hesapNo" [formControlNames]="hesapNo" [span]="130" [label]="'Hesap No'"></app-form-label>
-                <app-form-label [field]="stateData.subeId" [formControlNames]="subeId" [span]="130" [label]="'Şube '"></app-form-label>
-                <app-form-label [field]="stateData.subeAdi" [formControlNames]="subeAdi" [span]="130" [label]="'Şube Adı'"></app-form-label>
-                <div></div>
-                <app-form-label [field]="stateData.iban" [formControlNames]="iban" [span]="130" [label]="'Iban'"></app-form-label>
-
-                <div style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b; background-color: #f7f7f7; grid-column: 1/span 3;
-        font-size: 14px;">
-                    Cirolu Teminat Karşılıksız FaizOranı
-                </div>
-                <app-form-label [field]="stateData.vergiNo" [formControlNames]="vergiNo" [span]="130" [label]="'Vergi No'"></app-form-label>
-                <app-form-label [field]="stateData.vergiDairesi" [formControlNames]="vergiDairesi" [span]="130" [label]="'Vergi Dairesi'"
-                    style="grid-column: 2/span 2;"></app-form-label>
-                <app-form-label [field]="stateData.aciklama" [formControlNames]="aciklama" [span]="130" [label]="'Açıklama'"
-                    style="grid-column: 1/span 3;"></app-form-label>
-                <app-form-label [field]="stateData.durum" [formControlNames]="durum" [span]="130" [label]="'Durum'"></app-form-label>
-
-            </div>
-
-        </form>
-
-
-
-
+    
+    
+    
     </div>
+
+
+
+
+
 
 
 
@@ -522,14 +184,40 @@
 
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="submit()"
+    <!-- <button (click)="Kaydet()" type="button" class="btn btn-success" 
         style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
-        <i class="fa fa-plus" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-        <span class="d-none d-sm-inline" style="font-size: 13px;">Ekle</span>
+        <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
     </button>
     <button type="button" class="btn " (click)="activeModal.close(false)"
         style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
         <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
         <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
-    </button>
+    </button> -->
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,18 +11,11 @@ import {
   GridApi,
   GridReadyEvent,
   LocaleService,
-  IDateFilterParams,
+
 } from 'ag-grid-community';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
-import { Observable, Subscription, filter, map, startWith } from 'rxjs';
-import { AgGridAngular } from 'ag-grid-angular';
-import { AuthService } from 'src/app/core/services/repository/Auth.service';
 import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
-import {
-  MatListOption,
-  MatSelectionList,
-  MatSelectionListChange,
-} from '@angular/material/list';
+
 import { DatePipe } from '@angular/common';
 import { Listbox } from 'primeng/listbox';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -36,6 +29,8 @@ import { DeleteModalComponents } from 'src/app/shared/utilities/confirms/delete-
 import { UpdateStokComponent } from '../update-stok/update-stok.component';
 import { CreateStokComponent } from '../create-stok/create-stok.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { MUHASEBE_KODLARI } from 'src/MUHASEBE_KODLARI';
+import { MuhasebeKodService } from 'src/app/core/services/repository/muhasebe-kod.service';
 
 @Component({
   selector: 'app-list-stok',
@@ -46,7 +41,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ListStokComponent implements OnInit {
   rowData: any;
   public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
-  public rowSelection: 'single' | 'multiple' = 'single';
+  // public rowSelection: 'single' | 'multiple' = 'single';
+  public rowSelection: 'single' | 'multiple' = 'multiple';
   private gridApi!: GridApi<any>;
 
   public defaultColDef = defaultColDef;
@@ -57,7 +53,8 @@ export class ListStokComponent implements OnInit {
     private stokFilterService: StokFilterService,
     private route: ActivatedRoute,
     private router: Router,
-    private NgbModal: NgbModal
+    private NgbModal: NgbModal,
+    private MuhasebeKodService: MuhasebeKodService
   ) {}
 
   reload() {
@@ -68,22 +65,28 @@ export class ListStokComponent implements OnInit {
   }
 
   colDefs: ColDef[] = [
-    { field: 'kod', width: 200, filter: 'agTextColumnFilter' },
+    {
+      field: 'kod',
+      width: 200,
+      filter: 'agTextColumnFilter',
+      headerCheckboxSelection: true,
+      checkboxSelection: true,
+    },
     { field: 'ad', width: 500, filter: 'agTextColumnFilter' },
   ];
   filterObj: any = [];
   componentShow: boolean = true;
   async getList(params: GridReadyEvent<any>) {
-    this.spinnerService.show();
+    // this.spinnerService.show();
     this.gridApi = params.api;
     this.gridApi.onFilterChanged();
     this.rowData = (
       await this.StokService.GetList(
         () => {
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
         },
         (error) => {
-          this.spinnerService.hide();
+          // this.spinnerService.hide();
         }
       )
     ).items;
@@ -110,14 +113,31 @@ export class ListStokComponent implements OnInit {
     ];
   }
 
-  onSelectionChanged() {
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.selectedStok = selectedRows;
-    this.buttonDisabled=false
+  rowClick() {
+    const selectedRows = this.gridApi.getSelectedRows();
+    this.selectedStoks = selectedRows;
+
+    const selectedRow = this.gridApi.getSelectedRows()[0];
+    this.selectedStok = selectedRow;
+
+    if (selectedRows.length == 0) {
+      this.buttonDisabled = true;
+    } else {
+      this.buttonDisabled = false;
+    }
+
+    if (selectedRows.length == 0) {
+      this.buttonUpdateDisabled = true;
+    } else if (selectedRows.length == 1) {
+      this.buttonUpdateDisabled = false;
+    } else {
+      this.buttonUpdateDisabled = true;
+    }
   }
-  rowDblClick() {
+  rowDblClick(event) {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    // this.router.navigate([ROUTER_NAVIGATE.stok_detail], { state: selectedRows })
+    this.selectedStok = event.data;
+
     this.updateModal();
   }
 
@@ -136,12 +156,10 @@ export class ListStokComponent implements OnInit {
     return arr.filter((c) => !seen.has(c[comp]) && seen.add(c[comp]));
   };
 
-  olustur() {
-    this.router.navigate([ROUTER_NAVIGATE.stok_create]);
-  }
-
   buttonDisabled: boolean = true;
+  buttonUpdateDisabled: boolean = true;
   selectedStok: any;
+  selectedStoks: any;
   createModal() {
     const modalRef = this.NgbModal.open(CreateStokComponent, {
       size: 'md',
@@ -150,16 +168,21 @@ export class ListStokComponent implements OnInit {
     modalRef.componentInstance.data = 'Stok Kartı';
 
     modalRef.result.then(async (item) => {
-      this.refresh();
+      if (item) {
+        this.refresh();
+      }
     });
   }
 
-  updateModal() {
-    if (this.selectedStok) {
+  async updateModal() {
+  var muhasebeKodlari= (await this.MuhasebeKodService.getByStokId(this.selectedStok.id)).items;
+  this.selectedStok.muhasebeKodlari=muhasebeKodlari;
+    if (this.selectedStok && this.selectedStoks.length < 2) {
       const modalRef = this.NgbModal.open(UpdateStokComponent, {
-        size: 'md',
+        size: 'lg',
         backdrop: 'static',
       });
+
       modalRef.componentInstance.data = this.selectedStok;
 
       modalRef.result.then(async (item) => {
@@ -182,8 +205,10 @@ export class ListStokComponent implements OnInit {
       });
       modalRef.result.then((event) => {
         if (event == true) {
-          this.StokService.delete(this.selectedStok.id, () => {
-            this.refresh();
+          this.selectedStoks.forEach((element) => {
+            this.StokService.delete(element.id, () => {
+              this.refresh();
+            });
           });
         }
       });

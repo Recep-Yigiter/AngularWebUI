@@ -1,12 +1,19 @@
-
-
 @import "src/assets/scss/caption";
 @import "src/assets/scss/section";
 
+.hareket-action-button-container{
+    border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b;background-color: #ffffff;grid-column: 1/span 3; font-size: 14px; display: flex;
+    .hareket-action-img-container{
+        width: 50px;    height: 35px;padding: 0 5px;display: flex;justify-content: center;align-items: center;
+        img{ width: 30px ;height: 30px;}
+       
+    }
 
+    .hareket-action-button-label{
+        text-align: center;line-height: 16px; font-size: 12px;font-weight: 500;color: #7a0000;font-family: 'Segoe UI', Verdana, Tahoma, Helvetica, sans-serif;
+    }
+}
 
-
-
-  
-  
-
+.hareket-action-button-container .button-grup.disabled{
+opacity: 0.5;
+}

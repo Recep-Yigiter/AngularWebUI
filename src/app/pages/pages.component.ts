@@ -10,6 +10,21 @@ import { UserService } from '../core/services/repository/user.service';
 })
 export class PagesComponent implements OnInit {
 
+  deneme:boolean=false;
+  display:any='none';
+  opacity:any=1
+
+
+
+  show(){
+    this.deneme=!this.deneme
+    this.display='block';
+    this.opacity=1
+  }
+
+
+
+
   user:any;
 
   constructor(private Router: Router, private UserService: UserService) {}
@@ -20,29 +35,33 @@ export class PagesComponent implements OnInit {
   }
 
   stokRouter() {
-    this.Router.navigate(['/menu/malzeme-yonetimi']);
+    this.Router.navigate(['/menu/malzeme-yonetimi/stok/list']);
   }
   satinalmaRouter() {
-    this.Router.navigate(['/menu/satinalma']);
+    this.Router.navigate(['/menu/satinalma/alinan-teklif/list']);
   }
   satisRouter() {
-    this.Router.navigate(['/menu/satis']);
+    this.Router.navigate(['/menu/satis/verilen-teklif/list']);
   }
 
   finansRouter() {
-    this.Router.navigate(['/menu/finans']);
+    this.Router.navigate(['/menu/finans/cari/cari-hareketler']);
   }
 
   faturaRouter() {
-    this.Router.navigate(['/menu/fatura']);
+    this.Router.navigate(['/menu/fatura/alis-fatura/list']);
   }
 
   irsaliyeRouter() {
-    this.Router.navigate(['/menu/irsaliye']);
+    this.Router.navigate(['/menu/irsaliye/alis-irsaliye/list']);
   }
 
-  uretim() {
-    this.Router.navigate(['/menu/uretim']);
+  uretimRouter() {
+    this.Router.navigate(['/menu/uretim/uretim-emri/list']);
+  }
+
+  muhasebeRouter() {
+    this.Router.navigate(['/menu/muhasebe/hesap-plani/list']);
   }
 
   cikis() {

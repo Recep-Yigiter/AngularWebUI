@@ -256,9 +256,9 @@
     display: none;
   }
 
-  ag-grid-angular .ag-cell {
-    padding-left: 4px;
-  }
+  // ag-grid-angular .ag-cell {
+  //   padding-left: 4px;
+  // }
 
   ag-grid-angular .ag-row-hover {
     background-color: color-mix(in srgb, transparent, #2196f3 5%);
@@ -284,6 +284,22 @@
     font-size: 12px;
     font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
   }
+
+ ag-grid-angular .ag-cell.rag-green {
+        color: #009732 !important;
+        font-size: 12px;
+        font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+    }
+    ag-grid-angular .ag-cell.rag-red {
+      color: #970000 !important;
+      font-size: 12px;
+      font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+  }
+     ag-grid-angular .ag-cell.rag-gray {
+        color: #666666 !important;
+        font-size: 12px;
+        font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+    }
 
   ag-grid-angular .ag-theme-quartz,
   .ag-theme-quartz-dark {
@@ -414,6 +430,8 @@
     background-color: rgb(247 247 247) !important;
     border-radius: 0px !important;
     border: 1px solid rgb(219 219 219) !important;
+    color: black;
+    font-weight: 600;
   }
 
   .form-control-required {
@@ -648,8 +666,8 @@
 
     .button-grup {
       display: grid;
-      width: 100%;
-      grid-template-rows: auto auto ;
+      // width: 100%;
+      grid-template-rows: auto auto;
       padding: 0px 8px;
       gap: 2px;
 
@@ -699,6 +717,11 @@
     background-color: rgb(228, 226, 226) !important;
   }
 
+  .button-grup.show {
+    background-color: rgb(228, 226, 226) !important;
+
+  }
+
   .button-grup.disabled {
     background-color: transparent;
     cursor: default;
@@ -708,4 +731,33 @@
     background-color: transparent !important;
     cursor: default;
   }
+
+
+
+
+  .dropdown-menu.show {
+    display: block;
+    background-color: white !important;
+    box-shadow: 0px 8px 10px 1px gray !important;
+    border-radius: 0;
+  }
+
+  .button-grup.show {
+    background-color: rgb(228, 226, 226) !important;
+  }
+
+  .dropdown-action-item {
+    font-size: 12px;
+    text-align: left;
+    font-weight: 500;
+    color: #575757;
+    font-family: "Segoe UI", Verdana, Tahoma, Helvetica, sans-serif;
+  }
+
+
+
+
+
+
+
 }

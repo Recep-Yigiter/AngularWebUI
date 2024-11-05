@@ -1,61 +1,53 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CreateTeklifModel } from 'src/app/core/models/teklifler/create-teklif-model';
 
-import { CurrencyPipe, DatePipe, formatDate } from '@angular/common';
+import { TeklifService } from 'src/app/core/services/repository/teklif.service';
+import {
+  ColDef,
+  GridApi,
+  GridReadyEvent,
+  CellClassParams,
+} from 'ag-grid-community';
+
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
+import { CariSelectModalComponents } from 'src/app/shared/utilities/modals/cari-selected-modal';
+import { StokSelectModalComponents } from 'src/app/shared/utilities/modals/stok-selected-modal';
 import { FaturaService } from 'src/app/core/services/repository/fatura.service';
 import { CreateFaturaModel } from 'src/app/core/models/faturalar/create-fatura.model';
-import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
-import { DepoSelectModalComponent } from 'src/app/shared/components/depo-select-modal/depo-select-modal.component';
-import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
+import { DepoSelectModalComponents } from 'src/app/shared/utilities/modals/depo-selected-modal';
 import { DepoBazindaStokService } from 'src/app/core/services/repository/depo-bazinda-stok.service';
+import { CariHareketService } from 'src/app/core/services/repository/cari-hareket.service';
 
 @Component({
   selector: 'app-create-alis-fatura',
   templateUrl: './create-alis-fatura.component.html',
   styleUrls: ['./create-alis-fatura.component.scss'],
-  providers: [CurrencyPipe, DatePipe],
+
 })
-export class CreateAlisFaturaComponent {
-  defaultAciklama: any;
-  kdvTutar: any;
-  iskontoSonrasiTutar: any;
-  iskontoTutar: any;
-  satirTutar: any;
-  genelToplam: any;
-  selectedFaturaHareket: any;
-  belgeNoGetCode: any;
-  dateTime: any = new Date();
-  time: any = new Date();
-  rxTime: any = new Date();
-  selectedDepo: any;
-  selectedCari: any;
-  rowData: any;
-  frameworkComponents: any;
-  defaultKDV: any = 0;
-  defaultOTV: any = 0;
-  selectedFaturaTuru: any;
-  faturaTuruAdi: any = 'Alış';
-  seriNo: any = 'AF';
-  private gridApi!: GridApi<any>;
+export class CreateAlisFaturaComponent implements OnInit {
+  rowData: any[];
   public rowSelection: 'single' | 'multiple' = 'single';
+  private gridApi!: GridApi<any>;
+  public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private FaturaService: FaturaService,
-    private modalService: NgbModal,
-    private DatePipe: DatePipe,
-    private DepoBazindaStokService: DepoBazindaStokService
+    public activeModal: NgbActiveModal,
+    private NgbModal: NgbModal,
+    private DepoBazindaStokService:DepoBazindaStokService,
+    private CariHareketService:CariHareketService
   ) {}
-
-  async ngOnInit() {
-    this.belgeNoGetKod();
-    this.getDateAndTime();
-  }
+  ngOnInit(): void {}
 
   public frm: FormGroup = this.fb.group({
     faturaTuru: [null, [Validators.required, Validators.maxLength(16)]],
@@ -64,14 +56,24 @@ export class CreateAlisFaturaComponent {
     referans: [null, [Validators.required, Validators.maxLength(16)]],
     kdv: [null, [Validators.required, Validators.maxLength(16)]],
     otv: [null, [Validators.required, Validators.maxLength(16)]],
-    eFatura: [null, [Validators.required, Validators.maxLength(16)]],
-    eArsiv: [null, [Validators.required, Validators.maxLength(16)]],
     cariId: [null],
     depoId: [null],
     aciklama: [null],
-    tarih: [null],
-    saat: [null],
+    eFatura: [null],
+    eArsiv: [null],
+
+    irsaliyeTuru:[null],
+    irsaliyeKodu:[null],
+    eFaturaNo:[null],
+    duzenleyen: [null],
+    duzenlemeTarihi: [null],
+    satirTutari: [null],
+    iskontoTutari: [null],
+    iskontoSonTutar: [null],
+    satirKdvTutari: [null],
+    toplam: [null],
   });
+
   get faturaTuru() {
     return this.frm.get('faturaTuru');
   }
@@ -90,12 +92,6 @@ export class CreateAlisFaturaComponent {
   get otv() {
     return this.frm.get('otv');
   }
-  get eFatura() {
-    return this.frm.get('eFatura');
-  }
-  get eArsiv() {
-    return this.frm.get('eArsiv');
-  }
   get cariId() {
     return this.frm.get('cariId');
   }
@@ -105,15 +101,48 @@ export class CreateAlisFaturaComponent {
   get aciklama() {
     return this.frm.get('aciklama');
   }
-  get tarih() {
-    return this.frm.get('tarih');
+  get eFatura() {
+    return this.frm.get('eFatura');
   }
-  get saat() {
-    return this.frm.get('saat');
+  get eArsiv() {
+    return this.frm.get('eArsiv');
+  }
+
+
+
+  get irsaliyeTuru() {
+    return this.frm.get('irsaliyeTuru');
+  }
+  get irsaliyeKodu() {
+    return this.frm.get('irsaliyeKodu');
+  }
+  get eFaturaNo() {
+    return this.frm.get('eFaturaNo');
+  }
+  get duzenleyen() {
+    return this.frm.get('duzenleyen');
+  }
+  get duzenlemeTarihi() {
+    return this.frm.get('duzenlemeTarihi');
+  }
+  get satirTutari() {
+    return this.frm.get('satirTutari');
+  }
+  get iskontoTutari() {
+    return this.frm.get('iskontoTutari');
+  }
+  get iskontoSonTutar() {
+    return this.frm.get('iskontoSonTutar');
+  }
+  get satirKdvTutari() {
+    return this.frm.get('satirKdvTutari');
+  }
+  get toplam() {
+    return this.frm.get('toplam');
   }
 
   colDefs: ColDef[] = [
-    { field: 'stokAdi', width: 600 },
+    { field: 'stokAdi', width: 300 },
     {
       field: 'miktar',
       editable: true,
@@ -123,8 +152,7 @@ export class CreateAlisFaturaComponent {
     {
       field: 'birimFiyat',
       editable: true,
-      valueFormatter: (params) =>
-        currencyFormatter(params.data.birimFiyat, '₺ '),
+      cellRenderer: this.CurrencyCellRendererTR,
     },
     {
       field: 'iskonto',
@@ -141,17 +169,12 @@ export class CreateAlisFaturaComponent {
     },
     { field: 'satirTutar', cellRenderer: this.CurrencyCellRendererTR },
   ];
-
-  faturaTurler: any[] = [
-    { ad: 'Alış Faturası', faturaTuru: 1, seri: 'AF' },
-    { ad: 'Satış Faturası', faturaTuru: 2, seri: 'SF' },
-  ];
-
-  kaydet() {
+  selectedIrsaliyeTuru:any
+  Kaydet() {
     const createModel = new CreateFaturaModel();
     createModel.belgeNo = this.frm.value.belgeNo;
     createModel.faturaTuru = 1;
-    createModel.seri = 'AF';
+    createModel.seri =this.frm.value.seri;
     createModel.referans = this.frm.value.referans;
     createModel.cariId = this.selectedCari.id;
     createModel.depoId = this.selectedDepo.id;
@@ -160,22 +183,42 @@ export class CreateAlisFaturaComponent {
     createModel.eFatura = this.frm.value.eFatura ? 'e-Fatura olacak' : null;
     createModel.eArsiv = this.frm.value.eArsiv ? 'e-Arşiv olacak' : null;
     createModel.aciklama = this.frm.value.aciklama;
+    createModel.hareketTipi=this.selectedIrsaliyeTuru.hareketTipi;
+    createModel.hareketId=this.selectedIrsaliyeTuru.id;
+    createModel.hareketAdi=this.selectedIrsaliyeTuru.hareketTipiAdi;
     createModel.hourId = String(new Date().valueOf());
+    createModel.faturaDurumu=true;
     createModel.faturaHareketler = this.getAllRowData();
+    
     createModel.faturaHareketler.forEach((element) => {
       element.depoId = this.selectedDepo.id;
     });
 
 
-
-    if (this.getAllRowData().length > 0) {
-       this.FaturaService.create(createModel, () => {
+    this.FaturaService.create(
+      createModel,
+      async () => {
         this.depoBazindaStokGuncelle(createModel);
-         this.router.navigate(['/menu/fatura/alis-fatura/detail'], { state: createModel })
-       }, errorMessage => { })
-    } else {
-      alert('Faturaya Satır Eklemelisiniz !');
-    }
+
+        let cariHareket = {
+          cariId: this.selectedCari.id,
+          karsiHesap:"Fatura",
+          karsiHesapAdi:null,
+          karsiHesapKodu:null,
+          islemTarihi:this.frm.value.duzenlemeTarihi,
+          islem:9,//alış faturası
+          seriNo:this.frm.value.seri,
+          borc: 0,
+          alacak: this.frmToplam,
+          aciklama: this.frm.value.aciklama,
+        };
+
+        await this.CariHareketService.create(cariHareket, () => { });
+        
+        this.activeModal.close(true);
+      },
+      (errorMessage) => {}
+    );
   }
   async depoBazindaStokGuncelle(event) {
     let depoBazindaStoklar = (
@@ -211,16 +254,24 @@ export class CreateAlisFaturaComponent {
       this.DepoBazindaStokService.create(createDepoBazindaStok, () => {});
     });
   }
-
-
-  vazgec() {
-    this.router.navigate(['/menu/fatura/alis-fatura']);
+  cikis() {
+    this.activeModal.close(false);
+  }
+  DeleteHareket() {
+    this.gridApi.applyTransaction({ remove: [this.selectedRow] });
+    this.onCellValueChanged();
+   
+    return this.rowData;
   }
 
-  FaturaHareketDelete(params) {
-    this.gridApi.applyTransaction({ remove: [this.selectedFaturaHareket] });
-    this.onCellValueChanged();
-    return this.rowData;
+  async getList(params: GridReadyEvent<any>) {
+    this.gridApi = params.api;
+    this.rowData = [];
+  }
+  rowClick(event) {
+    const selectedRows = this.gridApi.getSelectedRows()[0];
+    this.selectedRow = selectedRows;
+    this.buttonDisabled = false;
   }
 
   getAllRowData() {
@@ -229,33 +280,28 @@ export class CreateAlisFaturaComponent {
     return rowData;
   }
 
+  frmSatirTutari;
+  frmIskontoTutari;
+  frmSatirKdvTutari;
+  frmIskontoSonTutar;
+  frmToplam;
   onCellValueChanged() {
     this.getAllRowData().forEach((item) => {
-      item.toplamTutar = item.miktar * item.birimFiyat;
       item.iskontoTutar = (item.miktar * item.birimFiyat * item.iskonto) / 100;
       item.satirTutar = item.miktar * item.birimFiyat;
-      item.kdvTutar =
-        ((item.toplamTutar - item.iskontoTutar) * this.frm.value.kdv) / 100;
-    });
-    this.satirTutar = this.getAllRowData().reduce(
-      (prev: any, next: any) => prev + next.satirTutar,
-      0
-    );
-    this.iskontoTutar = this.getAllRowData().reduce(
-      (prev: any, next: any) => prev + next.iskontoTutar,
-      0
-    );
-    this.kdvTutar = this.getAllRowData().reduce(
-      (prev: any, next: any) => prev + next.kdvTutar,
-      0
-    );
-    this.iskontoSonrasiTutar = this.satirTutar - this.iskontoTutar;
-    this.genelToplam = this.iskontoSonrasiTutar + this.kdvTutar;
+      item.kdvTutar = ((item.satirTutar - item.iskontoTutar) * this.frm.value.kdv) / 100;
+      });
+
+    this.frmSatirTutari = this.getAllRowData().reduce(   (prev: any, next: any) => prev + next.satirTutar,   0 );
+    this.frmIskontoTutari = this.getAllRowData().reduce(  (prev: any, next: any) => prev + next.iskontoTutar,  0);
+    this.frmSatirKdvTutari = this.getAllRowData().reduce(  (prev: any, next: any) => prev + next.kdvTutar,  0);
+    this.frmIskontoSonTutar = this.frmSatirTutari - this.frmIskontoTutari;
+    this.frmToplam = this.frmIskontoSonTutar + this.frmSatirKdvTutari;
 
     const selectedRows = this.gridApi.getSelectedRows()[0];
 
     if (selectedRows != undefined) {
-      this.selectedFaturaHareket = selectedRows;
+      // this.selectedTeklifHareket = selectedRows;
       this.gridApi.applyTransaction({
         update: [selectedRows],
         addIndex: this.gridApi.getLastDisplayedRow() + 1,
@@ -263,86 +309,46 @@ export class CreateAlisFaturaComponent {
     }
   }
 
-  rowSelected(event) {
-    this.selectedFaturaHareket = event.data;
-  }
 
-  async getList(params: GridReadyEvent<any>) {
-    this.gridApi = params.api;
-  }
 
-  stokSelectModal() {
-    const modalRef = this.modalService.open(StokSelectModalComponent, {
+  kdvChanced() {this.onCellValueChanged()}
+  otvChanced() {this.onCellValueChanged()}
+
+  stokEkle() {
+    const modalRef = this.NgbModal.open(StokSelectModalComponents, {
       size: 'lg',
       backdrop: 'static',
     });
     modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((stoks) => {
-      if (stoks != false) {
-        stoks.forEach((stok) => {
-          stok.toplamTutar = stok.miktar * stok.birimFiyat;
-          stok.hourId = String(new Date().valueOf());
-          this.gridApi.applyTransaction({
-            add: [stok],
-            addIndex: this.gridApi.getLastDisplayedRow() + 1,
-          });
+    modalRef.result.then((stok) => {
+      if (stok != false) {
+        stok.stokId = stok.id;
+        stok.stokAdi = stok.ad;
+        stok.hourId = String(new Date().valueOf());
+        stok.miktar = 1;
+        stok.iskonto = 0;
+        stok.iskontoTutar = 0;
+        stok.satirTutar = stok.miktar * stok.birimFiyat;
+        this.gridApi.applyTransaction({
+          add: [stok],
+          addIndex: this.gridApi.getLastDisplayedRow() + 1,
         });
+        this.onCellValueChanged()
       }
     });
   }
 
-  depoSelectModal() {
-    const modalRef = this.modalService.open(DepoSelectModalComponent, {
-      size: 'lg',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((depo) => {
-      this.selectedDepo = depo;
-    });
+
+  CariSelectModalComponent: any = CariSelectModalComponents;
+  selectedCari: any;
+  CariChildFunc(event) {
+    this.selectedCari = event;
   }
 
-  cariSelectModal() {
-    const modalRef = this.modalService.open(CariSelectModalComponent, {
-      size: 'lg',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((depo) => {
-      this.selectedCari = depo;
-    });
-  }
-
-  kdvChanced() {
-    this.onCellValueChanged();
-  }
-  otvChanced() {
-    this.onCellValueChanged();
-  }
-  changed(event) {
-    this.selectedFaturaTuru = event;
-    this.defaultAciklama =
-      this.selectedFaturaTuru?.seri +
-      '-' +
-      this.frm.value.belgeNo +
-      ' no lu Alış Faturası';
-  }
-
-  async belgeNoGetKod() {
-    this.belgeNoGetCode = await this.FaturaService.GetCode(
-      () => {},
-      (error) => console.log(error)
-    );
-  }
-  getDateAndTime() {
-    this.dateTime = this.DatePipe.transform(this.dateTime, 'yyyy-MM-dd');
-
-    this.time = this.DatePipe.transform(this.time, 'hh:mm a');
-    const date = new Date();
-    let hour = this.rxTime.getHours();
-    let minuts = this.rxTime.getMinutes();
-    let NewTime = ('0' + hour).slice(-2) + ':' + ('0' + minuts).slice(-2);
-    this.time = NewTime;
+  DepoSelectModalComponent: any = DepoSelectModalComponents;
+  selectedDepo: any;
+  DepoChildFunc(event) {
+    this.selectedDepo = event;
   }
 
   CurrencyCellRendererTR(params: any) {
@@ -353,15 +359,11 @@ export class CreateAlisFaturaComponent {
     });
     return inrFormat.format(params.value);
   }
-}
 
-function currencyFormatter(currency, sign) {
-  var sansDec = currency.toFixed(2);
-  var formatted = sansDec.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  return sign + `${formatted}`;
-}
-function stringFormatter(params) {
-  var fruit = params.value;
-  var firstChar = fruit.slice(0, 1).toUpperCase();
-  return firstChar + fruit.slice(1);
+
+
+  valueChangeFunc(item){
+    this.selectedIrsaliyeTuru=item
+    console.log(this.selectedIrsaliyeTuru);
+  }
 }

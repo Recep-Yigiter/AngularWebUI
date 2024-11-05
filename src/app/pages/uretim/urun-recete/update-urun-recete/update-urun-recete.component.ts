@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiClientService } from 'src/app/core/services/api-client.service';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
 import { DeleteButtonComponent } from '../components/delete-button/delete-button.component';
 import { StokService } from 'src/app/core/services/repository/stok.service';
@@ -12,6 +12,10 @@ import { CreateUrunReceteModel } from '../core/models/create-urun-recete-model';
 import { UpdateUrunReceteModel } from '../core/models/update-urun-recete-model';
 import { OperasyonSelectModalComponent } from '../components/operasyon-select-modal/operasyon-select-modal.component';
 import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.service';
+import { StokSelectModalComponents } from 'src/app/shared/utilities/modals/stok-selected-modal';
+import { defaultColDef } from 'src/app/shared/default-col-def';
+import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
+import { UrunReceteHareketService } from 'src/app/core/services/repository/urun-recete-hareket.service';
 @Component({
   selector: 'app-update-urun-recete',
   templateUrl: './update-urun-recete.component.html',
@@ -19,267 +23,150 @@ import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.
 })
 export class UpdateUrunReceteComponent implements OnInit {
 
-  StokDataSource: any[]
-  BirimDataSource: any[]
-  getByIdDataSource: any;
-  selectedStokId: any;
-  selectedObject: any;
-  stateData: any;
+  @Input() data:any;
+  rowData: any[];
+  public rowSelection: 'single' | 'multiple' = 'single';
+  private gridApi!: GridApi<any>;
+  public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
+  public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private modalService: NgbModal,
-    private StokService: StokService,
     private UrunReceteService: UrunReceteService,
-
-  ) {
-    this.stateData = history.state
-    this.frameworkComponents = {
-      buttonRenderer: DeleteButtonComponent,
-    }
-  }
-
-  //---------------------------------------------------------------------------------------------------------------------------------------ngOnInit
-  async ngOnInit() {
-    this.stokSelectDropdown();
-    this.stateControl();
-
-  }
-
-
-
-  public frm: FormGroup = this.fb.group({
-    miktar: [null, [Validators.required, Validators.maxLength(16)]],
-    stokId: [null, [Validators.required, Validators.maxLength(16)]],
-    referans: [null, [Validators.required, Validators.maxLength(16)]],
-    boMTuru: [null, [Validators.required, Validators.maxLength(16)]],
-
-  })
-  get miktar() { return this.frm.get('miktar') }
-  get stokId() { return this.frm.get('stokId') }
-  get referans() { return this.frm.get('referans') }
-  get boMTuru() { return this.frm.get('boMTuru') }
-
-
-
-
-
-
-
-
- 
-  rowData: any[];
-  rowData2:any[];
-  frameworkComponents: any;
-  public rowSelection: 'single' | 'multiple' = 'single';
-  private gridApi!: GridApi<any>;
-  private gridApiOperasyonlar!: GridApi<any>;
- 
+    private UrunReceteHareketService:UrunReceteHareketService,
+    public activeModal: NgbActiveModal,
+    private NgbModal: NgbModal
+  ) {}
+  ngOnInit(): void {}
 
   colDefs: ColDef[] = [
-    { field: "stokAdi", width: 600 },
-    {
-      field: "miktar",
-      editable: true,
-      onCellValueChanged: (event) => this.receteBilesenUpdate(event)
-    },
-    { field: "birimAdi" },
-    {
-      field: "", width: 50,
-      cellRenderer: 'buttonRenderer',
-      cellRendererParams: {
-        onClick: this.receteBilesenDelete.bind(this),
-        label: 'Click 1'
-      }
-    },
-
+    { field: 'stokKodu', headerName: 'Stok Kodu', width: 100 },
+    { field: 'stokAdi', headerName: 'Stok Adı', width: 150 },
+    { field: 'miktar', headerName: 'Miktar', width: 80 ,editable:true},
+    { field: 'birimAdi', headerName: 'Birim Adı', width: 100 },
   ];
 
-  colDefs2: ColDef[] = [
-    { field: "ad", width: 600, editable: true,
-    onCellValueChanged: (event) => this.operasyonUpdate(event) },
-    { field: "isMerkeziAdi", },
-    { field: "isMerkeziKodu" },
-    {
-      field: "", width: 50,
-      cellRenderer: 'buttonRenderer',
-      cellRendererParams: {
-        onClick: this.onDeleteOperasyon.bind(this),
-        label: 'Click 1'
-      }
-    },
+  public frm: FormGroup = this.fb.group({
+    ad: [null, [Validators.required]],
+    kod: [null, [Validators.required]],
+    stokId: [null, [Validators.required]],
+    stokAdi: [null, [Validators.required]],
+    stokKodu: [null, [Validators.required]],
+    birimAdi: [null, [Validators.required]],
+  });
 
-  ];
+  get ad() {
+    return this.frm.get('ad');
+  }
+  get kod() {
+    return this.frm.get('kod');
+  }
+  get stokId() {
+    return this.frm.get('stokId');
+  }
+  get stokAdi() {
+    return this.frm.get('stokAdi');
+  }
+  get stokKodu() {
+    return this.frm.get('stokKodu');
+  }
+  get birimAdi() {
+    return this.frm.get('birimAdi');
+  }
+
+  Kaydet() {
+    const createModel = new CreateUrunReceteModel();
+    this.frm.value.id=this.data.id
+    this.frm.value.ad = this.frm.value.ad;
+    this.frm.value.kod = this.frm.value.kod;
+    this.frm.value.stokId=this.selectedStok?.id ? this.selectedStok?.id : this.data.stokId;
+    this.frm.value.stokAdi=this.selectedStok?.ad ? this.selectedStok?.ad : this.data.stokAdi;
+    this.frm.value.stokKodu=this.selectedStok?.kod ? this.selectedStok?.kod : this.data.stokKodu;
+    this.frm.value.hourId = String(new Date().valueOf());
+    this.frm.value.aciklama = this.frm.value.aciklama;
+    this.frm.value.urunReceteHareketler = this.getAllRowData();
 
 
 
 
+    this.data.urunReceteHareketler.forEach(element => {
+      this.UrunReceteHareketService.delete(element.id)
+    });
+
+   this.UrunReceteService.delete(this.data.id)
+        this.UrunReceteService.create(this.frm.value, () => {
+       this.activeModal.close(true)
+     }, errorMessage => {
+  
+     })
+
+
+
+  }
+  getAllRowData() {
+    let rowData = [];
+    this.gridApi.forEachNode((node) => rowData.push(node.data));
+    return rowData;
+  }
+  cikis() {
+    this.activeModal.close(false);
+  }
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
-
+    this.rowData = this.data.urunReceteHareketler;
+  }
+  rowClick(event) {
+    const selectedRows = this.gridApi.getSelectedRows()[0];
+    this.selectedRow = selectedRows;
+    this.buttonDisabled = false;
   }
 
-  filterSideMenu() {
-    var element = document.getElementById("filter_menu");
-    element.classList.toggle("mystyle");
-
-  }
-
-  async stateControl() {
-    if (this.stateData?.id) {
-
-      // this.getByIdDataSource = (await this.UrunReceteService.getById(this.stateData.id)).items;
-      // this.rowData = this.getByIdDataSource.urunReceteBilesenler;
-      // this.rowData2 = this.getByIdDataSource.operasyonlar;
-    }
-    else {
-      this.rowData = this.stateData.urunReceteBilesenler;
-      this.rowData2 = this.stateData.operasyonlar;
-
-    }
-  }
-
-  async stokSelectDropdown() {
-    this.StokDataSource = (await this.StokService.GetListTreeView(() => { })).items;
-  }
-
-  stokSelectListModal() {
-    const modalRef = this.modalService.open(StokSelectModalComponent, { size: 'lg', backdrop: 'static' });
+  Ekle() {
+    const modalRef = this.NgbModal.open(StokSelectModalComponents, {
+      size: 'lg',
+      backdrop: 'static',
+    });
     modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
+    modalRef.result.then((stok) => {
+      if (stok != false) {
+        let item = {
+          stokId: stok.id,
+          stokAdi: stok.ad,
+          stokKodu: stok.kod,
+          miktar:1,
+          birimAdi:stok.birimAdi,
+          birimKodu:stok.birimKodu,
+          birimFiyat:stok.birimFiyat,
+          // urunReceteId:null
+        };
 
-    modalRef.result.then((userResponse) => {
-
-      if (userResponse != false) {
-
-        userResponse.forEach(element => {
-          const updateData = {
-            stokId: element.stokId,
-            urunReceteId: this.stateData.id,
-            miktar: 1,
-          }
-
-          // this.UrunReceteBilesen.create(updateData, () => { })
-          this.gridApi.applyTransaction({ add: [element], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
+        this.gridApi.applyTransaction({
+          add: [item],
+          addIndex: this.gridApi.getLastDisplayedRow() + 1,
         });
-
-
       }
-
     });
   }
 
-  receteUpdate() {
-    const createModel = new UpdateUrunReceteModel();
-    createModel.id = this.stateData.id;
-    createModel.miktar = Number(this.frm.value.miktar);
-    createModel.stokId = this.selectedStokId;
-    createModel.stokAdi = this.selectedObject?.ad ? this.selectedObject?.ad : this.stateData.stokAdi;
-    createModel.stokKodu = this.selectedObject?.kod ? this.selectedObject?.kod : this.stateData.stokKodu;
-    createModel.referans = this.frm.value.referans;
-    createModel.boMTuru = this.frm.value.boMTuru;
-    createModel.hourId = this.stateData.hourId;
-    createModel.urunReceteBilesenler = this.getAllRowData();
-
-    this.UrunReceteService.update(createModel, () => {
-      this.router.navigate(['/pages/urun-recete/detail-urun-recete'], { state: this.stateData })
-    })
+  deleteRowData() {
+    this.gridApi.applyTransaction({ remove: [this.selectedRow] });
   }
 
-  receteBilesenUpdate(event) {
-
-    const editdata = {
-      id: event.data.id,
-      stokId: event.data.stokId,
-      urunReceteId: this.stateData.id,
-      miktar: event.data.miktar,
-    }
-
-    // this.UrunReceteBilesen.update(editdata, () => { })
-
+  selectedStok: any;
+  StokChildFunc(event) {
+    this.selectedStok = event;
   }
 
-  receteBilesenDelete(params) {
-    this.gridApi.applyTransaction({ remove: [params.rowData] });
-    // this.UrunReceteBilesen.delete(params.rowData.id, () => { })
-    return this.rowData;
-  }
-  changed(event) {
-    this.selectedStokId = event;
-    if (this.StokDataSource != undefined) {
-      this.selectedObject = this.StokDataSource.find((el: any) => {
-        return el?.id == this.selectedStokId;
-      });
+  StokSelectModalComponent: any = StokSelectModalComponents;
 
-
-    }
-
-  }
-
-  getAllRowData() {
-    let rowData = [];
-    this.gridApi.forEachNode(node => rowData.push(node.data));
-    return rowData;
-  }
-
-  vazgec() {
-    this.stateData.urunReceteBilesenler = this.getAllRowData()
-    this.router.navigate(['/pages/urun-recete/detail-urun-recete'], { state: this.stateData })
-  }
-
-
-
-
-
-  getListOperasyonlar(params: GridReadyEvent<any>) {
-    this.gridApiOperasyonlar = params.api
-  }
-
-  operasyonUpdate(event) {
-
-    const editdata = {
-      id: event.data.id,
-      stokId: event.data.stokId,
-      urunReceteId: this.stateData.id,
-      miktar: event.data.miktar,
-    }
-
-    // this.UrunReceteBilesen.update(editdata, () => { })
-
-  }
-
-  operasyonSelectModal(){
-    const modalRef = this.modalService.open(OperasyonSelectModalComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Operasyon';
-
-    modalRef.result.then((userResponse) => {
-
-      if (userResponse != false) {
-        this.gridApiOperasyonlar.applyTransaction({ add: [userResponse], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
-        // userResponse.forEach(element => {
-        //   const updateData = {
-        //     stokId: element.stokId,
-        //     urunReceteId: this.stateData.id,
-        //     miktar: 1,
-        //   }
-
-        //    this.UrunReceteBilesen.create(updateData, () => { })
-         
-        // });
-
-
-      }
-
-    });
-  }
-
-  onDeleteOperasyon(params) {
-    this.gridApiOperasyonlar.applyTransaction({ remove: [params.rowData] });
-    return this.rowData2;
-  }
-
-
-
-
-
+  
 }
+
+
+
+
+ 

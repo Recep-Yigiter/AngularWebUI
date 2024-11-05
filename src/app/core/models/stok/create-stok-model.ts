@@ -10,7 +10,7 @@ export class CreateStokModel {
   birimId?: any;
   birimAdi?: any;
   hourId?: any;
-
+  muhasebeKodlari?:any[]
 }
 
 

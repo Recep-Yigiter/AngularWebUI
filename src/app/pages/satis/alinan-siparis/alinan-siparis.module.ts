@@ -12,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RouterModule } from '@angular/router';
 
-
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyInputDirective } from 'src/app/shared/directives/currency-input.directive';
 import { NumberInputDirective } from 'src/app/shared/directives/number-input.directive';
@@ -22,7 +21,11 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 
 import { DesignComponent } from './core/design/design.component';
 import { AngularSplitModule } from 'angular-split';
-
+import { AlinanSiparisFormLabelComponent } from './core/components/alinan-siparis-form-label';
+import { AlinanSiparisFormDateComponent } from './core/components/alinan-siparis-form-date';
+import { AlinanSiparisFormInputSelectComponent } from './core/components/alinan-siparis-form-input-select';
+import { AlinanSiparisFormDropDownComponent } from './core/components/alinan-siparis-form-dropdown';
+import { AlinanSiparisFormNumberInputComponent } from './core/components/alinan-siparis-form-number-input';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,12 @@ import { AngularSplitModule } from 'angular-split';
     UpdateAlinanSiparisComponent,
     DetailAlinanSiparisComponent,
     ListAlinanSiparisComponent,
-DesignComponent
+    DesignComponent,
+    AlinanSiparisFormLabelComponent,
+    AlinanSiparisFormDateComponent,
+    AlinanSiparisFormInputSelectComponent,
+    AlinanSiparisFormDropDownComponent,
+    AlinanSiparisFormNumberInputComponent,
   ],
   imports: [
     CommonModule,
@@ -46,13 +54,27 @@ DesignComponent
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
 
     RouterModule.forChild([
-      { path: "list", component: ListAlinanSiparisComponent, canActivate: [authGuard] },
-      { path: "create", component: CreateAlinanSiparisComponent, canActivate: [authGuard] },
-      { path: "update", component: UpdateAlinanSiparisComponent, canActivate: [authGuard] },
-      { path: "detail", component: DetailAlinanSiparisComponent, canActivate: [authGuard] },
-
-    ])
+      {
+        path: 'list',
+        component: ListAlinanSiparisComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'create',
+        component: CreateAlinanSiparisComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'update',
+        component: UpdateAlinanSiparisComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'detail',
+        component: DetailAlinanSiparisComponent,
+        canActivate: [authGuard],
+      },
+    ]),
   ],
-
 })
-export class AlinanSiparisModule { }
+export class AlinanSiparisModule {}

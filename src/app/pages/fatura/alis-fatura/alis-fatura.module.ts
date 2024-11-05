@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AlisFaturaComponent } from './alis-fatura.component';
 import { CreateAlisFaturaComponent } from './create-alis-fatura/create-alis-fatura.component';
 import { UpdateAlisFaturaComponent } from './update-alis-fatura/update-alis-fatura.component';
-import { DetailAlisFaturaComponent } from './detail-alis-fatura/detail-alis-fatura.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridAngular } from 'ag-grid-angular';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,6 +18,14 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { DesignComponent } from './core/design/design.component';
 
 import { AngularSplitModule } from 'angular-split';
+import { AlisFaturaFormLabelComponent } from './core/components/alis-fatura-form-label';
+import { AlisFaturaFormDateComponent } from './core/components/alis-fatura-form-date';
+import { AlisFaturaFormInputSelectComponent } from './core/components/alis-fatura-form-input-select';
+import { AlisFaturaFormDropDownComponent } from './core/components/alis-fatura-form-dropdown';
+import { AlisFaturaFormNumberInputComponent } from './core/components/alis-fatura-form-number-input';
+
+import { AlisFaturaFormCheckboxComponent } from './core/components/alis-fatura-farm-checkbox';
+import { DividerModule } from 'primeng/divider';
 
 
 @NgModule({
@@ -26,9 +33,15 @@ import { AngularSplitModule } from 'angular-split';
     AlisFaturaComponent,
     CreateAlisFaturaComponent,
     UpdateAlisFaturaComponent,
-    DetailAlisFaturaComponent,
     ListAlisFaturaComponent,
-    DesignComponent
+    DesignComponent,
+    AlisFaturaFormLabelComponent,
+    AlisFaturaFormDateComponent,
+    AlisFaturaFormInputSelectComponent,
+    AlisFaturaFormDropDownComponent,
+    AlisFaturaFormNumberInputComponent,
+    AlisFaturaFormCheckboxComponent,
+
   ],
   imports: [
     CommonModule,
@@ -40,13 +53,13 @@ import { AngularSplitModule } from 'angular-split';
     MatCheckboxModule,
     MatBadgeModule,
     AngularSplitModule,
+    DividerModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
       { path: "list", component: ListAlisFaturaComponent, canActivate: [authGuard] },
       { path: "create", component: CreateAlisFaturaComponent, canActivate: [authGuard] },
       { path: "update", component: UpdateAlisFaturaComponent, canActivate: [authGuard] },
-      { path: "detail", component: DetailAlisFaturaComponent, canActivate: [authGuard] },
-
+  
     ])
   ]
 })

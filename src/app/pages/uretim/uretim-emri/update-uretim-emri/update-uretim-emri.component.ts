@@ -123,7 +123,7 @@ export class UpdateUretimEmriComponent implements OnInit {
   CariSelectModalComponent: any = CariSelectModalComponents;
   DepoSelectModalComponent: any = DepoSelectModalComponents;
   UrunReceteSelectModalComponent: any = UrunReceteSelectModalComponents;
-  async submit() {
+  async Kaydet() {
     this.frm.value.id = this.data.id;
     this.frm.value.uretimDurumu = this.selectedObject?.ad
       ? this.selectedObject.ad
@@ -155,10 +155,15 @@ export class UpdateUretimEmriComponent implements OnInit {
           this.depoBazindaStokGuncelle(this.frm.value);
         }
 
-        this.activeModal.close();
+        this.activeModal.close(true);
       },
       (errorMessage) => {}
     );
+  }
+
+
+  cikis(){
+    this.activeModal.close(false)
   }
 
   selectedCari: any;

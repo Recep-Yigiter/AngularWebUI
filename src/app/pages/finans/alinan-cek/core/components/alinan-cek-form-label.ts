@@ -32,7 +32,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/cor
                 font-style: oblique;">
 
                 <!-- <input [formControl]="formControlNames" [(ngModel)]="field" class="form-control shadow-none form-control-required" id="exampleFormControlInput1"> -->
-            <input  [(ngModel)]="field"  [formControl]="formControlNames"  class="form-control shadow-none form-control-required" id="exampleFormControlInput1"> 
+            <input [readonly]="readOnly" [(ngModel)]="field"  [formControl]="formControlNames"  class="form-control shadow-none form-control-required" id="exampleFormControlInput1"> 
             </td>
         </tr>
 
@@ -46,6 +46,7 @@ export class AlinanCekFormLabelComponent implements AfterViewInit {
     @Input() field: any;
     @Input() span: any;
     @Input() labelNone: any=true;
+    @Input() readOnly: boolean=false;
 
 
     constructor(private ref: ChangeDetectorRef) {

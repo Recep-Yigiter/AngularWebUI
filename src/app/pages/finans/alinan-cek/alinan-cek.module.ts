@@ -51,9 +51,9 @@ import { AlinanCekFormInputSelectComponent } from './core/components/alinan-cek-
     RouterModule.forChild([
 
       { path: "list", component: ListAlinanCekComponent, canActivate: [authGuard] },
-      { path: "create", component: CreateAlinanCekComponent, canActivate: [authGuard] },
-      { path: "update", component: UpdateAlinanCekComponent, canActivate: [authGuard] },
-      { path: "detail", component: DetailAlinanCekComponent, canActivate: [authGuard] },
+      // { path: "create", component: CreateAlinanCekComponent, canActivate: [authGuard] },
+      // { path: "update", component: UpdateAlinanCekComponent, canActivate: [authGuard] },
+      // { path: "detail", component: DetailAlinanCekComponent, canActivate: [authGuard] },
 
     ])
   ]

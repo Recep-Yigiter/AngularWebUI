@@ -17,6 +17,11 @@ import { ButtonModule } from 'primeng/button';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import { DesignComponent } from './core/design/design.component';
 import { AngularSplitModule } from 'angular-split';
+import { VerilenTeklifFormLabelComponent } from './core/components/verilen-teklif-form-label';
+import { VerilenTeklifFormDateComponent } from './core/components/verilen-teklif-form-date';
+import { VerilenTeklifFormInputSelectComponent } from './core/components/verilen-teklif-form-input-select';
+import { VerilenTeklifFormDropDownComponent } from './core/components/verilen-teklif-form-dropdown';
+import { VerilenTeklifFormNumberInputComponent } from './core/components/verilen-teklif-form-number-input';
 
 
 @NgModule({
@@ -26,7 +31,12 @@ import { AngularSplitModule } from 'angular-split';
     UpdateVerilenTeklifComponent,
     DetailVerilenTeklifComponent,
     ListVerilenTeklifComponent,
-    DesignComponent
+    DesignComponent,
+    VerilenTeklifFormLabelComponent,
+    VerilenTeklifFormDateComponent,
+    VerilenTeklifFormInputSelectComponent,
+    VerilenTeklifFormDropDownComponent,
+    VerilenTeklifFormNumberInputComponent
   ],
   imports: [
     CommonModule,

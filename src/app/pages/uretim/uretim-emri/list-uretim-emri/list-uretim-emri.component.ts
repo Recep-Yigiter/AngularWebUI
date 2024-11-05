@@ -32,11 +32,13 @@ import { DeleteModalComponents } from 'src/app/shared/utilities/confirms/delete-
 })
 export class ListUretimEmriComponent implements OnInit {
   rowData: any[];
-
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
   public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
   public defaultColDef = defaultColDef;
+  buttonDisabled: boolean = true;
+  selectedRow: any;
+
   colDefs: ColDef[] = [
     {
       field: 'uretimDurumu',
@@ -151,68 +153,74 @@ export class ListUretimEmriComponent implements OnInit {
     return arr.filter((c) => !seen.has(c[comp]) && seen.add(c[comp]));
   };
 
-  getAllRowData() {
-    let rowData = [];
-    this.gridApi.forEachNode((node) => rowData.push(node.data));
 
-    return rowData;
-  }
 
-  selectedUretimEmri
-  onSelectionChanged() {
+  rowClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.selectedUretimEmri=selectedRows
+    this.selectedRow = selectedRows;
+    this.buttonDisabled = false;
   }
   rowDblClick() {
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-    if (selectedRows.uretimDurumu != 'Sevk Edildi') {
-      this.updateUretimEmriModal(selectedRows);
+    this.updateModal();
+  }
+
+  createModal() {
+    const modalRef = this.NgbModal.open(CreateUretimEmriComponent, {
+      size: 'lg',
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.data = 'UrunRecete Kartı';
+
+    modalRef.result.then(async (item) => {
+      if (item) {
+        this.refresh();
+      }
+    });
+  }
+
+  updateModal() {
+    if (this.selectedRow) {
+      const modalRef = this.NgbModal.open(UpdateUretimEmriComponent, {
+        size: 'lg',
+        backdrop: 'static',
+      });
+      modalRef.componentInstance.data = this.selectedRow;
+
+      modalRef.result.then(async (item) => {
+        if (item == true) {
+          this.refresh();
+        }
+      });
     }
   }
 
-  createUretimEmriModal() {
-    const modalRef = this.NgbModal.open(CreateUretimEmriComponent, {
-      size: 'md',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-
-    modalRef.result.then(async (bankaHesap) => {
-      this.rowData = (await this.UretimEmriService.GetList(() => {})).items;
-    });
+  async refresh() {
+    window.location.reload();
   }
 
-  updateUretimEmriModal(event) {
-    const modalRef = this.NgbModal.open(UpdateUretimEmriComponent, {
-      size: 'md',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.data = event;
-
-    modalRef.result.then(async (bankaHesap) => {
-      this.rowData = (await this.UretimEmriService.GetList(() => {})).items;
-    });
-  }
-
-
-  
   delete() {
-    const modalRef = this.NgbModal.open(DeleteModalComponents, {
-      size: 'sm',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((event) => {
-      if (event == true) {
-        this.UretimEmriService.delete(this.selectedUretimEmri.id, () => {
-          this.getAllRow()
-        });
-      }
-    });
-    //
+    if (this.selectedRow) {
+      const modalRef = this.NgbModal.open(DeleteModalComponents, {
+        size: 'sm',
+        backdrop: 'static',
+      });
+      modalRef.result.then((event) => {
+        if (event == true) {
+
+
+          this.UretimEmriService.delete(this.selectedRow.id,()=>{
+            this.refresh();
+          });
+
+
+        }
+      });
+    }
+  }
+  filter: boolean = false;
+  filtrele() {
+    this.filter = !this.filter;
   }
 
- async getAllRow() {
-    this.rowData =(await this.UretimEmriService.GetList(() => {})).items;
-  }
+
 }
