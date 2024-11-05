@@ -19,6 +19,8 @@ import { VirmanCariFormInputSelectComponent } from './core/components/virman-car
 import { VirmanCariFormDropDownComponent } from './core/components/virman-cari-form-dropdown';
 import {DividerModule} from 'primeng/divider';
 import { VirmanBankaComponent } from './virman-banka/virman-banka.component';
+import { VirmanKasaComponent } from './virman-kasa/virman-kasa.component';
+import { VirmanGenelComponent } from './virman-genel/virman-genel.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { VirmanBankaComponent } from './virman-banka/virman-banka.component';
     VirmanCariFormInputSelectComponent,
     VirmanCariFormDropDownComponent,
     VirmanBankaComponent,
+    VirmanKasaComponent,
+    VirmanGenelComponent,
   ],
   imports: [
     CommonModule,

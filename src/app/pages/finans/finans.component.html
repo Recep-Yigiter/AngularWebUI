@@ -1,6 +1,3 @@
-
-
-
 <nav class="top-bar" style="height: 5.4rem; background: #fbfbfb; line-height: 100%;">
   <ul class="title-area">
     <li class="name" [routerLink]="['/menu']">
@@ -17,90 +14,93 @@
       <div style="display: grid;">
         <div style="height: 4.1rem;">
           <div class="buton-grup">
-  
-  
-           
-  
-            
-            <button  type="button" data-bs-toggle="dropdown" aria-expanded="false"
-              class="btn topbar-button">
-  
+
+
+
+
+
+            <button type="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn topbar-button">
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/cari.png" alt="">
               </div>
-  
+
               <span class="button-label" style="    display: flex;
               align-items: center;
               gap: 5px;">Cari <i class="fa-solid fa-sort-down sort-down-icon"></i>
-  
+
               </span>
-  
+
             </button>
             <ul class="dropdown-menu topbar-dropdown-menu">
-              <li  [routerLink]="['/menu/finans/cari/cari-hesap']"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Hesap İzleme</a></li>
+              <li [routerLink]="['/menu/finans/cari/cari-hesap']"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Cari Hesap İzleme</a></li>
               <li [routerLink]="['/menu/finans/cari/cari-hareketler']"><a class="dropdown-item yks-dropdown-item"
                   style="color: #575757 !important;">Cari Hareket İzleme</a></li>
-  
+
             </ul>
-  
-  
+
+
             <button type="button" type="button" data-bs-toggle="dropdown" aria-expanded="false"
               class="btn topbar-button">
-  
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/banka.png" alt="">
               </div>
-  
+
               <span class="button-label" style="    display: flex;
               align-items: center;
               gap: 5px;">Banka <i class="fa-solid fa-sort-down sort-down-icon"></i>
-  
+
               </span>
-  
+
             </button>
 
             <ul class="dropdown-menu topbar-dropdown-menu">
-              <li [routerLink]="['/menu/finans/banka/banka-hesap']"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Hesap İzleme</a></li>
-              <li [routerLink]="['/menu/finans/banka/banka-hesap-hareketler']"><a class="dropdown-item yks-dropdown-item"
-                  style="color: #575757 !important;">Banka Hareket İzleme</a></li>
-  
+              <li [routerLink]="['/menu/finans/banka/banka-hesap']"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Banka Hesap İzleme</a></li>
+              <li [routerLink]="['/menu/finans/banka/banka-hesap-hareketler']"><a
+                  class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Hareket İzleme</a>
+              </li>
+
             </ul>
-  
-  
-  
+
+
+
             <button data-bs-toggle="dropdown" aria-expanded="false" type="button" type="button"
               class="btn topbar-button">
-  
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/kasa.png" alt="">
               </div>
-  
+
               <span class="button-label" style="    display: flex;
               align-items: center;
               gap: 5px;">Kasa <i class="fa-solid fa-sort-down sort-down-icon"></i>
-  
+
               </span>
-  
+
             </button>
             <ul class="dropdown-menu topbar-dropdown-menu">
-              <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Hesap İzleme</a></li>
-              <li [routerLink]="['/menu/finans/alinan-cek/list']"><a class="dropdown-item yks-dropdown-item"
+              <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Hesap İzleme</a>
+              </li>
+              <li [routerLink]="['/menu/finans/kasa/kasa-hareketler']"><a class="dropdown-item yks-dropdown-item"
                   style="color: #575757 !important;">Kasa Hareket İzleme</a></li>
-  
-            </ul>
-  
 
-  
-   
-            
-  
+            </ul>
+
+
+
+
+
+
           </div>
-  
-  
+
+
         </div>
         <div class="buton-grup-label">Hesap İzleme</div>
-  
-  
+
+
       </div>
     </div>
 
@@ -109,75 +109,75 @@
       <div style="display: grid;">
         <div style="height: 4.1rem;">
           <div class="buton-grup">
-  
 
 
-            <button  type="button" type="button" class="btn topbar-button" >
-  
+
+            <button type="button" type="button" class="btn topbar-button">
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/nakit.png" alt="">
               </div>
-  
+
               <span class="button-label">Nakit
-  
+
               </span>
-  
+
             </button>
-            <button (click)="MusteriCekleri()" type="button" type="button" class="btn topbar-button" >
-  
+            <button (click)="MusteriCekleri()" type="button" type="button" class="btn topbar-button">
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/cek.png" alt="">
               </div>
-  
+
               <span class="button-label"> Al. Çek
-  
+
               </span>
-  
+
             </button>
-           
-  
-            
-            <button (click)="KendiCeklerimiz()" type="button" type="button" class="btn topbar-button" >
-  
+
+
+
+            <button (click)="KendiCeklerimiz()" type="button" type="button" class="btn topbar-button">
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/cek.png" alt="">
               </div>
-  
+
               <span class="button-label"> V. Çek
-  
-              </span>
-  
-            </button>
-           
-  
-            
 
-            <button (click)="MusteriSenetleri()" type="button" type="button" class="btn topbar-button" >
-  
+              </span>
+
+            </button>
+
+
+
+
+            <button (click)="MusteriSenetleri()" type="button" type="button" class="btn topbar-button">
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/cek.png" alt="">
               </div>
-  
+
               <span class="button-label"> Al. Senedi
-  
+
               </span>
-  
+
             </button>
 
-  
-            <button (click)="KendiSenetlerimiz()" type="button" type="button" class="btn topbar-button" >
-  
+
+            <button (click)="KendiSenetlerimiz()" type="button" type="button" class="btn topbar-button">
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/cek.png" alt="">
               </div>
-  
+
               <span class="button-label"> B. Senedi
-  
+
               </span>
-  
+
             </button>
 
-          
+
             <p-divider layout="vertical"></p-divider>
 
 
@@ -187,43 +187,43 @@
               <button (click)="MusteriCekSenetleri()" style="display: flex;
               justify-content: center;
               align-items: center;
-              gap: 5px;    padding: 0 12px;" type="button" type="button" class="btn topbar-button" >
-  
+              gap: 5px;    padding: 0 12px;" type="button" type="button" class="btn topbar-button">
+
                 <div class="img-container">
                   <img style="width: 15px;height: 15px;" src="../../../assets/icons/finans/cek.png" alt="">
                 </div>
-    
+
                 <span class="button-label"> Alınan Ç/S</span>
-    
+
               </button>
-  
-    
-              <button (click)="KendiCekSenetlerimiz()"  style="display: flex;
+
+
+              <button (click)="KendiCekSenetlerimiz()" style="display: flex;
               justify-content: center;
               align-items: center;
-              gap: 5px;    padding: 0 12px;" type="button" type="button" class="btn topbar-button" >
-    
+              gap: 5px;    padding: 0 12px;" type="button" type="button" class="btn topbar-button">
+
                 <div class="img-container">
                   <img style="width: 15px;height: 15px;" src="../../../assets/icons/finans/cek.png" alt="">
                 </div>
-    
+
                 <span class="button-label"> Verilen Ç/S</span>
-    
+
               </button>
 
 
             </div>
-  
-   
-            
-  
+
+
+
+
           </div>
-  
-  
+
+
         </div>
         <div class="buton-grup-label">Hareketler</div>
-  
-  
+
+
       </div>
     </div>
 
@@ -232,68 +232,78 @@
         <div style="height: 4.1rem;">
           <div class="buton-grup">
             <div class="buton-grup">
-  
+
 
               <button data-bs-toggle="dropdown" aria-expanded="false" type="button" type="button"
                 class="btn topbar-button">
-    
+
                 <div class="img-container">
                   <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/dekont.png" alt="">
                 </div>
-    
+
                 <span class="button-label" style="    display: flex;
                 align-items: center;
                 gap: 5px;">Virmanlar <i class="fa-solid fa-sort-down sort-down-icon"></i>
                 </span>
-    
+
               </button>
               <ul class="dropdown-menu topbar-dropdown-menu">
-                <li (click)="virmanCariModal()"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari</a></li>
-                <li (click)="virmanBankaModal()"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka </a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa</a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Genel Virmanlar</a></li>
-                
-    
+                <li (click)="virmanCariModal()"><a class="dropdown-item yks-dropdown-item"
+                    style="color: #575757 !important;">Cari</a></li>
+                <li (click)="virmanBankaModal()"><a class="dropdown-item yks-dropdown-item"
+                    style="color: #575757 !important;">Banka </a></li>
+                <li (click)="virmanKasaModal()"><a class="dropdown-item yks-dropdown-item"
+                    style="color: #575757 !important;">Kasa</a></li>
+                <li (click)="virmanGenelModal()"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Genel Virmanlar</a>
+                </li>
+
+
               </ul>
-    
+
             </div>
-  
-  
+
+
             <div class="buton-grup">
-  
+
               <button data-bs-toggle="dropdown" aria-expanded="false" type="button" type="button"
                 class="btn topbar-button">
-    
+
                 <div class="img-container">
                   <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/dekont.png" alt="">
                 </div>
-    
+
                 <span class="button-label" style="    display: flex;
                 align-items: center;
                 gap: 5px;">Dekontlar <i class="fa-solid fa-sort-down sort-down-icon"></i>
                 </span>
-    
+
               </button>
               <ul class="dropdown-menu topbar-dropdown-menu">
-                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Borç Dekontu</a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Alacak Dekontu</a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Borç Dekontu</a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Alacak Dekontu</a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Borç Dekontu</a></li>
-                <li ><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Alacak Dekontu</a></li>
-                
-    
+                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Borç Dekontu</a>
+                </li>
+                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Alacak
+                    Dekontu</a></li>
+                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Borç Dekontu</a>
+                </li>
+                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Alacak
+                    Dekontu</a></li>
+                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Borç Dekontu</a>
+                </li>
+                <li><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Alacak
+                    Dekontu</a></li>
+
+
               </ul>
-    
+
             </div>
 
           </div>
 
-  
+
         </div>
         <div class="buton-grup-label">V/D </div>
-  
-  
+
+
       </div>
     </div>
 
@@ -302,38 +312,43 @@
       <div style="display: grid;">
         <div style="height: 4.1rem;">
           <div class="buton-grup">
-  
+
 
             <button data-bs-toggle="dropdown" aria-expanded="false" type="button" type="button"
               class="btn topbar-button">
-  
+
               <div class="img-container">
                 <img style="width: 35px;height: 35px;" src="../../../assets/icons/finans/kasa.png" alt="">
               </div>
-  
+
               <span class="button-label" style="    display: flex;
               align-items: center;
               gap: 5px;">Hesap <i class="fa-solid fa-sort-down sort-down-icon"></i>
               </span>
-  
+
             </button>
             <ul class="dropdown-menu topbar-dropdown-menu">
-              <li [routerLink]="['/menu/finans/cari/list']"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Listesi</a></li>
-              <li [routerLink]="['/menu/finans/cari/cari-toplam']"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Cari Toplam İzleme</a></li>
-              <li [routerLink]="['/menu/finans/kasa/list']"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Kasa Toplam İzleme</a></li>
-              <li [routerLink]="['/menu/finans/banka-hesap/list']"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Banka Hesap Toplam İzleme</a></li>
-              <li (click)="cekSenetListesi()"><a class="dropdown-item yks-dropdown-item" style="color: #575757 !important;">Çek/Senet Listesi</a></li>
-              
-  
+              <li [routerLink]="['/menu/finans/cari/list']"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Cari Listesi</a></li>
+              <li [routerLink]="['/menu/finans/cari/cari-toplam']"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Cari Toplam İzleme</a></li>
+              <li [routerLink]="['/menu/finans/kasa/list']"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Kasa Toplam İzleme</a></li>
+              <li [routerLink]="['/menu/finans/banka-hesap/list']"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Banka Hesap Toplam İzleme</a></li>
+              <li (click)="cekSenetListesi()"><a class="dropdown-item yks-dropdown-item"
+                  style="color: #575757 !important;">Çek/Senet Listesi</a></li>
+
+
             </ul>
-  
+
           </div>
-  
-  
+
+
         </div>
         <div class="buton-grup-label">Toplam </div>
-  
-  
+
+
       </div>
     </div>
 
@@ -445,5 +460,5 @@
 </nav>
 
 <div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
-  <router-outlet ></router-outlet>
+  <router-outlet></router-outlet>
 </div>

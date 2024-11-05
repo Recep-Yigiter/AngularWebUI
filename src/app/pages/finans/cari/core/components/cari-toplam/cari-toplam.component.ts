@@ -20,11 +20,10 @@ import { ListCariHareketComponent } from '../list-cari-hareket/list-cari-hareket
 import { CariHesapComponent } from '../cari-hesap/cari-hesap.component';
 import { CariHareketlerModalComponent } from '../cari-hareketler-modal/cari-hareketler-modal.component';
 
-
 @Component({
   selector: 'app-cari-toplam',
   templateUrl: './cari-toplam.component.html',
-  styleUrls: ['./cari-toplam.component.scss']
+  styleUrls: ['./cari-toplam.component.scss'],
 })
 export class CariToplamComponent implements OnInit {
   rowData: any[];
@@ -40,46 +39,60 @@ export class CariToplamComponent implements OnInit {
   async ngOnInit() {}
 
   colDefs: ColDef[] = [
-    { field: 'kod', width: 100,   },
-    { field: 'ad', width: 200,   },
-    { field: 'borc', width: 100,cellStyle: params => {
-      if (params.value === 0) {
+    { field: 'kod', width: 100 },
+    { field: 'ad', width: 200 },
+    {
+      field: 'borc',
+      width: 100,
+      cellStyle: (params) => {
+        if (params.value === 0) {
           //mark police cells as red #009732
-          return {color: '#666666',};
-      }
-      return {color: 'red',};;
-  }, cellRenderer: this.CurrencyCellRendererTR,  },
-   
-  
-  { field: 'alacak', width: 100,cellStyle: params => {
-      if (params.value === 0) {
-          //mark police cells as red #009732
-          return {color: '#666666',};
-      }
-      return {color: '#009732',};;
-  }, cellRenderer: this.CurrencyCellRendererTR,  },
-    
-  { field: 'borcBakiye', width: 100,cellStyle: params => {
-      if (params.value === 0) {
-          //mark police cells as red #009732
-          return {color: '#666666',};
-      }
-      return {color: 'red',};;
-  }, cellRenderer: this.CurrencyCellRendererTR,  },
+          return { color: '#666666' };
+        }
+        return { color: 'red' };
+      },
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
 
-  { field: 'alacakBakiye', width: 120,cellStyle: params => {
-      if (params.value === 0) {
+    {
+      field: 'alacak',
+      width: 100,
+      cellStyle: (params) => {
+        if (params.value === 0) {
           //mark police cells as red #009732
-          return {color: '#666666',};
-      }
-      return {color: '#009732',};;
-  }, cellRenderer: this.CurrencyCellRendererTR,  },
-    
-    
+          return { color: '#666666' };
+        }
+        return { color: '#009732' };
+      },
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
+
+    {
+      field: 'borcBakiye',
+      width: 100,
+      cellStyle: (params) => {
+        if (params.value === 0) {
+          //mark police cells as red #009732
+          return { color: '#666666' };
+        }
+        return { color: 'red' };
+      },
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
+
+    {
+      field: 'alacakBakiye',
+      width: 120,
+      cellStyle: (params) => {
+        if (params.value === 0) {
+          //mark police cells as red #009732
+          return { color: '#666666' };
+        }
+        return { color: '#009732' };
+      },
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
   ];
-
-
-
 
   CurrencyCellRendererTR(params: any) {
     var inrFormat = new Intl.NumberFormat('tr-TR', {
@@ -114,8 +127,6 @@ export class CariToplamComponent implements OnInit {
     this.buttonDisabled = false;
   }
   rowDblClick() {
-    // this.updateModal();
-    // this.cariHareketModal();
     if (this.selectedRow) {
       const modalRef = this.NgbModal.open(CariHareketlerModalComponent, {
         size: 'xl',
@@ -129,7 +140,6 @@ export class CariToplamComponent implements OnInit {
         }
       });
     }
-
   }
 
   createModal() {
@@ -203,7 +213,6 @@ export class CariToplamComponent implements OnInit {
 }
 function cellClass(params: CellClassParams) {
   if (params.value == 0) {
-   
     return 'rag-gray';
   } else if (params.value > 0) {
     return 'rag-green';

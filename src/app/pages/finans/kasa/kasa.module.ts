@@ -18,6 +18,7 @@ import { DesignComponent } from './core/design/design.component';
 import { KasaHareketFormLabelComponent } from './core/components/kasa-hareket-form-label';
 import { KasaHareketFormDateComponent } from './core/components/kasa-hareket-form-date';
 import { KasaHareketFormInputSelectComponent } from './core/components/kasa-hareket-form-input-select';
+import { KasaHareketlerComponent } from './core/components/kasa-hareketler/kasa-hareketler.component';
 
 
 
@@ -31,7 +32,8 @@ import { KasaHareketFormInputSelectComponent } from './core/components/kasa-hare
 
     KasaHareketFormLabelComponent,
     KasaHareketFormDateComponent,
-    KasaHareketFormInputSelectComponent
+    KasaHareketFormInputSelectComponent,
+    KasaHareketlerComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,7 @@ import { KasaHareketFormInputSelectComponent } from './core/components/kasa-hare
        { path: "list", component: ListKasaComponent,canActivate:[authGuard]},
        { path: "create", component: CreateKasaComponent,canActivate:[authGuard]},
        { path: "update", component: UpdateKasaComponent,canActivate:[authGuard]},
-
+       { path: "kasa-hareketler", component: KasaHareketlerComponent,canActivate:[authGuard]},
 
     ])
   ]
