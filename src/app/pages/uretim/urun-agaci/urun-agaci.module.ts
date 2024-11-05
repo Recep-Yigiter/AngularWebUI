@@ -40,16 +40,16 @@ import { UrunAgaciSelectModalComponent } from './components/urun-agaci-select-mo
     HttpClientModule,
     RouterModule.forChild([
       {
-        path: 'create-urun-agaci', component: CreateUrunAgaciComponent
+        path: 'create', component: CreateUrunAgaciComponent
       },   
       {
-        path: 'update-urun-agaci', component: UpdateUrunAgaciComponent
+        path: 'update', component: UpdateUrunAgaciComponent
       },
       {
-        path: 'detail-urun-agaci', component: DetailUrunAgaciComponent
+        path: 'detail', component: DetailUrunAgaciComponent
       },
       {
-        path: "urun-agaci", component: UrunAgaciComponent
+        path: "list", component: UrunAgaciComponent
       }
     ])
   ]

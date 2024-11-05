@@ -24,9 +24,47 @@ export class ListCariComponent implements OnInit {
     private CariService: CariService,
     private router:Router,
     ) { }
-
+items:any;
   async ngOnInit() {
     resize.resizeFunction()
+
+
+
+
+    this.items = [
+      {
+      label:'File',
+      icon:'pi pi-fw pi-file',
+      items:[
+          {
+              label:'New',
+              icon:'pi pi-fw pi-plus',
+              items:[
+                  {
+                  label:'Bookmark',
+                  icon:'pi pi-fw pi-bookmark'
+                  },
+                  
+              ]
+            }
+          ]
+    }
+  ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
   }
 
 

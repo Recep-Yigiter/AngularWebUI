@@ -5,7 +5,6 @@ import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UretimEmriService } from '../core/services/uretim-emri.service';
 import { DeleteButtonComponent } from '../components/delete-button/delete-button.component';
 
 @Component({
@@ -42,7 +41,7 @@ export class DetailUretimEmriComponent implements OnInit {
 
     private router: Router,
 
-    private UretimEmriService: UretimEmriService
+
   ) {
     this.stateData = history.state
     this.frameworkComponents = {
@@ -82,8 +81,7 @@ export class DetailUretimEmriComponent implements OnInit {
       // this.rowData2 = this.stateData.operasyonlar;
     }
     else {
-      this.UretimEmri = (await this.UretimEmriService.getByHourId(this.stateData.hourId, () => { }))
-      this.rowData = this.UretimEmri.uretimEmriBilesenler;
+   
       // this.rowData2 = this.UretimEmri.operasyonlar;
     }
   }

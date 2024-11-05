@@ -90,6 +90,7 @@ export class UpdateStokComponent {
 
   selectedObject:any;
   changed(event) {
+  
     this.selectedBirim = event
     if (this.BirimDataSource != undefined) {
       this.selectedObject = this.BirimDataSource.find((el: any) => {

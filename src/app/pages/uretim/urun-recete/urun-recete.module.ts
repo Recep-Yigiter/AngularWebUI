@@ -16,6 +16,15 @@ import { OperasyonSelectModalComponent } from './components/operasyon-select-mod
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { ListUrunReceteComponent } from './list-urun-recete/list-urun-recete.component';
+import { DesignComponent } from './core/design/design.component';
+import { DirectiveModule } from 'src/app/shared/directives/directive.module';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatBadgeModule } from '@angular/material/badge';
+import { AngularSplitModule } from 'angular-split';
+import { UrunReceteFormDateComponent } from './core/components/urun-recete-form-date';
+import { UrunReceteFormLabelComponent } from './core/components/urun-recete-form-label';
+import { UrunReceteFormInputSelectComponent } from './core/components/urun-recete-form-input-select';
 
 
 
@@ -30,28 +39,37 @@ import {MatButtonModule} from '@angular/material/button';
 
     StokSelectModalComponent,
     DeleteButtonComponent,
-    OperasyonSelectModalComponent
+    OperasyonSelectModalComponent,
+    ListUrunReceteComponent,
+    DesignComponent,
+    UrunReceteFormLabelComponent,
+    UrunReceteFormDateComponent,
+    UrunReceteFormInputSelectComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AgGridAngular,
-    MatButtonModule,
     MatIconModule,
+    MatButtonModule,
+    DirectiveModule,
+    MatCheckboxModule,
+    MatBadgeModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     HttpClientModule,
     RouterModule.forChild([
       {
-        path: 'create-urun-recete', component: CreateUrunReceteComponent
+        path: 'create', component: CreateUrunReceteComponent
       },   
       {
-        path: 'update-urun-recete', component: UpdateUrunReceteComponent
+        path: 'update', component: UpdateUrunReceteComponent
       },
       {
-        path: 'detail-urun-recete', component: DetailUrunReceteComponent
+        path: 'detail', component: DetailUrunReceteComponent
       },
       {
-        path: "urun-recete", component: UrunReceteComponent
+        path: "list", component: ListUrunReceteComponent
       }
     ])
   ]

@@ -17,6 +17,15 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
+import { ListUretimEmriComponent } from './list-uretim-emri/list-uretim-emri.component';
+import { AngularSplitModule } from 'angular-split';
+import { DesignComponent } from './core/design/design.component';
+import { UretimEmriFormLabelComponent } from './core/components/uretim-emri-form-label';
+import { UretimEmriFormDateComponent } from './core/components/uretim-emri-form-date';
+import { UretimEmriFormInputSelectComponent } from './core/components/uretim-emri-form-input-select';
+import { UretimEmriFormDropDownComponent } from './core/components/uretim-emri-form-dropdown';
+import { AccordionModule } from 'primeng/accordion';
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -25,7 +34,13 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
     DetailUretimEmriComponent,
     UpdateUretimEmriComponent,
     TabItemComponent, TabMainComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    ListUretimEmriComponent,
+    DesignComponent,
+    UretimEmriFormLabelComponent,
+    UretimEmriFormDateComponent,
+    UretimEmriFormInputSelectComponent,
+    UretimEmriFormDropDownComponent
   ],
   imports: [
     CommonModule,
@@ -38,18 +53,21 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
     MatFormFieldModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     HttpClientModule,
+    AngularSplitModule,
+    AccordionModule,
+    ListboxModule,
     RouterModule.forChild([
       {
-        path: 'create-uretim-emri', component: CreateUretimEmriComponent
+        path: 'create', component: CreateUretimEmriComponent
       },   
       {
-        path: 'update-uretim-emri', component: UpdateUretimEmriComponent
+        path: 'update', component: UpdateUretimEmriComponent
       },
       {
-        path: 'detail-uretim-emri', component: DetailUretimEmriComponent
+        path: 'detail', component: DetailUretimEmriComponent
       },
       {
-        path: "uretim-emri", component: UretimEmriComponent
+        path: "list", component: ListUretimEmriComponent
       }
     ])
   ],

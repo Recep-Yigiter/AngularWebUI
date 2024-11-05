@@ -13,9 +13,26 @@ import { ListDepoComponent } from './list-depo/list-depo.component';
 import { DesignComponent } from './core/design/design.component';
 
 import { AngularSplitModule } from 'angular-split';
+import { DepoFormLabelComponent } from './core/components/depo-form-label';
+import { DepoFormDateComponent } from './core/components/depo-form-date';
+import { DepoFormInputSelectComponent } from './core/components/depo-form-input-select';
+import { DepoFormDropDownComponent } from './core/components/depo-form-dropdown';
+
 
 @NgModule({
-  declarations: [DepoComponent, CreateDepoComponent, DetailDepoComponent, UpdateDepoComponent, DetailDepoHareketlerComponent, ListDepoComponent, DesignComponent],
+  declarations: [
+    DepoComponent,
+    CreateDepoComponent,
+    DetailDepoComponent,
+    UpdateDepoComponent,
+    DetailDepoHareketlerComponent,
+    ListDepoComponent,
+    DesignComponent,
+    DepoFormLabelComponent,
+    DepoFormDateComponent,
+    DepoFormInputSelectComponent,
+    DepoFormDropDownComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,12 +40,28 @@ import { AngularSplitModule } from 'angular-split';
     AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-      {  path: 'create', component: CreateDepoComponent,canActivate:[authGuard]},
-      {  path: 'detail', component: DetailDepoComponent,canActivate:[authGuard]},
-      {  path: 'detail-depo-hareketler', component: DetailDepoHareketlerComponent,canActivate:[authGuard]},
-      {  path: 'update', component: UpdateDepoComponent,canActivate:[authGuard]},
-      {  path:"list",component:ListDepoComponent,canActivate:[authGuard]}
-    ])
-  ]
+      {
+        path: 'create',
+        component: CreateDepoComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'detail',
+        component: DetailDepoComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'detail-depo-hareketler',
+        component: DetailDepoHareketlerComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'update',
+        component: UpdateDepoComponent,
+        canActivate: [authGuard],
+      },
+      { path: 'list', component: ListDepoComponent, canActivate: [authGuard] },
+    ]),
+  ],
 })
-export class DepoModule { }
+export class DepoModule {}

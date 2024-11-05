@@ -5,7 +5,6 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { UrunReceteService } from 'src/app/pages/uretim/urun-recete/core/services/urun-recete.service';
 import { CariService } from 'src/app/core/services/repository/cari.service';
 
 @Component({

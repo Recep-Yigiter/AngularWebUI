@@ -18,6 +18,7 @@ import { DesignComponent } from './core/design/design.component';
 import { DetailCariHareketlerComponent } from './detail-cari-hareketler/detail-cari-hareketler.component';
 import { AngularSplitModule } from 'angular-split';
 
+import {TieredMenuModule} from 'primeng/tieredmenu';
 
 
 @NgModule({
@@ -40,6 +41,8 @@ import { AngularSplitModule } from 'angular-split';
     MatCheckboxModule,
     ButtonModule,
     AngularSplitModule,
+    TieredMenuModule,
+
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
 

@@ -7,7 +7,7 @@ import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StokSelectModalComponent } from '../components/stok-select-modal/stok-select-modal.component';
 import { DeleteButtonComponent } from '../components/delete-button/delete-button.component';
-import { UrunReceteService } from '../core/services/urun-recete.service';
+import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.service';
 @Component({
   selector: 'app-detail-urun-recete',
   templateUrl: './detail-urun-recete.component.html',

@@ -11,10 +11,10 @@ import { authGuard } from 'src/app/Auth/guards/auth.guard';
 import {DividerModule} from 'primeng/divider';
 
 
-
 @NgModule({
   declarations: [
-    FinansComponent
+    FinansComponent,
+ 
   ],
   imports: [
     CommonModule,
@@ -29,7 +29,10 @@ import {DividerModule} from 'primeng/divider';
 
 
         { path: 'cari', loadChildren: () => import("./cari/cari.module").then(m => m.CariModule),canActivate:[authGuard] },
+        { path: 'kasa', loadChildren: () => import("./kasa/kasa.module").then(m => m.KasaModule),canActivate:[authGuard] },
+        { path: 'kasa-hareket', loadChildren: () => import("./kasa-hareket/kasa-hareket.module").then(m => m.KasaHareketModule),canActivate:[authGuard] },
         { path: 'banka', loadChildren: () => import("./banka/banka.module").then(m => m.BankaModule),canActivate:[authGuard] },
+        { path: 'alinan-cek', loadChildren: () => import("./alinan-cek/alinan-cek.module").then(m => m.AlinanCekModule),canActivate:[authGuard] },
     ])
   ]
 })

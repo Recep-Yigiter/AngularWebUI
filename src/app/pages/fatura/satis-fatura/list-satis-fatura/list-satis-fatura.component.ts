@@ -9,6 +9,8 @@ import { FaturaService } from 'src/app/core/services/repository/fatura.service';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
 import * as resize from '../../../../../assets/js/resizable-layout';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DeleteModalComponents } from 'src/app/shared/utilities/confirms/delete-modal';
 @Component({
   selector: 'app-list-satis-fatura',
   templateUrl: './list-satis-fatura.component.html',
@@ -45,7 +47,7 @@ export class ListSatisFaturaComponent implements OnInit {
   /**
    *
    */
-  constructor(private FaturaService: FaturaService, private router: Router, private DatePipe: DatePipe) {
+  constructor(private FaturaService: FaturaService, private router: Router, private DatePipe: DatePipe,private NgbModal:NgbModal) {
 
 
   }
@@ -177,6 +179,34 @@ this.rowData=this.rowData.filter(c=>c.seri=="SF");
 
     this.gridApi.applyTransaction({ add: [{ ad: "Aaaaaaaaaaa" + Date.now() }], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
   }
+
+
+
+
+
+  delete() {
+    const modalRef = this.NgbModal.open(DeleteModalComponents, {
+      size: 'sm',
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
+    modalRef.result.then((event) => {
+      if (event == true) {
+        this.FaturaService.delete(this.selectedSiparisHareket.id, () => {
+          this.getAllRow()
+        });
+      }
+    });
+    //
+  }
+
+ async getAllRow() {
+    this.rowData =(await this.FaturaService.GetList(() => {})).items;
+  }
+
+
+
+
 }
 
 

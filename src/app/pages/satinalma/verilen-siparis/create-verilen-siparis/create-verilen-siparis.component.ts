@@ -12,6 +12,7 @@ import { CreateSiparisModel } from 'src/app/core/models/siparisler/create-sipari
 import { StokSelectModalComponent } from 'src/app/shared/components/stok-select-modal/stok-select-modal.component';
 import { CariSelectModalComponent } from 'src/app/shared/components/cari-select-modal/cari-select-modal.component';
 import { VerilenTeklifModalComponent } from 'src/app/shared/components/verilen-teklif-modal/verilen-teklif-modal.component';
+import { DepoBazindaStokService } from 'src/app/core/services/repository/depo-bazinda-stok.service';
 
 @Component({
   selector: 'app-create-verilen-siparis',
@@ -53,7 +54,8 @@ export class CreateVerilenSiparisComponent {
     private SiparisService: SiparisService,
     private TeklifService: TeklifService,
     private modalService: NgbModal,
-    private DatePipe: DatePipe
+    private DatePipe: DatePipe,
+   
   ) { }
 
   async ngOnInit() {

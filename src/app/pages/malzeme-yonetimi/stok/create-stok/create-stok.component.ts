@@ -73,7 +73,7 @@ export class CreateStokComponent implements OnInit {
     createModel.birimId = this.frm.value.birimId?.id;
     createModel.birimAdi = this.frm.value.birimId?.ad;
     createModel.birimFiyat = this.frm.value.birimFiyat;
-    createModel.stokGrup = this.frm.value.stokGrup;
+    createModel.stokGrup = "Stok";
     createModel.durum = true;
     createModel.aciklama = this.frm.value.aciklama;
     createModel.hourId = String(new Date().valueOf());

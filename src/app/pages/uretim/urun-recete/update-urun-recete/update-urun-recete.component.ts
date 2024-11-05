@@ -10,9 +10,8 @@ import { DeleteButtonComponent } from '../components/delete-button/delete-button
 import { StokService } from 'src/app/core/services/repository/stok.service';
 import { CreateUrunReceteModel } from '../core/models/create-urun-recete-model';
 import { UpdateUrunReceteModel } from '../core/models/update-urun-recete-model';
-import { UrunReceteService } from '../core/services/urun-recete.service';
-import { UrunReceteBilesenService } from '../core/services/urun-recete-bilesen.service';
 import { OperasyonSelectModalComponent } from '../components/operasyon-select-modal/operasyon-select-modal.component';
+import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.service';
 @Component({
   selector: 'app-update-urun-recete',
   templateUrl: './update-urun-recete.component.html',
@@ -32,7 +31,7 @@ export class UpdateUrunReceteComponent implements OnInit {
     private modalService: NgbModal,
     private StokService: StokService,
     private UrunReceteService: UrunReceteService,
-    private UrunReceteBilesen: UrunReceteBilesenService
+
   ) {
     this.stateData = history.state
     this.frameworkComponents = {
@@ -130,9 +129,9 @@ export class UpdateUrunReceteComponent implements OnInit {
   async stateControl() {
     if (this.stateData?.id) {
 
-      this.getByIdDataSource = (await this.UrunReceteService.getById(this.stateData.id)).items;
-      this.rowData = this.getByIdDataSource.urunReceteBilesenler;
-      this.rowData2 = this.getByIdDataSource.operasyonlar;
+      // this.getByIdDataSource = (await this.UrunReceteService.getById(this.stateData.id)).items;
+      // this.rowData = this.getByIdDataSource.urunReceteBilesenler;
+      // this.rowData2 = this.getByIdDataSource.operasyonlar;
     }
     else {
       this.rowData = this.stateData.urunReceteBilesenler;
@@ -160,7 +159,7 @@ export class UpdateUrunReceteComponent implements OnInit {
             miktar: 1,
           }
 
-          this.UrunReceteBilesen.create(updateData, () => { })
+          // this.UrunReceteBilesen.create(updateData, () => { })
           this.gridApi.applyTransaction({ add: [element], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
         });
 
@@ -196,13 +195,13 @@ export class UpdateUrunReceteComponent implements OnInit {
       miktar: event.data.miktar,
     }
 
-    this.UrunReceteBilesen.update(editdata, () => { })
+    // this.UrunReceteBilesen.update(editdata, () => { })
 
   }
 
   receteBilesenDelete(params) {
     this.gridApi.applyTransaction({ remove: [params.rowData] });
-    this.UrunReceteBilesen.delete(params.rowData.id, () => { })
+    // this.UrunReceteBilesen.delete(params.rowData.id, () => { })
     return this.rowData;
   }
   changed(event) {
@@ -245,7 +244,7 @@ export class UpdateUrunReceteComponent implements OnInit {
       miktar: event.data.miktar,
     }
 
-    this.UrunReceteBilesen.update(editdata, () => { })
+    // this.UrunReceteBilesen.update(editdata, () => { })
 
   }
 

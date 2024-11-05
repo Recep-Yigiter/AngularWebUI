@@ -12,6 +12,10 @@ import { ListBirimComponent } from './list-birim/list-birim.component';
 import { DesignComponent } from './core/design/design.component';
  
 import { AngularSplitModule } from 'angular-split';
+import { BirimFormLabelComponent } from './core/components/birim-form-label';
+import { BirimFormDateComponent } from './core/components/birim-form-date';
+import { BirimFormInputSelectComponent } from './core/components/birim-form-input-select';
+import { BirimFormDropDownComponent } from './core/components/birim-form-dropdown';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { AngularSplitModule } from 'angular-split';
     UpdateBirimComponent,
     DetailBirimComponent,
     ListBirimComponent,
-
+    BirimFormLabelComponent,
+    BirimFormDateComponent,
+    BirimFormInputSelectComponent,
+    BirimFormDropDownComponent,
     DesignComponent
   ],
   imports: [

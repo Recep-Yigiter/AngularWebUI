@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { RbacService } from '../Auth/rbac.service';
-
+import { UserService } from '../core/services/repository/user.service';
 
 @Component({
   selector: 'app-pages',
@@ -9,40 +9,45 @@ import { RbacService } from '../Auth/rbac.service';
   styleUrls: ['./pages.component.scss'],
 })
 export class PagesComponent implements OnInit {
- 
-  constructor(private Router: Router) {}
 
-  ngOnInit(): void { }
+  user:any;
 
+  constructor(private Router: Router, private UserService: UserService) {}
+
+  async ngOnInit() {
+  this.user= JSON.parse(localStorage.getItem('user'));;
+
+  }
 
   stokRouter() {
-    this.Router.navigate(['/menu/malzeme-yonetimi'])
+    this.Router.navigate(['/menu/malzeme-yonetimi']);
   }
   satinalmaRouter() {
-    this.Router.navigate(['/menu/satinalma'])
+    this.Router.navigate(['/menu/satinalma']);
   }
   satisRouter() {
-    this.Router.navigate(['/menu/satis'])
+    this.Router.navigate(['/menu/satis']);
   }
-  uretimRouter() {
 
-  }
   finansRouter() {
-    this.Router.navigate(['/menu/finans'])
+    this.Router.navigate(['/menu/finans']);
   }
+
   faturaRouter() {
-    this.Router.navigate(['/menu/fatura'])
+    this.Router.navigate(['/menu/fatura']);
   }
+
   irsaliyeRouter() {
-    this.Router.navigate(['/menu/irsaliye'])
+    this.Router.navigate(['/menu/irsaliye']);
   }
 
-
-
+  uretim() {
+    this.Router.navigate(['/menu/uretim']);
+  }
 
   cikis() {
-    localStorage.removeItem("tokenData");
-    this.Router.navigate(['/login'])
+    localStorage.removeItem('tokenData');
+    localStorage.removeItem('user');
+    this.Router.navigate(['/login']);
   }
-
 }

@@ -22,8 +22,10 @@ export class DetailStokComponent implements OnInit {
     this.stateData = history.state
   }
   ngOnInit(): void {
-    this.dateTime = this.DatePipe.transform(this.stateData.createdDate, 'yyyy-MM-dd');
-    this.time = this.DatePipe.transform(this.stateData.createdDate, 'hh : mm ')
+   
+    // this.dateTime = this.DatePipe.transform(this.stateData.createdDate, 'yyyy-MM-dd');
+    // this.time = this.DatePipe.transform(this.stateData.createdDate, 'hh : mm ')
+
 
   }
 

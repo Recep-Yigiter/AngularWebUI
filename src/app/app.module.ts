@@ -33,12 +33,20 @@ import { PageDesignComponent } from './shared/components/page-design/page-design
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { DesignComponent } from './shared/design/design.component';
-import { ResizeDirective } from './pages/deneme/resize.directive';
+import { CariSelectModalComponents } from './shared/utilities/modals/cari-selected-modal';
+import { BankaSelectModalComponents } from './shared/utilities/modals/banka-selected-modal';
+import { BirimSelectModalComponents } from './shared/utilities/modals/birim-selected-modal';
+import { DepoSelectModalComponents } from './shared/utilities/modals/depo-selected-modal';
+import { KasaSelectModalComponents } from './shared/utilities/modals/kasa-selected-modal';
+import { StokSelectModalComponents } from './shared/utilities/modals/stok-selected-modal';
+import { SubeSelectModalComponents } from './shared/utilities/modals/sube-selected-modal';
+import { UrunReceteSelectModalComponents } from './shared/utilities/modals/urun-recete-selected-modal';
+import { DeleteModalComponents } from './shared/utilities/confirms/delete-modal';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UretimComponent,
+  
     StokSelectModalComponent,
     CariSelectModalComponent,
     DeleteButtonComponent,
@@ -55,8 +63,15 @@ import { ResizeDirective } from './pages/deneme/resize.directive';
     AlertModalComponent,
     PageDesignComponent,
     DesignComponent,
-
-
+    CariSelectModalComponents,
+    BankaSelectModalComponents,
+    BirimSelectModalComponents,
+    DepoSelectModalComponents,
+    KasaSelectModalComponents,
+    StokSelectModalComponents,
+    SubeSelectModalComponents,
+    UrunReceteSelectModalComponents,
+    DeleteModalComponents
   ],
   imports: [
 

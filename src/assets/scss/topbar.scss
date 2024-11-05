@@ -1,10 +1,14 @@
 .top-bar {
-    background: linear-gradient(#70789A, #474D66);
+    // background: linear-gradient(#70789A, #474D66);
+    //    background: linear-gradient(#979ebb, #5c6179);
+     background: linear-gradient(#e5e5e5, #474D66);
     height: 3.9125rem;
 }
-.top-bar .title-area{
+
+.top-bar .title-area {
     float: left;
 }
+
 nav.top-bar .name {
     padding: 0 16px 0 10px;
     height: 3.9125rem;
@@ -63,6 +67,7 @@ nav .dropdown-item:hover,
     .p-divider.p-divider-vertical {
         margin: 0;
         padding: 1px;
+        background: gainsboro;
     }
 
     .grid-container {
@@ -76,7 +81,7 @@ nav .dropdown-item:hover,
         align-items: center;
         grid-column: 1 / span 16;
         grid-row: 1;
-        height: 16px;
+        height: 100%;
         color: #f5ebd8;
         background: #70789A;
         font-size: 12px;

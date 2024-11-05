@@ -164,72 +164,53 @@ a:hover {
   .flip-cards li:first-child > .button {
     background-color: rgba(40, 57, 77, 0.8);
   }
-  .flip-cards li:first-child > .panel {
-    background-color: rgba(40, 57, 77, 1);
-  }
+
   
   /* Second button color */
   .flip-cards li:nth-child(2) > .button {
     background-color: rgba(109, 193, 202, 0.8);
   }
-  .flip-cards li:nth-child(2) > .panel {
-    background-color: rgba(109, 193, 202, 1);
-  }
+
   
   /* Third button color */
   .flip-cards li:nth-child(3) > .button {
     background-color: rgba(211, 81, 45, 0.8);
   }
-  .flip-cards li:nth-child(3) > .panel {
-    background-color: rgba(211, 81, 45, 1);
-  }
+
   
   /* Fourth button color */
   .flip-cards li:nth-child(4) > .button {
     background-color: rgba(235, 167, 36, 0.8);
   }
-  .flip-cards li:nth-child(4) > .panel {
-    background-color: rgba(235, 167, 36, 1);
-  }
+ 
   
   /* Fifth button color */
   .flip-cards li:nth-child(5) > .button {
     background-color: rgba(75, 135, 150, 0.8);
   }
-  .flip-cards li:nth-child(5) > .panel {
-    background-color: rgba(75, 135, 150, 1);
-  }
+
 
 
   .flip-cards li:nth-child(6) > .button {
     background-color: rgba(47, 135, 77 , 0.8);
   }
-  .flip-cards li:nth-child(6) > .panel {
-    background-color: rgba(47, 135, 77 , 1);
-  }
+
 
   .flip-cards li:nth-child(7) > .button {
-    background-color: rgba(210, 0, 0, 0.8);
+    background-color: rgba(100, 66, 87, 0.8);
+   
   }
-  .flip-cards li:nth-child(7) > .panel {
-    background-color: rgba(75, 135, 150, 1);
-  }
+
   
   .flip-cards li:nth-child(8) > .button {
     background-color: rgba(129, 79, 29 , 0.8);
   }
-  .flip-cards li:nth-child(8) > .panel {
-    background-color: rgba(129, 79, 29 ,1);
-    
-  }
+
   /* Sixth (last) button color */
   .flip-cards li:last-child > .button {
-    background-color: rgba(100, 66, 87, 0.8);
+    background-color: rgba(25, 90, 95, 0.8);
   }
-  .flip-cards li:last-child > .panel {
-    background-color: rgba(100, 66, 87, 1);
-    color: white;
-  }
+
   
   /*
    * RESPONSIVENESS -------------------------------------------------

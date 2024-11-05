@@ -1,303 +1,221 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiClientService } from 'src/app/core/services/api-client.service';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StokService } from 'src/app/core/services/repository/stok.service';
 import { CreateUretimEmriModel } from '../core/models/create-uretim-emri-model';
-import { UretimEmriService } from '../core/services/uretim-emri.service';
 import { DeleteButtonComponent } from '../../urun-recete/components/delete-button/delete-button.component';
 import { StokSelectModalComponent } from '../../urun-recete/components/stok-select-modal/stok-select-modal.component';
 import { OperasyonSelectModalComponent } from '../../urun-recete/components/operasyon-select-modal/operasyon-select-modal.component';
-import { UrunReceteService } from '../../urun-recete/core/services/urun-recete.service';
-import { UpdateUretimEmriModel } from '../core/models/update-uretim-emri-model';
-import { UretimEmriBilesenService } from '../core/services/uretim-emri-bilesen.service';
+import { UrunReceteService } from 'src/app/core/services/repository/urun-recete.service';
+import { StokSelectModalComponents } from 'src/app/shared/utilities/modals/stok-selected-modal';
+import { CariSelectModalComponents } from 'src/app/shared/utilities/modals/cari-selected-modal';
+import { UrunReceteSelectModalComponents } from 'src/app/shared/utilities/modals/urun-recete-selected-modal';
+import { UretimEmriService } from 'src/app/core/services/repository/uretim-emri.service';
+import { DepoBazindaStokService } from 'src/app/core/services/repository/depo-bazinda-stok.service';
+import { DepoSelectModalComponents } from 'src/app/shared/utilities/modals/depo-selected-modal';
 
 @Component({
   selector: 'app-update-uretim-emri',
   templateUrl: './update-uretim-emri.component.html',
-  styleUrls: ['./update-uretim-emri.component.scss']
+  styleUrls: ['./update-uretim-emri.component.scss'],
+  providers: [CurrencyPipe, DatePipe],
 })
 export class UpdateUretimEmriComponent implements OnInit {
-
-  BirimDataSource: any[]
-  selectedStok: any;
-  selectedOption: any;
-  UrunReceteDataSource: any[];
-  stokDataSource: any[];
-  defaultBirimFiyat = 0;
-  rowData: any[];
-  rowData2: any[];
-  stateData:any;
-  frameworkComponents: any;
-  public rowSelection: 'single' | 'multiple' = 'single';
-  private gridApi!: GridApi<any>;
-
-  private gridApiOperasyonlar!: GridApi<any>;
+  @Input() data;
+  dateTimeSiparisTarihi: any = new Date();
+  dateTimeTeslimTarihi: any = new Date();
+  dateTimeSevkTarihi: any = new Date();
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
-    private modalService: NgbModal,
-    private StokService: StokService,
+    public activeModal: NgbActiveModal,
     private UretimEmriService: UretimEmriService,
-    private UretimEmriBilesen:UretimEmriBilesenService,
-    private UrunReceteService: UrunReceteService
-  ) {
-    this.frameworkComponents = {
-      buttonRenderer: DeleteButtonComponent,
-    }
-
-
-    this.stateData = history.state
-    this.frameworkComponents = {
-      buttonRenderer: DeleteButtonComponent,
-    }
-  }
+    private UrunReceteService: UrunReceteService,
+    private DepoBazindaStokService: DepoBazindaStokService,
+    private DatePipe: DatePipe
+  ) {}
   ngOnInit() {
-    this.getAllStok();
-    this.getAllUrunRecete();
-    this.stateControl();
+    console.log(this.data);
+    this.dateTimeSiparisTarihi = this.DatePipe.transform(
+      this.data.siparisTarihi,
+      'yyyy-MM-dd'
+    );
+    this.dateTimeTeslimTarihi = this.DatePipe.transform(
+      this.data.teslimTarihi,
+      'yyyy-MM-dd'
+    );
+    this.dateTimeSevkTarihi = this.DatePipe.transform(
+      this.data.sevkTarihi,
+      'yyyy-MM-dd'
+    );
+    this.data.uretimDurumuId = '1';
+    if (this.data.uretimDurumu == 'Beklemede') {
+      this.data.uretimDurumuId = '1';
+    } else if (this.data.uretimDurumu == 'Üretiliyor') {
+      this.data.uretimDurumuId = '2';
+    } else {
+      this.data.uretimDurumuId = '3';
+    }
   }
 
+  public frm: FormGroup = this.fb.group({
+    siparisTarihi: [null],
+    teslimTarihi: [null],
+    sevkTarihi: [null],
+    referans: [null],
+    urunReceteId: [null],
+    urunReceteKodu: [null],
+    miktar: [null],
+    cariId: [null],
+    depoId: [null],
+    cariKodu: [null],
+    uretimDurumu: [null],
+    uretimDurumuId: [null],
+  });
 
-  public frm: FormGroup = this.fb.group(
-    {
-      stokId: [null,],
-      miktar: [null,],
-      birimAdi: [null,],
-      urunReceteId: [null,],
-      planlananTarih: [null,],
-      sorumlu: [null,],
-    }
-  )
+  get uretimDurumuId() {
+    return this.frm.get('uretimDurumuId');
+  }
+  get siparisTarihi() {
+    return this.frm.get('siparisTarihi');
+  }
+  get teslimTarihi() {
+    return this.frm.get('teslimTarihi');
+  }
+  get sevkTarihi() {
+    return this.frm.get('sevkTarihi');
+  }
+  get referans() {
+    return this.frm.get('referans');
+  }
+  get urunReceteId() {
+    return this.frm.get('urunReceteId');
+  }
+  get urunReceteKodu() {
+    return this.frm.get('urunReceteKodu');
+  }
+  get miktar() {
+    return this.frm.get('miktar');
+  }
+  get cariId() {
+    return this.frm.get('cariId');
+  }
+  get depoId() {
+    return this.frm.get('depoId');
+  }
+  get cariKodu() {
+    return this.frm.get('cariKodu');
+  }
+  get uretimDurumu() {
+    return this.frm.get('uretimDurumu');
+  }
 
-
-  get stokId() { return this.frm.get('stokId') }
-  get miktar() { return this.frm.get('miktar') }
-  get birimAdi() { return this.frm.get('birimAdi') }
-  get urunReceteId() { return this.frm.get('urunReceteId') }
-  get planlananTarih() { return this.frm.get('planlananTarih') }
-  get sorumlu() { return this.frm.get('sorumlu') }
-
-
-
-  colDefs: ColDef[] = [
-    { field: "stokAdi", width: 600 },
-    { field: "miktar", editable: true,onCellValueChanged: (event) => this.uretimEmriBilesenUpdate(event) },
-    { field: "birimAdi" },
-    {
-      field: "", width: 50,
-      cellRenderer: 'buttonRenderer',
-      cellRendererParams: {
-        onClick: this.uretimEmriBilesenDelete.bind(this),
-        label: 'Click 1'
-      }
-    },
-
+  dataSourceUretimDurumu: any = [
+    { ad: 'Beklemede', id: '1' },
+    { ad: 'Üretiliyor', id: '2' },
+    { ad: 'Sevk Edildi', id: '3' },
   ];
-  colDefs2: ColDef[] = [
-    { field: "ad", width: 600, editable: true },
-    { field: "isMerkeziAdi", },
-    { field: "isMerkeziKodu" },
-    {
-      field: "", width: 50,
-      cellRenderer: 'buttonRenderer',
-      cellRendererParams: {
-        onClick: this.onDeleteOperasyon.bind(this),
-        label: 'Click 1'
-      }
-    },
 
-  ];
+  CariSelectModalComponent: any = CariSelectModalComponents;
+  DepoSelectModalComponent: any = DepoSelectModalComponents;
+  UrunReceteSelectModalComponent: any = UrunReceteSelectModalComponents;
+  async submit() {
+    this.frm.value.id = this.data.id;
+    this.frm.value.uretimDurumu = this.selectedObject?.ad
+      ? this.selectedObject.ad
+      : this.data.uretimDurumu;
+    this.frm.value.urunReceteId = this.selectedUrunRecete?.ad
+      ? this.selectedUrunRecete.ad
+      : this.data.urunReceteId;
+    this.frm.value.cariId = this.selectedCari?.id
+      ? this.selectedCari?.id
+      : this.data.cariId;
+    this.frm.value.hourId = String(new Date().valueOf());
+    this.frm.value.depoId = this.data.depoId;
 
-
-
-  update() {
-    const createModel = new UpdateUretimEmriModel();
-    createModel.id=this.stateData.id;
-    createModel.stokAdi = this.selectedStok.ad;
-    createModel.stokId = this.selectedStok.id;
-    createModel.urunReceteId = this.selectedUrunRecete.id;
-    createModel.urunReceteAdi = this.selectedUrunRecete.ad?this.selectedUrunRecete.ad:this.selectedUrunRecete.stokAdi;
-    createModel.planlananTarih = null;
-    createModel.sorumlu = null;
-    createModel.miktar = Number(this.frm.value.miktar);
-    createModel.hourId = String(new Date().valueOf());
-    createModel.uretimEmriBilesenler = this.getAllRowData();
-
-   
-    this.UretimEmriService.update(createModel, () => {
-      this.router.navigate(['/pages/uretim-emri/detail-uretim-emri'], { state: createModel })
-    }, errorMessage => { })
-
-
-  }
-  uretimEmriBilesenUpdate(event) {
-
-    const editdata = {
-      id: event.data.id,
-      stokId: event.data.stokId,
-      uretimEmriId: this.stateData.id,
-      miktar: event.data.miktar,
+    if (!this.selectedUrunRecete) {
+      let urunReceteData = await this.UrunReceteService.getById(
+        this.data.urunReceteId,
+        () => {},
+        (errorMessage) => {}
+      );
+      this.frm.value.urunRecete = urunReceteData;
+    } else {
+      this.frm.value.urunRecete = this.selectedUrunRecete;
     }
 
-    this.UretimEmriBilesen.update(editdata, () => { })
+    this.UretimEmriService.update(
+      this.frm.value,
+      () => {
+        if (this.data.uretimDurumu == 'Beklemede') {
+          this.depoBazindaStokGuncelle(this.frm.value);
+        }
 
+        this.activeModal.close();
+      },
+      (errorMessage) => {}
+    );
   }
 
-  uretimEmriBilesenDelete(params) {
-    this.gridApi.applyTransaction({ remove: [params.rowData] });
-    this.UretimEmriBilesen.delete(params.rowData.id, () => { })
-    return this.rowData;
+  selectedCari: any;
+  CariChildFunc(event) {
+    this.selectedCari = event;
   }
-  getByIdDataSource:any;
-  async stateControl() {
-  
-
-
-
-    if (this.stateData?.id) {
-      this.getByIdDataSource = (await this.UretimEmriService.getById(this.stateData.id)).items;
-      this.rowData = this.getByIdDataSource.uretimEmriBilesenler;
-      // this.rowData2 = this.getByIdDataSource.operasyonlar;
-      
-    }
-    else {
-      this.rowData = this.stateData.uretimEmriBilesenler;
-      // this.rowData2 = this.stateData.operasyonlar;
-
-    }
-  }
-  getAllRowData() {
-    let rowData = [];
-    this.gridApi.forEachNode(node => rowData.push(node.data));
-    return rowData;
-  }
-  ngModelChange(event) {
-    if (event == '') {
-      this.defaultBirimFiyat = 0
-    }
-
-  }
-  changed(event) {
-
-    this.selectedStok = event.value;
-    this.selectedUrunRecete = []
-
+  selectedDepo: any;
+  DepoChildFunc(event) {
+    this.selectedDepo = event;
   }
   selectedUrunRecete: any;
-  changedUrunRecete(event) {
+  UrunReceteChildFunc(event) {
+    this.selectedUrunRecete = event;
+  }
 
-    this.selectedUrunRecete = event.value;
-    this.rowData = this.selectedUrunRecete.urunReceteBilesenler;
-    this.selectedStok = this.stokDataSource.find((el: any) => {
-      return el?.id == this.selectedUrunRecete.stokId;
+  selectedObject: any;
+  selectedUretimDurumu: any;
+  changed(event) {
+    this.selectedUretimDurumu = event;
+    if (this.dataSourceUretimDurumu != undefined) {
+      this.selectedObject = this.dataSourceUretimDurumu.find((el: any) => {
+        return el?.id == this.selectedUretimDurumu;
+      });
+    }
+  }
+
+  async depoBazindaStokGuncelle(event) {
+    let depoBazindaStoklar = (
+      await this.DepoBazindaStokService.GetList()
+    ).items.filter((c) => c.depoId == event.depoId);
+
+    depoBazindaStoklar.forEach((depoBazindaStok) => {
+      event.urunRecete.urunReceteHareketler.forEach((urunReceteHareket) => {
+        if (depoBazindaStok.stokId == urunReceteHareket.stokId) {
+           depoBazindaStok.miktar = depoBazindaStok.miktar - (urunReceteHareket.miktar*event.miktar);
+         
+          this.DepoBazindaStokService.update(depoBazindaStok, () => {});
+        }
+      });
     });
 
-  }
-  async getList(params: GridReadyEvent<any>) {
-    this.gridApi = params.api;
+    const maps = new Map(depoBazindaStoklar.map((s) => [s.stokId, s]));
+    const result = event.urunRecete.urunReceteHareketler.filter(
+      (f) => !maps.get(f.stokId)
+    );
 
-  }
-  filterSideMenu() {
-    var element = document.getElementById("filter_menu");
-    element.classList.toggle("mystyle");
+    let index = 0;
+    result.forEach((element) => {
+      let createDepoBazindaStok = {
+        depoId: event.depoId,
+        stokId: element.stokId,
+        miktar: 0, //depoda bu stok olmadığı için miktar olarak '0' verildi.
+        hourId: String(new Date().valueOf()) + index,
+      };
+      ++index;
 
-  }
-  onSelectionChanged() {
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-    this.router.navigate(['/pages/stok/detail-stok'], { state: selectedRows })
-  }
-  stokSelectModal() {
-    const modalRef = this.modalService.open(StokSelectModalComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Bileşen';
-    modalRef.result.then((stoks) => {
-      if (stoks != false) {
-        stoks.forEach(stok => {
-          const updateData = {
-            stokId: stok.stokId,
-            uretimEmriId: this.stateData.id,
-            miktar: 1,
-          }
-
-           this.UretimEmriBilesen.create(updateData, () => { })
-          this.gridApi.applyTransaction({ add: [stok], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
-        });
-
-      }
+      this.DepoBazindaStokService.create(createDepoBazindaStok, () => {});
     });
-
   }
-  onDelete(params) {
-    this.gridApi.applyTransaction({ remove: [params.rowData] });
-    return this.rowData;
-  }
-  async getAllStok() {
-    this.stokDataSource = (await this.StokService.GetListTreeView(() => { })).items;
-    this.selectedStok = this.stokDataSource.find((el: any) => {
-      return el?.id == this.stateData.stokId;
-    });
-    
-  }
-
-  async getAllUrunRecete() {
-    this.UrunReceteDataSource = (await this.UrunReceteService.GetList(() => { })).items;
-    this.selectedUrunRecete = this.UrunReceteDataSource.find((el: any) => {
-      return el?.id == this.stateData.urunReceteId;
-    });
-
-  }
-
-
-
-
-
-
-  vazgec() {
-    this.stateData.uretimEmriBilesenler = this.getAllRowData()
-    this.router.navigate(['/pages/uretim-emri/detail-uretim-emri'], { state: this.stateData })
-  }
-
-
-
-
-
-
-
-
-
-
-
-  getListOperasyonlar(params: GridReadyEvent<any>) {
-    this.gridApiOperasyonlar = params.api
-  }
-
-  operasyonSelectModal() {
-    const modalRef = this.modalService.open(OperasyonSelectModalComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Arama : Operasyon';
-    modalRef.result.then((isMerkezi) => {
-      if (isMerkezi != false) {
-
-        this.gridApiOperasyonlar.applyTransaction({ add: [isMerkezi], addIndex: this.gridApi.getLastDisplayedRow() + 1 })
-      }
-    });
-
-  }
-
-  getAllRowDataOperasyon() {
-    let rowData = [];
-    this.gridApiOperasyonlar.forEachNode(node => rowData.push(node.data));
-    return rowData;
-  }
-
-  onDeleteOperasyon(params) {
-    this.gridApiOperasyonlar.applyTransaction({ remove: [params.rowData] });
-    return this.rowData2;
-  }
-
 }
-
-

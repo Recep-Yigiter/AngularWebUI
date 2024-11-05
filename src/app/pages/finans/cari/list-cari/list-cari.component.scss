@@ -1,5 +1,42 @@
-
-
-
 @import "src/assets/scss/caption";
 @import "src/assets/scss/section";
+
+// :host ::ng-deep {
+//     .split-left {
+//         flex: 0 0 calc(50px) !important;
+//     }
+
+//     .main-content {
+//         flex: 0 0 calc(100% - 60px) !important;
+//     }
+
+//     .action-button {
+//         border: none;
+//         display: grid;
+//         top: 0;
+//         height: 70px;
+//         color: rgb(63, 63, 63);
+//         width: 50px;
+//         background-color: #f4f4f4;
+//         box-shadow: 1px 1px 2px 0px gray;
+//         margin-left: 4px;
+//     }
+
+//     .action-dropdown-menu {
+//         background-color: #f4f4f4;
+//         border-radius: 0;
+//     }
+
+//     .action-dropdown-item {
+//         color: rgb(63, 63, 63);
+//         background-color: #f4f4f4;
+//     }
+
+//     .action-dropdown-item {
+//         color: rgb(63, 63, 63);
+//         background-color: #f4f4f4;
+//         font-size: 13px;
+//         font-weight: 500;
+//         font-family: "Odoo Unicode Support Noto", "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+//     }
+// }

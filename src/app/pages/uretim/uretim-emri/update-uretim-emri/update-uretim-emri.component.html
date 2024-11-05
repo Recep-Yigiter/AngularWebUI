@@ -1,451 +1,341 @@
-<form [formGroup]="frm">
-    <div class="demo-container" style="position: relative;">
-        <div class=" yks-filemanager" style="height: 791px;">
+<!-- <form [formGroup]="frm">
 
-            <div class=" yks-drawer">
-                <div class="yks-drawer-wrapper">
-                    <div class="yks-drawer-content" style="transform: translate(0px, 0px); padding: 0px; left: 0px; ">
 
-                        <div class="yks-filemanager-notification-drawer-panel">
 
-                            <div class="yks-filemanager-wrapper">
 
 
-                                <div class="yks_control_panel">
-                                    <div class="yks_cpanel_top">
-                                        <div class="yks_cpanel_top_left">
-                                            <div>
-                                                <div class=" yks-toolbar-item ">
-                                                    <div class="yks-button-has-text"
-                                                        style=" font-size: 18px; font-weight: 500; color: #66598f;">
-                                                        <a class="title-router"
-                                                        [routerLink]="['/pages/uretim-emri/uretim-emri']">İş Merkezleri</a>
-                                                    <span style="margin: 0 5px;">/</span>
-                                                    <a class="title-router"
-                                                        [routerLink]="['/pages/uretim-emri/update-uretim-emri']">{{stateData.stokAdi}}</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="yks_cpanel_top_right"></div>
-                                    </div>
-                                </div>
-                                <div class="yks_control_panel">
-                                    <div class="yks_cpanel_top">
-                                        <div class="yks_cpanel_top_left">
-                                            <div>
 
 
-                                                <div class=" yks-toolbar-item ">
+    <app-design w100="width:100%;" displayNone="display:none;">
 
+        <div design-buttons>
+            <button routerLink="/menu/uretim/urun-recete/list" type="button" class="btn btn-success"
+                style="padding:2px 10px; border-radius: 3px; background-color: #ffffff; border: 1px solid #e6e6e6;">
+                <i class="fa fa-arrow-left" style="color: #000000; margin-right: 5px; font-weight: 700;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;color: #000000; ">Geri</span>
+            </button>
+            <button type="button" class="btn btn-success"
+                style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+                <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
+            </button>
+            <button type="button" class="btn "
+                style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+                <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+                <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+            </button>
+        </div>
 
-                                                    <div class="yks-button-has-text">
-                                                        <ul class="yks-menu-items-container"
-                                                            style="    display: flex; align-items: center; justify-content: center;">
 
-                                                            <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
 
-                                                                <div class=" yks-menu-item-content">
 
 
-                                                                    <button (click)="update()" type="button"
-                                                                        class="btn btn-success"
-                                                                        style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
-                                                                        <i class="fa fa-check"
-                                                                            style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
-                                                                        <span class="d-none d-sm-inline"
-                                                                            style="font-size: 13px;">Kaydet</span>
-                                                                    </button>
+        <div full-page style="height: 100%;">
+            <div class="card m-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
+                <div class="grid">
 
-                                                                </div>
-
-                                                            </li>
-                                                            <li class="yks-menu-item-wrapper" style="margin: 0 2px;">
-
-                                                                <div class=" yks-menu-item-content">
-
-
-                                                                    <button type="button" class="btn "
-                                                                       (click)="vazgec()"
-                                                                        style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
-                                                                        <i class="fa fa-times"
-                                                                            style="color: #000; margin-right: 5px; font-weight: 600;"></i>
-                                                                        <span class="d-none d-sm-inline"
-                                                                            style="font-size: 13px;">Vazgeç</span>
-                                                                    </button>
-
-                                                                </div>
-
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="yks_cpanel_top_right" style="display: flex; justify-content: end;">
-
-
-                                        </div>
-                                    </div>
-
-
-
-
-                                </div>
-
-
-
-                                <div class="yks-filemanager-container">
-                                    <div class="yks-drawer">
-                                        <div class="yks-drawer-wrapper">
-                                            <div id="filter_menu"
-                                                class="yks-drawer-panel-content yks-drawer-panel-content-initial"
-                                                style="margin-left: 0px; display: none; border: 1px solid #c1c1c1;">
-                                            </div>
-                                            <div class="yks-drawer-content" style="padding: 0px;">
-                                                <div class=" yks-filemanager-breadcrumbs"></div>
-
-                                                <div class="card m-5"
-                                                    style="box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px;">
-
-
-                                                    <div class="yks_button_box yks_not_full" style="width: 140px;">
-
-                                                        <button class="btn yks_stat_button">
-                                                            <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
-                                                            <div class="yks_field_widget yks_stat_info">
-                                                                <span class="yks_stat_value">
-                                                                    <span>0</span>
-                                                                </span>
-                                                                <span class="yks_title_value">Extra Fiyatlar</span>
-
-                                                            </div>
-                                                        </button>
-                                                        <button class="btn yks_stat_button">
-                                                            <i class="fa fa-fw yks_button_icon fa-list-ul"></i>
-                                                            <div class="yks_field_widget yks_stat_info">
-                                                                <span class="yks_stat_value">
-                                                                    <span>0</span>
-                                                                </span>
-                                                                <span class="yks_title_value">Extra Fiyatlar</span>
-
-                                                            </div>
-                                                        </button>
-
-                                                    </div>
-
-
-                                                    <div class="grid">
-
-                                                        <div class="col-12 lg:col-6 xl:col-6 pl-4">
-
-                                                            <table class="yks_table_group">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="yks_td_label"></td>
-                                                                        <td style="width: 100%; "></td>
-                                                                    </tr>
-
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000;">
-
-                                                                            <label
-                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px;">Ürün
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <mat-form-field style="width: 100%;">
-
-                                                                                <mat-select formControlName="stokId" 
-                                                                                    (selectionChange)="changed($event)"
-                                                                                    [(value)]="selectedStok">
-                                                                                    <mat-option
-                                                                                        *ngFor="let item of stokDataSource"
-                                                                                        [value]="item">{{item.ad}}</mat-option>
-                                                                                </mat-select>
-
-                                                                            </mat-form-field>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000;">
-
-                                                                            <label
-                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px;">Miktar
-
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-
-                                                                            <mat-form-field class="example-full-width  "
-                                                                                style="margin: 0 5px 0 0; ">
-
-                                                                                <input type="email" matInput  [ngModel]="stateData?.miktar?stateData?.miktar:1" 
-                                                                                    formControlName="miktar">
-                                                                            </mat-form-field>
-
-
-                                                                            <mat-form-field class="example-full-width">
-
-                                                                                <input type="text" matInput  [ngModel]="selectedStok?.birimAdi" readonly="true"
-                                                                                    formControlName="birimAdi">
-                                                                            </mat-form-field>
-
-
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000;">
-
-                                                                            <label
-                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px;">Ürün
-                                                                                Reçetesi
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group ">
-
-
-                                                                            <mat-form-field style="width: 100%;"
-                                                                                class="nullable-input">
-
-                                                                                <mat-select
-                                                                                    formControlName="urunReceteId"
-                                                                                    (selectionChange)="changedUrunRecete($event)" [(value)]="selectedUrunRecete">
-                                                                                    <mat-option
-                                                                                        *ngFor="let item of UrunReceteDataSource"
-                                                                                        [value]="item">{{item.stokAdi}}
-                                                                                    </mat-option>
-                                                                                </mat-select>
-
-                                                                            </mat-form-field>
-                                                                        </td>
-                                                                    </tr>
-
-
-
-
-                                                                </tbody>
-                                                            </table>
-
-                                                        </div>
-
-
-                                                        <div class="col-12 lg:col-6 xl:col-6 pl-4 pr-4">
-
-                                                            <table class="yks_table_group">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="yks_td_label"></td>
-                                                                        <td style="width: 100%; "></td>
-                                                                    </tr>
-
-
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000;">
-
-                                                                            <label
-                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px;">Planlanan
-                                                                                Tarih
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <mat-form-field style="height: 100%;"
-                                                                                class="nullable-input">
-                                                                                <input matInput readonly="true"
-                                                                                    [matDatepicker]="datepicker"
-                                                                                    formControlName="planlananTarih">
-                                                                                <mat-datepicker-toggle matSuffix
-                                                                                    [disableRipple]="true"
-                                                                                    [for]="datepicker"></mat-datepicker-toggle>
-                                                                                <mat-datepicker
-                                                                                    #datepicker></mat-datepicker>
-
-                                                                            </mat-form-field>
-
-
-
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="table_row_group">
-                                                                        <td class="yks_td_label"
-                                                                            style="border-left: #000000;position: relative;">
-
-                                                                            <label
-                                                                                style=" min-width: 160px; font-weight: 600; font-size: 13px; position: absolute;">Sorumlu
-                                                                            </label>
-                                                                        </td>
-
-                                                                        <td style="width: 100%;"
-                                                                            class="table_row_group">
-
-                                                                            <mat-form-field
-                                                                                class="example-full-width nullable-input"
-                                                                                style="width: 100%;">
-
-                                                                                <input type="email" matInput
-                                                                                    formControlName="sorumlu">
-                                                                            </mat-form-field>
-                                                                        </td>
-                                                                    </tr>
-
-
-
-
-
-
-
-
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-
-
-
-
-
-                                                    </div>
-
-                                                    <div>
-
-                                                        <tab-main>
-                                                            <tab-item [tabTitle]="'Bileşenler'">
-
-                                                                <div class="grid">
-                                                                    <div class="col-12 pl-4"
-                                                                        style="padding-right: 23px;">
-
-
-
-
-
-
-
-
-
-                                                                        <ag-grid-angular
-                                                                            style="width: 100%;min-height: 315px; height:100%; margin-top: 4px;"
-                                                                            class="ag-theme-quartz" [rowData]="rowData"
-                                                                            [columnDefs]="colDefs"
-                                                                            (gridReady)="getList($event)"
-                                                                            [rowSelection]="rowSelection"
-                                                                            [rowHeight]="30" [headerHeight]="29"
-                                                                            [components]="frameworkComponents">
-                                                                        </ag-grid-angular>
-
-
-                                                                    </div>
-
-
-
-
-                                                                    <div class=""
-                                                                        style="padding: 5px;margin-left: 20px;padding-bottom: 10px;">
-                                                                        <div class="center">
-
-                                                                            <div class="button-wrap">
-
-                                                                                <button (click)="stokSelectModal()"
-                                                                                    class="rad-button xsmall dark gradient">
-                                                                                    <i class="fa fa-plus"
-                                                                                        style="color: #fff; margin-right: 5px; font-weight: 600;"></i>
-                                                                                    Bileşen Ekle</button>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-
-
-
-
-
-                                                            </tab-item>
-                                                            <tab-item tabTitle="İş Emirleri">
-                                                                <div class="grid">
-                                                                    <div class="col-12 pl-4"
-                                                                        style="padding-right: 23px;">
-
-
-
-                                                                        <ag-grid-angular
-                                                                            style="width: 100%;min-height: 315px; height:100%; margin-top: 4px;"
-                                                                            class="ag-theme-quartz" [rowData]="rowData2"
-                                                                            [columnDefs]="colDefs2"
-                                                                            (gridReady)="getListOperasyonlar($event)"
-                                                                            [rowSelection]="rowSelection"
-                                                                            [rowHeight]="30" [headerHeight]="29"
-                                                                            [components]="frameworkComponents">
-                                                                        </ag-grid-angular>
-
-
-
-
-                                                                    </div>
-
-
-
-
-                                                                    <div class=""
-                                                                        style="padding: 5px;margin-left: 20px;padding-bottom: 10px;">
-                                                                        <div class="center">
-
-                                                                            <div class="button-wrap">
-
-                                                                                <button (click)="operasyonSelectModal()"
-                                                                                    class="rad-button xsmall dark gradient">
-                                                                                    <i class="fa fa-plus"
-                                                                                        style="color: #fff; margin-right: 5px; font-weight: 600;"></i>
-                                                                                    İş Emri Ekle</button>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                </div>
-                                                            </tab-item>
-                                                        </tab-main>
-
-
-
-
-
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                    <div class="col-12 lg:col-4 xl:col-4 pl-4" >
+                        <div class="mt-1" style="border: 1px solid #ddd">
+                            <div class="form-title pl-2" style="font-weight: 500;">
+                                Recete Bilgileri
                             </div>
+                            <table class="yks_table_group">
+                                <tbody>
+                                    <tr>
+                                        <td class="yks_td_label"></td>
+                                        <td style="width: 100%; "></td>
+                                    </tr>
+
+
+
+
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                            <label style=" min-width: 50px; font-weight: 600; font-size: 13px;">Stok
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%; position: relative;" class="table_row_group">
+
+                                            <input readonly formControlName="stokId" style=" padding: 0px 0 0px 0.75rem;
+                                font-size: 13px;
+                                border-radius: 1px;
+                                background-color: rgb(210, 210, 255) !important;
+                                border: 1px solid rgb(145, 145, 243); padding-right: 30px;" type="text"
+                                                class="form-control shadow-none" id="exampleFormControlInput1">
+
+                                            <div
+                                                style="position: absolute;top: 0;right: 10px; display: flex;align-items: center;justify-content: center; height: 100%; width: 20px; ">
+                                                <button class="selected-ellipsis btn selected-button">
+                                                    <i class="fa-solid fa-ellipsis"></i>
+                                                </button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                            <label style=" min-width: 90px; font-weight: 600; font-size: 13px;">Stok Kodu
+                                                :
+                                            </label>
+                                        </td>
+                                        <td>
+
+                                            <input type="text" formControlName="referans"
+                                                class="form-control shadow-none form-control-nullable"
+                                                id="exampleFormControlInput1">
+                                        </td>
+
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                            <label
+                                                style=" min-width: 85px; font-weight: 600; font-size: 13px;">Düzenleyen
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <label
+                                                style=" min-width: 50px; font-weight: 600; font-size: 13px; color: #666666;">
+                                                Recep YİĞİTER
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr class="table_row_group">
+                                        <td class="yks_td_label" style="border-left: #000000; text-align: end;">
+
+                                            <label
+                                                style=" min-width: 85px; font-weight: 600; font-size: 13px; color: #017e84;">Açıklama
+                                                :
+
+                                            </label>
+                                        </td>
+
+                                        <td style="width: 100%;" class="table_row_group">
+
+                                            <label
+                                                style=" min-width: 100%; font-weight: 600; font-size: 13px; color: #666666;">
+                                                <textarea formControlName="aciklama"
+                                                    class="form-control shadow-none border-1"
+                                                    style="width: 100%;max-height: 30px; border: 1px solid #d9d9d9;"></textarea>
+                                            </label>
+                                        </td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
                         </div>
+
+
+
                     </div>
+
+
+
+
+
+                </div>
+
+                <div>
+                    <div
+                        style="padding: 0.5rem 0 0 1rem;border: 1px solid rgba(0, 0, 0, 0.15); display: grid; grid-template-columns: 70px 90px 50px 115px;  gap: 2px;">
+                        <button mat-icon-button style="width: 70px; " color="primary"
+                            aria-label="Example icon button with a home icon">
+
+                            <mat-icon style="font-size: 18px; font-weight: 600;">add</mat-icon>
+                            <label style="font-weight: 600; font-size: 14px; color: #666666;">Ekle</label>
+                        </button>
+                        <button mat-icon-button style="width: 90px;" color="primary"
+                            aria-label="Example icon button with a home icon">
+                            <mat-icon
+                                style="font-size: 18px; font-weight: 600; color: rgb(145, 145, 145);">edit</mat-icon>
+                            <label style="font-weight: 600; font-size: 14px; color: #666666;">Düzenle</label>
+                        </button>
+                        <button mat-icon-button style="width: 50px;" color="primary"
+                            aria-label="Example icon button with a home icon">
+                            <mat-icon style="font-size: 18px; font-weight: 600;color: rgb(172, 0, 0);">delete</mat-icon>
+                            <label style="font-weight: 600; font-size: 14px; color: #666666;">Sil</label>
+                        </button>
+
+
+
+
+                    </div>
+                    <ag-grid-angular style="width: 100%;min-height: 190px; height:100px; margin-top: 4px;"
+                        class="ag-theme-quartz" [rowData]="rowData" [columnDefs]="colDefs" (gridReady)="getList($event)"
+                        [rowSelection]="rowSelection" [rowHeight]="22" [headerHeight]="23">
+                    </ag-grid-angular>
+
+
+
+
+
+
+
+
+
 
                 </div>
             </div>
-
-
         </div>
+
+    </app-design>
+
+
+
+</form> -->
+
+
+
+
+
+<div class="modal-header ">
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+</div>
+
+
+
+<div class="">
+
+    <div style="overflow-x: auto; line-height: 27px; padding-top: 10px;">
+        <form [formGroup]="frm">
+            <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
+
+
+                <div style="border-top: 1px solid #dee2e6;
+                border-bottom: 1px solid #dee2e6; 
+                padding-left: 10px; color: #6b6b6b;
+                background-color: #f7f7f7;
+                grid-column: 1/span 2;
+                font-size: 14px;">
+                    Genel Bilgileri
+                </div>
+
+
+                <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="siparisTarihi" [span]="130"[status]="false"
+                    [field]="dateTimeSiparisTarihi" [label]="'Sipariş Tarihi '"></app-form-date>
+
+                <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="teslimTarihi" [span]="130"[status]="false"
+                    [field]="dateTimeTeslimTarihi" [label]="'Teslim Tarihi '"></app-form-date>
+
+                <app-form-date style=" grid-column: 1/span 2;" [formControlNames]="sevkTarihi" [span]="130" [status]="false"
+                    [field]="dateTimeSevkTarihi" [label]="'Sevk Tarihi '"></app-form-date>
+
+
+
+                <div
+                    style="border-top: 1px solid #dee2e6;border-bottom: 1px solid #dee2e6; padding-left: 10px; color: #6b6b6b;background-color: #f7f7f7;font-size: 14px; grid-column: 1 / span 2;">
+                    Reçete Bilgileri
+                </div>
+                <app-form-input-select style=" grid-column: 1/span 2;" [status]="false" [field]="selectedUrunRecete?.ad?selectedUrunRecete?.ad: data.urunReceteAdi"
+                    (childFunc)="UrunReceteChildFunc($event)" [component]="UrunReceteSelectModalComponent"
+                    [formControlNames]="urunReceteId" [span]="130" [label]="'Reçete '"></app-form-input-select>
+                <app-form-label style=" grid-column: 1/span 2;" [formControlNames]="urunReceteKodu" [span]="130"[status]="false"
+                    [field]="data?.urunReceteKodu" [label]="'Reçete Kodu '"></app-form-label>
+
+                    <app-form-input-select style=" grid-column: 1/span 2;" [field]="selectedDepo?.ad?selectedDepo?.ad: data.depoAdi"
+                    (childFunc)="DepoChildFunc($event)" [component]="DepoSelectModalComponent"
+                    [formControlNames]="depoId" [span]="130" [label]="'Depo '"></app-form-input-select>
+                <app-form-label style=" grid-column: 1/span 2; width: 100px;" [formControlNames]="miktar" [span]="130"[status]="false"
+                    [field]="data.miktar" [label]="'Miktar '"></app-form-label>
+                 
+
+
+
+
+
+
+
+                <tr class="yks_table_group" style="display: grid; grid-template-columns: 130px auto;grid-column: 1/span 2; width: 150px;">
+                    <td class="pl-2 " style="border-right: 1px solid #ddd;color: #212529;width: 90%;padding: 0px 6px 0px 8px;min-width: 70px;font-weight: 600;font-size: 13px; display: flex;align-items:  center;font-style: oblique; position: relative;">
+                        Üretim Durum
+                        <label style="position: absolute; right: 0; font-style: oblique;color: #85919d;  font-weight: 600;
+                        font-size: 13px; padding-right: 10px; ">:</label>
+                    </td>
+
+                    <td style="display: flex;align-items: center;color: #212529;min-width: 130px;font-weight: 600;font-size: 13px; display: flex;align-items:  center;font-style: oblique; ">
+
+                        <select [ngModel]="data.uretimDurumuId" (ngModelChange)="changed($event)" style="height :21.5px;border-radius: 0;"
+                            formControlName="uretimDurumuId" class="form-select shadow-none"
+                            aria-label="Default select example">
+                            <option disabled [selected]="data.uretimDurumu" [ngValue]="null">Lütfen
+                                seçim yapınız...
+                            </option>
+                            <option *ngFor="let item of dataSourceUretimDurumu" [ngValue]="item.id">
+                                {{item.ad}} </option>
+                        </select>
+
+                    </td>
+                </tr>
+
+
+
+
+
+
+
+
+                <div style="border-top: 1px solid #dee2e6;
+                border-bottom: 1px solid #dee2e6; 
+                padding-left: 10px; color: #6b6b6b;
+                background-color: #f7f7f7;
+                font-size: 14px; grid-column: 1 / span 2;
+                 ">
+                    Cari Bilgileri
+                </div>
+
+                <app-form-input-select  style=" grid-column: 1/span 2;" [field]="selectedCari?.ad?selectedCari?.ad: data.cariAdi"[status]="false"
+                    (childFunc)="CariChildFunc($event)" [component]="CariSelectModalComponent"
+                    [formControlNames]="cariId" [span]="130" [label]="'Firma '"></app-form-input-select>
+
+
+                <app-form-label  style=" grid-column: 1/span 2; width: 200px;" [formControlNames]="cariKodu" [span]="130" [status]="false"
+                [field]="data?.cariKodu" [label]="'Firma Kodu '"></app-form-label>
+
+                <app-form-label style=" grid-column: 1/span 2;" [formControlNames]="referans" [span]="130" [field]="data?.referans" [status]="false"
+                    [label]="'Referans '"></app-form-label>
+
+
+
+            </div>
+
+        </form>
+
+
+
+
     </div>
 
-</form>
+
+
+
+
+
+
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="submit()"
+        style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+        <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Güncelle</span>
+    </button>
+    <button type="button" class="btn " (click)="activeModal.close(false)"
+        style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+        <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+        <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+    </button>
+</div>

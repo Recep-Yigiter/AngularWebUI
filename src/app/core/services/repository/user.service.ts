@@ -78,9 +78,9 @@ export class UserService {
         
  
 
-    const observable = this.apiService.get({
+    const observable: Observable<any> = this.apiService.get({
       controller: "Users",
-      action: "GetById/" + `${id}`,
+      action: `${id}`,
     
     })
 

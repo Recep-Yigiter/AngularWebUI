@@ -34,15 +34,15 @@ import { SatisComponent } from './satis/satis.component';
 import { FaturaComponent } from './fatura/fatura.component';
 import { IrsaliyeComponent } from './irsaliye/irsaliye.component';
 import { FinansComponent } from './finans/finans.component';
-import { DenemeComponent } from './deneme/deneme.component';
-import { ResizeDirective } from './deneme/resize.directive';
+
 import { AngularSplitModule } from 'angular-split';
+import { UretimComponent } from './uretim/uretim.component';
+import {AvatarModule} from 'primeng/avatar';
 @NgModule({
   declarations: [
     PagesComponent,
     IsGrantedDirective,
-    DenemeComponent,
-    ResizeDirective
+
 
   ],
   imports: [
@@ -69,18 +69,19 @@ import { AngularSplitModule } from 'angular-split';
     FormsModule,
     DividerModule,
     AngularSplitModule,
+    AvatarModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild(
       [
         {
           path: '',
           children: [
-            { path: 'urun-recete', loadChildren: () => import("../pages/uretim/urun-recete/urun-recete.module").then(m => m.UrunReceteModule), canActivate: [authGuard] },
-            { path: 'urun-agaci', loadChildren: () => import("../pages/uretim/urun-agaci/urun-agaci.module").then(m => m.UrunAgaciModule), canActivate: [authGuard] },
-            { path: 'is-merkezi', loadChildren: () => import("../pages/uretim/is-merkezi/is-merkezi.module").then(m => m.IsMerkeziModule), canActivate: [authGuard] },
-            { path: 'uretim-emri', loadChildren: () => import("../pages/uretim/uretim-emri/uretim-emri.module").then(m => m.UretimEmriModule), canActivate: [authGuard] },
-            { path: 'uretim-maliyet-analizi', loadChildren: () => import("../pages/uretim/uretim-maliyet-analizi/uretim-maliyet-analizi.module").then(m => m.UretimMaliyetAnaliziModule), canActivate: [authGuard] },
-            { path: 'finans', loadChildren: () => import("../pages/finans/finans.module").then(m => m.FinansModule), canActivate: [authGuard] },
+            // { path: 'urun-recete', loadChildren: () => import("../pages/uretim/urun-recete/urun-recete.module").then(m => m.UrunReceteModule), canActivate: [authGuard] },
+            // { path: 'urun-agaci', loadChildren: () => import("../pages/uretim/urun-agaci/urun-agaci.module").then(m => m.UrunAgaciModule), canActivate: [authGuard] },
+            // { path: 'is-merkezi', loadChildren: () => import("../pages/uretim/is-merkezi/is-merkezi.module").then(m => m.IsMerkeziModule), canActivate: [authGuard] },
+            // { path: 'uretim-emri', loadChildren: () => import("../pages/uretim/uretim-emri/uretim-emri.module").then(m => m.UretimEmriModule), canActivate: [authGuard] },
+            // { path: 'uretim-maliyet-analizi', loadChildren: () => import("../pages/uretim/uretim-maliyet-analizi/uretim-maliyet-analizi.module").then(m => m.UretimMaliyetAnaliziModule), canActivate: [authGuard] },
+            // { path: 'finans', loadChildren: () => import("../pages/finans/finans.module").then(m => m.FinansModule), canActivate: [authGuard] },
             { path: 'administration', loadChildren: () => import("../pages/administration/administration.module").then(m => m.AdministrationModule), },
           ], canActivate: [AdminGuard]
         },
@@ -96,6 +97,7 @@ import { AngularSplitModule } from 'angular-split';
             { path: 'fatura',component:FaturaComponent, loadChildren: () => import("../pages/fatura/fatura.module").then(m => m.FaturaModule), canActivate: [authGuard] },
             { path: 'irsaliye',component:IrsaliyeComponent, loadChildren: () => import("../pages/irsaliye/irsaliye.module").then(m => m.IrsaliyeModule), canActivate: [authGuard] },
             { path: 'finans',component:FinansComponent, loadChildren: () => import("../pages/finans/finans.module").then(m => m.FinansModule), canActivate: [authGuard] },
+            { path: 'uretim',component:UretimComponent, loadChildren: () => import("../pages/uretim/uretim.module").then(m => m.UretimModule), canActivate: [authGuard] },
           ]
         },
 

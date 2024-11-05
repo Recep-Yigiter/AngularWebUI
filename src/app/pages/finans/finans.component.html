@@ -1,4 +1,4 @@
-<nav class="top-bar" data-topbar >
+<nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name" [routerLink]="['/menu']">
       <i class="fa fa-home home-icon" aria-hidden="true"></i>
@@ -36,17 +36,16 @@
             display: grid;
             top: 0;
             height: 45px;
-            color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="small fa fa-database btn-button-icon"  aria-hidden="true"></i>
-  
+            color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="small fa fa-database btn-button-icon" aria-hidden="true"></i>
           Çekler
         </button>
         <ul class="dropdown-menu topbar-dropdown-menu">
-          <li ><a class="dropdown-item yks-dropdown-item"
-              style="color: #fbfbfb !important;">Verilen Çekler</a></li>
-          <li ><a class="dropdown-item yks-dropdown-item"
+          <li><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Verilen Çekler</a></li>
+          <li [routerLink]="['/menu/finans/alinan-cek/list']"><a class="dropdown-item yks-dropdown-item"
               style="color: #fbfbfb !important;">Alınan Çekler</a></li>
-  
+
         </ul>
       </div>
       <div class="btn-group mr-1" role="group">
@@ -57,16 +56,14 @@
             color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown"
           aria-expanded="false">
           <i class="small fa fa-database" style="font-size: 18px !important; color: white;" aria-hidden="true"></i>
-  
+
           Senetler
         </button>
-  
+
         <ul class="dropdown-menu topbar-dropdown-menu">
-          <li ><a class="dropdown-item yks-dropdown-item"
-              style="color: #fbfbfb !important;">Borç Senedi</a></li>
-          <li ><a class="dropdown-item yks-dropdown-item"
-              style="color: #fbfbfb !important;">Alacak Senedi</a></li>
-  
+          <li><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Borç Senedi</a></li>
+          <li><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Alacak Senedi</a></li>
+
         </ul>
       </div>
 
@@ -79,7 +76,7 @@
 
   </div>
 
-</nav> 
+</nav>
 
 
 
