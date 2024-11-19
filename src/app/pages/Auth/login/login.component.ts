@@ -1,18 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { MessageService } from 'primeng/api';
-import { LoginModel } from 'src/app/core/models/Auth/login.model';
 import { AuthService } from 'src/app/core/services/repository/Auth.service';
 import { UserService } from 'src/app/core/services/repository/user.service';
-import Swal from 'sweetalert2'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [MessageService]
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -21,7 +16,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private messageService: MessageService,
     private UserService:UserService
   
   ) {

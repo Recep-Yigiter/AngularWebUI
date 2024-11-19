@@ -1,153 +1,96 @@
-<!-- <nav class="top-bar" data-topbar style="background: linear-gradient(#70789A, #474D66);">
-    <ul class="title-area">
-        <li class="name" [routerLink]="['/menu']">
-            <i class="fa fa-home home-icon" aria-hidden="true"></i>
-        </li>
+<div class="flex w-full " style="height: calc(100vh - 85px)">
+  <div id="sidebar-menu" class="ibox overflow-auto min-w-52 md:min-w-56 md:max-w-56 " style="border-right: 1px solid rgba(0, 0, 0, 0.06);">
+      <div class="ibox-content mailbox-content p-1">
+          <div class="file-manager ">
 
-        <li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
-    </ul>
+              <div class="space-25"></div>
+              <ng-container *ngFor="let item of menu ">
+
+                <div class="space-25"></div>
+                <h5>{{item.label}} </h5>
+
+                <ul class="folder-list m-b-md" style="padding: 0">
+                    <ng-container *ngFor="let sub of item.submenu; let i = index">
+                        <ng-container *ngIf="sub.submenu.length==0 ; else elseSub">
+
+                            <ng-container *ngIf="sub.href==''; else elseSub3">
+                                <li class="hover:bg-slate-200 px-2"><a
+                                        class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'> <i
+                                            class="{{sub.icon}}"></i>
+                                        {{sub.label}}
+                                    </a></li>
+                            </ng-container>
+                            <ng-template #elseSub3>
+                                <li class="hover:bg-slate-200 px-2"><a
+                                        class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'
+                                        routerLink="{{sub.href}}"> <i class="{{sub.icon}}"></i>
+                                        {{sub.label}}
+                                    </a></li>
+                            </ng-template>
+
+
+
+                        </ng-container>
+                        <ng-template #elseSub>
+
+                            <li>
+                               
+                                <div (click)="toggleNode(sub)"
+                                    class="flex items-center justify-between hover:bg-slate-200 px-2 cursor-pointer">
+                                    <a class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'> <i
+                                            class="fa fa-inbox"></i> {{sub.label}}</a>
+                                            <i *ngIf="sub.expanded" class="fa-solid fa-sort-down"></i>
+                                            <i *ngIf="!sub.expanded"class="fa-solid fa-caret-right"></i>
+
+                                </div>
+                                <ul *ngIf="sub.expanded && sub.submenu.length>0">
+                                    <ng-container *ngFor="let child of sub.submenu">
+
+                                        <ng-container *ngIf="child.href==''; else elseSub3">
+                                            <li class="pl-4 "><a
+                                                    class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'>
+                                                    <i class="fa fa-file "></i>
+                                                    {{child.label}} </a>
+                                            </li>
+                                        </ng-container>
+
+                                        <ng-template #elseSub3>
+                                            <li class="pl-4 "><a routerLink="{{child.href}}"
+                                                    class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'>
+                                                    <i class="fa fa-file "></i>
+                                                    {{child.label}} </a>
+                                            </li>
+                                        </ng-template>
+
+                                    </ng-container>
+
+                                </ul>
+                            </li>
+
+
+                        </ng-template>
+                    </ng-container>
+
+                </ul>
 
 
 
 
 
-    <div role="group" style="display: grid; grid-template-columns: max-content max-content max-content;height: 100%;">
+            </ng-container>
 
-        <div class="grid-container">
-          <div class="btn-group " role="group">
-            <button disabled type="button" class="btn yks-btn topbar-button">
-              <i class="small fa fa-list btn-button-icon"></i>
-              İş Merkezi
-            </button>
+
+
+
+
+
+
           </div>
-          <div [routerLink]="['/menu/uretim/uretim-emri/list']"  class="btn-group " role="group">
-            <button  type="button" class="btn yks-btn topbar-button">
-              <i class="small fa fa-list btn-button-icon"></i>
-            Üretim Emri
-            </button>
-          </div>
-          <div class="btn-group " role="group">
-            <button disabled type="button" class="btn yks-btn topbar-button">
-              <i class="small fa fa-list btn-button-icon"></i>
-            Ürün Ağacı
-            </button>
-          </div>
-          <div [routerLink]="['/menu/uretim/urun-recete/list']" class="btn-group " role="group">
-            <button  type="button" class="btn yks-btn topbar-button">
-              <i class="small fa fa-list btn-button-icon"></i>
-            Ürün Reçetesi
-            </button>
-          </div>
-    
-    
-          <span class="top-footer">  Listeler</span>
-        </div>
-    
-        <p-divider layout="vertical"></p-divider>
-    
       </div>
-</nav>
-
-<router-outlet></router-outlet> -->
-
-
-
-
-
-
-
-
-
-
-
-
-<nav class="top-bar" style="height: 5.1rem; background: #ebebeb; line-height: 100%;">
-  <ul class="title-area">
-    <li class="name" [routerLink]="['/menu']">
-      <i class="fa fa-home home-icon"></i>
-    </li>
-
-
-  </ul>
-
-  <div style="display: flex;">
-    <p-divider layout="vertical"></p-divider>
-
-    <div style="display: grid;">
-      <div style="height: 4.1rem;">
-        <div class="buton-grup">
-
-          <button [routerLink]="['/menu/uretim/is-emri/list']"  [routerLinkActive]="['active']" type="button"
-            class="btn topbar-button disabled">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/is-merkezi.png" alt="">
-            </div>
-
-            <span   class="button-label">İş Merkezi
-            </span>
-
-          </button>
-
-
-
-          <button [routerLink]="['/menu/uretim/uretim-emri/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/uretim-emri.png" alt="">
-            </div>
-
-            <span class="button-label">Üretim Emri
-            </span>
-
-          </button>
-
-
-          <button [routerLink]="['/menu/uretim/urun-agaci/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button disabled">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/urun-agaci.png" alt="">
-            </div>
-
-            <span class="button-label">Ürün Ağacı
-            </span>
-
-          </button>
-
-          <button [routerLink]="['/menu/uretim/urun-recete/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/uretim/urun-recete.png" alt="">
-            </div>
-
-            <span class="button-label">Ürün Reçetesi
-            </span>
-
-          </button>
-
-
-
-
-
-        </div>
-
-      </div>
-      <div class="buton-grup-label">Listler</div>
-
-
-    </div>
-
-    <p-divider layout="vertical"></p-divider>
-
   </div>
 
-  <nav  class="breadcrumbs"></nav>
+  <div class="animated fadeInRight w-full">
+      <router-outlet></router-outlet>
 
-
-</nav>
-
-<div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
-  <router-outlet></router-outlet>
+  </div>
 </div>
-
-

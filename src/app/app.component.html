@@ -1,8 +1,116 @@
 
-<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
 
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "line-spin-clockwise-fade" [fullScreen] = "true"><p style="color: white" > Yükleniyor... </p></ngx-spinner>
-<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner> -->
 
-<router-outlet ></router-outlet>
 
+
+
+
+
+
+
+<div *ngIf="!isLoginPage" id="wrapper" class="flex flex-col h-full overflow-hidden">
+
+    <header class="flex items-center w-full h-10 bg-slate-600 ">
+        <div class=" flex-grow flex items-center ">
+            <div class=" flex items-center px-2 ">
+
+                <div class="grid-icon group cursor-pointer" routerLink="/">
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                    <div class="grid-item group-hover:bg-slate-300"></div>
+                </div>
+                <span class="text-xl px-2 text-white">Yükseliş Asansör</span>
+
+            </div>
+            <div class="w-2/3  px-5 flex justify-around ">
+
+                <input type="text" />
+
+            </div>
+
+        </div>
+
+        <div class="flex flex-col px-2">
+            <span class="text-right text-white">Recep YİĞİTER</span>
+            <span class="text-right text-white">Admin</span>
+        </div>
+        <i class="fa-regular fa-user text-2xl text-white p-2 hover:bg-slate-500"></i>
+        <i class="fa-solid fa-gear text-2xl text-white p-2 hover:bg-slate-500"></i>
+
+        <div class="portHeadLightMenu" style="display: flex;align-items: center;justify-content: center; margin: 0 20px;">
+            <ul style="display: flex; position: relative;">
+              <li>
+                <a (click)="show()" style="cursor: pointer;">
+                  {{user?.firstName |uppercase}} <i style="padding-bottom:5px;font-size: 16px; padding-left: 5px;"
+                    class="fa-solid fa-sort-down"></i>
+                </a>
+                <ul [ngClass]="{ 'show': isDropdownOpen }"   >
+                  <li class="hover:bg-slate-500 p-1 px-2" *isGranted="'Admin'" [routerLink]="['/administration']">
+                    <a class=" text-white" >Yönetim</a>
+                  </li>
+                  <li class="hover:bg-slate-500 p-1 px-2" (click)="cikis()">
+                    <a class=" text-white" >Çıkış</a>
+    
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+    </header>
+    <div id="page-wrapper" class="gray-bg w-full p-0 " style="height: calc(100vh - 40px) !important;">
+        <div class="wrapper wrapper-content w-full flex p-0 m-0" style="height: 100%">
+            <div class="w-20 h-full bg-slate-50 z-[2]" style="border-right: 1px solid rgba(0, 0, 0, 0.06);">
+                <div class=" flex items-center flex-col">
+
+
+                    <ng-container *ngFor="let item of moduls">
+                        <a [class.disabled]="item.disabled" routerLink="{{item.href}}"
+                        class="flex flex-col w-full py-1 items-center cursor-pointer hover:bg-slate-200 group">
+                        <i class="{{item.icon}} " [ngClass]="item.class"></i>
+                        <span class="text-slate-600  font-bold">{{item.modul}}</span>
+                    </a>
+                    </ng-container>
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <div class="flex flex-col w-full">
+
+
+
+                <div class="border-b-gray-50 ">
+
+                    <ol class="breadcrumb h-8 flex items-center border-b-2 bg-transparent">
+
+
+
+                       
+
+                    </ol>
+                </div>
+
+
+
+                <router-outlet></router-outlet>
+
+
+            </div>
+        </div>
+    </div> 
+</div>
+
+<div *ngIf="isLoginPage">
+<router-outlet></router-outlet>
+</div>

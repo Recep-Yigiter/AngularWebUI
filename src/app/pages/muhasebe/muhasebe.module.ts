@@ -25,6 +25,9 @@ import {DividerModule} from 'primeng/divider';
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
          { path: 'hesap-plani', loadChildren: () => import("./hesap-plani/hesap-plani.module").then(m => m.HesapPlaniModule),canActivate:[authGuard] },
+         { path: 'mahsup', loadChildren: () => import("./mahsup/mahsup.module").then(m => m.MahsupModule),canActivate:[authGuard] },
+         { path: 'tahsil', loadChildren: () => import("./tahsil/tahsil.module").then(m => m.TahsilModule),canActivate:[authGuard] },
+         { path: 'tediye', loadChildren: () => import("./tediye/tediye.module").then(m => m.TediyeModule),canActivate:[authGuard] },
       
     ])
   ]

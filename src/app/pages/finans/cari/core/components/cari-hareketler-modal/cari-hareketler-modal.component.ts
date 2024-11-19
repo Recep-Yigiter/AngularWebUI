@@ -124,7 +124,6 @@ export class CariHareketlerModalComponent implements OnInit {
       )
     ).items;
 
-    console.log(this.rowData);
   }
 
   rowClick() {

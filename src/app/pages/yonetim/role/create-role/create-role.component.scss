@@ -1,0 +1,10 @@
+@import "src/assets/custom/custom-create-page";
+
+
+:host ::ng-deep{
+    .mat-mdc-menu-item {
+        padding-left: 5px;
+        padding-right: 10px;
+        min-height: 30px !important;
+    }
+}

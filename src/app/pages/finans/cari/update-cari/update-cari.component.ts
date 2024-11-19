@@ -10,9 +10,8 @@ import { CariService } from 'src/app/core/services/repository/cari.service';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
 import { DatePipe } from '@angular/common';
-import { HesapPlaniSelectComponent } from 'src/app/pages/malzeme-yonetimi/stok/core/components/hesap-plani-select';
-import { AgGridAutoCompleteComponent } from 'src/app/pages/malzeme-yonetimi/stok/core/components/auto-complete';
 import { MuhasebeKodService } from 'src/app/core/services/repository/muhasebe-kod.service';
+import { HesapPlaniSelectComponent } from 'src/app/pages/stok-yonetimi/stok/core/components/hesap-plani-select';
 
 @Component({
   selector: 'app-update-Cari',
@@ -41,7 +40,7 @@ export class UpdateCariComponent implements OnInit {
   ) {
     this.frameworkComponents = {
       hesapPlaniSelect: HesapPlaniSelectComponent,
-      autoComplete: AgGridAutoCompleteComponent,
+     
     };
   }
   async ngOnInit() {
@@ -143,41 +142,6 @@ export class UpdateCariComponent implements OnInit {
 
 
 
-  // colDefs: ColDef[] = [
-  //   {
-  //     field: 'islemTuru',
-  //     headerName: 'İşlen Turu',
-  //     width: 150,
-  //     filter: 'agTextColumnFilter',
-  //   },
-  //   {
-  //     field: 'islemNo',
-  //     width: 150,
-  //     headerName: 'İşlem No',
-  //     filter: 'agTextColumnFilter',
-  //   },
-  //   {
-  //     field: 'tarih',
-  //     headerName: 'Vade Tarihi',
-  //     width: 100,
-  //     filter: 'agTextColumnFilter',
-  //     valueFormatter: (params) =>
-  //       this.DatePipe.transform(params.value, 'dd.MM.yyyy'),
-  //   },
-  //   {
-  //     field: 'tutar',
-  //     headerName: 'Tutar',
-  //     width: 100,
-  //     filter: 'agTextColumnFilter',
-  //     cellRenderer: this.CurrencyCellRendererTR,
-  //   },
-  //   {
-  //     field: 'aciklama',
-  //     headerName: 'Açıklama',
-  //     width: 200,
-  //     filter: 'agTextColumnFilter',
-  //   },
-  // ];
   CurrencyCellRendererTR(params: any) {
     var inrFormat = new Intl.NumberFormat('tr-TR', {
       style: 'currency',
@@ -187,18 +151,7 @@ export class UpdateCariComponent implements OnInit {
     return inrFormat.format(params.value);
   }
 
-  // async getList(params: GridReadyEvent<any>) {
-  //   this.gridApi = params.api;
-  //   this.rowData = await this.CariHareketService.getByIdOrGetList(
-  //     this.data.id,
-  //     () => {},
-  //     (errorMessage) => {
-  //       console.log('Hata....', errorMessage.error);
-  //     }
-  //   );
 
-  //   console.log(this.rowData);
-  // }
 
   rowClick() {
     const selectedRows = this.gridApi.getSelectedRows()[0];

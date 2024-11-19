@@ -1,0 +1,83 @@
+
+
+
+<nav class="top-bar" style="height: 5.1rem; background: #ebebeb; line-height: 100%;">
+  <ul class="title-area">
+    <li class="name" [routerLink]="['/menu']">
+      <i class="fa fa-home home-icon"></i>
+    </li>
+
+
+  </ul>
+
+  <div style="display: flex;">
+    <p-divider layout="vertical"></p-divider>
+
+    <div style="display: grid;">
+      <div style="height: 4.1rem;">
+        <div class="buton-grup">
+
+          <button [routerLink]="['/menu/fatura/alis-fatura/list']"  [routerLinkActive]="['active']" type="button"
+            class="btn topbar-button">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/fatura/alis-fatura.png" alt="">
+            </div>
+
+            <span   class="button-label">Alış Faturası
+            </span>
+
+          </button>
+
+
+
+          <button [routerLink]="['/menu/fatura/satis-fatura/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
+
+            <div class="img-container">
+              <img style="width: 35px;height: 35px;" src="../../../assets/icons/fatura/satis-fatura.png" alt="">
+            </div>
+
+            <span class="button-label">Satış Faturası
+            </span>
+
+          </button>
+
+
+
+
+
+        </div>
+
+      </div>
+      <div class="buton-grup-label">Listler</div>
+
+
+    </div>
+
+    <p-divider layout="vertical"></p-divider>
+
+  </div>
+
+  <nav  class="breadcrumbs"></nav>
+
+
+</nav>
+
+<div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

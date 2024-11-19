@@ -13,7 +13,6 @@ import { DatePipe } from '@angular/common';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
-import * as resize from '../../../../../assets/js/resizable-layout';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreateUrunReceteComponent } from '../create-urun-recete/create-urun-recete.component';
 import { CreateUrunReceteHareketComponent } from '../../urun-recete-hareket/create-urun-recete-hareket/create-urun-recete-hareket.component';
@@ -56,7 +55,7 @@ export class ListUrunReceteComponent implements OnInit {
     private NgbModal: NgbModal
   ) {}
   ngOnInit(): void {
-    resize.resizeFunction();
+
   }
 
   async getList(params: GridReadyEvent<any>) {

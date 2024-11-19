@@ -7,7 +7,6 @@ import { DatePipe } from '@angular/common';
 import { SiparisService } from 'src/app/core/services/repository/siparis.service';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
-import * as resize from '../../../../../assets/js/resizable-layout';
 
 @Component({
   selector: 'app-list-is-merkezi',
@@ -44,7 +43,6 @@ export class ListIsMerkeziComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    resize.resizeFunction()
 
 
   }

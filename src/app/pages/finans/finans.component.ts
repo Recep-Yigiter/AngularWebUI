@@ -1,13 +1,4 @@
-import { state } from '@angular/animations';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CariService } from 'src/app/core/services/repository/cari.service';
-import { CekSenetService } from 'src/app/core/services/repository/cek-senet.service';
-import { VirmanCariComponent } from './virman/virman-cari/virman-cari.component';
-import { VirmanBankaComponent } from './virman/virman-banka/virman-banka.component';
-import { VirmanKasaComponent } from './virman/virman-kasa/virman-kasa.component';
-import { VirmanGenelComponent } from './virman/virman-genel/virman-genel.component';
 
 @Component({
   selector: 'app-finans',
@@ -15,136 +6,282 @@ import { VirmanGenelComponent } from './virman/virman-genel/virman-genel.compone
   styleUrls: ['./finans.component.scss'],
 })
 export class FinansComponent {
-  constructor(
-    private router: Router,
-    private CekSenetService: CekSenetService,
-    private CariService: CariService,
-    private NgbModal: NgbModal
-  ) {}
+  menu = [
+    {
+      label: 'Finans-İzle',
+      icon: '',
+      href: '',
+      expanded: false,
+      submenu: [
+        {
+          label: 'Cari Hareketler',
+          icon: 'fa fa-inbox',
+          submenu: [],
+          href: '/finans/banka/list', expanded: false,
+        },
+        {
+          label: 'Banka Hareketler',
+          icon: 'fa fa-inbox',
+          submenu: [], expanded: false,
+          href: '/finans/kasa/list',
+        },
+        {
+          label: 'Kasa Hareketler',
+          icon: 'fa fa-inbox',
+          submenu: [],
+          href: '',
+          expanded: false,
+        },
+      ],
+    },
+    {
+      label: 'İşlemler',
+      icon: '',
+      href: '',
+      expanded: false,
+      submenu: [
+        {
+          label: 'Nakit',
+          icon: 'fa fa-circle text-warning', expanded: false,
+          submenu: [
+            {
+              label: 'Nakit Ödeme',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Nakit Tahsilat',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+          ],
+          href: '',
+      
+        },
 
-  virmanCariModal() {
-    const modalRef = this.NgbModal.open(VirmanCariComponent, {
-      size: 'lg',
-      backdrop: 'static',
-    });
+        {
+          label: 'Çek İşlemleri',
+          icon: 'fa fa-circle text-warning',
+          submenu: [
+            {
+              label: 'Alınan Çek',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Verilen Çek',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+          ],
+          href: '',
+          expanded: false,
+        },
+        {
+          label: 'Senet İşlemleri',
+          icon: 'fa fa-circle text-warning',
+          submenu: [
+            {
+              label: 'Alınan Senet',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Verilen Senet',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+          ],
+          href: '',
+          expanded: false,
+        },
+        {
+          label: 'Teminat İşlemleri',
+          icon: 'fa fa-circle text-warning',
+          submenu: [
+            {
+              label: 'Alınan Tem. Çeki',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Alınan Tem. Senedi',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Alınan Tem. Mektubu',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Verilen Tem. Çeki',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Verilen Tem. Senedi',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Verilen Tem. Mektubu',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+          ],
+          href: '',
+          expanded: false,
+        },
+        {
+          label: 'Ödeme / Tahsilat',
+          icon: 'fa fa-circle text-warning',
+          submenu: [
+            {
+              label: 'Havale Gönder',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Gelen Havale',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Para Yatır',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+            {
+              label: 'Para Çekme',
+              icon: 'fa fa-circle text-warning',
+              submenu: [],
+              href: '',
+              expanded: false,
+            },
+          ],
+          href: '',
+          expanded: false,
+        },
+      ],
+    },
+    {
+      label: 'Listler',
+      icon: '',
+      href: '',
+      expanded: false,
+      submenu: [
+        {
+          label: 'Cari',
+          icon: 'fa fa-circle text-warning',
+          submenu: [],
+          href: '/finans/cari/list',
+          expanded: false,
+        },
+        {
+          label: 'Banka',
+          icon: 'fa fa-circle text-warning',
+          submenu: [],
+          href: '/finans/banka/list',
+          expanded: false,
+        },
+        {
+          label: 'Kasa',
+          icon: 'fa fa-circle text-warning',
+          submenu: [],
+          href: '/finans/kasa/list',
+          expanded: false,
+        },
+        {
+          label: 'Ç/S Kasa',
+          icon: 'fa fa-circle text-warning',
+          submenu: [],
+          href: '',
+          expanded: false,
+        },
+        {
+          label: 'Fatura',
+          icon: 'fa fa-circle text-warning',
+          submenu: [
+            {
+            label: 'Alış Faturası',
+            icon: 'fa fa-circle text-warning',
+            submenu: [],
+            href: '/finans/fatura/alis-fatura/list',
+            expanded: false,
+          },
+            {
+            label: 'Satış Faturası',
+            icon: 'fa fa-circle text-warning',
+            submenu: [],
+            href: '/finans/fatura/satis-fatura/list',
+            expanded: false,
+          },
 
-    modalRef.componentInstance.data = 'Virman Cari';
+        ],
+          href: '',
+          expanded: false,
+        },
+        {
+          label: 'İrsaliye',
+          icon: 'fa fa-circle text-warning',
+          submenu: [
+            {
+            label: 'Alış İrsaliyesi',
+            icon: 'fa fa-circle text-warning',
+            submenu: [],
+            href: '/finans/irsaliye/alis-irsaliye/list',
+            expanded: false,
+          },
+            {
+            label: 'Satış İrsaliyesi',
+            icon: 'fa fa-circle text-warning',
+            submenu: [],
+            href: '/finans/irsaliye/satis-irsaliye/list',
+            expanded: false,
+          },
+        ],
+          href: '',
+          expanded: false,
+        },
+        
+      ],
+    },
 
-    modalRef.result.then(async (item) => {});
+  ];
+
+  toggleNode(node: any) {
+    node.expanded = !node.expanded;
   }
 
-  virmanBankaModal() {
-    const modalRef = this.NgbModal.open(VirmanBankaComponent, {
-      size: 'lg',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.data = 'Virman Banka';
-    modalRef.result.then(async (item) => {});
-  }
-
-  virmanKasaModal() {
-    const modalRef = this.NgbModal.open(VirmanKasaComponent, {
-      size: 'lg',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.data = 'Virman Kasa';
-    modalRef.result.then(async (item) => {});
-  }
-
-  virmanGenelModal() {
-    const modalRef = this.NgbModal.open(VirmanGenelComponent, {
-      size: 'xl',
-      backdrop: 'static',
-    });
-    modalRef.componentInstance.data = ' Genel Virman ';
-    modalRef.result.then(async (item) => {});
-  }
-
-  async MusteriCekleri() {
-    this.router.navigate(['/menu/finans/cek-senet/musteri-ceki'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) => c.cekSenetTipi == 1
-        ),
-        filterBy: [1],
-        createModal: true,
-        createValue: { seriNo: 'AÇ-1', cekSenetTipi: 1 },
-      },
-    });
-  }
-  async KendiCeklerimiz() {
-    this.router.navigate(['/menu/finans/cek-senet/kendi-cekimiz'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) => c.cekSenetTipi == 3
-        ),
-        filterBy: [3],
-        createModal: true,
-        createValue: { seriNo: 'VÇ-1', cekSenetTipi: 3 },
-      },
-    });
-  }
-  async MusteriSenetleri() {
-    this.router.navigate(['/menu/finans/cek-senet/musteri-senedi'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) => c.cekSenetTipi == 2
-        ),
-        filterBy: [2],
-        createModal: true,
-        createValue: { seriNo: 'AS-1', cekSenetTipi: 2 },
-      },
-    });
-  }
-  async KendiSenetlerimiz() {
-    this.router.navigate(['/menu/finans/cek-senet/kendi-senedimiz'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) => c.cekSenetTipi == 4
-        ),
-        filterBy: [4],
-        createModal: true,
-        createValue: { seriNo: 'VS-1', cekSenetTipi: 4 },
-      },
-    });
-  }
-  async MusteriCekSenetleri() {
-    this.router.navigate(['/menu/finans/cek-senet/musteri-cek-senet'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) => c.cekSenetTipi == 1 || c.cekSenetTipi == 2
-        ),
-        filterBy: [1, 2],
-        createModal: false,
-        createValue: { seriNo: '', cekSenetTipi: 0 },
-      },
-    });
-  }
-  async KendiCekSenetlerimiz() {
-    this.router.navigate(['/menu/finans/cek-senet/kendi-cek-senet'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) => c.cekSenetTipi == 3 || c.cekSenetTipi == 4
-        ),
-        filterBy: [3, 4],
-        createModal: false,
-        createValue: { seriNo: '', cekSenetTipi: 0 },
-      },
-    });
-  }
-  async cekSenetListesi() {
-    this.router.navigate(['/menu/finans/cek-senet/list'], {
-      state: {
-        filterList: (await this.CekSenetService.list()).items.filter(
-          (c) =>
-            c.cekSenetTipi == 1 ||
-            c.cekSenetTipi == 2 ||
-            c.cekSenetTipi == 3 ||
-            c.cekSenetTipi == 4
-        ),
-        filterBy: [1, 2, 3, 4],
-        createModal: false,
-      },
-    });
-  }
 }

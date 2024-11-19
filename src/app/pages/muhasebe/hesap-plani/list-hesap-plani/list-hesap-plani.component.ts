@@ -75,7 +75,6 @@ export class ListHesapPlaniComponent implements OnInit {
 
 let deneme=(await this.FisSatirService.list()).items
     
-console.log(deneme);
 
 
 

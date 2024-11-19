@@ -96,7 +96,6 @@ export class ListKasaComponent implements OnInit {
       item.bakiye = item.alacak - item.borc;
     });
 
-    console.log(this.rowData);
   }
 
   rowClick() {

@@ -29,9 +29,7 @@ export class RbacService {
   isGranted(roleOrPermission: string): boolean {
 
    let tokenData= JSON.parse(localStorage.getItem("tokenData"));
-
-
-    return tokenData.roles.includes(roleOrPermission);
+   return tokenData.roles.includes(roleOrPermission);
 
   }
 

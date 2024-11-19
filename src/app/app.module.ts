@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UretimComponent } from './pages/uretim/uretim.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AgGridAngular } from 'ag-grid-angular';
 import { StokSelectModalComponent } from './shared/components/stok-select-modal/stok-select-modal.component';
@@ -19,8 +18,7 @@ import { AlinanTeklifModalComponent } from './shared/components/alinan-teklif-mo
 import { AlinanTeklifHareketModalComponent } from './shared/components/alinan-teklif-hareket-modal/alinan-teklif-hareket-modal.component';
 import { OnayDurumSelectComponent } from './shared/components/onay-durum-select/onay-durum-select.component';
 import { ConfirmModalComponent } from './shared/components/confirm-modal/confirm-modal.component';
-import { LoginComponent } from './pages/Auth/login/login.component';
-import { RegisterComponent } from './pages/Auth/register/register.component';
+
 import { JwtHelperService, JWT_OPTIONS, } from '@auth0/angular-jwt';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AddRoleClaimsButtonComponent } from './shared/components/add-role-claims-button/add-role-claims-button.component';
@@ -28,7 +26,6 @@ import { RequestInterceptor } from './core/request.interceptor';
 import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
 import { AlertService } from './core/services/alert.service';
 import { HtppErrorHandlerInterceptor } from './core/http-error-handler.interceptor';
-import { PageModule } from './pages/page.module';
 import { PageDesignComponent } from './shared/components/page-design/page-design.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -46,11 +43,19 @@ import { BankaHesapSelectModalComponents } from './shared/utilities/modals/banka
 import { HesapPlaniSelectModalComponents } from './shared/utilities/modals/hesap-plani-selected-modal';
 import { OnayModalComponents } from './shared/utilities/confirms/onay-modal';
 import { ConfirmModalComponents } from './shared/utilities/confirms/confirm-modal';
+import { GenelVirmanCariSelectComponent } from './shared/core/genel-virman-cari';
+import { AutocomplateComponent } from './shared/core/autocomplate';
+import { AutoCompleteComponent } from './shared/core/auto-complete.component';
+import { GenelVirmanBankaSelectComponent } from './shared/core/genel-virman-banka';
+import { GenelVirmanKasaSelectComponent } from './shared/core/genel-virman-kasa';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
+import { IsGrantedDirective } from './Auth/is-granted.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-  
+    IsGrantedDirective,
     StokSelectModalComponent,
     CariSelectModalComponent,
     DeleteButtonComponent,
@@ -61,8 +66,7 @@ import { ConfirmModalComponents } from './shared/utilities/confirms/confirm-moda
     AlinanTeklifHareketModalComponent,
     OnayDurumSelectComponent,
     ConfirmModalComponent,
-    LoginComponent,
-    RegisterComponent,
+
     AddRoleClaimsButtonComponent,
     AlertModalComponent,
     PageDesignComponent,
@@ -79,10 +83,18 @@ import { ConfirmModalComponents } from './shared/utilities/confirms/confirm-moda
     HesapPlaniSelectModalComponents,
     DeleteModalComponents,
     OnayModalComponents,
-    ConfirmModalComponents
+    ConfirmModalComponents,
+    GenelVirmanCariSelectComponent,
+    GenelVirmanBankaSelectComponent,
+    GenelVirmanKasaSelectComponent,
+    AutocomplateComponent,
+    AutoCompleteComponent,
+    LoginComponent,
+    RegisterComponent,
+    
   ],
   imports: [
-
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -90,7 +102,6 @@ import { ConfirmModalComponents } from './shared/utilities/confirms/confirm-moda
     ReactiveFormsModule,
     BrowserModule,
     AgGridAngular,
-    PageModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
 
   ],

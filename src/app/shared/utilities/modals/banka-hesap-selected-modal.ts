@@ -100,7 +100,6 @@ export class BankaHesapSelectModalComponents {
     async getList(params: GridReadyEvent<any>) {
         this.gridApi = params.api;
         this.rowData = (await this.BankaHesapService.GetList(() => { })).items;
-        console.log(this.rowData);
     }
     selectedRow: any;
 

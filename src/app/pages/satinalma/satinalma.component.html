@@ -1,208 +1,96 @@
-<!-- <nav class="top-bar" data-topbar >
-  <ul class="title-area">
-    <li class="name" [routerLink]="['/menu']">
-      <i class="fa fa-home home-icon" aria-hidden="true"></i>
-    </li>
-
-    <li class="toggle-topbar menu-icon"><a><span>Menu</span></a></li>
-  </ul>
-
-
-
-
-  <div role="group" style="display: grid; grid-template-columns: max-content max-content max-content;height: 100%;">
-
-    <div class="grid-container">
-      <div class="btn-group " role="group">
-        <button [routerLink]="['/menu/satinalma/alinan-teklif/list']" type="button" class="btn yks-btn topbar-button">
-          <i class="small fa fa-list btn-button-icon"></i>
-          Teklifler
-        </button>
-      </div>
-      <div class="btn-group " role="group">
-        <button [routerLink]="['/menu/satinalma/verilen-siparis/list']" type="button" class="btn yks-btn topbar-button">
-          <i class="small fa fa-list btn-button-icon"></i>
-         Siparişler
-        </button>
-      </div>
-
-
-      <span class="top-footer">
-        Listeler
-      </span>
-    </div>
-
-    <p-divider layout="vertical"></p-divider>
-
-  </div>
-</nav>
-
-<router-outlet></router-outlet> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <nav class="top-bar" >
-  <ul class="title-area" >
-    <li class="name" [routerLink]="['/menu']">
-      <i class="fa fa-home home-icon"></i>
-    </li>
-
-
-  </ul>
-
-  <div role="group" style="display: grid; grid-template-columns: max-content max-content max-content;height: 100%;">
-
-    <div class="grid-container">
-      <div class="btn-group " role="group">
-        <button [routerLink]="['/menu/malzeme-yonetimi/stok/list']" type="button" class="btn yks-btn topbar-button">
-          <i class="small fa fa-list btn-button-icon"></i>
-          Stoklar
-        </button>
-      </div>
-
-
-      <div class="btn-group mr-1" role="group">
-        <button style="border: none;
-            display: grid;
-            top: 0;
-            height: 45px;
-            color: white;" type="button" class="btn yks-btn topbar-button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          <i class="small fa fa-database btn-button-icon" aria-hidden="true"></i>
-          Depolar
-        </button>
-        <ul class="dropdown-menu topbar-dropdown-menu" style="z-index: 9999;">
-          <li [routerLink]="['/menu/malzeme-yonetimi/depo/list']"><a  class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Depolar</a></li>
-          <li [routerLink]="['/menu/malzeme-yonetimi/depo-bazinda-stok/list']"><a class="dropdown-item yks-dropdown-item" style="color: #fbfbfb !important;">Depo Bazında Stoklar</a></li>
-         
-
-        </ul>
-      </div>
-
-
-
-
-
-      <div class="btn-group " role="group">
-        <button [routerLink]="['/menu/malzeme-yonetimi/birim/list']" type="button" class="btn yks-btn topbar-button">
-          <i class="small fa fa-list btn-button-icon"></i>
-          Birimler
-        </button>
-      </div>
-      <div class="btn-group " role="group">
-        <button [routerLink]="['/menu/malzeme-yonetimi/hizmet/list']" type="button" class="btn yks-btn topbar-button">
-          <i class="small fa fa-list btn-button-icon"></i>
-          Hizmetler
-        </button>
-      </div>
-      <div class="btn-group " role="group">
-        <button [routerLink]="['/menu/malzeme-yonetimi/masraf/list']" type="button" class="btn yks-btn topbar-button">
-          <i class="small fa fa-list btn-button-icon"></i>
-          Masraflar
-        </button>
-      </div>
-      
-
-      <span class="top-footer">
-        Listeler
-      </span>
-    </div>
-
-    <p-divider layout="vertical"></p-divider>
-
-  </div>
-
-</nav> -->
-
-
-
-<nav class="top-bar" style="height: 5.1rem; background: #ebebeb; line-height: 100%;">
-  <ul class="title-area">
-    <li class="name" [routerLink]="['/menu']">
-      <i class="fa fa-home home-icon"></i>
-    </li>
-
-
-  </ul>
-
-  <div style="display: flex;">
-    <p-divider layout="vertical"></p-divider>
-
-    <div style="display: grid;">
-      <div style="height: 4.1rem;">
-        <div class="buton-grup">
-
-          <button [routerLink]="['/menu/satinalma/alinan-teklif/list']"  [routerLinkActive]="['active']" type="button"
-            class="btn topbar-button">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/satinalma/alinan-teklif.png" alt="">
+<div class="flex w-full " style="height: calc(100vh - 85px)">
+    <div id="sidebar-menu" class="ibox overflow-auto min-w-52 md:min-w-56 md:max-w-56 " style="border-right: 1px solid rgba(0, 0, 0, 0.06);">
+        <div class="ibox-content mailbox-content p-1">
+            <div class="file-manager ">
+  
+                <div class="space-25"></div>
+                <ng-container *ngFor="let item of menu ">
+  
+                  <div class="space-25"></div>
+                  <h5>{{item.label}} </h5>
+  
+                  <ul class="folder-list m-b-md" style="padding: 0">
+                      <ng-container *ngFor="let sub of item.submenu; let i = index">
+                          <ng-container *ngIf="sub.submenu.length==0 ; else elseSub">
+  
+                              <ng-container *ngIf="sub.href==''; else elseSub3">
+                                  <li class="hover:bg-slate-200 px-2"><a
+                                          class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'> <i
+                                              class="{{sub.icon}}"></i>
+                                          {{sub.label}}
+                                      </a></li>
+                              </ng-container>
+                              <ng-template #elseSub3>
+                                  <li class="hover:bg-slate-200 px-2"><a
+                                          class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'
+                                          routerLink="{{sub.href}}"> <i class="{{sub.icon}}"></i>
+                                          {{sub.label}}
+                                      </a></li>
+                              </ng-template>
+  
+  
+  
+                          </ng-container>
+                          <ng-template #elseSub>
+  
+                              <li>
+                                 
+                                  <div (click)="toggleNode(sub)"
+                                      class="flex items-center justify-between hover:bg-slate-200 px-2 cursor-pointer">
+                                      <a class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'> <i
+                                              class="fa fa-inbox"></i> {{sub.label}}</a>
+                                              <i *ngIf="sub.expanded" class="fa-solid fa-sort-down"></i>
+                                              <i *ngIf="!sub.expanded"class="fa-solid fa-caret-right"></i>
+  
+                                  </div>
+                                  <ul *ngIf="sub.expanded && sub.submenu.length>0">
+                                      <ng-container *ngFor="let child of sub.submenu">
+  
+                                          <ng-container *ngIf="child.href==''; else elseSub3">
+                                              <li class="pl-4 "><a
+                                                      class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'>
+                                                      <i class="fa fa-file "></i>
+                                                      {{child.label}} </a>
+                                              </li>
+                                          </ng-container>
+  
+                                          <ng-template #elseSub3>
+                                              <li class="pl-4 "><a routerLink="{{child.href}}"
+                                                      class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'>
+                                                      <i class="fa fa-file "></i>
+                                                      {{child.label}} </a>
+                                              </li>
+                                          </ng-template>
+  
+                                      </ng-container>
+  
+                                  </ul>
+                              </li>
+  
+  
+                          </ng-template>
+                      </ng-container>
+  
+                  </ul>
+  
+  
+  
+  
+  
+              </ng-container>
+  
+  
+  
+  
+  
+  
+  
             </div>
-
-            <span   class="button-label">Alınan Teklif
-            </span>
-
-          </button>
-
-
-
-          <button [routerLink]="['/menu/satinalma/verilen-siparis/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/satinalma/verilen-siparis.png" alt="">
-            </div>
-
-            <span class="button-label">Verilen Sipariş
-            </span>
-
-          </button>
-
-
-
-
-
         </div>
-
-      </div>
-      <div class="buton-grup-label">Listler</div>
-
-
     </div>
-
-    <p-divider layout="vertical"></p-divider>
-
+  
+    <div class="animated fadeInRight w-full">
+        <router-outlet></router-outlet>
+  
+    </div>
   </div>
-
-  <nav  class="breadcrumbs"></nav>
-
-
-</nav>
-
-<div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
-  <router-outlet></router-outlet>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -39,19 +39,32 @@
             ],
             "styles": [
           
-             
-          
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/font-awesome/css/font-awesome.css",
+              "src/assets/css/plugins/iCheck/custom.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/style.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/ngx-spinner/animations/square-jelly-box.css",
               "node_modules/ngx-spinner/animations/ball-clip-rotate-multiple.css",
               "node_modules/ngx-spinner/animations/line-spin-clockwise-fade.css"
               
             ],
             "scripts": [
+              "src/assets/js/jquery-3.1.1.min.js",
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/plugins/metisMenu/jquery.metisMenu.js",
+              "src/assets/js/plugins/slimscroll/jquery.slimscroll.min.js",
+              "src/assets/js/plugins/pace/pace.min.js",
+              "src/assets/js/plugins/iCheck/icheck.min.js",
+              "src/assets/js/inspinia.js",
               "src/assets/js/bootstrap.bundle.min.js"
 
             ]
+
+
           },
           "configurations": {
             "production": {

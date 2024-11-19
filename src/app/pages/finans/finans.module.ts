@@ -6,15 +6,15 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DividerModule } from 'primeng/divider';
 import { RouterModule } from '@angular/router';
 import { authGuard } from 'src/app/Auth/guards/auth.guard';
-import {DividerModule} from 'primeng/divider';
+
+
 
 @NgModule({
   declarations: [
-    FinansComponent,
-
- 
+    FinansComponent
   ],
   imports: [
     CommonModule,
@@ -26,14 +26,15 @@ import {DividerModule} from 'primeng/divider';
     DividerModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     RouterModule.forChild([
-        { path: 'cari', loadChildren: () => import("./cari/cari.module").then(m => m.CariModule),canActivate:[authGuard] },
-        { path: 'kasa', loadChildren: () => import("./kasa/kasa.module").then(m => m.KasaModule),canActivate:[authGuard] },
-        { path: 'banka', loadChildren: () => import("./banka/banka.module").then(m => m.BankaModule),canActivate:[authGuard] },
-        { path: 'alinan-cek', loadChildren: () => import("./alinan-cek/alinan-cek.module").then(m => m.AlinanCekModule),canActivate:[authGuard] },
-        { path: 'cek-senet', loadChildren: () => import("./cek-senet/cek-senet.module").then(m => m.CekSenetModule),canActivate:[authGuard] },
+          { path: 'banka', loadChildren: () => import("./banka/banka.module").then(m => m.BankaModule),canActivate:[authGuard] },
+          { path: 'cari', loadChildren: () => import("./cari/cari.module").then(m => m.CariModule),canActivate:[authGuard] },
+          { path: 'kasa', loadChildren: () => import("./kasa/kasa.module").then(m => m.KasaModule),canActivate:[authGuard] },
+          { path: 'fatura', loadChildren: () => import("./fatura/fatura.module").then(m => m.FaturaModule),canActivate:[authGuard] },
+          { path: 'irsaliye', loadChildren: () => import("./irsaliye/irsaliye.module").then(m => m.IrsaliyeModule),canActivate:[authGuard] },
+        //  { path: 'mahsup', loadChildren: () => import("./mahsup/mahsup.module").then(m => m.MahsupModule),canActivate:[authGuard] },
+        //  { path: 'tahsil', loadChildren: () => import("./tahsil/tahsil.module").then(m => m.TahsilModule),canActivate:[authGuard] },
+        //  { path: 'tediye', loadChildren: () => import("./tediye/tediye.module").then(m => m.TediyeModule),canActivate:[authGuard] },
       
-        { path: 'virman', loadChildren: () => import("./virman/virman.module").then(m => m.VirmanModule),canActivate:[authGuard] },
-        { path: 'banka-hesap', loadChildren: () => import("./banka-hesap/banka-hesap.module").then(m => m.BankaHesapModule),canActivate:[authGuard] },
     ])
   ]
 })

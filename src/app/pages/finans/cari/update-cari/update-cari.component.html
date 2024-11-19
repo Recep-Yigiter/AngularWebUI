@@ -1,4 +1,3 @@
-
 <!-- 
 
 <div class="modal-header ">
@@ -137,134 +136,114 @@
 
 
 
- 
+
 
 
 
 <div class="modal-header ">
-  <h4 class="modal-title"></h4>
-  <h4 class="modal-title"> </h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+    <h4 class="modal-title"></h4>
+    <h4 class="modal-title"> </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
 </div>
 
 
 
 <div class="">
-  <div class="container-fluid">
-      <div class="panel header" data-resize-name="header">
-          <div class="content">
-              <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
-                  <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+    <div class="container-fluid">
+        <div class="panel header" data-resize-name="header">
+            <div class="content">
+                <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+                    <div class="action-items" style="width: 100%; display: flex; align-items: center;">
 
-                      <div class="action-left">
-                          <div class="btn-group ml-1 mr-1">
+                        <div class="action-left">
+                            <div class="btn-group ml-1 mr-1">
 
-                              <div class="button-container">
+                                <div class="button-container">
 
-                                  <div class="button-grup disabled">
-                                      <div class="img-container">
-                                          <img src="../../../../../assets/icons/add-file.png" alt="">
-                                      </div>
-                                      <span class="d-none d-sm-inline button-label">Yeni</span>
-                                  </div>
+                                    <div class="button-grup disabled">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/add-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Yeni</span>
+                                    </div>
 
-                                  <div (click)="Kaydet()" class="button-grup ">
-                                      <div class="img-container">
-                                          <img src="../../../../../assets/icons/save.png" alt="">
-                                      </div>
-                                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+                                    <div (click)="Kaydet()" class="button-grup ">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/save.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Kaydet</span>
 
-                                  </div>
+                                    </div>
 
-                                  <div class="button-grup disabled">
-                                      <div class="img-container">
-                                          <img src="../../../../../assets/icons/delete-file.png" alt="">
-                                      </div>
-                                      <span class="d-none d-sm-inline button-label">Sil</span>
+                                    <div class="button-grup disabled">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/delete-file.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Sil</span>
 
-                                  </div>
+                                    </div>
 
-                                  <div (click)="cikis()" class="button-grup">
-                                      <div class="img-container">
-                                          <img src="../../../../../assets/icons/close.png" alt="">
-                                      </div>
-                                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+                                    <div (click)="cikis()" class="button-grup">
+                                        <div class="img-container">
+                                            <img src="../../../../../assets/icons/close.png" alt="">
+                                        </div>
+                                        <span class="d-none d-sm-inline button-label">Çıkış</span>
 
-                                  </div>
-
-
-
-
-                              </div>
-
-
-                          </div>
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-      </div>
-
-      <div class="panel panel-default">
-          <div class="panel-heading" style="background-color: #f5f5f5;">
-              <ul class="nav nav-tabs">
-
-                  <li [class.active]="selectedTab==='Genel Bilgiler'"
-                      (click)="tabChanceFilter('Genel Bilgiler',$event)">
-                      <a class="tab-item"> Genel Bilgileri</a>
-                  </li>
-                  <li [class.active]="selectedTab==='Muhasebe Kodları'"
-                      (click)="tabChanceFilter('Muhasebe Kodları',$event)">
-                      <a class="tab-item">Muhasebe Kodları</a>
-                  </li>
-
-              </ul>
-          </div>
-
-      </div>
+                                    </div>
 
 
 
 
-      <div [ngStyle]="{'display':selectedTab=='Genel Bilgiler'?'block':'none'}"
-          style="overflow-x: auto; line-height: 27px; padding: 5px; height:calc(100vh - 390px);">
-          <form [formGroup]="frm">
-              <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #f5f5f5;">
+                <ul class="nav nav-tabs">
+
+                    <li [class.active]="selectedTab==='Genel Bilgiler'"
+                        (click)="tabChanceFilter('Genel Bilgiler',$event)">
+                        <a class="tab-item"> Genel Bilgileri</a>
+                    </li>
+                    <li [class.active]="selectedTab==='Muhasebe Kodları'"
+                        (click)="tabChanceFilter('Muhasebe Kodları',$event)">
+                        <a class="tab-item">Muhasebe Kodları</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
 
 
 
 
-
-
-                <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="kod" [span]="130" [field]="data.kod"
-                [label]="'Kod '"></app-form-label>
-
-           <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="ad" [span]="130" [field]="data.ad"
-                [label]="'Ad '"></app-form-label>
-
-           <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="aciklama" [span]="130" [field]="data.aciklama"
-                [label]="'Açıklama '"></app-form-label>
+        <div [ngStyle]="{'display':selectedTab=='Genel Bilgiler'?'block':'none'}"
+            style="overflow-x: auto; line-height: 27px; padding: 5px; height:calc(100vh - 390px);">
+            <form [formGroup]="frm">
+                <div style="display: grid;grid-template-columns: auto;padding: 0 10px;">
 
 
 
 
 
 
+                    <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="kod" [span]="130"
+                        [field]="data.kod" [label]="'Kod '"></app-form-label>
 
+                    <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="ad" [span]="130"
+                        [field]="data.ad" [label]="'Ad '"></app-form-label>
 
-              </div>
-
-          </form>
-      </div>
-
-
-      <div [ngStyle]="{'display':selectedTab=='Muhasebe Kodları'?'block':'none'}"
-          style="overflow-x: auto; line-height: 27px; padding: 5px;">
-          <ag-grid-angular #agGrid style="height:calc(100vh - 390px);" class="ag-theme-quartz" [rowData]="rowData"
-              [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (gridReady)="getList($event)"
-              [rowSelection]="rowSelection" [rowHeight]="22" [headerHeight]="23" [localeText]="localeText"  [components]="frameworkComponents" >
-          </ag-grid-angular>  
+                    <app-form-label style=" grid-column: 1/span 2; " [formControlNames]="aciklama" [span]="130"
+                        [field]="data.aciklama" [label]="'Açıklama '"></app-form-label>
 
 
 
@@ -273,13 +252,34 @@
 
 
 
+                </div>
+
+            </form>
+        </div>
 
 
-      </div>
+        <div [ngStyle]="{'display':selectedTab=='Muhasebe Kodları'?'block':'none'}"
+            style="overflow-x: auto; line-height: 27px; padding: 5px;">
+            <ag-grid-angular #agGrid style="height:calc(100vh - 390px);" class="ag-theme-quartz" [rowData]="rowData"
+                [defaultColDef]="defaultColDef" [columnDefs]="colDefs" (gridReady)="getList($event)"
+                [rowSelection]="rowSelection" [rowHeight]="22" [headerHeight]="23" [localeText]="localeText"
+                [components]="frameworkComponents">
+            </ag-grid-angular>
 
 
 
-  </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+    </div>
 
 
 
@@ -290,16 +290,3 @@
 <div class="modal-footer">
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-

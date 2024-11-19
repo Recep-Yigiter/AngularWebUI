@@ -32,7 +32,7 @@ export class BankaHesapHareketlerComponent implements OnInit {
 
   constructor(private BankaHesapHareketService: BankaHesapHareketService, private NgbModal: NgbModal,private DatePipe:DatePipe) {}
 
-  async ngOnInit() {console.log(await this.BankaHesapHareketService.getByIdOrGetList("00000000-0000-0000-0000-000000000000"));}
+  async ngOnInit() {}
 
   colDefs: ColDef[] = [
     {
@@ -133,7 +133,6 @@ export class BankaHesapHareketlerComponent implements OnInit {
       )
     ).items;
 
-console.log(this.rowData);
   }
 
   rowClick() {

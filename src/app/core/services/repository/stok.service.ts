@@ -67,7 +67,6 @@ export class StokService {
       {
         controller: "Stoks",
         action: "GetList",
-         
       });
     const promiseData = firstValueFrom(observable);
 

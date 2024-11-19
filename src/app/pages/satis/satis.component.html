@@ -1,83 +1,96 @@
-
-
-
-<nav class="top-bar" style="height: 5.1rem; background: #ebebeb; line-height: 100%;">
-  <ul class="title-area">
-    <li class="name" [routerLink]="['/menu']">
-      <i class="fa fa-home home-icon"></i>
-    </li>
-
-
-  </ul>
-
-  <div style="display: flex;">
-    <p-divider layout="vertical"></p-divider>
-
-    <div style="display: grid;">
-      <div style="height: 4.1rem;">
-        <div class="buton-grup">
-
-          <button [routerLink]="['/menu/satis/verilen-teklif/list']"  [routerLinkActive]="['active']" type="button"
-            class="btn topbar-button">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/satis/verilen-teklif.png" alt="">
+<div class="flex w-full " style="height: calc(100vh - 85px)">
+    <div id="sidebar-menu" class="ibox overflow-auto min-w-52 md:min-w-56 md:max-w-56 " style="border-right: 1px solid rgba(0, 0, 0, 0.06);">
+        <div class="ibox-content mailbox-content p-1">
+            <div class="file-manager ">
+  
+                <div class="space-25"></div>
+                <ng-container *ngFor="let item of menu ">
+  
+                  <div class="space-25"></div>
+                  <h5>{{item.label}} </h5>
+  
+                  <ul class="folder-list m-b-md" style="padding: 0">
+                      <ng-container *ngFor="let sub of item.submenu; let i = index">
+                          <ng-container *ngIf="sub.submenu.length==0 ; else elseSub">
+  
+                              <ng-container *ngIf="sub.href==''; else elseSub3">
+                                  <li class="hover:bg-slate-200 px-2"><a
+                                          class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'> <i
+                                              class="{{sub.icon}}"></i>
+                                          {{sub.label}}
+                                      </a></li>
+                              </ng-container>
+                              <ng-template #elseSub3>
+                                  <li class="hover:bg-slate-200 px-2"><a
+                                          class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'
+                                          routerLink="{{sub.href}}"> <i class="{{sub.icon}}"></i>
+                                          {{sub.label}}
+                                      </a></li>
+                              </ng-template>
+  
+  
+  
+                          </ng-container>
+                          <ng-template #elseSub>
+  
+                              <li>
+                                 
+                                  <div (click)="toggleNode(sub)"
+                                      class="flex items-center justify-between hover:bg-slate-200 px-2 cursor-pointer">
+                                      <a class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'> <i
+                                              class="fa fa-inbox"></i> {{sub.label}}</a>
+                                              <i *ngIf="sub.expanded" class="fa-solid fa-sort-down"></i>
+                                              <i *ngIf="!sub.expanded"class="fa-solid fa-caret-right"></i>
+  
+                                  </div>
+                                  <ul *ngIf="sub.expanded && sub.submenu.length>0">
+                                      <ng-container *ngFor="let child of sub.submenu">
+  
+                                          <ng-container *ngIf="child.href==''; else elseSub3">
+                                              <li class="pl-4 "><a
+                                                      class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'>
+                                                      <i class="fa fa-file "></i>
+                                                      {{child.label}} </a>
+                                              </li>
+                                          </ng-container>
+  
+                                          <ng-template #elseSub3>
+                                              <li class="pl-4 "><a routerLink="{{child.href}}"
+                                                      class='w-[180px] whitespace-nowrap overflow-hidden text-ellipsis'>
+                                                      <i class="fa fa-file "></i>
+                                                      {{child.label}} </a>
+                                              </li>
+                                          </ng-template>
+  
+                                      </ng-container>
+  
+                                  </ul>
+                              </li>
+  
+  
+                          </ng-template>
+                      </ng-container>
+  
+                  </ul>
+  
+  
+  
+  
+  
+              </ng-container>
+  
+  
+  
+  
+  
+  
+  
             </div>
-
-            <span   class="button-label">Verilen Teklif
-            </span>
-
-          </button>
-
-
-
-          <button [routerLink]="['/menu/satis/alinan-siparis/list']" [routerLinkActive]="['active']" type="button" type="button" class="btn topbar-button">
-
-            <div class="img-container">
-              <img style="width: 35px;height: 35px;" src="../../../assets/icons/satis/alinan-siparis.png" alt="">
-            </div>
-
-            <span class="button-label">Alınan Sipariş
-            </span>
-
-          </button>
-
-
-
-
-
         </div>
-
-      </div>
-      <div class="buton-grup-label">Listler</div>
-
-
     </div>
-
-    <p-divider layout="vertical"></p-divider>
-
+  
+    <div class="animated fadeInRight w-full">
+        <router-outlet></router-outlet>
+  
+    </div>
   </div>
-
-  <nav  class="breadcrumbs"></nav>
-
-
-</nav>
-
-<div class="card" style="margin: 10px; box-shadow: 1px 1px 1px 1px #e3e3e3;border: 1px solid #ddd;">
-  <router-outlet></router-outlet>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
