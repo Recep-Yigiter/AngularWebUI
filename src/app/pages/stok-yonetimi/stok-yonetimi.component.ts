@@ -237,7 +237,7 @@ export class StokYonetimiComponent {
           label: 'Birim Tanımları',
           icon: 'fa fa-circle text-warning',
           submenu: [], expanded: false,
-          href: '',
+          href: '/stok-yonetimi/birim/list',
         },
       ],
     },
