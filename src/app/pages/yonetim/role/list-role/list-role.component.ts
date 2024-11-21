@@ -10,116 +10,165 @@ import { AG_GRID_LOCALE_TR } from 'src/AG_GRID_LOCALE_TR ';
 import { defaultColDef } from 'src/app/shared/default-col-def';
 import { CreateRoleComponent } from '../create-role/create-role.component';
 import { PermissionModalComponent } from '../permission-modal/permission-modal.component';
+import { UpdateRoleComponent } from '../update-role/update-role.component';
+import { DeleteModalComponents } from 'src/app/shared/utilities/confirms/delete-modal';
+import { DetailRoleComponent } from '../detail-role/detail-role.component';
 
 
 @Component({
   selector: 'app-list-role',
   templateUrl: './list-role.component.html',
-  styleUrls: ['./list-role.component.scss']
+  styleUrls: ['./list-role.component.scss'],
 })
 export class ListRoleComponent implements OnInit {
-
-
   public rowSelection: 'single' | 'multiple' = 'single';
   private gridApi!: GridApi<any>;
-  frameworkComponents: any
-  public localeText: { [key: string]: string; } = AG_GRID_LOCALE_TR;
+  frameworkComponents: any;
+  public localeText: { [key: string]: string } = AG_GRID_LOCALE_TR;
   public defaultColDef = defaultColDef;
-  constructor(private RoleService: RoleService,
-    private modalService: NgbModal,
+
+  rowData: any[];
+  buttonDisabled: boolean = true;
+  selectedRow: any;
+  constructor(
+    private RoleService: RoleService,
+    private NgbModal: NgbModal,
     private router: Router
   ) {
     this.frameworkComponents = {
       buttonRenderer: AddRoleClaimsButtonComponent,
-    }
-
+    };
   }
 
   colDefs: ColDef[] = [
-    { field: "name" },
+    { field: 'name' },
     {
-      field: "normalizedName"
-
+      field: 'normalizedName',
     },
-    {
-      width: 90,
-      cellRenderer: 'buttonRenderer',
-      cellRendererParams: { onClick: this.addRoleClaim.bind(this) }
-    }
 
   ];
   roles: any;
   async ngOnInit() {
-
-    this.getRoles()
-
+    this.getRoles();
   }
-  roleSelected: any
-  addRoleClaim(event) {
+  roleSelected: any;
+  addRoleClaim(event) {console.log("first")
     this.roleSelected = event.rowData;
-    
-    this.listPermissionToRole()
 
+    this.listPermissionToRole();
   }
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
   }
 
-  selectedRows:any;
+  selectedRows: any;
   rowDoubleClick() {
+    this.selectedRow = this.gridApi.getSelectedRows()[0];
 
-    const selectedRows = this.gridApi.getSelectedRows()[0];
-
-    this.router.navigate(['/administration/role/detail'], { state: selectedRows })
-
+    this.updateModal()
+    // this.router.navigate(['/administration/role/detail'], {
+    //   state: selectedRows,
+    // });
+    
   }
   async getRoles() {
-    this.roles = (await this.RoleService.list()).data
+    this.roles = (await this.RoleService.list()).data;
+  }
+
+  rowClick() {
+    this.selectedRow = this.gridApi.getSelectedRows()[0];
+    this.buttonDisabled = false;
   }
 
 
-
-
-
-
-
-
-  createRole() {
-    const modalRef = this.modalService.open(CreateRoleComponent, { size: 'md', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Rol Ekle';
-    modalRef.result.then(() => {
-      this.getRoles();
-
-    });
-
-  }
   listPermissionToRole() {
-    const modalRef = this.modalService.open(PermissionModalComponent, { size: 'xl', backdrop: 'static' });
-    modalRef.componentInstance.confirmationBoxTitle = 'Rol Ekle';
-    modalRef.componentInstance.RoleId = this.roleSelected.id;
-    modalRef.result.then(() => {
-      this.getRoles();
-
+    console.log(this.selectedRow)
+    const modalRef = this.NgbModal.open(PermissionModalComponent, {
+      size: 'xl',
+      backdrop: 'static',
     });
-
+    modalRef.componentInstance.confirmationBoxTitle = 'Rol Ekle';
+    modalRef.componentInstance.RoleId = this.selectedRow.id;
+    modalRef.result.then((condition) => {
+      if (condition) {
+        this.getRoles();
+      }
+    });
   }
 
   onSelectionChanged() {
     const selectedRows = this.gridApi.getSelectedRows()[0];
   }
 
+  createModal() {
+    const modalRef = this.NgbModal.open(CreateRoleComponent, {
+      size: 'md',
+      backdrop: 'static',
+    });
+    modalRef.componentInstance.data = 'Role Kartı';
 
-  // updatePermissionsModal() {
-  //   const modalRef = this.modalService.open(UpdatePermissionsModalComponent, { size: 'xl', backdrop: 'static' });
-  //   modalRef.componentInstance.role =this.roleSelected;
-  //   modalRef.result.then(() => {
+    modalRef.result.then(async (item) => {
+      if (item) {
+        this.refresh();
+      }
+    });
+  }
 
+  updateModal() {
+    if (this.selectedRow) {
+      const modalRef = this.NgbModal.open(UpdateRoleComponent, {
+        size: 'md',
+        backdrop: 'static',
+      });
+      modalRef.componentInstance.data = this.selectedRow;
 
-  //   });
+      modalRef.result.then(async (item) => {
+        if (item == true) {
+          this.refresh();
+        }
+      });
+    }
+  }
 
-  // }
+  detailModal(){
+    if (this.selectedRow) {
+     
+      const modalRef = this.NgbModal.open(DetailRoleComponent, {
+        size: 'xl',
+        backdrop: 'static',
+      });
+      modalRef.componentInstance.data = this.selectedRow;
 
+      modalRef.result.then(async (item) => {
+        if (item == true) {
+          this.refresh();
+        }
+      });
+    }
+  }
 
+  async refresh() {
+   this.getRoles()
+  }
 
+  delete() {
+    if (this.selectedRow) {
+      const modalRef = this.NgbModal.open(DeleteModalComponents, {
+        size: 'sm',
+        backdrop: 'static',
+      });
+      modalRef.result.then((event) => {
+        if (event == true) {
+          this.RoleService.delete(this.selectedRow.id, () => {
+            this.refresh();
+          });
+        }
+      });
+    }
+  }
+  filter: boolean = false;
+  filtrele() {
+    this.filter = !this.filter;
+  }
 }

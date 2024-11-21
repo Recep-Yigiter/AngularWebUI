@@ -32,7 +32,7 @@ export class ListAlinanSiparisComponent implements OnInit {
   public defaultColDef = defaultColDef;
   buttonDisabled: boolean = true;
   selectedRow: any;
-
+  pageNull: boolean = false;
   constructor(
     private SiparisService: SiparisService,
     private NgbModal: NgbModal,
@@ -42,51 +42,103 @@ export class ListAlinanSiparisComponent implements OnInit {
   async ngOnInit() {}
 
   colDefs: ColDef[] = [
-    { field: "createdDate", headerName: "Hareket Tarihi", width: 120, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy'), pinned: "left" },
-    { field: "seri", headerName: "Seri", width: 70, pinned: "left" },
-    { field: "belgeNo", headerName: "Belge No", width: 150, pinned: "left" },
-    { field: "siparisTuruAdi", headerName: "Türü", width: 80, pinned: "left" },
-    { field: "kdvTutar", headerName: "Kdv Tutarı", width: 100, cellRenderer: this.CurrencyCellRendererTR },
-    { field: "satirOtv", headerName: "ÖTV Tutarı", width: 100, cellRenderer: this.CurrencyCellRendererTR },
-    { field: "cariKodu", headerName: "Cari Kodu", width: 150 },
-    { field: "cariAdi", headerName: "Cari Adı", width: 350 },
-    { field: "referans", headerName: "Referans No", width: 150 },
-    { field: "teslimatDurumuString", headerName: "Teslimat Durumu", width: 150, },
-    { field: "teslimTarihi", headerName: "Teslim Tarihi", width: 150, valueFormatter: params => this.DatePipe.transform(params.value, 'dd.MM.yyyy') },
-    { field: "siparisAlanPersonel", headerName: "Siparis Alan Personel" },
-    { field: "aciklama", headerName: "Açıklama" },
-    { field: "satirSayisi", headerName: "Satır S.", width: 80 },
-    { field: "referansNo", headerName: "Ref. No" },
-    { field: "genelToplam", headerName: "Toplam Tutar", pinned: "right", cellRenderer: this.CurrencyCellRendererTR },
+    {
+      field: 'createdDate',
+      headerName: 'Hareket Tarihi',
+      width: 120,
+      valueFormatter: (params) =>
+        this.DatePipe.transform(params.value, 'dd.MM.yyyy'),
+      pinned: 'left',
+    },
+    { field: 'seri', headerName: 'Seri', width: 70, pinned: 'left' },
+    { field: 'belgeNo', headerName: 'Belge No', width: 150, pinned: 'left' },
+    { field: 'siparisTuruAdi', headerName: 'Türü', width: 80, pinned: 'left' },
+    {
+      field: 'kdvTutar',
+      headerName: 'Kdv Tutarı',
+      width: 100,
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
+    {
+      field: 'satirOtv',
+      headerName: 'ÖTV Tutarı',
+      width: 100,
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
+    { field: 'cariKodu', headerName: 'Cari Kodu', width: 150 },
+    { field: 'cariAdi', headerName: 'Cari Adı', width: 350 },
+    { field: 'referans', headerName: 'Referans No', width: 150 },
+    {
+      field: 'teslimatDurumuString',
+      headerName: 'Teslimat Durumu',
+      width: 150,
+    },
+    {
+      field: 'teslimTarihi',
+      headerName: 'Teslim Tarihi',
+      width: 150,
+      valueFormatter: (params) =>
+        this.DatePipe.transform(params.value, 'dd.MM.yyyy'),
+    },
+    { field: 'siparisAlanPersonel', headerName: 'Siparis Alan Personel' },
+    { field: 'aciklama', headerName: 'Açıklama' },
+    { field: 'satirSayisi', headerName: 'Satır S.', width: 80 },
+    { field: 'referansNo', headerName: 'Ref. No' },
+    {
+      field: 'genelToplam',
+      headerName: 'Toplam Tutar',
+      pinned: 'right',
+      cellRenderer: this.CurrencyCellRendererTR,
+    },
   ];
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
     this.rowData = (await this.SiparisService.GetList(() => {})).items;
-    this.rowData = this.rowData.filter(c => c.seri == "AS");
+    this.rowData = this.rowData.filter((c) => c.seri == 'AS');
     this.rowData.forEach((item) => {
-      item.siparisHareketler.forEach(siparisHareket => {
-        siparisHareket.satirTutar = (siparisHareket.miktar * siparisHareket.birimFiyat);
-        siparisHareket.iskontoTutar = (siparisHareket.satirTutar * siparisHareket.iskonto) / 100;
-        siparisHareket.iskontoSonrasiTutar = (siparisHareket.satirTutar) - siparisHareket.iskontoTutar;
-        siparisHareket.kdvTutar = (siparisHareket.iskontoSonrasiTutar) * Number(item.kdv) / 100;
-        siparisHareket.genelToplam = siparisHareket.iskontoSonrasiTutar + siparisHareket.kdvTutar
+      item.siparisHareketler.forEach((siparisHareket) => {
+        siparisHareket.satirTutar =
+          siparisHareket.miktar * siparisHareket.birimFiyat;
+        siparisHareket.iskontoTutar =
+          (siparisHareket.satirTutar * siparisHareket.iskonto) / 100;
+        siparisHareket.iskontoSonrasiTutar =
+          siparisHareket.satirTutar - siparisHareket.iskontoTutar;
+        siparisHareket.kdvTutar =
+          (siparisHareket.iskontoSonrasiTutar * Number(item.kdv)) / 100;
+        siparisHareket.genelToplam =
+          siparisHareket.iskontoSonrasiTutar + siparisHareket.kdvTutar;
       });
 
-      item.satirTutar = item.siparisHareketler.reduce((prev: any, next: any) => prev + next.satirTutar, 0)
-      item.iskontoTutar = item.siparisHareketler.reduce((prev: any, next: any) => prev + next.iskontoTutar, 0)
-      item.iskontoSonrasiTutar = item.siparisHareketler.reduce((prev: any, next: any) => prev + next.iskontoSonrasiTutar, 0)
-      item.kdvTutar = item.siparisHareketler.reduce((prev: any, next: any) => prev + next.kdvTutar, 0);
+      item.satirTutar = item.siparisHareketler.reduce(
+        (prev: any, next: any) => prev + next.satirTutar,
+        0
+      );
+      item.iskontoTutar = item.siparisHareketler.reduce(
+        (prev: any, next: any) => prev + next.iskontoTutar,
+        0
+      );
+      item.iskontoSonrasiTutar = item.siparisHareketler.reduce(
+        (prev: any, next: any) => prev + next.iskontoSonrasiTutar,
+        0
+      );
+      item.kdvTutar = item.siparisHareketler.reduce(
+        (prev: any, next: any) => prev + next.kdvTutar,
+        0
+      );
       item.satirOtv = (item.iskontoSonrasiTutar * item.otv) / 100;
       item.genelToplam = item.iskontoSonrasiTutar + item.kdvTutar;
       item.satirSayisi = item.siparisHareketler.length;
 
       if (item.teslimatDurumu == 0) {
-        item.teslimatDurumuString = "Teslimat Yapılmadı"
+        item.teslimatDurumuString = 'Teslimat Yapılmadı';
       } else {
-        item.teslimatDurumuString = "Teslim Edildi"
+        item.teslimatDurumuString = 'Teslim Edildi';
       }
-    })
+    });
+    if (this.rowData.length == 0) {
+      this.pageNull = true;
+    }
 
   }
 

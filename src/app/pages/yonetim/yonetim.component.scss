@@ -21,5 +21,9 @@
     display: block !important;
   }
 
-
+  .arka-plan{
+    background-image: url('../../../assets/form_sheetbg.png');
+    background-repeat: repeat; /* Resmi, div boyutuna kadar tekrar ettirir */
+    background-position: top left; /* Resmi sol üstten başlatır */
+  }
 

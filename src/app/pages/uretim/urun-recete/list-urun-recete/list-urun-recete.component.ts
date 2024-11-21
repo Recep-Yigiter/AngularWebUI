@@ -36,7 +36,7 @@ export class ListUrunReceteComponent implements OnInit {
   public defaultColDef = defaultColDef;
   buttonDisabled: boolean = true;
   selectedRow: any;
-
+  pageNull: boolean = false;
   colDefs: ColDef[] = [
     { field: 'kod', headerName: 'Kod', width: 120 },
     { field: 'ad', headerName: 'Reçete Adı' },
@@ -68,6 +68,10 @@ export class ListUrunReceteComponent implements OnInit {
         }
       )
     ).items;
+
+    if (this.rowData.length == 0) {
+      this.pageNull = true;
+    }
   }
 
   rowClick() {

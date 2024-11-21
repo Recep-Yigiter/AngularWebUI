@@ -13,7 +13,8 @@ import { UpdateTediyeComponent } from './update-tediye/update-tediye.component';
     UpdateTediyeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+  
   ]
 })
 export class TediyeModule { }

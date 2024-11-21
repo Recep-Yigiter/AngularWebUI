@@ -1,4 +1,4 @@
-<nav class="breadcrumbs">
+<!-- <nav class="breadcrumbs">
     <a class="unavailable">Alış Faturası</a>
 
     <a class="unavailable">{{stateData.seri}} - {{stateData.belgeNo}}</a>
@@ -286,4 +286,216 @@
         </div>
     </div>
 
-</form>
+</form> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="modal-header ">
+    <h4 class="modal-title"></h4>
+    <h4 class="modal-title"> </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(false)"></button>
+  </div>
+  
+  
+  
+  <div class="">
+    <div class="container-fluid">
+      <div class="panel header" data-resize-name="header">
+        <div class="content">
+          <div class="actions" style="padding: 2px 0px 2px 0px; display: flex;">
+            <div class="action-items" style="width: 100%; display: flex; align-items: center;">
+  
+              <div class="action-left">
+                <div class="btn-group ml-1 mr-1">
+  
+                  <div class="button-container">
+  
+                    <div  class="button-grup disabled">
+                      <div class="img-container">
+                        <img src="../../../../../assets/icons/add-file.png" alt="">
+                      </div>
+                      <span class="d-none d-sm-inline button-label">Yeni</span>
+                      <!-- <i class="fa-solid fa-sort-down sort-down-icon"></i> -->
+                    </div>
+  
+                    <div  (click)="Kaydet()" class="button-grup ">
+                      <div class="img-container">
+                        <img src="../../../../../assets/icons/save.png" alt="">
+                      </div>
+                      <span class="d-none d-sm-inline button-label">Kaydet</span>
+  
+                    </div>
+  
+                    <div class="button-grup disabled">
+                      <div class="img-container">
+                        <img src="../../../../../assets/icons/delete-file.png" alt="">
+                      </div>
+                      <span class="d-none d-sm-inline button-label">Sil</span>
+  
+                    </div>
+  
+                    <div (click)="cikis()" class="button-grup">
+                      <div class="img-container">
+                        <img src="../../../../../assets/icons/close.png" alt="">
+                      </div>
+                      <span class="d-none d-sm-inline button-label">Çıkış</span>
+  
+                    </div>
+  
+  
+  
+  
+                  </div>
+  
+  
+                </div>
+              </div>
+  
+  
+            </div>
+  
+          </div>
+  
+  
+        </div>
+      </div>
+  
+  
+  
+      <div style="overflow-x: auto; line-height: 27px; padding: 5px;">
+        <form [formGroup]="frm">
+          <div style="display: grid;grid-template-columns: auto auto auto;padding: 0 10px;">
+  
+  
+  
+  
+  
+  
+            <app-form-label [formControlNames]="name" [field]="data.name"
+            formControlName="name"  [span]="130" [label]="'Seri'"></app-form-label>
+            <div></div>
+            <div></div>
+            <app-form-label [formControlNames]="description" [field]="data.description" [span]="130" [label]="'Description'"></app-form-label>
+            <div></div>
+            <div></div>
+            <app-form-label [formControlNames]="normalizedName" [field]="data.normalizedName" [span]="130" [label]="'Normalized'"></app-form-label>
+            <div></div>
+            <div></div>
+  
+  
+  
+            <div style="border-top: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6; 
+            padding-left: 10px; color: #6b6b6b;
+            background-color: #f7f7f7;
+            color: rgb(119, 0, 0);
+            font-weight: 600;
+            grid-column: 1/span 3; 
+            text-align: center;
+            font-size: 14px;">
+              Hareket Bilgileri
+            </div>
+  
+            <ag-grid-angular style="width: 100%;height: 300px;  margin-top: 4px;grid-column: 1/span 3; "
+              class="ag-theme-quartz" [rowData]="rowData" [columnDefs]="colDefs" (gridReady)="getList($event)"
+              [rowSelection]="rowSelection" [rowHeight]="22" [headerHeight]="23"  >
+            </ag-grid-angular>
+            <div class="hareket-action-button-container">
+  
+  
+              <div class="button-grup " style="display: grid;">
+                <div class="hareket-action-img-container ">
+                  <img  src="../../../../../assets/icons/add-file.png" alt="">
+                </div>
+                <span style="color: blue;" class="d-none d-sm-inline button-label hareket-action-button-label">Ekle</span>
+              </div>
+  
+  
+              <div class="button-grup " style="display: grid;">
+                <div class="hareket-action-img-container ">
+                  <img  src="../../../../../assets/icons/delete-file.png" alt="">
+                </div>
+                <span  class="d-none d-sm-inline button-label hareket-action-button-label">Sil</span>
+              </div>
+  
+  
+              <div class="button-grup " style="display: grid;">
+                <div class="hareket-action-img-container ">
+                  <img  src="../../../../../assets/icons/edit-file.png" alt="">
+                </div>
+                <span style="color: #575757;"  class="d-none d-sm-inline button-label hareket-action-button-label">Düzelt</span>
+              </div>
+  
+  
+  
+  
+            </div>
+  
+  
+            
+
+  
+          </div>
+  
+        </form>
+  
+  
+  
+  
+  
+  
+      </div>
+  
+  
+  
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+  <div class="modal-footer">
+    <!-- <button (click)="Kaydet()" type="button" class="btn btn-success" 
+          style="padding:2px 10px; border-radius: 3px; background-color: #017e84;">
+          <i class="fa fa-check" style="color: #fff; margin-right: 5px; font-weight: 700;"></i>
+          <span class="d-none d-sm-inline" style="font-size: 13px;">Kaydet</span>
+      </button>
+      <button type="button" class="btn " (click)="activeModal.close(false)"
+          style="padding:2px 10px; border-radius: 3px; background-color: #fdfdfd; border: 1px solid #e6e6e6;">
+          <i class="fa fa-times" style="color: #000; margin-right: 5px; font-weight: 600;"></i>
+          <span class="d-none d-sm-inline" style="font-size: 13px;">Vazgeç</span>
+      </button> -->
+  </div>
+
+
+
+
+
+
+
+
+
+

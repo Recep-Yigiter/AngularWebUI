@@ -193,7 +193,16 @@ export class ListStokComponent implements OnInit {
   }
 
   async refresh() {
-    window.location.reload();
+    this.rowData = (
+      await this.StokService.GetList(
+        () => {
+          // this.spinnerService.hide();
+        },
+        (error) => {
+          // this.spinnerService.hide();
+        }
+      )
+    ).items;
   }
 
   delete() {

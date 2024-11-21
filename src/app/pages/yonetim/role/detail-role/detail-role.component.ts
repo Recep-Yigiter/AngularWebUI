@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { ApplicationService } from 'src/app/core/services/repository/application.service';
 import { RoleService } from 'src/app/core/services/repository/role.service';
@@ -11,22 +12,24 @@ import { RoleService } from 'src/app/core/services/repository/role.service';
   styleUrls: ['./detail-role.component.scss']
 })
 export class DetailRoleComponent implements OnInit {
-
-  stateData: any;
+  @Input() data: any;
   private gridApi!: GridApi<any>;
   public rowSelection: "single" | "multiple" = "single";
   rowData: any;
   constructor(private fb: FormBuilder,
      private RoleService: RoleService,
       private ApplicationService: ApplicationService,
-      private router:Router
+      private router:Router,
+      public activeModal: NgbActiveModal,
+      private NgbModal: NgbModal
     ) {
-    this.stateData = history.state;
-    this.getByRoleFull();
+  
+
+
 
   }
   ngOnInit(): void {
-
+    this.getByRoleFull();
 
 
   }
@@ -37,9 +40,9 @@ export class DetailRoleComponent implements OnInit {
 
 
   })
-  get faturaTuru() { return this.frm.get('faturaTuru') }
-  get seri() { return this.frm.get('seri') }
-  get belgeNo() { return this.frm.get('belgeNo') }
+  get name() { return this.frm.get('name') }
+  get description() { return this.frm.get('description') }
+  get normalizedName() { return this.frm.get('normalizedName') }
 
 
 
@@ -53,13 +56,13 @@ export class DetailRoleComponent implements OnInit {
   ];
 
 
-  kaydet() {
+  Kaydet() {
 
   }
-  vazgec() {
-    this.router.navigate(['/administration/role'])
-  }
 
+  cikis() {
+    this.activeModal.close(false)
+  }
 
   async getList(params: GridReadyEvent<any>) {
     this.gridApi = params.api;
@@ -70,7 +73,8 @@ export class DetailRoleComponent implements OnInit {
   listEndpoint: any;
   async getByRoleFull() {
 
-    this.roleFull = (await this.RoleService.getByRoleIdFull(this.stateData.id, () => { })).data.permissions;
+console.log(this.data.id)
+    this.roleFull = (await this.RoleService.getByRoleIdFull(this.data.id, () => { })).data.permissions;
     this.listEndpoint = await this.ApplicationService.getAllPermissions();
 
     this.listEndpoint.forEach(endpoint => {

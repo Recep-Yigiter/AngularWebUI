@@ -51,6 +51,7 @@ import { GenelVirmanKasaSelectComponent } from './shared/core/genel-virman-kasa'
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { IsGrantedDirective } from './Auth/is-granted.directive';
+import { NavigatorBarComponent } from './shared/utilities/navigator-bar/navigator-bar.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { IsGrantedDirective } from './Auth/is-granted.directive';
     AutoCompleteComponent,
     LoginComponent,
     RegisterComponent,
+    NavigatorBarComponent,
     
   ],
   imports: [

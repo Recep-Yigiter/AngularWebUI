@@ -22,6 +22,12 @@ import { UpdatePermissionCheckboxComponent } from './permission-modal/components
 import { DeletePermissionCheckboxComponent } from './permission-modal/components/delete-permission-checkbox.component';
 import { ViewPermissionCheckboxComponent } from './permission-modal/components/view-permission-checkbox.component';
 import { ListRoleComponent } from './list-role/list-role.component';
+import { RoleFormLabelComponent } from './core/components/role-form-label';
+import { RoleFormDateComponent } from './core/components/role-form-date';
+import { RoleFormInputSelectComponent } from './core/components/role-form-input-select';
+import { RoleFormDropDownComponent } from './core/components/role-form-dropdown';
+import { DesignComponent } from './core/design/design.component';
+import { AngularSplitModule } from 'angular-split';
 
 
 @NgModule({
@@ -36,7 +42,12 @@ import { ListRoleComponent } from './list-role/list-role.component';
     UpdatePermissionCheckboxComponent,
     DeletePermissionCheckboxComponent,
     ViewPermissionCheckboxComponent,
-    ListRoleComponent
+    ListRoleComponent,
+    RoleFormLabelComponent,
+    RoleFormDateComponent,
+    RoleFormInputSelectComponent,
+    RoleFormDropDownComponent,
+    DesignComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +61,7 @@ import { ListRoleComponent } from './list-role/list-role.component';
     MatCheckboxModule,
     CheckboxModule,
     TableModule,
+    AngularSplitModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     // RouterModule.forChild([
     //   {

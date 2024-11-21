@@ -111,8 +111,8 @@
     border-radius: 4px;
     border-top-right-radius: 0 !important;
     padding: 10px 0;
-    right: -6px;
-    top: 35px;
+    right: 6px;
+    top: 52px;
     background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
     box-shadow: 0 0 15px #eee;
     z-index: 101;
@@ -135,4 +135,14 @@
     border-width: 0px 12px 12px 12px;
      border-color: transparent transparent  rgb(71 85 105 / var(--tw-bg-opacity, 1)) transparent;
     z-index: 101;
+}
+
+stop {
+  stop-color:  rgb(71 85 105 / var(--tw-bg-opacity, 1));
+}
+
+.arka-plan{
+  background-image: url('../assets/form_sheetbg.png');
+  background-repeat: repeat; /* Resmi, div boyutuna kadar tekrar ettirir */
+  background-position: top left; /* Resmi sol üstten başlatır */
 }

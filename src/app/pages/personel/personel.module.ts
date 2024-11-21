@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonelComponent } from './personel.component';
 import { RouterModule } from '@angular/router';
+import { DepartmanComponent } from './departman/departman.component';
 
 
 
@@ -16,7 +17,7 @@ import { RouterModule } from '@angular/router';
         {
           path: "",
           children: [
-            // { path: 'stok', component: StokComponent, loadChildren: () => import("../stok-yonetimi/stok/stok.module").then(m => m.StokModule) },
+             { path: 'departman', component: DepartmanComponent, loadChildren: () => import("../personel/departman/departman.module").then(m => m.DepartmanModule) },
             // { path: 'birim', component: BirimComponent, loadChildren: () => import("../stok-yonetimi/birim/birim.module").then(m => m.BirimModule) },
             // { path: 'depo', component: DepoComponent, loadChildren: () => import("../stok-yonetimi/depo/depo.module").then(m => m.DepoModule) },
             // { path: 'hizmet', component: HizmetComponent, loadChildren: () => import("../stok-yonetimi/hizmet/hizmet.module").then(m => m.HizmetModule) },

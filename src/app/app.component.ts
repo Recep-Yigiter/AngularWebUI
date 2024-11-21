@@ -37,7 +37,33 @@ export class AppComponent implements OnInit {
     private RbacService: RbacService
   ) {}
   componentLoading: boolean;
+  isLoading: boolean = false;
+
   ngOnInit() {
+
+
+    // progressBar İçin gerekli
+    // this.router.events.pipe(
+    //   filter(event => event instanceof NavigationStart || event instanceof NavigationEnd || event instanceof NavigationCancel)
+    // ).subscribe(event => {
+      
+    //   if (event instanceof NavigationStart) {
+    //     console.log("yükleniyor...")
+    //     this.isLoading = true; 
+    //   } else if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
+    //     setTimeout(() => {
+    //       this.isLoading = false; 
+    //     }, 1000);
+    //     console.log("bitti")
+        
+    //   }
+    // });
+
+
+
+
+
+
     this.user = JSON.parse(localStorage.getItem('user'));
     this.spinnerService.show();
     this.router.events.subscribe((event) => {
@@ -58,7 +84,11 @@ export class AppComponent implements OnInit {
       },);
     }
   }
-
+  onRouteChange() {
+    // Sayfa her değiştiğinde çalışacak fonksiyon
+    console.log('Route changed!');
+    // Burada navigator bar'ı güncelleyebilirsiniz
+  }
   currentPath: string;
   pathList: string[];
   getCurrentPath(): void {
