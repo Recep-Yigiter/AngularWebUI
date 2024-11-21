@@ -56,7 +56,7 @@ import { NavigatorBarComponent } from './shared/utilities/navigator-bar/navigato
 @NgModule({
   declarations: [
     AppComponent,
-    IsGrantedDirective,
+
     StokSelectModalComponent,
     CariSelectModalComponent,
     DeleteButtonComponent,
@@ -109,7 +109,7 @@ import { NavigatorBarComponent } from './shared/utilities/navigator-bar/navigato
   ],
   providers: [
     AlertService,
-    { provide: "baseUrl", useValue: "https://localhost:7051/api", multi: true },
+    { provide: "baseUrl", useValue: "http://192.168.4.111:8081/api", multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy, },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService,
     { provide: HTTP_INTERCEPTORS, useClass: HtppErrorHandlerInterceptor, multi: true },

@@ -1,0 +1,148 @@
+
+#sidebar-menu::-webkit-scrollbar {
+    width: 8px; /* Kaydırma çubuğu genişliği */
+  
+  }
+  
+  #sidebar-menu::-webkit-scrollbar-thumb {
+    background: #ccc !important; /* Kaydırma çubuğu rengi */
+    border-radius: 5px !important; /* Kenar yuvarlama */
+  }
+  
+  #sidebar-menu::-webkit-scrollbar-thumb:hover {
+    background: #999 !important; /* Hover rengi */
+  }
+
+  .sub-menu{
+    display: none;
+  }
+
+.show + ul.sub-menu{
+    display: block !important;
+  }
+
+
+
+
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;  /* Görsel olarak devre dışı gibi göstermek için */
+  }
+
+
+
+
+
+
+  .grid-icon {
+    display: grid;
+    grid-template-columns: repeat(3, 8px);
+    grid-template-rows: repeat(3, 8px);
+    gap: 4px;
+  }
+
+  .grid-item {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 0px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  .grid-item:nth-child(1) { animation-delay: 0s; }
+  .grid-item:nth-child(2) { animation-delay: 0.1s; }
+  .grid-item:nth-child(3) { animation-delay: 0.2s; }
+  .grid-item:nth-child(4) { animation-delay: 0.3s; }
+  .grid-item:nth-child(5) { animation-delay: 0.4s; }
+  .grid-item:nth-child(6) { animation-delay: 0.5s; }
+  .grid-item:nth-child(7) { animation-delay: 0.6s; }
+  .grid-item:nth-child(8) { animation-delay: 0.7s; }
+  .grid-item:nth-child(9) { animation-delay: 0.8s; }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+
+  .show{
+    display:block !important;
+    opacity:1 !important
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .portHeadLightMenu ul {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.portHeadLightMenu>ul {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.portHeadLightMenu ul li {
+    list-style-type: none;
+    position: relative;
+}
+
+
+.portHeadLightMenu ul li ul {
+    display: none;
+    opacity: 0;
+    box-sizing: border-box;
+    position: absolute;
+    min-width: 250px;
+    border-radius: 4px;
+    border-top-right-radius: 0 !important;
+    padding: 10px 0;
+    right: 6px;
+    top: 52px;
+    background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
+    box-shadow: 0 0 15px #eee;
+    z-index: 101;
+
+}
+
+
+
+
+
+.portHeadLightMenu ul li ul::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -12px;
+    margin-left: -6px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0px 12px 12px 12px;
+     border-color: transparent transparent  rgb(71 85 105 / var(--tw-bg-opacity, 1)) transparent;
+    z-index: 101;
+}
+
+stop {
+  stop-color:  rgb(71 85 105 / var(--tw-bg-opacity, 1));
+}
+
+.arka-plan{
+  background-image: url('../../assets/form_sheetbg.png');
+  background-repeat: repeat; /* Resmi, div boyutuna kadar tekrar ettirir */
+  background-position: top left; /* Resmi sol üstten başlatır */
+}

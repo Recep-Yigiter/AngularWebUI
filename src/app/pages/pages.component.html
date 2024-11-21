@@ -1,4 +1,6 @@
-<!-- <div *ngIf="!isLoginPage" id="wrapper" class="flex flex-col h-full overflow-hidden">
+
+
+<div id="wrapper" class="flex flex-col h-full overflow-hidden">
 
     <header class="flex items-center w-full h-10 bg-slate-600 ">
         <div class=" flex-grow flex items-center ">
@@ -101,20 +103,14 @@
 
                     </ol>
                 </div>
-
-
-
-                
-                <router-outlet></router-outlet>
+            
+                <!-- <div *ngIf="isLoading">
+                    <app-navigator-bar></app-navigator-bar>
+                </div> -->
+                 <router-outlet></router-outlet>
 
 
             </div>
         </div>
     </div>
 </div>
-
-<div *ngIf="isLoginPage">
-    <router-outlet></router-outlet>
-</div> -->
-
-<router-outlet></router-outlet>
